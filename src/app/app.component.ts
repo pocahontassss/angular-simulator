@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+// import { formatStr, deleteSymbol, users, usersFiltered, sum, status, textFormat} from './training'
+import './training'
 
 @Component({
   selector: 'app-root',
