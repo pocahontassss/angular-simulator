@@ -13,10 +13,11 @@ interface IAdmin extends IUser {
   permissions: string[];
 }
 
-
 // 4. Создать переменную status, которая может быть только: "loading", "success", "error".
 
-export const status: 'loading' | 'success' | 'error' = 'loading';
+type Status = 'loading' | 'success' | 'error';
+
+export const status: Status = 'loading';
 
 // 5. Создать переменную textFormat, которая может быть только: 'uppercase', 'lowercase', 'capitalize'".
 
@@ -24,38 +25,33 @@ type TextFormat = 'uppercase' | 'lowercase' | 'capitalize';
 
 const textFormat: TextFormat = 'uppercase';
 
-
 // 3. Создать функцию, которая принимает 2 числа и возвращает их сумму. Полностью типизировать параметры, значение, возвращаемое функцией.
 
 function sum(a: number, b: number): number {
   return a + b;
 }
 
-
 // 8. Создать функцию, которая принимает строку и вариант,  как именно форматировать строку (задание №5) и на основе этого возвращает форматированную строку.
 
-function formatStr(str: string, format: string): string {
-  if (format === 'uppercase') {
+const formatOptions = {
+  uppercase: 'uppercase',
+  lowercase: 'lowercase',
+  capitalize: 'capitalize',
+} as const;
+
+function formatText(str: string, format: TextFormat): string {
+  if (format === formatOptions.uppercase) {
     return str.toUpperCase();
-  } else if (format === 'lowercase') {
+  } else if (format === formatOptions.lowercase) {
     return str.toLowerCase();
   } else {
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
   }
 }
 
-
 // 9. Создать функцию, которая принимает строку и символ, возвращает строку без переданного символа.
 
-function deleteSymbol(str: string, symbol: string): string {
-  let res: string = '';
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] !== symbol) {
-      res += str[i];
-    }
-  }
-  return res;
-}
+const deleteSymbol = (str: string, symbol: string): string => str.replaceAll(symbol, '');
 
 console.log(deleteSymbol('hello', 'h'));
 
@@ -84,9 +80,5 @@ const users: IUser[] = [
   },
 ];
 
-const usersFiltered = users.filter(user => user.age >= 69)
+const usersFiltered = users.filter((user) => user.age >= 69);
 console.log(usersFiltered);
-
-
-
-
