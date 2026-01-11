@@ -38,10 +38,10 @@ export function removeChar(str: string, char: string): string {
 
 console.log(removeChar('hello -world', '-'));
 
-export const users: IUser[] = [
-  { name: 'Alice', age: 25, email: 'alice@example.com' },
-  { name: 'Bob', age: 17 },
-  { name: 'Charlie', age: 30, email: 'charlie@example.com' }
+export const users: IExtendedUser[] = [
+  { name: 'Alice', age: 25, email: 'alice@example.com', role: 'admin' },
+  { name: 'Bob', age: 17, role: 'user' },
+  { name: 'Charlie', age: 30, email: 'charlie@example.com', role: 'moderator' },
 ];
 
 export const filteredUsers = users.filter(user => user.age >= 18);
