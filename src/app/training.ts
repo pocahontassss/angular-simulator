@@ -28,7 +28,7 @@ interface IUser {
 
 // Задание №5: Создать интерфейс, который расширяется интерфейсом User с задания №4 и имеет свои дополнительные поля.
 
-interface IUserAddition extends IUser {
+interface IUserAppearance extends IUser {
   weight: number;
   hairColor: string;
   eyesColor: string;
@@ -55,7 +55,7 @@ console.log(formatText('Mark 2 jzx100', 'capitalize'));
 // Задание №7: Создать функцию, которая принимает строку и символ, возвращает строку без переданного символа.
 
 function replaceSymbol(string: string, symbol: string): string {
-  return string.replaceAll(`${symbol}`, '');
+  return string.replaceAll(symbol, '');
 }
 
 console.log(replaceSymbol('Hellow world', '!'));
