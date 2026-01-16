@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import './trining'
 
 @Component({
   selector: 'app-root',
