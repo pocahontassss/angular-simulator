@@ -53,9 +53,9 @@ function removeSymbol(text: string, symbol: string): string {
 console.log(removeSymbol("Angular!", "!"));
 
 const users: IUser[] = [
-  { name: "Галим", age: 27, email: "galim@mail.com" },
-  { name: "Максим", age: 35 },
-  { name: "Иван", age: 21, email: "ivan@mail.com" }
+  { name: "Галим", age: 27, email: "Galim@mail.com" },
+  { name: "Ислам", age: 35 },
+  { name: "Али", age: 21, email: "Ali@mail.com" }
 ];
 
 const adults = users.filter((user) => user.age > 21);
