@@ -52,7 +52,6 @@ function getModifiedString(string: string, symbol: string): string {
 }
 
 // Интерфейсы
-
 interface IUser {
   name: string,
   surname: string,
