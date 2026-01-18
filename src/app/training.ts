@@ -50,8 +50,8 @@ function formatString(line: string, variant: 'uppercase' | 'lowercase' | 'capita
 
 // 7. Создать функцию, которая принимает строку и символ, возвращает строку без переданного символа.
 
-function getString(line: string, symbol: string): string {
-  return line.replace(symbol, '')
+function removeSymbol(string: string, symbol: string): string {
+  return string.replace(symbol, '')
 };
 
 // 8. Создать массив объектов на основе интерфейса с задания №6. Отфильтровать его по одному из параметров.
