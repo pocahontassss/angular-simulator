@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import './training.ts'
 
 @Component({
   selector: 'app-root',
