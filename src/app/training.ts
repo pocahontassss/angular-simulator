@@ -30,25 +30,25 @@ let users: IUser[] = [
   }
 ];
 
-let filteredUsers = users.filter(user => user.city === 'Moscow');
+const filteredUsers: IUser[] = users.filter((user: IUser) => user.city === 'Moscow');
 
 // Функции
 function sum(firstNumber: number, secondNumber: number): number {
-  return firstNumber + secondNumber
+  return firstNumber + secondNumber;
 }
 
-function getFormattedString(string: string, textFormat: string): string {
+function formatText(text: string, textFormat: 'uppercase' | 'lowercase' | 'capitalize'): string {
   if (textFormat === 'uppercase') {
-    return string.toUpperCase();
+    return text.toUpperCase();
   } else if (textFormat === 'lowercase') {
-    return string.toLowerCase();
+    return text.toLowerCase();
   } else {
-    return string[0].toUpperCase() + string.slice(1).toLowerCase();
+    return text[0].toUpperCase() + text.slice(1).toLowerCase();
   }
 }
 
-function getModifiedString(string: string, symbol: string): string {
-  return string.replace(symbol, '');
+function deleteSymbol(string: string, symbol: string): string {
+  return string.replaceAll(symbol, '');
 }
 
 // Интерфейсы
