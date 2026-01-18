@@ -1,6 +1,6 @@
 /*3. Создать функцию, которая принимает 2 числа и возвращает их сумму. 
  Полностью типизировать параметры, значение, возвращаемое функцией.*/
-export const sum = (a:number, b:number):number => {
+export const sum = (a: number, b: number): number => {
   return a + b;
 }
 console.log(sum(19, 29));
@@ -15,7 +15,7 @@ let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
 
 /*6. Создать интерфейс, который описывает юзера. 
 Поля на ваш выбор. Одно поле должно быть опциональным.*/
-interface User {
+interface IUser {
   age: number,
   height: number,
   weight?: number,
@@ -24,7 +24,7 @@ interface User {
   city: string
 }
 
-let user: User = {
+const user: IUser = {
   age: 21,
   height: 175,
   name: 'Dante',
@@ -34,14 +34,14 @@ let user: User = {
 
 /*7. Создать интерфейс, который расширяется интерфейсом 
 User с задания №5 и имеет свои дополнительные поля */
-interface Programmers extends User {
+interface IProgrammers extends IUser {
   level: string,
   stack: string,
   experience: number,
   salary: number
 }
 
-let programmer: Programmers = {
+const programmer: IProgrammers = {
   age: 21,
   height: 175,
   name: 'Dante',
@@ -56,30 +56,28 @@ let programmer: Programmers = {
 /*8. Создать функцию, которая принимает строку и вариант,  
 как именно форматировать строку (задание №5) и на основе 
 этого возвращает форматированную строку.*/
-const formatString = (line: string, textFormat: 'uppercase' | 'lowercase' | 'capitalize'): string => {
-  if (textFormat === 'uppercase') {
-    return line.toUpperCase();
-  }
-  else if (textFormat === 'lowercase') {
-    return line.toLowerCase();
-  }
-  else {
-    return line.charAt(0).toUpperCase() + line.slice(1).toLowerCase();
+const formatText = (text: string, format: 'uppercase' | 'lowercase' | 'capitalize'): string => {
+  if (format === 'uppercase') {
+    return text.toUpperCase();
+  } else if (format === 'lowercase') {
+    return text.toLowerCase();
+  } else {
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
   }
 }
-console.log(formatString('angular', 'capitalize'));
+console.log(formatText('angular', 'capitalize'));
 
 /*9. Создать функцию, которая принимает строку и символ, 
 возвращает строку без переданного символа.  
 (есть специальные методы для этого, гуглим)*/
-const truncates = (line: string, symbol: string):string => {
-  return line.replaceAll(symbol, '');
+const removeSymbol = (text: string, symbol: string): string => {
+  return text.replaceAll(symbol, '');
 }
-console.log(truncates('Hello', 'lo'));
+console.log(removeSymbol('Hello', 'lo'));
 
 /*10. Создать массив объектов на основе интерфейса с задания №6. 
 Отфильтровать его по одному из параметров.*/
-let earthlings: User[] = [
+const earthlings: IUser[] = [
   {
     age: 18,
     name: 'Ibragim',
@@ -103,5 +101,5 @@ let earthlings: User[] = [
   }
 ]
 
-const country = earthlings.filter(earthman => earthman.country === 'Italy');
+const country: IUser[] = earthlings.filter((earthman: IUser) => earthman.country === 'Italy');
 console.log(country);
