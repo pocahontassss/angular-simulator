@@ -14,7 +14,7 @@ interface IDeveloper extends IUser {
 //Переменные.
 type Status = 'loading' | 'success' | 'error';
 type textFormat = 'uppercase' | 'lowercase' | 'capitalize';
-type IAdult = IUser & { age: number };
+type Adult = IUser & { age: number };
 
 //Функции
 function sum(a: number, b: number): number {
@@ -58,7 +58,7 @@ const users: IUser[] = [
   { id: 4, name: 'Елена Козлова', email: 'elena@work.ru', age: 35 }
 ]
 
-const adults: IAdult[] = users.filter((user): user is IAdult =>
+const adults: Adult[] = users.filter((user): user is Adult =>
   user.age !== undefined && user.age > 25
 );
 
