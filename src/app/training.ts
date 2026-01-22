@@ -27,19 +27,19 @@ function sum(a: number, b: number): number {
 console.log(sum(5, 7));
 
 function formatText(text: string, format: 'uppercase' | 'lowercase' | 'capitalize'): string {
-  if (format === 'uppercase') {
-    return text.toUpperCase();
-  }
+  switch (format) {
+    case 'uppercase':
+      return text.toUpperCase()
 
-  if (format === 'lowercase') {
-    return text.toLowerCase();
-  }
+    case 'lowercase':
+      return text.toLowerCase()
 
-  if (format === 'capitalize') {
-    return text[0].toUpperCase() + text.slice(1);
-  }
+    case 'capitalize':
+      return text[0].toUpperCase() + text.slice(1)
 
-  return text;
+    default:
+      return text
+  }
 }
 
 console.log(formatText('Angular', 'uppercase'));
@@ -56,6 +56,6 @@ const users: IUser[] = [
   { name: 'Али', age: 21, email: 'Ali@mail.com' },
 ];
 
-const adults = users.filter((user) => user.age > 21);
+const adults: IUser[] = users.filter((user: IUser) => user.age > 21);
 
 console.log(adults);
