@@ -14,7 +14,7 @@ interface IDeveloper extends IUser {
 //Переменные.
 type Status = 'loading' | 'success' | 'error';
 type textFormat = 'uppercase' | 'lowercase' | 'capitalize';
-type Adult = IUser & { age: number };
+type Adult = IUser
 
 //Функции
 function sum(a: number, b: number): number {
@@ -41,7 +41,7 @@ console.log(formatText("hello world", "lowercase"));
 
 function removeChar(text: string, char: string): string {
   if (!char) {
-     return text
+     return text;
   }
   return text.replaceAll(char, '');
 }
