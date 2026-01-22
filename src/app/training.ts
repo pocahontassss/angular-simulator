@@ -27,18 +27,18 @@ function sum(a: number, b: number): number {
 console.log(sum(5, 7));
 
 function formatText(text: string, format: 'uppercase' | 'lowercase' | 'capitalize'): string {
-  switch (format) {
+  switch(format) {
     case 'uppercase':
-      return text.toUpperCase()
+      return text.toUpperCase();
 
     case 'lowercase':
-      return text.toLowerCase()
+      return text.toLowerCase();
 
     case 'capitalize':
-      return text[0].toUpperCase() + text.slice(1)
+      return text[0].toUpperCase() + text.slice(1);
 
     default:
-      return text
+      return text;
   }
 }
 
