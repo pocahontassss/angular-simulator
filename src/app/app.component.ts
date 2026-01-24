@@ -18,24 +18,28 @@ export class AppComponent {
 
   constructor() {
     this.saveLastVisit();
-    this.saveNumberOfVisits();
+    this.saveVisitCount();
   }
 
   isPrimaryColor(color: Color): boolean {
-    const mainColors = [Color.RED, Color.GREEN, Color.BLUE];
+    const mainColors: Color[] = [Color.RED, Color.GREEN, Color.BLUE];
     return mainColors.includes(color);
   }
 
   saveLastVisit(): void {
-    const now = new Date();
-    localStorage.setItem('last-visit', now.toString());
+    const LAST_VISIT = 'last-visit';
+    const now: Date = new Date();
+    localStorage.setItem(LAST_VISIT, now.toString());
   }
 
-  saveNumberOfVisits(): void {
-    const visits = localStorage.getItem('number-of-visits');
+  saveVisitCount(): void {
+    const VISIT_COUNT_KEY = 'visit-count';
+    const visits: string | null = localStorage.getItem(VISIT_COUNT_KEY);
 
-    let count = visits ? parseInt(visits) : 0;
+    let count: number = visits ? parseInt(visits) : 0;
     count++;
-    localStorage.setItem('number-of-visits', count.toString());
+
+    localStorage.setItem(VISIT_COUNT_KEY, count.toString());
   }
+
 }

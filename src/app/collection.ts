@@ -25,4 +25,5 @@ export class Collection<T> {
   replaceElement(index: number, elem: T): void {
     this.elements[index] = elem;
   }
+
 }
