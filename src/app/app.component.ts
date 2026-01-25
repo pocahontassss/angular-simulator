@@ -27,13 +27,13 @@ export class AppComponent {
   }
 
   saveLastVisit(): void {
-    const LAST_VISIT = 'last-visit';
+    const LAST_VISIT_KEY: string = 'last-visit';
     const now: Date = new Date();
-    localStorage.setItem(LAST_VISIT, now.toString());
+    localStorage.setItem(LAST_VISIT_KEY, now.toString());
   }
 
   saveVisitCount(): void {
-    const VISIT_COUNT_KEY = 'visit-count';
+    const VISIT_COUNT_KEY: string = 'visit-count';
     const visits: string | null = localStorage.getItem(VISIT_COUNT_KEY);
 
     let count: number = visits ? parseInt(visits) : 0;
