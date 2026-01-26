@@ -36,9 +36,9 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/app/assets/styles.scss"
             ]
-          },
+          }, 
           "configurations": {
             "production": {
               "budgets": [

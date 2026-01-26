@@ -1,0 +1,155 @@
+.header-container {
+  color: var(--white-color);
+  width: 100%;
+  height: 72px;
+  padding-top: 16px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+
+  .company-name {
+    text-transform: uppercase;
+    letter-spacing: 0.7em;
+    font-weight: 700;
+    font-size: 12px;
+    width: 130px;
+    height: 11px;
+    padding-left: 3px;
+  }
+
+  .container-logo {
+    width: 137px;
+    height: 72px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .container-nav {
+    
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    a {
+      color: var(--white-color);
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  .btn-consultation {
+    width: 157px;
+    height: 44px;
+    margin-left: 42px;
+    color: var(--white-color);
+    border-radius: 4px;
+    border: none;
+    background-color: #1A3E3E;
+    cursor: pointer;
+  }
+}
+
+.banner {
+  color: var(--white-color);
+  background-image: url("/images/mountains-banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 985px;
+  z-index: -4;
+  position: absolute;
+}
+
+
+.text-wrapper {
+  position: absolute;
+  font-weight: 700;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  bottom: 284px;
+}
+
+.contaner-panel {
+  position: absolute;
+  width: 100%;
+  height: 161px;
+  bottom: 82px;
+  display: flex;
+  justify-content: center;
+
+  &-signup{
+    backdrop-filter: blur(6px);
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .form-container {
+      width: 1095px;
+      height: 81px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+
+      select, input {
+        color: var(--white-color);
+        width: 270px;
+        height: 52px;
+        font-size: 16px;
+        padding-left: 16px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        background: transparent;
+        border: 1px solid hsla(200, 5%, 89%, 1);
+      }
+
+      button {
+        width: 213px;
+        height: 52px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 4px;
+        color: #1A3E3E;
+        border: none;
+        cursor: pointer;
+      }
+
+      input::placeholder {
+        color: var(--white-color);;
+      }
+
+      .input-wrapper {
+        position: relative;
+        display: block;
+        width: 270px;
+      }
+
+      .calendar-icon {
+        position: absolute;
+        right: 17px;
+        top: 17px;
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+
+        span {
+          font-weight: 400;
+          font-size: 14px;
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+}
