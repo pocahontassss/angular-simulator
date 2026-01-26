@@ -8,7 +8,6 @@ import { Collection } from './collection';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-
 export class AppComponent {
 
   companyName: string = 'Румтибет';
