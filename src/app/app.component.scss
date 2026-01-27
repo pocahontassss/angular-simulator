@@ -1,0 +1,124 @@
+.header {
+  width: 1920px;
+  height: 985px;
+  margin: 0 auto;
+  font-family: "Nunito Sans";
+  color: var(--primary-color);
+  background: url("/images/header-bg.svg") no-repeat center/cover;
+}
+
+.header__wrapper {
+  padding-top: 16px;
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  gap: 212px;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8.79px;
+}
+
+.company-name {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 6.5px;
+}
+
+.header__top {
+  width: 831px;
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 14px 0;
+}
+
+.header__nav {
+  display: flex;
+  gap: 24px;
+}
+
+.header__link {
+  color: inherit;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.header__actions {
+  padding: 12px 24px;
+}
+
+.header__title {
+  margin-top: 463px;
+  font-weight: 400;
+  font-size: 50px;
+  text-transform: uppercase;
+  line-height: 150%;
+}
+
+.header__form {
+  margin-top: 41px;
+  display: flex;
+  align-items: center;
+  padding: 40px 42px;
+  height: 161px;
+  background: #FFFFFF33;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.form {
+  width: 1095px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  gap: 8px;
+}
+
+.field span {
+  color: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.field-input {
+  height: 52px;
+  border-radius: 8px;
+  padding: 0 16px;
+  border: 1px solid #E1E3E4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  img {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.field-control {
+  background: transparent;
+  border: none;
+
+  &::placeholder {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 16px;
+  }
+}
+

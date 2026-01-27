@@ -1,0 +1,16 @@
+@use './fonts';
+@use './normalize';
+@use './components/button.scss';
+
+:root {
+  --primary-color: #FDFDFD;
+  --secondary-color: #18121E;
+  --tertiary-color: #1A3E3E;
+}
+
+
+.container {
+  display: block;
+  width: 1180px;
+}
+

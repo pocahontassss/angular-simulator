@@ -1,1 +1,52 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+  <div class="container">
+    <div class="header__wrapper">
+      <div class="header__logo">
+        <img src="/images/header-logo.svg" alt="Логотип компаний Румтибет">
+        <span class="company-name">{{companyName}}</span>
+      </div>
+      <div class="header__top">
+        <nav class="header__nav" role="navigation" aria-label="Главное меню">
+          <a href="#" class="header__link">Главная</a>
+          <a href="#" class="header__link">Про гида</a>
+          <a href="#" class="header__link">Программа тура</a>
+          <a href="#" class="header__link">Стоимость</a>
+          <a href="#" class="header__link">Блог</a>
+          <a href="#" class="header__link">Контакты</a>
+        </nav>
+        <div class="header__actions">
+          <button class="btn btn--primary">Консультация</button>
+        </div>
+      </div>
+    </div>
+    <div class="header__main">
+      <h1 class="header__title">Насладись прогулкой в горах с&nbsp;командой единомышленников</h1>
+      <div class="header__form">
+        <form class="form" action="">
+          <div class="field">
+            <div class="field-input">
+              <input class="field-control" type="text" name="location" placeholder="Локация для тура">
+              <img src="./images/choice-icon.svg" alt="">
+            </div>
+            <span>выберите из списка</span>
+          </div>
+          <div class="field">
+            <div class="field-input">
+              <input class="field-control" type="text" name="location" placeholder="Дата похода">
+              <img src="./images/date-icon.svg" alt="">
+            </div>
+            <span>укажите диапазон</span>
+          </div>
+          <div class="field">
+            <div class="field-input">
+              <input class="field-control" type="text" name="location" placeholder="Участники">
+              <img src="./images/choice-icon.svg" alt="">
+            </div>
+            <span>минимум 4 человека</span>
+          </div>
+          <button class="btn_input" type="submit">Найти программу</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
