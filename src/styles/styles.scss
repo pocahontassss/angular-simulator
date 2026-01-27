@@ -1,0 +1,26 @@
+@use '../assets/fonts';
+
+* {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --black-color: #000000;
+  --white-color: #ffffff;
+  --secondary-color: #1a3e3e;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
