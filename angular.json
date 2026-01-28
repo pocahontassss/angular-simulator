@@ -39,9 +39,6 @@
             ],
             "polyfills": [
               "zone.js"
-            ],
-            "polyfills": [
-              "zone.js"
             ]
           },
           "configurations": {
