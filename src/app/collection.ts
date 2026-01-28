@@ -1,14 +1,13 @@
 export class Collection<T> {
+
   private items: T[] = [];
 
-  constructor(dataSource?: T[]) {
-    if(dataSource) {
-      this.items = [...dataSource];
-    }
+  constructor(dataSource: T[]) {
+    this.items = [...dataSource];
   }
 
   getAll(): T[] {
-    return [...this.items];
+    return this.items;
   }
 
   get(index: number): T | undefined {
@@ -16,7 +15,7 @@ export class Collection<T> {
   }
 
   clear(): void {
-    this.items = []
+    this.items = [];
   }
 
   remove(index: number): boolean {
@@ -34,4 +33,5 @@ export class Collection<T> {
     }
     return false;
   }
+
 }
