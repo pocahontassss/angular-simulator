@@ -1,1 +1,125 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+  <div class="super-header">
+    <div class="container super-header-container fs-14">
+      <div class="social-wrapper">
+        <div class="social-item">
+          <img src="/images/phone-icon.svg" alt="Phone">
+          <a href="tel:+79220229482">+7 (922) 022-94-82</a>
+        </div>
+        <div class="social-item">
+          <img src="/images/email-icon.svg" alt="Email">
+          <a href="mailto:janis62@yahoo.com">janis62@yahoo.com</a>
+        </div>
+      </div>
+      <div class="call">
+        <button class="bold call-button">Заказать звонок</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-header">
+    <div class="container main-header-container">
+      <div class="company-wrapper">
+        <span class="company-name">{{ companyName }}</span>
+        <span class="fs-20 white-text">{{ companyCategory }}</span>
+      </div>
+      <nav class="nav-wrapper fs-14 white-text bold">
+        <a>Услуги</a>
+        <a class="active-link">О компании</a>
+        <a>Наши юристы</a>
+        <a>Отзывы</a>
+        <a>Новости</a>
+        <a>Контакты</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="main-info">
+  <div class="banner-surface"></div>
+  <div class="banner"></div>
+  <div class="title-wrapper">
+    <div class="title-container">
+      <p class="super-title white-text">Оказываем весь комплекс</p>
+      <h1 class="title semi-bold">Юридических услуг</h1>
+      <p class="subtitle fs-20 white-text">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение.</p>
+    </div>
+  </div>
+
+  <div class="flex content-center">
+    <button class="services-button primary-button">наши услуги</button>
+  </div>
+
+  <div class="pagination-wrapper">
+    <div class="container pagination-container">
+      <div class="slider-wrapper">
+        <div class="active"></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="navigation-wrapper">
+        <img src="/images/arrow-left-icon.svg" alt="arrow-left" width="9px" height="17px">
+        <img src="/images/nav-separator-icon.svg" alt="separator"  width="27px" height="27px">
+        <img class="inverse-icon" src="/images/arrow-left-icon.svg" alt="arrow-right" width="9px" height="17px">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="title-wrapper">
+    <h2 class="title">Наши услуги</h2>
+    <p class="description">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона</p>
+  </div>
+
+  <div class="container service-list">
+    @for (service of services; track service.id) {
+      <div [id]="'service-' + service.id" class="service" [class.active-service]="service.id === selectedServiceId" (click)="selectService(service.id)">
+
+        @if (service.id === selectedServiceId) {
+          <div class="square-top-left"></div>
+          <div class="square-top-right"></div>
+          <div class="square-bottom-left"></div>
+          <div class="square-bottom-right"></div>
+          <img class="cursor" src="/images/cursor-pointer-icon.svg" alt="cursor" width="17px" height="21px">
+        }
+        
+        <img
+          class="service-icon"
+          [src]="service.id === selectedServiceId ? '/images/agreement-white-icon.svg' : '/images/agreement-icon.svg'"
+          alt="agreement-icon"
+          width="29px"
+          height="29px"
+        >
+        <h3 class="fs-20 extra-bold title">{{ service.title }}</h3>
+        <p class="fs-14" [class.fs-16]="service.id === selectedServiceId">{{ service.description }}</p>
+      </div>
+    }
+  </div>
+
+  <button class="primary-button services-button">Все услуги</button>
+</section>
+
+<section class="history">
+  <div class="container history-container">
+    <div>
+      <h2 class="title">
+        {{ companyCategory }}
+        <span class="company-name">{{ companyName }}</span>
+      </h2>
+      <div class="company-history">
+        <p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение.</p>
+        <p>Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lore</p>
+        <p>За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>
+      </div>
+      <div class="action-wrapper">
+        <button class="primary-button" id="company-history-button">История компании</button>
+        <button class="secondary-button">Сертификаты</button>
+      </div>
+    </div>
+    <div>
+      <img src='/images/books.png' alt="books">
+    </div>
+  </div>
+</section>

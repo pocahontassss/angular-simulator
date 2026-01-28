@@ -1,0 +1,28 @@
+@mixin button {
+  border: 2px solid;
+  font-weight: 900;
+  line-height: 120%;
+  text-transform: uppercase;
+  font-size: 14px;
+  height: 49px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  padding: 16px 24px;
+}
+
+.primary-button {
+  @include button();
+
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.secondary-button {
+  @include button();
+
+  color: var(--primary-color);
+  background-color: #E6E6E6;
+  border-color: #E6E6E6;
+}

@@ -1,0 +1,67 @@
+@use './fonts';
+@use './normalize';
+@use './button';
+
+* {
+  font-family: 'Nunito Sans';
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  color: var(--primary-color);
+}
+
+.container {
+  display: block;
+  width: 1320px;
+}
+
+:root {
+  --primary-color: #222;
+  --secondary-color: #4F8FF0;
+  --white-color: #fff;
+  --light-gray-color: #F7F7F7;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.extra-bold {
+  font-weight: 800;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.semi-bold {
+  font-weight: 600;
+}
+
+.white-text {
+  color: var(--white-color);
+}
+
+.flex {
+  display: flex;
+}
+
+.content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
