@@ -18,7 +18,7 @@ function getSum(a: number, b: number): number {
   return a + b;
 }
 
-const total = getSum(9, 8);
+const total: number = getSum(9, 8);
 
 function returnText(text: string, format: TextFormat): string {
   if (format === 'uppercase') {
