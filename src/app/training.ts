@@ -10,20 +10,17 @@ interface IWorker extends IUser {
   experience: number;
 }
 
-type AppStatus = "loading" | "success" | "error";
-type TextFormat = 'uppercase' | 'lowercase' | 'capitalize';
-type User = IUser;
+let status: 'loading' | 'success' | 'error';
 
-let appStatus: AppStatus;
-let textFormat: TextFormat = 'uppercase';
+let textFormat: 'uppercase' | 'lowercase' | 'capitalize'
 
-function sum(a: number, b: number): number {
+function getSum(a: number, b: number): number {
   return a + b;
 }
 
-sum(9, 8);
+const total = getSum(9, 8);
 
-function formatText(text: string, format: TextFormat): string {
+function returnText(text: string, format: TextFormat): string {
   if (format === 'uppercase') {
     return text.toUpperCase();
   } else if (format === 'lowercase') {
@@ -35,7 +32,7 @@ function formatText(text: string, format: TextFormat): string {
   return text;
 }
 
-function removeChar(text: string, char: string): string {
+function returnChar(text: string, char: string): string {
   return text.replaceAll(char, '');
 }
 
