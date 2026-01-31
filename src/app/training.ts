@@ -3,6 +3,7 @@ function sum(a:number, b:number):number {
   return a + b;
 }
 
+
 //создать переменную которая может быть только:
 //"loading", "success", "error".
 let statuss: "loading" | "success" | "error";
