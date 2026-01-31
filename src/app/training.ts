@@ -11,13 +11,10 @@ interface IWorker extends IUser {
 }
 
 type AppStatus = "loading" | "success" | "error";
-
 type TextFormat = 'uppercase' | 'lowercase' | 'capitalize';
-
 type User = IUser;
 
 let appStatus: AppStatus;
-
 let textFormat: TextFormat = 'uppercase';
 
 function sum(a: number, b: number): number {
