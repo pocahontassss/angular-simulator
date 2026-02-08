@@ -1,5 +1,5 @@
 export class Collection<T> {
-  
+
   private items: T[];
 
   constructor(initialItems: T[] = []) {
@@ -32,12 +32,12 @@ export class Collection<T> {
 }
 
 const consoles: string[] = ['Nintendo Switch', 'Sega Genesis', 'SNES', 'Playstation', 'Xbox', 'Nintendo GameCube'];
-const collectionConsoles = new Collection<string>(consoles);
+const collectionConsoles = new Collection(consoles);
 collectionConsoles.replaceByIndex(2, 'Nintendo Wii U');
 collectionConsoles.getByIndex(4);
 collectionConsoles.removeByIndex(1);
 
 const games: string[] = ['CS 2', 'DOTA 2', 'GTA 6', 'Resident Evil', 'Aliens'];
-const collectionGame = new Collection<string>(games);
+const collectionGame = new Collection(games);
 collectionGame.getAll();
 collectionGame.replaceByIndex(3, 'Watch Dogs 2');

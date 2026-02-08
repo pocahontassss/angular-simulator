@@ -9,9 +9,8 @@ import './collection';
   styleUrl: './app.component.scss',
   standalone: true,
 })
-
 export class AppComponent {
-  
+
   companyName: string = "румтибет";
 
   isPrimaryColor(color: Color): boolean {
