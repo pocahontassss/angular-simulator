@@ -2,35 +2,33 @@ interface IUser {
   name: string;
   username: string;
   age: number;
-  email: string | number;
+  email: string;
   address?: string;
 }
 
-interface Guest extends IUser {
+interface IGuest extends IUser {
   role?: string;
-  active?: string;
+  active?: boolean;
 }
 
-let uploadStatus: 'loading' | 'succes' | 'error';
-let textFormat: 'uppercase' | 'lowercase' | 'error';
+let uploadStatus: 'loading' | 'success' | 'error';
+let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
 
 
 function getSum(a: number, b: number): number {
   return a + b;
 }
 
-type TextFormat = "uppercase" | "lowercase" | "error";
+type TextFormat = "uppercase" | "lowercase" | "capitalize";
 
 function getFormatString(text: string, style: TextFormat): string {
   switch (style) {
     case 'uppercase':
       return text.toUpperCase();
-      case 'lowercase':
-        return text.toLowerCase();
-        case 'error':
-          return `Ошибка: невозможно отформатировать "${text}"`;
-          default:
-            return text;
+    case 'lowercase':
+      return text.toLowerCase();
+    case 'capitalize':
+      return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
   }
 }
 
@@ -63,7 +61,7 @@ const users: IUser[] = [
   },
 ]
 
-const ageUser40 = users.filter(user => user.age > 40);
+const ageUser40: IUser[] = users.filter(user => user.age > 40);
 console.log(ageUser40);
 
 
