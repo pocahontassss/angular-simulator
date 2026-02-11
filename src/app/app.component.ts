@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { IService } from '../interfaces/IService';
+import { ILawyer } from '../interfaces/ILawyer';
+import { NgTemplateOutlet } from '@angular/common';
+import { IReview } from '../interfaces/IReview';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [NgTemplateOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -11,8 +14,8 @@ export class AppComponent {
 
   companyName: string = 'правозащитник';
   companyCategory: string = 'юридическая компания';
-
   selectedServiceId: number = 2;
+  selectedLawyerId: number = 3;
 
   services: IService[] = [
     {
@@ -45,10 +48,68 @@ export class AppComponent {
       title: 'Возврат страховых премий',
       description: 'Сопровождение налоговых проверок на любой стадии, анализ и подготовка документов, защита при налоговых спорах.'
     },
-  ]
+  ];
 
-  selectService(serviceId: number): void {
-    this.selectedServiceId = serviceId;
-  }
+  lawyers: ILawyer[] = [
+    {
+      id: 1,
+      firstName: 'Полина',
+      lastName: 'Горюнова',
+      surname: 'Алексеевна',
+      profession: 'Юрист международного права',
+      biography: 'Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь.',
+      experience: '10 лет юридической практики',
+      photo: 'goruynova-polina'
+    },
+    {
+      id: 2,
+      firstName: 'Александр',
+      lastName: 'Миронов',
+      surname: 'Германович',
+      profession: 'Кредитный адвокат, банковский юрист',
+      biography: 'Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь.',
+      experience: '8 лет практики',
+      photo: 'mironov-alexandr'
+    },
+    {
+      id: 3,
+      firstName: 'Елизавета',
+      lastName: 'Шестакова',
+      surname: 'Егоровна',
+      profession: 'Юридический консультант',
+      biography: 'Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь.',
+      experience: '12 лет юридической практики',
+
+    },
+    {
+      id: 4,
+      firstName: 'Максим',
+      lastName: 'Архипов',
+      surname: 'Константинович',
+      profession: 'Корпоративный юрист',
+      biography: 'Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь.',
+      experience: '5 лет практики',
+      photo: 'arhipov-maxim'
+    }
+  ];
+
+  reviews: IReview[] = [
+    {
+      id: 1,
+      companyName: 'ООО “ИТ Консалтинг”',
+      firstName: 'Анастасия',
+      lastName: 'Логинова',
+      description: 'Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов ...',
+      avatar: 'loginova-anastasia'
+    }, 
+    {
+      id: 2,
+      companyName: 'АО “ПРОМАРШ”',
+      firstName: 'Сергей',
+      lastName: 'Макаров',
+      description: 'Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём.',
+      avatar: 'makarov-sergey'
+    }, 
+  ]
 
 }

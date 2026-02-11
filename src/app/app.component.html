@@ -67,7 +67,7 @@
   </div>
 </section>
 
-<section class="services">
+<section class="section services">
   <div class="title-wrapper">
     <h2 class="title">Наши услуги</h2>
     <p class="description">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона</p>
@@ -75,16 +75,12 @@
 
   <div class="container service-list">
     @for (service of services; track service.id) {
-      <div [id]="'service-' + service.id" class="service" [class.active-service]="service.id === selectedServiceId" (click)="selectService(service.id)">
+      <div [id]="'service-' + service.id" class="service" [class.active-service]="service.id === selectedServiceId" (mouseenter)="selectedServiceId = service.id">
 
         @if (service.id === selectedServiceId) {
-          <div class="square-top-left"></div>
-          <div class="square-top-right"></div>
-          <div class="square-bottom-left"></div>
-          <div class="square-bottom-right"></div>
-          <img class="cursor" src="/images/cursor-pointer-icon.svg" alt="cursor" width="17px" height="21px">
+          <ng-container [ngTemplateOutlet]="selectedBlock"></ng-container>
         }
-        
+
         <img
           class="service-icon"
           [src]="service.id === selectedServiceId ? '/images/agreement-white-icon.svg' : '/images/agreement-icon.svg'"
@@ -101,10 +97,10 @@
   <button class="primary-button services-button">Все услуги</button>
 </section>
 
-<section class="history">
+<section class="section history">
   <div class="container history-container">
     <div>
-      <h2 class="title">
+      <h2 class="section-title title">
         {{ companyCategory }}
         <span class="company-name">{{ companyName }}</span>
       </h2>
@@ -123,3 +119,84 @@
     </div>
   </div>
 </section>
+
+<section class="section lawyers">
+  <h2 class="section-title title">Наши юристы</h2>
+  <p class="description">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона</p>
+  <div class="lawyer-list container">
+
+    @for (lawyer of lawyers; track lawyer.id) {
+      <div
+        class="lawyer"
+        [id]="'lawyer-' + lawyer.id"
+        [style.padding.px]="selectedLawyerId === lawyer.id ? 20 : 0"
+        (mouseenter)="selectedLawyerId = lawyer.id"
+      >
+        @if (lawyer.id === selectedLawyerId) {
+          <ng-container [ngTemplateOutlet]="selectedBlock" [ngTemplateOutletContext]="{ color: '#4F8FF0' }"></ng-container>
+          <div class="selected-lawyer">
+            <div class="info selected-lawyer-info">
+              <p class="fs-16 bold">{{ lawyer.lastName }} {{ lawyer.firstName }} {{ lawyer.surname }}</p>
+              <p class="fs-14 profession">{{ lawyer.profession }}</p>
+            </div>
+            <p>{{ lawyer.biography }}</p>
+            <p class=" fs-16 semi-bold">{{ lawyer.experience }}</p>
+          </div>
+        } @else {
+          @let photoName = lawyer.photo ?? 'default-lawyer';
+          <img [src]="'/images/lawyers/' + photoName + '.png'" width="312px" height="320px">
+          <div class="info">
+            <p class="fs-16 bold">{{ lawyer.lastName }} {{ lawyer.firstName }} {{ lawyer.surname }}</p>
+            <p class="fs-14 profession">{{ lawyer.profession }}</p>
+          </div>
+        }
+      </div>
+    }
+
+  </div>
+</section>
+
+<section class="section reviews">
+  <div class="container reviews-container">
+    <div class="title-wrapper">
+      <h2 class="section-title">Что о нас говорят клиенты</h2>
+      <ng-container [ngTemplateOutlet]="navigation" [ngTemplateOutletContext]="{ color: '#4F8FF0' }"></ng-container>
+    </div>
+    <div class="review-list">
+
+      @for (review of reviews; track review.id) {
+        <div class="review">
+          <div class="review-main-info">
+            <img [src]="'/images/avatars/' + review.avatar + '.png'" width="80px" height="80px">
+            <div class="review-person-info">
+              <span>{{ review.companyName }}</span>
+              <span class="fs-20 bold">{{ review.lastName }} {{ review.firstName }}</span>
+            </div>
+          </div>
+          <p class="fs-14">{{ review.description }}</p>
+        </div>
+      }
+
+    </div>
+    <div class="reviews-buttons">
+      <button class="primary-button">Все отзывы</button>
+      <button class="secondary-button">Написать отзыв</button>
+    </div>
+  </div>
+</section>
+
+<ng-template #selectedBlock let-color="color">
+  <div [style.border-color]="color" class="square-top-left"></div>
+  <div [style.border-color]="color" class="square-top-right"></div>
+  <div [style.border-color]="color" class="square-bottom-left"></div>
+  <div [style.border-color]="color"class="square-bottom-right"></div>
+  <img class="cursor" src="/images/cursor-pointer-icon.svg" alt="cursor" width="17px" height="21px">
+</ng-template>
+
+<ng-template #navigation let-color="color">
+  <div class="navigation-wrapper">
+    <img src="/images/arrow-left-icon.svg" alt="arrow-left" width="9px" height="17px">
+    <img src="/images/nav-separator-icon.svg" alt="separator"  width="27px" height="27px">
+    <img class="inverse-icon" src="/images/arrow-left-icon.svg" alt="arrow-right" width="9px" height="17px">
+</div>
+</ng-template>

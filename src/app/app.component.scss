@@ -5,7 +5,72 @@
   width: 50px;
   height: 3px;
   margin-top: 10px;
-  margin-bottom: 24px;
+}
+
+ @mixin square {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border: 1px solid var(--white-color);
+}
+
+.square {
+  &-top-left {
+    @include square();
+    top: 20px;
+    left: 26px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  &-top-right {
+    @include square();
+    top: 20px;
+    right: 26px;
+    border-left: none;
+    border-bottom: none;
+  }
+
+  &-bottom-left {
+    @include square();
+    bottom: 20px;
+    left: 26px;
+    border-right: none;
+    border-top: none;
+  }
+
+  &-bottom-right {
+    @include square();
+    bottom: 20px;
+    right: 26px;
+    border-left: none;
+    border-top: none;
+  }
+}
+
+.navigation-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .inverse-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.section-title {
+  font-size: 28px;
+  line-height: 150%;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.section {
+  padding: 80px;
+}
+
+.section-title::after {
+  @include text-dashed();
 }
 
 .header {
@@ -196,16 +261,6 @@
         height: 40px;
       }
     }
-
-    .navigation-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      .inverse-icon {
-        transform: rotate(180deg);
-      }
-    }
   }
 
   .services-button {
@@ -217,7 +272,6 @@
 .services {
   background-color: var(--light-gray-color);
   height: 960px;
-  padding: 80px;
 
   .title-wrapper {
     display: flex;
@@ -289,49 +343,6 @@
       opacity: 40%;
     }
 
-    @mixin square {
-      position: absolute;
-      width: 35px;
-      height: 35px;
-      border: 1px solid var(--white-color);
-    }
-
-    .square {
-
-      &-top-left {
-        @include square();
-        top: 20px;
-        left: 26px;
-        border-right: none;
-        border-bottom: none;
-      }
-
-      &-top-right {
-        @include square();
-        top: 20px;
-        right: 26px;
-        border-left: none;
-        border-bottom: none;
-      }
-
-      &-bottom-left {
-        @include square();
-        bottom: 20px;
-        left: 26px;
-        border-right: none;
-        border-top: none;
-      }
-
-      &-bottom-right {
-        @include square();
-        bottom: 20px;
-        right: 26px;
-        border-left: none;
-        border-top: none;
-      }
-
-    }
-
     &-icon {
       display: flex;
       justify-content: center;
@@ -347,7 +358,6 @@
 
 .history {
   height: 584px;
-  padding: 80px;
 
   &-container {
     margin: 0 auto;
@@ -355,20 +365,14 @@
     gap: 64px;
   }
 
-  .title {
-    font-size: 28px;
-    line-height: 150%;
-    font-weight: 800;
-    text-transform: uppercase;
-
-    .company-name {
-      color: var(--secondary-color);
-      font-weight: 900;
-    }
+  .company-name {
+    color: var(--secondary-color);
+    font-weight: 900;
   }
 
   .title::after {
     @include text-dashed();
+    margin-bottom: 24px;
   }
 
   .company-history {
@@ -386,5 +390,110 @@
   .action-wrapper {
     display: flex;
     gap: 24px;
+  }
+}
+
+.lawyers {
+  background-color: var(--light-gray-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title::after {
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 24px;
+  }
+
+  .description {
+    width: 920px;
+    text-align: center;
+  }
+
+  .lawyer-list {
+    margin-top: 48px;
+    display: flex;
+    gap: 24px;
+
+    .lawyer {
+      box-shadow: 2px 2px 12px 0px #2121211F;
+      text-align: center;
+      position: relative;
+
+      .profession {
+        text-transform: lowercase;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 24px 0;
+      }
+
+      .selected-lawyer {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        &-info {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+}
+
+.reviews {
+  background-image: url('/images/bg-white-mountains.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 588px;
+
+  &-container {
+    margin: 0 auto;
+  }
+
+  &-buttons {
+    display: flex;
+    gap: 24px;
+  }
+
+  .title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .review-list {
+    display: flex;
+    gap: 24px;
+    margin-top: 48px;
+    margin-bottom: 32px;
+
+    .review {
+      padding: 32px;
+      width: 648px;
+      box-shadow: 2px 2px 10px 0px #21212126;
+      background-color: var(--white-color);
+
+      &-main-info {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 16px;
+      }
+
+      &-person-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+
   }
 }
