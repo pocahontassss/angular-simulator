@@ -25,10 +25,13 @@ function getFormatString(text: string, style: TextFormat): string {
   switch (style) {
     case 'uppercase':
       return text.toUpperCase();
+      break;
     case 'lowercase':
       return text.toLowerCase();
+      break;
     case 'capitalize':
       return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+      break;
   }
 }
 
@@ -61,7 +64,7 @@ const users: IUser[] = [
   },
 ]
 
-const ageUser40: IUser[] = users.filter(user => user.age > 40);
+const ageUser40: IUser[] = users.filter((user: IUser) => user.age > 40);
 console.log(ageUser40);
 
 
