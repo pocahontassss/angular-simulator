@@ -1,0 +1,159 @@
+// Variables
+$text-color: #FDFDFD;
+$text-color-secondary: #1A3E3E;
+$btn-color-main: #1A3E3E;
+$btn-color-secondary: #FDFDFD;
+$fw-600: 600;
+$fw-400: 400;
+$fw-700: 700;
+$black: #000;
+$border-color: #E1E3E4;
+$white: #fff;
+
+.page {
+  min-height: 100vh;
+  background-image: url('../../public/images/mountains-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  padding: 12px 24px;
+  background-color: $btn-color-main;
+  color: $text-color;
+  line-height: 125%;
+  border: none;
+  padding: none;
+  cursor: pointer;
+  border-radius: 4px;
+  letter-spacing: 1.2%;
+}
+
+.header {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-link {
+    margin-right: auto;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    letter-spacing: 5px;
+  }
+
+  &__logo-caption {
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    color: $white;
+
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 49px;
+  }
+
+  &__nav-link {
+    font-weight: $fw-600;
+    font-size: 1.125rem;
+    color: $text-color;
+    line-height: 100%;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 24px;
+  }
+
+  &__nav-link {
+    text-decoration: none;
+  }
+}
+
+.section {
+
+  margin-top: auto;
+  margin-bottom: 82px;
+
+  &__heading {
+    font-weight: $fw-400;
+    color: $text-color;
+    line-height: 150%;
+    letter-spacing: 2%;
+    text-transform: uppercase;
+    font-size: 3.125rem;
+    margin: 0 0 41px 0;
+  }
+
+  &__form {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 40px 42px;
+  }
+
+  &__fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 24px;
+  }
+
+  &__button {
+    color: $text-color-secondary;
+    background-color: $btn-color-secondary;
+    padding: 16px 16px;
+    inline-size: 213px;
+    block-size: 52px;
+  }
+}
+
+.custom-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+
+  &__field {
+    padding: 14px 44px 14px 16px;
+    background-color: transparent;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    color: $text-color;
+    cursor: pointer;
+    inline-size: 270px;
+
+    &::placeholder {
+      color: $text-color;
+      font-weight: $fw-700;
+      font-style: bold;
+      line-height: 150%;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-133%);
+  }
+
+  &__label {
+    color: $text-color;
+    font-weight: $fw-400;
+    line-height: 150%;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+}

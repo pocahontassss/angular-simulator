@@ -1,1 +1,61 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<div class="page">
+  <header class="header">
+    <div class="container">
+      <div class="header__wrapper">
+        <a class="header__logo-link" href="#">
+          <img src="/images/logo-icon.svg" alt="Логотип РУМТИБЕТ">
+          <span class="header__logo-caption">{{ companyName }}</span>
+        </a>
+        <nav class="header__nav">
+          <ul class="header__list">
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Главная</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Про гида</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Программа тура</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Стоимость</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Блог</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Контакты</a>
+            </li>
+          </ul>
+          <button class="header__btn btn">Консультация</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Насладись прогулкой в горах с командой единомышленников</h1>
+      <form class="section__form" action="#" method="GET">
+        <fieldset class="section__fieldset">
+          <div class="custom-input">
+            <input id="location" name="location" class="custom-input__field" type="text" placeholder="Локация для тура" required>
+            <label class="custom-input__label" for="location">выберите из списка</label>
+            <img class="custom-input__icon" src="/images/select-icon.svg" alt="#">
+          </div>
+          <div class="custom-input">
+            <input id="date" name="date" class="custom-input__field" type="text" placeholder="Дата похода" required>
+            <label class="custom-input__label" for="date">укажите диапазон</label>
+            <img class="custom-input__icon" src="/images/calendar-icon.svg" alt="#">
+          </div>
+          <div class="custom-input">
+            <input id="participants" name="participants" class="custom-input__field" type="text" placeholder="Участники" required>
+            <label class="custom-input__label" for="participants">минимум 4 человека</label>
+            <img class="custom-input__icon" src="/images/calendar-icon.svg" alt="#">
+          </div>
+          <button class="section__button btn" type="button">Найти программу</button>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+</div>
+

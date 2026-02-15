@@ -1,0 +1,17 @@
+@use './_reset';
+@use './_normalize';
+@use './_fonts';
+
+* {
+  font-family: 'Nunito-Sans';
+}
+
+body {
+  font-size: 16px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1180px;
+}
+
