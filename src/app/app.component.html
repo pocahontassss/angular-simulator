@@ -122,7 +122,7 @@
 
 <section class="section lawyers">
   <h2 class="section-title title">Наши юристы</h2>
-  <p class="description">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона</p>
+  <p class="section-description">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона</p>
   <div class="lawyer-list container">
 
     @for (lawyer of lawyers; track lawyer.id) {
@@ -185,11 +185,117 @@
   </div>
 </section>
 
+<section class="section news">
+  <div class="container news-container">
+    <div class="title-wrapper">
+      <h2 class="section-title title">Полезные материалы</h2>
+      <p class="section-description">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона</p>
+    </div>
+
+    <div class="news-list">
+      @for (news of newsList; track news.id) {
+        <div class="news-card">
+          <div class="news-image-wrapper">
+            <img [src]="'images/' + news.image + '.png'" width="424px" height="270px">
+            @if (news.id === 2) {
+              <ng-container [ngTemplateOutlet]="selectedBlock" [ngTemplateOutletContext]="{ color: '#fff' }"></ng-container>
+            }
+          </div>
+          <h3 class="news-title bold fs-16">{{ news.title }}</h3>
+          <p class="news-date">{{ news.date }}</p>
+          <p class="fs-14">{{ news.description }}</p>
+        </div>
+      }
+    </div>
+
+    <button id="all-news-button" class="primary-button">Все новости</button>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-container">
+    <div class="title-wrapper">
+      <div class="title-content">
+        <div class="company-wrapper">
+          <span class="company-name">{{ companyName }}</span>
+          <span class="fs-20 white-text">{{ companyCategory }}</span>
+        </div>
+        <p>Предварительные выводы неутешительны: синтетическое тестирование, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для экономической целесообразности принимаемых решений.</p>
+      </div>
+    </div>
+
+    <div class="footer-info">
+      <div class="communications">
+        <div class="communication">
+          <div class="image-wrapper">
+            <img src="/images/gps-icon.svg" width="19px" height="27px">
+          </div>
+          <div class="communication-info">
+            <span>Наш адрес</span>
+            <a>г. Одинцово, пр. Будапештсткая, 40</a>
+          </div>
+        </div>
+
+        <div class="communication">
+          <div class="image-wrapper">
+            <img src="/images/phone-white-icon.svg" width="19px" height="29px">
+          </div>
+          <div class="communication-info">
+            <span>Запись на консультанцию</span>
+            <a href="tel:+79220229482">+7 (922) 022-94-82</a>
+          </div>
+        </div>
+
+        <div class="communication">
+          <div class="image-wrapper">
+            <img src="/images/email-white-icon.svg" width="26px" height="21px">
+          </div>
+          <div class="communication-info">
+            <span>Корреспонденция</span>
+            <a href="mailto:janis62@yahoo.com">janis62@yahoo.com</a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="navigation">
+        <a>Услуги</a>
+        <a>О компании</a>
+        <a class="current-link">Сертификаты</a>
+        <a>Отзывы</a>
+        <a>Полезные материалы</a>
+        <a>Благотворительность</a>
+      </nav>
+
+      <div class="lawyer">
+        <div class="personal-info">
+          <div class="lawyer-image-wrapper">
+            <img src="/images/lawyers/mironov-alexandr.png" width="65px" height="65px">
+          </div>
+          <div class="lawyer-info-wrapper">
+            <h3 class="fs-20 bold">Миронов Александр</h3>
+            <span class="fs-14 light">Ведущий юрист</span>
+          </div>
+        </div>
+        <p class="description fs-14">Есть над чем задуматься: тщательные исследования конкурентов разоблачены. Идейные соображения высшего порядка, а также перспективное планирование играет </p>
+        <button class="question-button primary-button">Задать вопрос юристу</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="privacy-policy">
+    <div class="container privacy-policy-container">
+      <span>Все права защищены, 2026</span>
+      <span>Политика обработки персональных данных</span>
+    </div>
+  </div>
+</footer>
+
 <ng-template #selectedBlock let-color="color">
   <div [style.border-color]="color" class="square-top-left"></div>
   <div [style.border-color]="color" class="square-top-right"></div>
   <div [style.border-color]="color" class="square-bottom-left"></div>
-  <div [style.border-color]="color"class="square-bottom-right"></div>
+  <div [style.border-color]="color" class="square-bottom-right"></div>
   <img class="cursor" src="/images/cursor-pointer-icon.svg" alt="cursor" width="17px" height="21px">
 </ng-template>
 

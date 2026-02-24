@@ -58,6 +58,19 @@
   }
 }
 
+.company-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  line-height: 150%;
+
+  .company-name {
+    font-size: 28px;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+  }
+}
+
 .section-title {
   font-size: 28px;
   line-height: 150%;
@@ -67,6 +80,14 @@
 
 .section {
   padding: 80px;
+}
+
+.section-description {
+  width: 920px;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  line-height: 120%;
 }
 
 .section-title::after {
@@ -141,19 +162,6 @@
       .active-link {
         color: var(--secondary-color);
         text-decoration: underline;
-      }
-    }
-
-    .company-wrapper {
-      display: flex;
-      flex-direction: column;
-      font-weight: 900;
-      line-height: 150%;
-
-      .company-name {
-        font-size: 28px;
-        text-transform: uppercase;
-        color: var(--secondary-color);
       }
     }
   }
@@ -295,13 +303,6 @@
       margin-bottom: 24px;
     }
 
-    .description {
-      width: 920px;
-      display: block;
-      text-align: center;
-      font-size: 16px;
-      line-height: 120%;
-    }
   }
 
   .services-button {
@@ -335,13 +336,6 @@
     padding: 0 32px;
     position: relative;
     cursor: pointer;
-
-    .cursor {
-      position: absolute;
-      left: 32%;
-      bottom: 21px;
-      opacity: 40%;
-    }
 
     &-icon {
       display: flex;
@@ -404,11 +398,6 @@
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 24px;
-  }
-
-  .description {
-    width: 920px;
-    text-align: center;
   }
 
   .lawyer-list {
@@ -495,5 +484,226 @@
       }
     }
 
+  }
+}
+
+.news {
+  &-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title::after {
+      margin: 0 auto;
+      margin-top: 10px;
+      margin-bottom: 24px;
+    }
+
+    .title-wrapper {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .news-list {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 48px;
+      height: 491px;
+    }
+
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 424px;
+
+      .news-title {
+        margin-top: 25px;
+        margin-bottom: 16px;
+      }
+
+      .news-date {
+        font-size: 12px;
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 314px;
+          height: 1px;
+          background-color: #F8F5F4;
+        }
+      }
+
+
+      .news-image-wrapper {
+        position: relative;
+        height: 270px;
+      }
+    }
+  }
+}
+
+.cursor {
+  position: absolute;
+  left: 32%;
+  bottom: 21px;
+}
+
+.footer {
+  width: 100%;
+  background-color: var(--primary-color);
+
+  &-info {
+    display: flex;
+    justify-content: space-between;
+
+    .communications {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .communication {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        .image-wrapper {
+          background-color: #2C2C2C;
+          position: relative;
+          width: 55px;
+          height: 55px;
+
+          img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+
+        &-info {
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #8C8C8C;
+          }
+
+          a {
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .navigation {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .current-link {
+        color: var(--secondary-color);
+      }
+
+      a {
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+      }
+    }
+
+    .lawyer {
+      width: 424px;
+      display: flex;
+      flex-direction: column;
+
+      .lawyer-info-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      &-image-wrapper {
+        border-radius: 100px;
+        overflow: hidden;
+        height: 65px;
+        width: 65px;
+      }
+
+      .personal-info {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .description {
+        margin-top: 16px;
+        margin-bottom: 24px;
+        font-weight: 300;
+        line-height: 150%;
+      }
+
+      .question-button {
+        width: 244px;
+      }
+
+    }
+  }
+
+  &-container {
+    margin: 0 auto;
+    padding: 80px 0;
+
+    .title-content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      p {
+        width: 862px;
+      }
+    }
+
+      .title-wrapper::after {
+        content: '';
+        display: block;
+        width: 100%;
+        margin: 48px 0;
+        height: 1px;
+        background-color: #8C8C8C;
+        opacity: 20%;
+      }
+  }
+
+  .privacy-policy {
+    background-color: #181818;
+    width: 100%;
+    height: 49px;
+    font-size: 14px;
+
+    &-container {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+    }
+  }
+
+  * {
+    color: var(--white-color);
   }
 }

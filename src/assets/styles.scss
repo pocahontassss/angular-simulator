@@ -50,12 +50,20 @@
   font-weight: 600;
 }
 
+.light {
+  font-weight: 300;
+}
+
 .white-text {
   color: var(--white-color);
 }
 
 .flex {
   display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .content-center {
