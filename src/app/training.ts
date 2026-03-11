@@ -39,10 +39,6 @@ function removeChar(text: string, charToRemove: string): string {
   return text.replaceAll(charToRemove, '');
 }
 
-console.log(removeChar("Angular", "r"));
-console.log(removeChar("Project", "j"));
-console.log(removeChar("Project", "ject"));
-
 const users: IUser[] = [
   {
     name: 'Victor',
@@ -65,6 +61,6 @@ const users: IUser[] = [
 ]
 
 const ageUser40: IUser[] = users.filter((user: IUser) => user.age > 40);
-console.log(ageUser40);
+
 
 
