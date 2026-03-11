@@ -1,10 +1,6 @@
-export class Training {
-
-}
-
 //3. Создать функцию, которая принимает 2 числа и возвращает их сумму. Полностью типизировать параметры, значение, возвращаемое функцией.
 
-function getSum(a: number, b: number): number {
+export function getSum(a: number, b: number): number {
 return a + b;
 }
 
