@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { getSum } from './training';
+import './training';
 
 
 @Component({
