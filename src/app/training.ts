@@ -17,7 +17,7 @@ interface IUser {
 }
 
 interface IChild extends IUser {
-  SchoolAdress?: string;
+  schoolAdress?: string;
 }
 
 function getFormatText(text: string, format: TextFormat): string {
@@ -55,6 +55,6 @@ const users: IUser[] = [
     age: 25,
     phone: '+79997654321'
   }
-];
+]
 
 const filterUsers = users.filter(user => user.age > 23);
