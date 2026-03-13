@@ -57,4 +57,4 @@ const users: IUser[] = [
   }
 ]
 
-const filterUsersAge = users.filter(user => user.age > 23);
+const filterUsers: IUser[] = users.filter((user: IUser): boolean => user.age > 23);
