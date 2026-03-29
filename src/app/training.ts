@@ -64,7 +64,6 @@ const usersList: IEmployee[] = [
 ];
 
 const filteredUsersBySalary = usersList.filter((user) => user.salary < 150000);
-
 console.log('Сумма: ', getSum(1000, 2020));
 console.log('Формат текста: ', stringFormat('Я миддл разработчик', 'uppercase'));
 console.log('Удаление буквы: ', removeLetter('Я миддл разработчик', 'д'));
