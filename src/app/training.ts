@@ -10,17 +10,17 @@ interface IEmployee extends IUser {
   salary: number;
 }
 
-type UploadStatus = "loading" | "success" | "error";
-let UploadStatus = "loading";
+type uploadStatus = "loading" | "success" | "error";
+let uploadStatus = "loading";
 
-type textFormat = "uppercase" | "lowercase" | "capitalize";
-let textFormat = "capitalize";
+type stringFormat = "uppercase" | "lowercase" | "capitalize";
+let stringFormat = "capitalize";
 
-function getSum(a: number, b: number): number {
+function sum(a: number, b: number): number {
   return a + b;
 }
 
-function stringFormat(text: string, format: textFormat): string {
+function textFormat(text: string, format: stringFormat): string {
   if (format === 'uppercase') {
     return text.toUpperCase();
   }
@@ -64,7 +64,3 @@ const usersList: IEmployee[] = [
 ];
 
 const filteredUsersBySalary = usersList.filter((user) => user.salary < 150000);
-console.log('Сумма: ', getSum(1000, 2020));
-console.log('Формат текста: ', stringFormat('Я миддл разработчик', 'uppercase'));
-console.log('Удаление буквы: ', removeLetter('Я миддл разработчик', 'д'));
-console.log('Отфильтрованные пользователи по зарплате: ', filteredUsersBySalary);
