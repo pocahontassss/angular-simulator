@@ -63,4 +63,4 @@ const usersList: IEmployee[] = [
   },
 ];
 
-const filteredUsersBySalary = usersList.filter((user) => user.salary < 150000);
+const filteredUsersBySalary: IEmployee[] = usersList.filter((user: IEmployee) => user.salary < 150000);
