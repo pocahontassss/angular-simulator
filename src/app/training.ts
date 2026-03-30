@@ -10,17 +10,17 @@ interface IEmployee extends IUser {
   salary: number;
 }
 
-type uploadStatus = "loading" | "success" | "error";
-let uploadStatus = "loading";
+type TUploadStatus = "loading" | "success" | "error";
+let uploadStatus: TUploadStatus = "loading";
 
-type stringFormat = "uppercase" | "lowercase" | "capitalize";
-let stringFormat = "capitalize";
+type TStringFormat = "uppercase" | "lowercase" | "capitalize";
+let stringFormat: TStringFormat = "capitalize";
 
 function sum(a: number, b: number): number {
   return a + b;
 }
 
-function textFormat(text: string, format: stringFormat): string {
+function textFormat(text: string, format: TStringFormat): string {
   if (format === 'uppercase') {
     return text.toUpperCase();
   }
@@ -33,7 +33,7 @@ function textFormat(text: string, format: stringFormat): string {
   return text;
 }
 
-function removeLetter(text: string, letterToRemove: string) {
+function removeLetter(text: string, letterToRemove: string): string {
   return text.split(letterToRemove).join('');
 }
 
