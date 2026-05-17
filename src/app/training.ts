@@ -36,7 +36,7 @@ function calculateSum(a: number, b: number): number {
 
 calculateSum(2, 4);
 
-function FormatCapitalize(text: string) {
+function formatCapitalize(text: string) {
   let result = '';
   for (let i = 0; i < text.length; i++) {
     if (i === 0 || text[i - 1] === ' ' || text[i - 1] === ',') {
@@ -49,20 +49,20 @@ function FormatCapitalize(text: string) {
   return result;
 }
 
-function FormatText(text: string, format: TextFormat) {
+function formatText(text: string, format: TextFormat) {
   switch (format) {
     case 'uppercase':
       return text.toUpperCase();
     case 'lowercase':
       return text.toLowerCase();
     case 'capitalize':
-      return FormatCapitalize(text);
+      return formatCapitalize(text);
     default:
       return text;
   }
 }
 
-console.log(FormatText('hElLo wORLd', textFormat));
+console.log(formatText('hElLo wORLd', textFormat));
 
 function removeChar(text: string, symbol: string) {
   return text.split(symbol).join('');
@@ -70,7 +70,7 @@ function removeChar(text: string, symbol: string) {
 
 console.log(removeChar('Привет мир', 'R'));
 
-function FiltrUsers(users: IUser[], par: string | number) {
+function filterUsers(users: IUser[], par: string | number) {
   return users.filter((user) =>
     user.name === par ? user : console.log('Юзер с таким параметром не найден'),
   );
