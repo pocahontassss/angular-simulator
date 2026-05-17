@@ -76,4 +76,4 @@ function filterUsers(users: IUser[], par: string | number) {
   );
 }
 
-FiltrUsers(users, 'Иван');
+filtrUsers(users, 'Иван');
