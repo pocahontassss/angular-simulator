@@ -30,6 +30,8 @@ function formatString(a: string, b: 'uppercase' | 'lowercase' | 'capitalize'): s
     return a.toUpperCase();
   } else if (b === 'lowercase') {
     return a.toLowerCase();
+  } else if (b === 'capitalize') {
+    return a[0].toUpperCase() + a.slice(1);
   }
   return a;
 }
