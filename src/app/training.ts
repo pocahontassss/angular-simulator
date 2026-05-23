@@ -61,9 +61,9 @@ const userData: IUser[] = [
   },
 ];
 
-const manFromSpain: IUser[] = userData.filter(countryUser => countryUser.country === "Spain");
+const usersFromSpain: IUser[] = userData.filter(countryUser => countryUser.country === "Spain");
 
-console.log(manFromSpain);
+console.log(usersFromSpain);
 
 
 function sumNumbers(numberOne: number, numberTwo: number): number {
