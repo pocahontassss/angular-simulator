@@ -12,7 +12,7 @@ interface IUser {
   phoneNumber?: number;
 };
 
-interface IuserCar extends IUser {
+interface IUserCar extends IUser {
   carBrand: string;
   carModel: string;
   carNumber: string;
@@ -61,15 +61,13 @@ const userData: IUser[] = [
   },
 ];
 
-const usersFromSpain: IUser[] = userData.filter(countryUser => countryUser.country === "Spain");
+const usersFromSpain: IUser[] = userData.filter((countryUser: IUser) => countryUser.country === "Spain");
 
-console.log(usersFromSpain);
 
 
 function sumNumbers(numberOne: number, numberTwo: number): number {
   return numberOne + numberTwo;
 };
-console.log(sumNumbers(3, 6));
 
 function changeFormatText(text: string, textFormat: 'uppercase'| 'lowercase' | 'capitalize'): string {
   switch (textFormat) {
@@ -82,10 +80,7 @@ function changeFormatText(text: string, textFormat: 'uppercase'| 'lowercase' | '
   };
 };
 
-console.log(changeFormatText('автомобиль', 'capitalize'));
 
 function deleteSymbol(text: string, symbol: string): string {
   return text.replaceAll(symbol,'');
 };
-
-console.log(deleteSymbol("user@gmail.com", "@"));
