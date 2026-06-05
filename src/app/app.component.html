@@ -1,13 +1,7 @@
-@if (isLoading) {
-  <div>
-    <img class="loader-spinner" src="/images/loader-spinner.svg" alt="loader">
-  </div>
-} @else {
   <main>
     <app-header></app-header>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
   </main>
   <app-message></app-message>
-}
-
+  <app-loader-spiner></app-loader-spiner>

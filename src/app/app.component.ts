@@ -1,21 +1,21 @@
 import './training';
 import { Component, inject, numberAttribute } from '@angular/core';
-import { Color } from '../enums/Color';
+import { Color } from '../enums/Сolor';
 import { Collection } from './collection';
 import { FormsModule } from '@angular/forms';
 import { IProduct } from './interfaces/IProduct';
-import { IUser } from './interfaces/IUser';
+import { IPerson } from './interfaces/IPerson';
 import { MessageService } from '../message.service';
 import { LocalStorageService} from '../local-storage.service'
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { MessageComponent } from './components/message/message.component';
-
+import { LoaderSpinerComponent } from './components/loader-spiner/loader-spiner.component';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, HeaderComponent, FooterComponent, RouterOutlet, MessageComponent],
+  imports: [FormsModule, HeaderComponent, FooterComponent, RouterOutlet, MessageComponent, LoaderSpinerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -25,12 +25,8 @@ export class AppComponent {
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
   companyName: string = 'РУМТИБЕТ';
-  isLoading: boolean = true;
 
   constructor() {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000)
     this.saveVisitDate();
     this.updateLoginCount();
   }
@@ -51,7 +47,7 @@ export class AppComponent {
     this.localStorageService.setValue('visit-count', visits.toString());
   }
 
-  userList: IUser[] = [
+  userList: IPerson[] = [
     { id: 1, name: "Max" },
     { id: 2, name: "Oleg" },
     { id: 3, name: "Nikita"},
@@ -63,7 +59,7 @@ export class AppComponent {
     { id: 103, title: "Nokia" }
   ];
 
-  userCollection: Collection<IUser> = new Collection<IUser>(this.userList)
+  userCollection: Collection<IPerson> = new Collection<IPerson>(this.userList)
 
 }
 

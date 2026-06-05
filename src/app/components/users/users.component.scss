@@ -1,10 +1,170 @@
-.no-users-container {
+body {
+  background-color: rgba(243, 245, 244, 1);
+}
+
+.users-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px;
+  padding: 40px;
+  margin: 0 auto;
+  max-width: 1920px;
+}
+
+.user-card {
+  border-top: 4px solid rgba(212, 163, 115, 1);
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+  padding: 35px 30px;
+
+  .user-header h1 {
+    font-size: 26px;
+    margin: 0;
+    color: rgba(29, 57, 57, 1);
+  }
+
+  .user-header .username {
+    margin: 0;
+    font-size: 15px;
+    color: rgba(212, 163, 115, 1);
+    text-transform: lowercase;
+  }
+}
+
+.user-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+}
+
+.users-title-section {
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 800;
+  font-size: 48px;
+  color: rgba(29, 57, 57, 1);
+  padding-top: 80px;
+  padding-bottom: 40px;
 }
 
-.no-users-text {
-  font-size: 40px;
-  color: red;
+.user-card h2 {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(29, 57, 57, 1);
+  margin: 0 0 12px 0;
+}
+
+.user-card h2::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin-left: 12px;
+}
+
+.user-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-card li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14px;
+}
+
+.user-card .label {
+  color: rgba(102, 124, 124, 1);
+  font-weight: 500;
+  padding-right: 16px;
+  white-space: nowrap;
+}
+
+.user-card .value, 
+.user-card li a {
+  text-align: right;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: right;
+  text-decoration: none;
+}
+
+.user-card .value {
+  color: rgba(29, 57, 57, 1);
+}
+
+.user-card a.user-link {
+  color: rgba(212, 163, 115, 1)
+}
+
+.user-card a.user-phone {
+  color: rgba(29, 57, 57, 1);
+}
+
+.user-card li a:hover {
+  text-decoration: underline;
+  color: #3498db;
+}
+
+.geo-container {
+  gap: 6px;
+  display: flex;
+}
+
+.geo-address {
+  background-color: rgba(244, 247, 245, 1);
+  border: 1px solid rgba(226, 232, 240, 1);
+  border-radius: 3px;
+  color: #4a5568;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.work-section .mission-user {
+  font-style: italic;
+  font-size: 13px;
+  line-height: 18.2px;
+  color: rgba(102, 124, 124, 1);
+}
+
+.work-section .mission-user::before {
+  content: '«';
+}
+
+.work-section .mission-user::after {
+  content: '»';
+}
+
+.username::before {
+  content: '@';
+}
+
+.user-header {
+  padding-bottom: 25px;
+}
+
+.error-massage {
+  font-size: 26px;
+  font-weight: 800;
+  background-color: rgba(177, 87, 87, 1);
+  border-radius: 20px;
+  padding: 35px;
+  color: var(--white-color);
+  white-space: nowrap;
 }
