@@ -1,47 +1,141 @@
+<div class="loader-wrapper" *ngIf="isLoading">
+  <img src="/images/loader.svg" class="loader-icon" alt="Загрузка...">
+</div>
+
 <header class="header">
-    <div class="container">
-			<div class="logo-sayt">
-      	<img class="logo-image" src="/images/Vector.svg" alt="Логотип">
-        <span class="name-logo">{{ nameCompany }}</span>
-			</div>
-			<div class="list-item">
-				<ul>
-					<li>Главная</li>
-					<li>Про гида</li>
-					<li>Программа тура</li>
-					<li>Стоимость</li>
-					<li>Блог</li>
-					<li>Контакты</li>
-				</ul>
-				</div>
-			<div class="button">
-      	<button class="button">Консультация</button>
-			</div>
-		</div>
+  <div class="container-wrapper">
+    <div class="logo-sayt">
+      <img class="logo-image" src="/images/Vector.svg" alt="Логотип">
+      <span class="name-logo">{{ nameCompany }}</span>
+    </div>
+    <div class="list-item">
+      <ul>
+        <li>Главная</li>
+        <li>Про гида</li>
+        <li>Программа тура</li>
+        <li>Стоимость</li>
+        <li>Блог</li>
+        <li>Контакты</li>
+      </ul>
+    </div>
+    <div class="column-button">
+      <button class="button">Консультация</button>
+      <button (click)="showTime = !showTime" class="button">{{ showTime === true ? 'Переключить на время': 'Переключитьна счетчик' }}</button>
+
+      <span *ngIf="showTime" class="replacement">{{ time }}</span>
+
+      <div *ngIf="!showTime" class="counter">
+        <button (click)="counter = counter - 1" class="decrease" [disabled]="counter === 0">-</button>
+        <span>{{ counter }}</span>
+        <button (click)="counter = counter + 1" class="adding">+</button>
+      </div>
+    </div>
+  </div>
 </header>
 
 <section class="hero-section">
-	<div class="container-wrapper">
-	<h1 class="hero-title">Насладись прогулкой в горах <br> с командой единомышленников</h1>
+  <div class="container-wrapper">
+    <h1 class="hero-title">Насладись прогулкой в горах <br> с командой единомышленников</h1>
 
-	<form class="form-container" action="">
-			<div class="col">
-				<select class="serchers" type="search">
-					<option selected disabled>Локация для тура</option>
-				</select>
-				<p class="white-color">выберите из списка</p>
-			</div>		
-			<div class="col">
-				<input placeholder="Дата похода" class="serchers" type="date"> 
-				<p class="white-color">укажите дату</p>
-			</div>
-			<div class="col">
-				<select placeholder="Участники" class="serchers" type="search">
-					<option selected disabled>Участники</option>
-				</select>
-				<p class="white-color">выберите из списка</p>
-			</div>	
-			<button class="form-btn" type="submit">Найти программу</button>
-	</form>
-	</div>
+    <form class="form-container" action="">
+      <div class="col">
+        <select class="serchers" type="search" name="location" [(ngModel)]="location">
+          <option selected disabled value="">Локация для тура</option>
+          <option value="mountains">Горы</option>
+          <option value="mountains">Океан</option>
+        </select>
+        <p class="white-color">выберите из списка</p>
+      </div>
+      <div class="col">
+        <input placeholder="Дата похода" class="serchers" type="date" name="data" [(ngModel)]="data">
+        <p class="white-color">укажите дату</p>
+      </div>
+      <div class="col">
+        <select placeholder="Участники" class="serchers" type="search" name="name" [(ngModel)]="name">
+          <option selected disabled value="">Участники</option>
+          <option value="mountains">Mumin</option>
+          <option value="mountains">Abdurahman</option>
+        </select>
+        <p class="white-color">выберите из списка</p>
+      </div>
+      <button class="form-btn" type="submit" [disabled]="location === '' || data === '' || name === '' ">Найти
+        программу</button>
+    </form>
+    <div class="live-wrapper">
+      <input class="live-sercher" type="search" name="" id="" [(ngModel)]="textValue">
+      <span class="live-text">{{ textValue }}</span>
+    </div>
+  </div>
+</section>
+
+<section class="about-tour">
+  <div class="container">
+
+    <div class="about-images">
+      <img class="about-image _back" src="/images/peaks.jpg" alt="">
+      <img class="about-image _front" src="/images/forest.jpg" alt="">
+    </div>
+    <div class="about-info">
+      <span class="about-trip">о нашем походе</span>
+      <h2 class="about-title">Исследуйте все горные массивы мира вместе с нами</h2>
+      <p class="about-description">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад.
+        Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов
+        в Lorem Ipsum,
+        "consectetur"и занялся его поисками в классической латинской литературе.</p>
+      <button class="about-btn">Программа тура</button>
+    </div>
+  </div>
+</section>
+
+<section class="programs">
+  <div class="container">
+    <div class="col-1">
+      <span class="offer">наше предложение</span>
+      <h2 class="programs-title">Лучшие программы для тебя</h2>
+      <p class="programs-description">Его корни уходят в один фрагмент классической латыни 45 года н.э.,
+        то есть более двух тысячелетий назад. Ричард МакКлинток,
+        профессор латыни из колледжа.</p>
+      <div class="programs-advantages">
+        <div class="advantages-content">
+          <img src="/images/guide-icon.svg" alt="icon-guid" width="36px" height="36px">
+          <div class="description__col">
+            <h3 class="programs-subtitle">Опытный гид</h3>
+            <p class="programs-advantages__description">Для современного мира базовый вектор развития предполагает
+              независимые
+              способы реализации соответствующих условий активизации.</p>
+          </div>
+        </div>
+      </div>
+      <div class="programs-advantages">
+        <div class="advantages-content">
+          <img src="/images/security-icon.svg" alt="security-icon" width="36px" height="36px">
+          <div class="description__col">
+            <h3 class="programs-subtitle">Безопасный поход</h3>
+            <p class="programs-advantages__description">Для современного мира базовый вектор развития предполагает
+              независимые
+              способы реализации соответствующих условий активизации.</p>
+          </div>
+        </div>
+      </div>
+      <div class="programs-advantages">
+        <div class="advantages-content">
+          <img src="/images/price-icon.svg" alt="price-icon" width="36px" height="36px">
+          <div class="description__col">
+            <h3 class="programs-subtitle">Лояльные цены</h3>
+            <p class="programs-advantages__description">Для современного мира базовый вектор развития предполагает
+              независимые
+              способы реализации соответствующих условий активизации.</p>
+          </div>
+        </div>
+      </div>
+      <button class="programs-btn">Стоимость программ</button>
+    </div>
+    <div class="col-2">
+      <img src="/images/canyon.jpg" alt="">
+      <img src="/images/snowmobile.jpg" alt="">
+      <img src="/images/hiker.jpg" alt="">
+      <img src="/images/river.jpg" alt="">
+    </div>
+  </div>
 </section>
