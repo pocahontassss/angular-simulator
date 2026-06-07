@@ -1,6 +1,6 @@
 <h1 class="users-title-section">Список пользователей</h1>
 <div class="users-container container">
-  @for(user of (userService.users$ | async); track user.id) {
+  @for(user of userService.users$ | async; track user.id) {
     <div class="user-card">
       <div class="user-header">
         <h1>{{ user.name }}</h1>

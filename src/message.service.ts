@@ -9,23 +9,23 @@ import { Observable } from 'rxjs';
 })
 export class MessageService {
   
-  private _messages$: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
+  private messagesSubject$: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
 
-  messages$: Observable<IMessage[]> = this._messages$.asObservable();
+  messages$: Observable<IMessage[]> = this.messagesSubject$.asObservable();
 
   private addMessage(text: string, type: Message): void {
     const newMessage: IMessage = {
       message: text,
       type: type
     };
-    this._messages$.next([...this._messages$.value, newMessage])
+    this.messagesSubject$.next([...this.messagesSubject$.value, newMessage])
     setTimeout(() => {
       this.delete(newMessage)
     }, 5000);
   }
 
   delete(removedMsg: IMessage): void {
-    this._messages$.next(this._messages$.value.filter((message: IMessage) => message !== removedMsg));
+    this.messagesSubject$.next(this.messagesSubject$.value.filter((message: IMessage) => message !== removedMsg));
   }
   
   showWarn(text: string): void {

@@ -1,5 +1,5 @@
 <div class="messages-container">
-  @for (msg of (messageService.messages$ | async); track msg) {
+  @for (msg of messageService.messages$ | async; track msg) {
     <ng-container [ngTemplateOutlet]="msgTemplate" [ngTemplateOutletContext]="{ item: msg }">
     </ng-container>
   }

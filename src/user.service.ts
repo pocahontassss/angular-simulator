@@ -11,31 +11,31 @@ import { IUser } from './app/interfaces/IUser';
 export class UserService {
 
   userApiService: UserApiService = inject(UserApiService);
-  messageServise: MessageService = inject(MessageService);
+  messageService: MessageService = inject(MessageService);
   loaderService: LoaderService = inject(LoaderService);
   
-  private _users$: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
+  private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
  
-  users$: Observable<IUser[]> = this._users$.asObservable();
+  users$: Observable<IUser[]> = this.usersSubject.asObservable();
 
   setUsers(users: IUser[]): void {
-    this._users$.next(users);
+    this.usersSubject.next(users);
   }
 
   getUsers(): IUser[] {
-    return this._users$.value;
+    return this.usersSubject.value;
   }
 
-  loadUsers(): void {
+  loadUsers(): Observable<IUser[]> {
     this.loaderService.showLoader();
-    this.userApiService.getUsers().pipe(
-      catchError(error => {
-        this.messageServise.showError('Ошибка загрузки пользователей');
-        return of<IUser[]>([]);
-      }),finalize(() => {
-        this.loaderService.hideLoader();
-      })
-    ).subscribe(data => this._users$.next(data));
+    return this.userApiService.getUsers()
+      .pipe(
+        catchError(() => {
+          this.messageService.showError('Ошибка загрузки пользователей');
+          return of([]);
+        }),
+        finalize(() => this.loaderService.hideLoader())
+      );
   }
 
 }
