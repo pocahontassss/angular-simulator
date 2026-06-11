@@ -17,7 +17,7 @@ let textFormat: 'uppercase' | 'lowercase' | 'capitalize' = 'lowercase';
 
 //Задание №6: Создаю интерфейс, который описывает юзера. Одно поле опциональное.
 
-interface User {
+interface IUser {
     name: string;
     surname: string;
     patronymic?: string;
@@ -39,7 +39,7 @@ console.log({
 
 // Задание №7: Создаю интерфейс, который расширяется интерфейсом User с задания №6 и имеет свои дополнительные поля.
 
-interface client extends User {
+interface client extends IUser {
     cars: {
         brand: string;
         model: string;
@@ -100,7 +100,7 @@ console.log(symbolDeleting('Angular Simulator', 'u'));
 // Задание №10: Создаю массив объектов на основе интерфейса с задания №6.
 // Отфильтроввываю его по одному из параметров.
 
-const users: User[] = [
+const users: IUser[] = [
     {
         name: 'Adel',
         surname: 'Bikkenin',
