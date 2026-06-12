@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { user } from './training';
 
 @Component({
   selector: 'app-root',
@@ -9,3 +10,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
 }
+
+
+console.log(user)
