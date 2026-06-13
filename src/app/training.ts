@@ -35,14 +35,14 @@ textFormat = 'uppercase'
 
 // 6 задание 
 
-interface User {
+interface IUser {
   name: string;
   surname: string;
   age: number;
   email?: string;
 }
 
-const user1: User = {
+const user1: IUser = {
   name: 'Ivan',
   surname: 'Ivanov',
   age: 18
@@ -53,7 +53,7 @@ console.log(user1)
 
 // 7 Задание 
 
-interface Worker extends User {
+interface Worker extends IUser {
   role: string;
   powers: boolean;
 }
@@ -94,7 +94,7 @@ console.log(textReplace('Hello my name is Ivan', 'n')
 // 10 задание 
 
 
-const users: User[] = [
+const users: IUser[] = [
   {name: "Ivan", surname: 'Ivanov', age: 18},
   {name: 'Max', surname: 'Maxov', age: 99},
   {name: 'Maksim', surname: 'Maksimov', age: 19}
