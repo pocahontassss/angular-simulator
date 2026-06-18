@@ -1,1 +1,77 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<div class="hero-container">
+  <header class="header">
+    <div class="super-header">
+      <div class="company-logo">
+        <img class="logo-img" src="/images/mountains-icon.svg" alt="mini-mountains" />
+        <span class="company-name"> {{ companyName }}</span>
+      </div>
+      <nav class="main-navigation">
+        <ul>
+          <li><a>Главная</a></li>
+          <li><a>Про гида</a></li>
+          <li><a>Программа тура</a></li>
+          <li><a>Стоимость</a></li>
+          <li><a>Блог</a></li>
+          <li><a>Контакты</a></li>
+        </ul>
+      </nav>
+      <button class="main-button">Консультация</button>
+    </div>
+  </header>
+
+  <section class="main-page">
+    <p class="main-title">Насладись прогулкой в горах с командой единомышленников</p>
+    <form class="search-form">
+      <div class="search-container">
+        <div class="main-inputs">
+          <input
+            list="destinations"
+            id="locations"
+            class="custom-input"
+            name="location-to"
+            placeholder="Локация для тура"
+          />
+          <label for="locations">выберите из списка</label>
+
+          <datalist id="destinations">
+            <option value="Дагестан (Сулакский каньон)"></option>
+            <option value="Байкал"></option>
+            <option value="Камчатка (Долина Гейзеров)"></option>
+          </datalist>
+        </div>
+
+        <div class="main-inputs">
+          <input
+            type="text"
+            onfocus="this.type = 'date'"
+            onblur="this.type = 'text'"
+            id="trip-date"
+            class="custom-input"
+            name="date"
+            placeholder="Выберите дату"
+          />
+          <label for="trip-date">укажите дату</label>
+        </div>
+
+        <div class="main-inputs">
+          <input
+            list="participants"
+            id="members"
+            class="custom-input"
+            name="tour-members"
+            placeholder="Участники"
+          />
+          <label for="members">выберите из списка</label>
+
+          <datalist id="participants">
+            <option value="Григорий(гид)"></option>
+            <option value="Гаджи(рилс мейкер)"></option>
+            <option value="Лев(толстой)"></option>
+            <option value="Жинкин(лев)"></option>
+          </datalist>
+        </div>
+        <button class="form-button">Найти программу</button>
+      </div>
+    </form>
+  </section>
+</div>
