@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ShowMessageService } from './show-message-service';
+import { ShowMessageService } from '../services/show-message-service';
 
 describe('ShowMessage', () => {
   let service: ShowMessageService;

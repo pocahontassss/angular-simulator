@@ -1,0 +1,49 @@
+<header class="header">
+  <div class="header__container">
+    
+    <div class="logo-company">
+      <img src="./images/logo/logo.svg" alt="Лого компании (Горы)">
+      <span class="logo__name bold">{{ companyName }}</span>
+    </div>
+    
+    <nav class="header__links fs-18 semi-bold">
+      @for (link of navigationLinks; track link.id) {
+        <a [routerLink]="link.url" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active-link">{{ link.name }}</a>
+      }
+    </nav>
+    
+    <button type="submit" class="header__btn semi-bold fs-16">Консультация</button>
+    
+  </div>
+  <div class="header-widget">
+    @if (isClickerMode) {
+      <div class="header-widget__counter">
+        
+        <button class="plus-btn header-widget__counter-btn" 
+        (click)="increment()" 
+        type="button">
+        +
+        </button>
+      
+        <span>{{ clickCount }}</span>
+        
+        <button class="minus-btn header-widget__counter-btn" 
+        (click)="decrement()" 
+        [disabled]="clickCount===0"
+        type="button">
+        -
+        </button>
+        
+      </div>
+    } @else {
+      <div class="header-widget__date semi-bold fs-18">
+        <span>{{ currentDate }}</span>
+      </div>
+    }
+    <button type="button" class="header-widget__toggle semi-bold fs-16" (click)="toggleMode()">
+      {{ isClickerMode ? 'Показать дату' : 'Показать кликер' }}
+    </button>
+    
+  </div>
+  
+</header>

@@ -1,0 +1,131 @@
+.header {
+  background-color: rgba(24, 18, 30, 0.5);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  height: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  
+  .header__container {
+    width: 1180px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 50px;
+    
+    .logo-company {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      cursor: pointer;
+      
+      .logo__name {
+        line-height: 100%;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--logo-white-color);
+      }
+    }
+    
+    .header__links {
+      display: flex;
+      line-height: 100%;
+      gap: 24px;
+      cursor: pointer;
+      *{
+        color: var(--primary-white-color);
+      }
+      
+      .active-link {
+        color: aqua;
+        text-decoration: underline;
+      }
+    }
+    
+    .header__btn {
+      line-height: 20px;
+      letter-spacing: 0.012em;
+      color: var(--green-btn-color);
+      background-color: var(--primary-white-color);
+      width: 158px;
+      height: 44px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+  }
+  .header-widget {
+    position: absolute;
+    width: 278px;
+    height: 52px;
+    border: 2px solid rgba(255, 255, 255, 1);
+    margin: 50px 0px 0px 909px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    * {
+      color: var(--primary-white-color);
+    }
+    .header-widget__counter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 63px;
+      height: 24px;
+      padding: 3px;
+      * {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 100%;
+      }
+      
+      .header-widget__counter-btn {
+        background: none;
+        border: none;
+        height: 24px;
+        cursor: pointer;
+      }
+      
+      .minus-btn{
+        width: 8.4px;
+        
+        &:disabled {
+          color: #666666;
+          cursor: not-allowed;
+        }
+
+      }
+      
+      .plus-btn {
+        width: 11.55px;
+      }
+    }
+    .header-widget__date {
+      line-height: 100%;
+    }
+    
+    .header-widget__toggle {
+      color: var(--primary-black-color);
+      min-width: 157px;
+      height: 44px;
+      border: none;
+      border-radius: 4px;
+      line-height: 20px;
+      letter-spacing: 0.012em;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #e0e0e0;
+      }
+      
+    }
+  }
+}

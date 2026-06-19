@@ -1,0 +1,214 @@
+<section class="main__banner">
+  <div class="main__container">
+    <h1 class="main__title regular fs-50">Насладись прогулкой в горах <br> с командой единомышленников</h1>
+    <div class="main__form">
+      
+      <form class="form-container">
+        
+        <div class="container-travel-place form-cont select-wrapper">
+          <select class="input-cont fs-16" name="location" [(ngModel)]="selectedLocation" required>
+            <option value="" disabled selected hidden>Локация для тура</option>
+            <option value="Дубай">Дубай</option>
+            <option value="Мальдивы">Мальдивы</option>
+            <option value="Дагестан">Дагестан</option>
+          </select>
+          <label class="search-form regular fs-14">выберите из списка</label>
+        </div>
+        
+        <div class="container-travel-date form-cont calendar-wrapper">
+          <input 
+          placeholder="Дата похода" 
+          type="text" 
+          class="input-cont fs-16"
+          name="date"
+          [(ngModel)]="selectedDate"
+          onfocus="(type='date')"
+          onblur="if(!value) type='text'">
+          <label class="search-form regular fs-14">укажите дату</label>
+        </div>
+        
+        <div class="container-travelers form-cont select-wrapper">
+          
+          <select class="input-cont fs-16" name="travelers" [(ngModel)]="selectedTravelers" required>
+            <option value="" disabled selected hidden>Участники</option>
+            <option value="1 чел.">1 чел.</option>
+            <option value="2 чел.">2 чел.</option>
+            <option value="3 чел.">3 чел.</option>
+            <option value="4 чел.">4 чел.</option>
+          </select>
+          
+          <label class="search-form regular fs-14">выберите из списка</label>
+        </div>
+        
+        <div class="container-search-tour-btn form-cont">
+          <button type="submit" class="search-tour-btn green-btn" [disabled]="isFormValid()">Найти программу</button>
+        </div>
+        
+      </form>
+
+    </div>
+    <div class="live-search">
+      <div class="live-search__input-wrapper input-wrapper">
+        <input type="text"
+        [(ngModel)]="liveInput"
+        placeholder="Живой инпут"
+        class="live-search__input">
+      </div>
+      <div class="live-search__result">
+        <span class="live-search__text">
+          {{ liveInput ? liveInput : 'Введенный текст' }}
+        </span>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="mountain-tours-info">
+  <div class="mountain-tours-info__container">
+    
+    <div class="images-wrapper">
+      <img class="snow-mountain" src="/images/snow-mountain.png" alt="snow-mountain">
+      <img class="mountain-forest" src="/images/mountain-forest.png" alt="mountain-forest">
+      <img class="play-icon" src="/images/icons/play.svg" alt="play-icon">
+    </div>
+    
+    <div class="mountain-tours-info__text-cont">
+      <p class="subtitle">о нашем походе</p>
+      <h2 class="title">Исследуйте все горные массивы мира вместе с нами</h2>
+      <p class="mountain-tours-info__description regular fs-18">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
+      <button class="mountain-tours-info__btn green-btn" 
+      (click)="triggerNotification('warn', 'Программа недоступна')">
+      Программа тура
+    </button>
+    </div>
+    
+  </div>
+</section>
+
+<section class="offers">
+  <div class="offers__container">
+    
+    <div class="offers__content">
+      <p class="subtitle">наше предложение</p>
+      <h2 class="title">Лучшие программы для тебя</h2>
+      <p class="offers__description regular fs-18">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+      </p>
+      
+      <div class="offers__advantages-list">
+        @for (advantage of advantages; track advantage.id) {
+          <div class="offers__advantage-item">
+            <div class="offers__advantage-icon-wrapper">
+              <img [src]="advantage.srcImg" [alt]="advantage.title" [class]="'offers__advantage-icon'+advantage.id">
+            </div>
+            <div class="offers__advantage-text-block">
+              <h3 class="offers__advantage-title bold fs-18">{{ advantage.title }}</h3>
+              <p class="offers__advantage-text regular fs-14">{{ advantage.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+      
+      <button class="offers__btn green-btn" (click)="triggerNotification('info', 'Стоимость отправлена на почту')">
+        Стоимость программ
+      </button>
+    </div>
+    
+    <div class="offers__gallery">
+      @for (img of gallery; track img.id) {
+        <img [src]="img.srcImg" [alt]="'gallery-img'+img.id" [class]="'gallery-img'+img.id">
+      }
+    </div>
+    
+  </div>
+</section>
+
+<section class="tours">
+  <div class="tours__header">
+    <p class="subtitle">по версии отдыхающих</p>
+    <h2 class="title">Популярные направления</h2>
+  </div>
+  
+  <div class="tours__wrapper">
+    @for (tour of popularTours; track tour.id) {
+      
+      <article class="tours__wrapper-card">
+        <img [src]="tour.srcImg" [alt]="tour.title" [class]="'tour-img' + tour.id">
+        <div class="card__rating-badge">
+          <img class="card__rating-icon" src="/images/icons/star.svg" alt="star">
+          <span class="card__rating-value fs-14 bold">{{ tour.rating | number:'1.1-1' }}</span>
+        </div>
+        <div  class="card__content">
+          
+          <div class="card__info">
+            <h3 class="card__title bold">{{ tour.title }}</h3>
+            <p class="card__subtitle fs-14 regular">{{ tour.subtitle }}</p>
+          </div>
+          
+          <div class="card__price-wrapper">
+            <span class="price-currency bold">{{ tour.price }} {{ tour.currency }}</span>
+          </div>
+          
+        </div>
+
+      </article>
+    }
+  </div>
+  <div class="tours__btn-container">
+    <button class="tours__btn green-btn" (click)="triggerNotification('success', 'Направления успешно получены!')">
+      Рейтинг направлений
+    </button>
+  </div>
+</section>
+
+<section class="blog">
+  <div class="blog__header">
+    <p class="subtitle">делимся впечатлениями</p>
+    <h2 class="title">Блог о путешествиях</h2>
+  </div>
+  
+  <div class="blog__wrapper">
+    @for (blogTour of blogTours; track blogTour.id) {
+      <article class="blog-card">
+        
+        <div class="blog-card-img">
+          <img [class]="'blog-card-img' + blogTour.id" [src]="blogTour.srcImg" [alt]="blogTour.srcAlt">
+        </div>
+        
+        <div class="blog-card__content">
+          <h3 class="blog-card__title bold">{{ blogTour.title }}</h3>
+          <p class="blog-card__subtitle regular fs-14">{{ blogTour.subtitle }}</p>
+          
+          <div class="blog-card__footer fs-14 bold">
+            <span class="blog-card__date">{{ blogTour.date }}</span>
+            <span class="blog-card__link">читать статью</span>
+          </div>
+          
+        </div>
+        
+      </article>
+    }
+  </div>
+  
+  <div class="blog__footer">
+    <button class="blog__btn green-btn" (click)="triggerNotification('error', 'Материалы недоступны')">
+      Другие материалы
+    </button>
+  </div>
+</section>
+
+<section class="pinterest-gallery">
+  <div class="pinterest-gallery__header">
+    <p class="subtitle">фото-отчет</p>
+    <h2 class="title">Делимся впечатлениями</h2>
+  </div>
+  <div class="pinterest-gallery__wrapper">
+    @for (img of pinterestImages; track img.id) {
+      <img [src]="'/images/'+img.name+'.png'" [alt]="img.name" [class]="'pinterest-gallery__image'+img.id">
+    }
+  </div>
+  <div class="pinterest-gallery__btn-container">
+    <button class="green-btn pinterest-gallery__btn">Наш pinterest</button>
+  </div>
+</section>

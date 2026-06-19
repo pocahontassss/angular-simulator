@@ -1,0 +1,71 @@
+<footer class="main-footer">
+  <section class="main-footer__subscribe">
+    <div class="footer-subscribe__info">
+      <p class="footer-subscribe__subtitle regular fs-18">актуально</p>
+      <h2 class="footer-subscribe__title extra-bold">Получайте полезные рассылки о путешествиях</h2>
+    </div>
+    
+    <div class="footer-subscribe__form-wrapper">
+      <form class="footer-subscribe__form">
+        <div class="footer-subscribe__form-input-group">
+          <h3 class="footer-subscribe__form-title semi-bold fs-16">Введите e-mail адрес</h3>
+          <input type="email"  placeholder="name@domain.com" class="footer-subscribe__input">
+        </div>
+        <button type="submit" class="green-btn footer-subscribe__submit-btn">Подписаться на новости</button>
+      </form>
+      <p class="footer-subscribe__disclaimer fs-14 semi-bold">
+        подписываясь на новости, вы автоматически соглашаетесь с условиями 
+        <a href="#" class="footer-subscribe__link">обработки персональных данных</a> и 
+        <a href="#" class="footer-subscribe__link">правилами рекламных рассылок</a>
+      </p>
+    </div>
+  </section>
+  
+  
+  <div class="main-footer__content">
+    <article class="main-footer__column">
+      <h3 class="main-footer__column-title bold">Компания «РумТибет»</h3>
+      <p class="main-footer__about-text regular fs-14">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.</p>
+      <div class="main-footer__contacts">
+        <a href="mailto:info@domain.com" class="main-footer__contact-link">info@domain.com</a>
+        <a href="tel:+71234567890" class="main-footer__contact-link">+7 (123) 456-78-90</a>
+      </div>
+      <div class="main-footer__socials">
+        <a href="#" class="main-footer__social-link"><img src="/images/icons/tg.svg" alt="Telegram" class="main-footer__social-icon"></a>
+        <a href="#" class="main-footer__social-link"><img src="/images/icons/vk.svg" alt="VK" class="main-footer__social-icon"></a>
+        <a href="#" class="main-footer__social-link"><img src="/images/icons/pinterest.svg" alt="Pinterest" class="main-footer__social-icon"></a>
+        <a href="#" class="main-footer__social-link"><img src="/images/icons/skype.svg" alt="Skype" class="main-footer__social-icon"></a>
+      </div>
+    </article>
+    
+    <nav class="main-footer__column" aria-label="Наши услуги">
+      <h3 class="main-footer__column-title">Наши услуги</h3>
+      <ul class="main-footer__list">
+        @for (link of servicesLinks; track link.id) {
+          <li class="main-footer__item">
+            <a class="footer-link">{{ link.name }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+    
+    <nav class="main-footer__column" aria-label="Важно для путешествий">
+      <h3 class="main-footer__column-title">Важно для путешествий</h3>
+      <ul class="main-footer__list">
+        @for (link of infoLinks; track link.id) {
+          <li class="main-footer__item">
+            <a class="footer-link">{{ link.name }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+    
+  </div>
+  
+  <div class="main-footer__bottom">
+    <div class="main-footer__bottom-container">
+      <span class="main-footer__copyright">ИП Константинопольский К.К., 2023</span>
+      <a class="main-footer__policy-link">Политика обработки персональных данных</a>
+    </div>
+  </div>
+</footer>

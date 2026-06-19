@@ -1,0 +1,23 @@
+<div class="toast-container">
+  @for (msg of messages; track msg.id) {
+    <ng-container
+    [ngTemplateOutlet]="showMessage"
+    [ngTemplateOutletContext]="{$implicit: msg}">
+    </ng-container>
+  }
+</div>
+
+<ng-template #showMessage let-msg>
+  <div class="toast">
+    <div class="toast__icon-wrapper">
+      <img src="/images/icons/letter.svg" alt="Иконка письма">
+    </div>
+    <div class="toast__content">
+      <h3 class="toast__title">{{ msg.type }}</h3>
+      <p class="toast__text">{{ msg.message }}</p>
+    </div>
+    <span class="toast__close-btn">
+      <img src="/images/icons/close.svg" alt="Закрыть" (click)="deleteMsg(msg.id)">
+    </span>
+  </div>
+</ng-template>
