@@ -22,7 +22,7 @@ export class AppComponent {
   companyName: string = "РУМТИБЕТ"
 
   isPrimaryColors(color: Colors): boolean {
-    if (color === Colors.BLUE || Colors.GREEN || Colors.RED) {
+    if (color === Colors.BLUE || color === Colors.GREEN || color === Colors.RED) {
       return true;
     } else {
       return false;
