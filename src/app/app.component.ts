@@ -3,7 +3,13 @@ import { user } from './training';
 import { Colors } from '../enum/Color';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { timestamp } from 'rxjs';
+import { Collection } from './collections';
 
+
+interface User {
+  name: string;
+  id: number;
+}
 
 @Component({
   selector: 'app-root',
@@ -12,6 +18,9 @@ import { timestamp } from 'rxjs';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+
+  companyName: string = "РУМТИБЕТ"
+
   isPrimaryColors(color: Colors): boolean {
     if (color === Colors.BLUE || Colors.GREEN || Colors.RED) {
       return true;
@@ -29,6 +38,7 @@ export class AppComponent {
   constructor() {
     this.saveSunsetTime();
     this.quantityVisitToSite();
+    this.initCollections();
   }
 
   saveSunsetTime(): void {
@@ -53,6 +63,26 @@ export class AppComponent {
     
     console.log(`Кол-во заходов ${newCount}`);
   }
+
+  
+  initCollections() {
+    const numbersCollection = new Collection<number>([10,20,30])
+
+    console.log(numbersCollection.getAll());
+
+    const userCollection: User[] = [
+    {name: 'Vlad', id: 1},
+    {name: "Oleg", id: 2}
+  ]
+
+  const usersCollection = new Collection<User>(userCollection);
+
+  console.log(usersCollection.getAll())
+  }
+
+  
+
+
 
 };
 

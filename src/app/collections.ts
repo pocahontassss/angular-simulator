@@ -1,6 +1,9 @@
 export class Collection<T> {
   private items: T[] = []
 
+  constructor(items: T[]) {
+    this.items = items;
+  }
 
   // 1 получить все элементы коллекции
 
