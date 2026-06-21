@@ -34,9 +34,9 @@
           <label for="locations">выберите из списка</label>
 
           <datalist id="destinations">
-            <option value="Дагестан (Сулакский каньон)"></option>
-            <option value="Байкал"></option>
-            <option value="Камчатка (Долина Гейзеров)"></option>
+            @for (tour of tours.getAll(); track tour) {
+              <option value="{{ tour }}"></option>
+            }
           </datalist>
         </div>
 
@@ -64,10 +64,9 @@
           <label for="members">выберите из списка</label>
 
           <datalist id="participants">
-            <option value="Григорий(гид)"></option>
-            <option value="Гаджи(рилс мейкер)"></option>
-            <option value="Лев(толстой)"></option>
-            <option value="Жинкин(лев)"></option>
+            @for (member of members.getAll(); track member) {
+              <option value="{{ member }}"></option>
+            }
           </datalist>
         </div>
         <button class="form-button">Найти программу</button>

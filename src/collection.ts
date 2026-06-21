@@ -1,9 +1,14 @@
 export class Collection<T> {
   private items: T[] = [];
 
+  constructor(initialItems: T[]) {
+    this.items = initialItems;
+  }
+
   public getAll(): T[] {
     return this.items;
   }
+
   public getByIndex(index: number): T {
     return this.items[index];
   }
@@ -20,12 +25,19 @@ export class Collection<T> {
   }
 }
 
-const tourCollection = new Collection<string>();
+const initialTours: string[] = [
+  'Дагестан (Сулакский каньон)',
+  'Байкал',
+  'Камчатка (Долина Гейзеров)',
+];
 
-export interface Guide {
-  id: number;
-  name: string;
-  rating: number;
-}
+export const tourCollection = new Collection<string>(initialTours);
 
-const guideCollection = new Collection<Guide>();
+const initialMembers: string[] = [
+  'Григорий (гид)',
+  'Гаджи (рилс мейкер)',
+  'Лев (Толстой)',
+  'Жинкин (лев)',
+];
+
+export const memberCollection = new Collection<string>(initialMembers);

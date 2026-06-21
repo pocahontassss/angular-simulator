@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Colors } from '../enums/color';
+import { tourCollection } from '../collection';
+import { memberCollection } from '../collection';
 @Component({
   selector: 'app-root',
   imports: [],
@@ -8,6 +10,8 @@ import { Colors } from '../enums/color';
 })
 export class AppComponent {
   companyName: string = 'РУМТИБЕТ';
+  tours = tourCollection;
+  members = memberCollection;
 
   public isCurrentColor(color: Colors): boolean {
     if (color === Colors.GREEN || color === Colors.BLUE || color === Colors.RED) {
