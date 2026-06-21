@@ -1,1 +1,55 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+  <div class="header-container">
+    <div class="container">
+      <div class="company-logo-container">
+        <img src="/images/company-logo.svg" alt="logo">
+        <span class="company-name fs-16 fw-700">{{ companyName }}</span>
+      </div>
+      <nav class="nav-header fs-18 fw-600">
+        <a>Главная</a>
+        <a>Про гида</a>
+        <a>Программа тура</a>
+        <a>Стоимость</a>
+        <a>Блог</a>
+        <a>Контакты</a>
+      </nav>
+      <div class="consultation-button-container">
+        <button class="consultation-button fs-16 fw-600">Консультация</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="main-info ">
+  <div class="banner"></div>
+  <div class="title-main">
+    <h1 class="text-title-main">Насладись прогулкой в горах <br>с командой единомышленников</h1>
+  </div>
+  <div class="background-color-for-search">
+    <form class="search-tour-container">
+      <div class="search-item">
+        <select name="location-tour" id="location-tour-select" class="tour-search-form-line fs-16 fw-700">
+          <option value="">Локация для тура</option>
+        </select>
+        <label class="form-item-description fs-14" for="location-tour">выберите из списка</label>
+      </div>
+      <div class="search-item">
+        <input
+          type="text"
+          placeholder="Дата похода"
+          onfocus="(this.type='date')"
+          onblur="if(!this.value)this.type='text'"
+          name="trip-date"
+          class="tour-search-form-line fs-16">
+          <label class="form-item-description fs-14" for="trip-date">укажите дату</label>
+      </div>
+      <div class="search-item">
+        <select name="participants" id="participants-select" class="tour-search-form-line fs-16 fw-700">
+          <option value="">Участники</option>
+        </select>
+        <label class="form-item-description fs-14" for="participants">выберите из списка</label>
+      </div>
+      <button class="search-program-button fs-16 fw-700">Найти программу </button>
+    </form>
+  </div>
+</section>
