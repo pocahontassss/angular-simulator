@@ -1,3 +1,4 @@
+import { Collection } from "../collection"; 
 interface IUser {
   name: string;
   age: number;
@@ -38,11 +39,8 @@ function removeChar(text: string, char: string): string {
   return text.replaceAll(char, "")
 }
 
+let usersCollection = new Collection<IUser>(users);
+let collectionNumbers = new Collection<number>([10, 20, 30])
 
-
-
-
-
-
-
+console.log(collectionNumbers.getAll());
 export{}

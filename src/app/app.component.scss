@@ -1,0 +1,52 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #1f2a33;
+}
+header h1 {
+  color: white;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+
+nav a {
+    text-decoration: none;
+    color: white;
+  }
+
+section {
+  background-image: url('/mountains.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  padding:80px 40px; 
+}
+
+section h2 {
+  color: white;
+  font-size: 48px;
+}
+
+section div {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+section button {
+  background-color: #1f6b43;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  }
+
+section small {
+  color: #ddd;
+  }
