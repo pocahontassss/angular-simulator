@@ -1,0 +1,17 @@
+@use './fonts/nunito-sans/_fonts';
+@use './normalize';
+
+* {
+    list-style: none;
+    text-decoration: none;
+  }
+
+body {
+  font-family: Nunito-Sans;
+}
+
+:root {
+  --primary-color: #fff;
+  --main-color: #FDFDFD;
+  --header-btn-color: #1A3E3E;
+}
