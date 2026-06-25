@@ -1,9 +1,9 @@
 export enum Colors {
-  Red = 'Red', 
+  Red = 'Red',
   Green = 'Green',
   Blue = 'Blue',
   Yellow = 'Yellow',
   Black = 'Black',
   White = 'White',
-  Orange = 'Orange'
+  Orange = 'Orange',
 }
