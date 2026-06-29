@@ -10,26 +10,24 @@ import './collection';
 import { HomePage } from './home-page/home-page';
 import { ShowMessageService } from './services/show-message-service';
 import { ToastMessages } from './toast-messages/toast-messages';
+import { LoaderComponent } from './loader/loader-component/loader-component';
+import { LoaderService } from './services/loader-service';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, RouterOutlet, Footer, Header, ToastMessages],
+  imports: [FormsModule, RouterOutlet, Footer, Header, ToastMessages, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [ShowMessageService]
 })
 export class AppComponent {
   private localStorageService: LocalStorageService = inject(LocalStorageService);
-  
-  public isLoading: boolean = true;
+  private loaderService: LoaderService = inject(LoaderService);
   
   constructor() {
     this.saveLastVisitDate();
     this.quantityVisits();
     
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1800);
+    this.showLoader();
   }
   
   isRgbColor(color: Colors): boolean {
@@ -62,6 +60,12 @@ export class AppComponent {
     
     this.localStorageService.setValue('numberVisits', (currentVisits+1).toString())
   }
+  
+  showLoader() {
+    this.loaderService.showLoader();
+  }
+  
+  hideLoader() {
+    this.loaderService.hideLoader();
+  }
 }
-
-

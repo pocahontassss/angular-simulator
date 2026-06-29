@@ -1,10 +1,147 @@
-.users-page {
+.user-page {
   display: flex;
-  width: 100%;
-  min-height: 800px;
-  background-color: rgb(204, 108, 108);
-  color: aqua;
-  align-items: center;
   justify-content: center;
-  font-size: 40px;
+  align-items: center;
+  background-color: #F3F5F4;
+  width: 100%;
+  flex-direction: column;
+  padding-bottom: 200px;
+  
+  .user-page__title {
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1.2;
+    margin: 200px 0px 80px 0px;
+  }
+  .user-page__grid {
+    display: flex;
+    max-width: 1460px;
+    flex-wrap: wrap;
+    gap: 50px 70px;
+    justify-content: center;
+    
+    .user-card {
+      width: 440px;
+      min-height: 630px;
+      padding: 0px 30px;
+      border-top: 4px solid #D4A373;
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      
+      .user-card__header {
+        padding: 35px 0px 45px 0px;
+        
+        .user-card__name {
+          font-weight: 800;
+          font-size: 26px;
+          line-height: 30px;
+          margin-bottom: 3px;
+        }
+        
+        .user-card__username {
+          color: #D4A373;
+          font-weight: 700;
+          font-size: 15px;
+          line-height: 17.25px;
+        }
+      }
+      
+      .user-card__content {
+        display: flex;
+        flex-direction: column;
+        gap: 24.6px;
+        
+        .user-card__section {
+          
+          .user-card__section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            
+            font-weight: 800;
+            font-size: 12px;
+            line-height: 13.8px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            
+            &::after {
+              content: '';
+              flex-grow: 1;
+              height: 1px;
+              background-color: #E2E8F0;
+            }
+          }
+          
+          .user-card__field {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            color: #667C7C;
+            font-weight: 400;
+            line-height: 19.6px;
+            font-size: 14px;
+            
+            &:not(:last-child) {
+              margin-bottom: 9.6px;
+            }
+            
+            span {
+              font-weight: 700;
+            }
+            
+            &--coordinates {
+              display: flex;
+              gap: 4px;
+              
+              .user-card__badge {
+                padding: 0.5px 6px;
+                background-color: rgba(244, 247, 245, 1);
+                border: 1px solid rgba(226, 232, 240, 1);
+                border-radius: 3px;
+                font-weight: 700;
+              }
+            }
+          }
+          
+          &--mission {
+            display: flex;
+            gap: 138px;
+            color: #667C7C;
+            font-weight: 400;
+            line-height: 19.6px;
+            font-size: 14px;
+            margin-bottom: 9.6px;
+            min-height: 43px;
+            
+            span {
+              max-width: 75%;
+              text-align: right;
+              color: #667C7C;
+              font-style: italic;
+              font-size: 13px;
+              line-height: 18.2px;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+    
+    .not-found-users {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      
+      width: 558px;
+      padding: 35px 35px;
+      background-color: #B15757;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 26px;
+      line-height: 1.2;
+      border-radius: 20px;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 <div class="toast-container">
-  @for (msg of messages; track msg.id) {
+  @for (msg of (message$ | async ); track msg.id) {
     <ng-container
     [ngTemplateOutlet]="showMessage"
     [ngTemplateOutletContext]="{$implicit: msg}">
@@ -17,7 +17,7 @@
       <p class="toast__text">{{ msg.message }}</p>
     </div>
     <span class="toast__close-btn">
-      <img src="/images/icons/close.svg" alt="Закрыть" (click)="deleteMsg(msg.id)">
+      <img src="/images/icons/close.svg" alt="Закрыть" (click)="deleteMessage(msg.id)">
     </span>
   </div>
 </ng-template>

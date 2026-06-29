@@ -1,0 +1,37 @@
+.loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #181818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  &__block {
+    width: 51px;
+    height: 51px;
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+    animation: rotate-loader 1.2s linear infinite; 
+  }
+}
+
+.app-container {
+  animation: fadeInSite 0.4s ease-in-out;
+}
+
+@keyframes rotate-loader {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInSite {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

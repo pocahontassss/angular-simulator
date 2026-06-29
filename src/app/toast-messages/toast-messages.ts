@@ -3,6 +3,7 @@ import { ShowMessageService } from '../services/show-message-service';
 import { IMessage } from '../../interfaces/IMessage';
 import { CommonModule } from '@angular/common';
 import { DecimalPipe, NgTemplateOutlet } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-toast-messages',
@@ -15,11 +16,11 @@ export class ToastMessages {
   
   constructor() {}
   
-  public get messages() {
-    return this.showMessageService.activeMessages;
+  public get message$(): Observable<IMessage[]> {
+    return this.showMessageService.message$;
   }
   
-  public deleteMsg(id: number): void {
+  public deleteMessage(id: number): void {
     this.showMessageService.deleteMessage(id);
   }
 }
