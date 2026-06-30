@@ -1,1 +1,151 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+@if (isLoading) {
+<div class="loader-container">
+  <img class="loading" src="/images/loading.png" alt="">
+</div>
+} @else {
+<header class="header">
+  <div class="main-header">
+    <div class="header-container">
+      <div class="company-logo">
+        <a href="">
+          <img class="vector-image" src="/images/vector-icon.svg" alt="">
+          <img class="name-image" src="/images/name-icon.svg" alt="">
+        </a>
+      </div>
+      <nav class="navigator">
+        <ul>
+          <li><a href="">Главная</a></li>
+          <li><a href="">Про гида</a></li>
+          <li><a href="">Программа тура</a></li>
+          <li><a href="">Стоимость</a></li>
+          <li><a href="">Блог</a></li>
+          <li><a href="">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="right-side-actions">
+        <button class="consultation-button">Консультация</button>
+        <div class="tasks-dropdown">
+          @if (taskFour) {
+          <div class="header-timer">{{currentDateTime}}</div>
+          }
+          @else {
+          <div class="click">
+            <button [disabled]="clickCount === 0" (click)="decrement()">-</button>
+            <button>{{ clickCount }}</button>
+            <button (click)="increment()">+</button>
+          </div>
+          }
+          <button (click)="toggleTask()" [ngClass]="taskFour ? 'task-four' : 'task-five'">
+            поменять
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="find-program">
+  <div class="banner"> </div>
+  <div class="title">
+    <h1 class="find-pr__title-name">
+      Насладись прогулкой в горах
+      <br> с командой единомышленников
+    </h1>
+  </div>
+
+  <div class="data-container">
+    <form class="fill-data">
+      <div class="input-wrapper">
+        <select [(ngModel)]="tourLocation" class="location" id="location" name="location" required>
+          <option value="" disabled selected hidden>Локация для тура</option>
+          <option value="almaty">Алматы (БАО, Чарынский каньон)</option>
+          <option value="borovoe">Боровое (Бурабай)</option>
+          <option value="altay">Алтай (Катон-Карагай)</option>
+          <option value="baikal">Байкал</option>
+          <option value="kamchatka">Камчатка</option>
+          <option value="caucasus">Кавказ (Эльбрус)</option>
+        </select>
+        <label class="describe-action" for="location">выберите из списка</label>
+      </div>
+
+      <div class="input-wrapper">
+        <input [(ngModel)]="tourDate" name="calendar" class="calendar" type="date" id="calendar"
+          placeholder="Дата похода" required>
+        <label class="describe-action" for="calendar">укажите дату</label>
+      </div>
+
+      <div class="input-wrapper">
+        <select [(ngModel)]="tourParticipants" class="participants" id="participants" name="participants" required>
+          <option value="" disabled selected hidden>Участники</option>
+          <option value="1">1 участник</option>
+          <option value="2">2 участника</option>
+          <option value="3">3-4 участника</option>
+          <option value="5">5-10 участников</option>
+          <option value="group">Большая группа (10+)</option>
+        </select>
+        <label class="describe-action" for="participants">выберите из списка</label>
+      </div>
+
+      <button [disabled]="!tourLocation || !tourDate || !tourParticipants" class="search-pr-button">Найти
+        программу</button>
+    </form>
+  </div>
+  <div class="live">
+    <input class="live-input" [(ngModel)]="inputValue">
+    <p class="live-text">Живой текст из переменной: {{ inputValue }}</p>
+  </div>
+</section>
+
+<section class="hike-info">
+  <div class="hike-pictures">
+    <img class="mountain-view-2" src="/images/mountain-view-2.png" alt="">
+    <img class="mountain-view-3" src="/images/mountain-view-3.png" alt="">
+  </div>
+  <div class="hike-title">
+    <span class="hike-subtitle">о нашем походе</span>
+    <h2 class="hike-title-name">
+      Исследуйте все горные массивы мира вместе с нами
+    </h2>
+    <p class="hike-description">
+      Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард
+      МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem
+      Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.
+    </p>
+    <button class="tour-pr-button">Программа тура</button>
+  </div>
+</section>
+
+<section class="hike-offer">
+  <div class="hike-offer__container">
+    <div class="offer-title">
+      <span class="offer-subtitle">наше предложение</span>
+      <h3 class="offer-title-name">Лучшие программы для тебя</h3>
+      <p class="offer-description">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард
+        МакКлинток, профессор латыни из колледжа.
+      </p>
+      <div class="offer-info">
+        @for (service of services; track service.id) {
+        <div class="offer-info__item" [class.active-service]="service.id === selectedServiceId"
+          (click)="selectService(service.id)">
+          <div class="offer-info__pictures">
+            <img class="service-picture" [src]="service.image" alt="">
+          </div>
+          <div class="offer-info__subtitle">
+            <h4>{{ service.title }}</h4>
+            <p class="offer-info__description">{{ service.description }}</p>
+          </div>
+        </div>
+        }
+      </div>
+      <button class="program-price-button">Стоимость программ</button>
+    </div>
+    <div class="offer-pictures">
+      <img class="mountain-view-4" src="/images/mountain-view-4.png" alt="">
+      <img class="mountain-view-5" src="/images/mountain-view-5.png" alt="">
+      <img class="mountain-view-6" src="/images/mountain-view-6.png" alt="">
+      <img class="mountain-view-7" src="/images/mountain-view-7.png" alt="">
+    </div>
+  </div>
+</section>
+}
