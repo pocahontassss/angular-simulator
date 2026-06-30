@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { IMessage } from '../../interfaces/IMessage';
 import { TypeMessages } from '../../enums/TypeMessages';
+import { BehaviorSubject, filter, Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ShowMessageService {
   
   public readonly defaultMessages: IMessage[] = [
@@ -12,13 +15,10 @@ export class ShowMessageService {
     { id: 4, type: TypeMessages.ERROR, message: 'Материалы недоступны' }
   ];
   
-  private addMessage(objMsg: IMessage) {
-    const newId = this.nextId++;
-    
-    this._activeMessages.unshift({id: newId, type: objMsg.type, message: objMsg.message});
-    
-    setTimeout(() => this.deleteMessage(newId), 5000);
-  }
+  private messageSubject: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
+  public readonly message$: Observable<IMessage[]> = this.messageSubject.asObservable();
+  
+  private nextId = 0;
   
   public showWarn(text: string) {
     this.defaultMessages[2].message = text;
@@ -40,16 +40,15 @@ export class ShowMessageService {
     this.addMessage(this.defaultMessages[1])
   }
   
-  
-  private _activeMessages: IMessage[] = [];
-  
-  private nextId = 0;
-  
-  public get activeMessages(): IMessage[] {
-    return this._activeMessages;
+  public deleteMessage(id: number) {
+    this.messageSubject.next(this.messageSubject.getValue().filter(msg => msg.id !== id));
   }
   
-  public deleteMessage(id: number) {
-    this._activeMessages = this.activeMessages.filter(msg => msg.id !== id);
+  private addMessage(objMsg: IMessage) {
+    const newId: number = this.nextId++;
+    
+    this.messageSubject.next([...this.messageSubject.getValue(),{id: newId, type: objMsg.type, message: objMsg.message}])
+    
+    setTimeout(() => this.deleteMessage(newId), 5000);
   }
 }

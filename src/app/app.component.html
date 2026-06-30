@@ -1,18 +1,9 @@
-@if (isLoading) {
-  <div class="loader-screen">
-    <div class="loader-screen__block">
-      <img class="loader-screen__icon" src="images/icons/loading.svg" alt="Loading...">
-    </div>
-  </div>
-} @else {
-  <app-header></app-header>
-  
-  <router-outlet></router-outlet>
+<app-header></app-header>
 
-  <app-toast-messages></app-toast-messages>
+<router-outlet></router-outlet>
 
-  <app-footer></app-footer>
-}
+<app-toast-messages></app-toast-messages>
 
+<app-footer></app-footer>
 
-
+<app-loader-component></app-loader-component>
