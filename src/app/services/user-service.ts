@@ -34,7 +34,9 @@ export class UserService {
           this.setUsers(users);
         }),
         catchError((err) => {
-          this.showMessageService.showError(err);
+          const errorMessage = err.error?.message || err.message || 'Произошла неизвестная ошибка';
+          
+          this.showMessageService.showError(errorMessage);
           return of([]);
           
         }),
