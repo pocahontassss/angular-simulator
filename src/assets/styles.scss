@@ -1,0 +1,18 @@
+@use './fonts';
+@use './normalize';
+
+* {
+  font-family: 'Nunito-Sans';
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 1180px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+:root {
+  --white-color: #fdfdfd;
+}

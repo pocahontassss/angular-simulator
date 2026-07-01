@@ -1,0 +1,129 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.link {
+  color: var(--white-color);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.top_screen {
+  height: 120px;
+  background-color: #18121e80;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      max-width: 145px;
+      margin: 30px 100px 30px 0;
+      align-items: center;
+
+      .logo_link {
+        text-decoration: none;
+        color: var(--white-color);
+
+        .title {
+          width: 132px;
+          height: 22px;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 22px;
+          letter-spacing: 0.4em;
+        }
+      }
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      list-style: none;
+
+      .menu_item + .menu_item {
+        margin-left: 24px;
+      }
+      .menu_item {
+        padding-top: 25px;
+      }
+    }
+
+    .btn_block {
+      margin-top: 38px;
+      margin-left: 120px;
+    }
+    .btn_link {
+      padding: 12px 25px;
+      border-radius: 4px;
+      background-color: aliceblue;
+      color: #0f2222;
+    }
+  }
+}
+.enjoy {
+  min-height: 865px;
+  width: 1920px;
+  width: 100%;
+  background-image: url(/images/mountain.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: var(--white-color);
+
+  .subtitle {
+    width: 1080px;
+    margin-top: 431px;
+    margin-bottom: 41px;
+    font-size: 50px;
+  }
+  .date_block {
+    display: flex;
+    flex-wrap: wrap;
+
+    .inputs_form {
+      display: flex;
+      justify-content: start;
+      align-items: flex-start;
+      width: 1180px;
+      gap: 24px;
+      padding: 40px 42px;
+      margin: 40px 42px 40px 0;
+      background-color: #ffffff33;
+      border-radius: 10px;
+
+      .form_list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .line {
+          width: 270px;
+          height: 52px;
+          padding: 14px;
+          font-size: 16px;
+          border-radius: 8px;
+          background-color: #ffffff33;
+
+          &::placeholder {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .enjoy_btn {
+    width: 213px;
+    height: 52px;
+    padding: 16px 36px;
+    font-size: 16px;
+    background-color: #1a3e3e;
+    border-radius: 4px;
+    color: var(--white-color);
+  }
+}

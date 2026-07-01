@@ -1,1 +1,58 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<div class="top_screen">
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a class="logo_link" href="/">
+          <img class="img" src="/images/logo.svg" alt="logo" />
+          <span class="title">{{ companyName }}</span>
+        </a>
+      </div>
+      <nav class="nav">
+        <ul class="menu">
+          <li class="menu_item"><a class="link menu_link" href="#">Главная</a></li>
+          <li class="menu_item"><a class="link menu_link" href="#">Про гида</a></li>
+          <li class="menu_item"><a class="link menu_link" href="#">Программа тура</a></li>
+          <li class="menu_item"><a class="link menu_link" href="#">Стоимость</a></li>
+          <li class="menu_item"><a class="link menu_link" href="#">Блог</a></li>
+          <li class="menu_item"><a class="link menu_link" href="#">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="btn_block"><a class="link btn_link" href="#">Консультация</a></div>
+    </div>
+  </header>
+</div>
+<main>
+  <section class="enjoy">
+    <div class="container">
+      <div class="date_block">
+        <h2 class="subtitle">Насладись прогулкой в горах с командой единомышленников</h2>
+        <div class="inputs_form">
+          <div class="form_list">
+            <input class="line" list="cities" placeholder="Выберите город" />
+            <datalist id="cities">
+              <option value="Бишкек"></option>
+              <option value="Ош"></option>
+              <option value="Каракол"></option>
+            </datalist>
+            <label>выберите из списка</label>
+          </div>
+          <div class="form_list">
+            <input class="line" type="date" id="date" placeholder="Дата похода" />
+            <label for="date">укажите дату:</label>
+          </div>
+
+          <div class="form_list">
+            <input list="users" class="line" id="inputt" placeholder="Участники" />
+            <datalist id="users">
+              <option value="Aisha"></option>
+              <option value="usuf"></option>
+              <option value="Zhanarbek"></option>
+            </datalist>
+            <label for="inputt">выберите из списка</label>
+          </div>
+          <button class="enjoy_btn">Найти программу</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
