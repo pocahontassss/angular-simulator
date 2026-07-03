@@ -1,8 +1,6 @@
 @if (isLoading) {
   <div class="loader-wrapper">
     <div class="spinner">
-      <img src="/image/loader-spinner.svg" alt="Загрузка" class="spinner-icon" 
-           onerror="this.style.display='none'">
       <div class="spinner-fallback"></div>
     </div>
     <p class="loader-text">Загрузка горных вершин...</p>
@@ -19,7 +17,8 @@
         <a id="nav-link-main" class="nav-item" href="#main">Главная</a>
         <a id="nav-link-guide" class="nav-item" href="#guide">Про гида</a>
         <a id="nav-link-program" class="nav-item" href="#program">Программа</a>
-        <a id="nav-link-contacts" class="nav-item" href="#contacts">Контакты</a>
+        <a id="nav-link-destinations" class="nav-item" href="#destinations">Направления</a>
+        <a id="nav-link-blog" class="nav-item" href="#blog">Блог</a>
       </nav>
       
       <div class="header-widget">
@@ -35,9 +34,20 @@
         
         @if (currentMode === 'counter') {
           <div class="widget-content">
-            <button id="btn-counter-minus" class="btn-control minus" (click)="decrement()" [disabled]="count === 0">−</button>
+            <button 
+              id="btn-counter-minus" 
+              class="btn-control minus" 
+              (click)="decrement()" 
+              [disabled]="count === 0">
+              −
+            </button>
             <span class="count-display">{{ count }}</span>
-            <button id="btn-counter-plus" class="btn-control plus" (click)="increment()">+</button>
+            <button 
+              id="btn-counter-plus" 
+              class="btn-control plus" 
+              (click)="increment()">
+              +
+            </button>
           </div>
         }
       </div>
@@ -55,7 +65,11 @@
 
       <div class="search-panel">
         <div class="form-group">
-          <select id="select-location" name="location" [(ngModel)]="selectedLocation" class="field-base select-field">
+          <select 
+            id="select-location" 
+            name="location" 
+            [(ngModel)]="selectedLocation" 
+            class="field-base select-field">
             <option value="" disabled hidden>Локация для тура</option>
             <option value="dag">Дагестан</option>
             <option value="altai">Алтай</option>
@@ -64,12 +78,21 @@
         </div>
 
         <div class="form-group">
-          <input id="input-date" name="date" type="date" [(ngModel)]="selectedDate" class="field-base">
+          <input 
+            id="input-date" 
+            name="date" 
+            type="date" 
+            [(ngModel)]="selectedDate" 
+            class="field-base">
           <span class="field-hint">укажите дату</span>
         </div>
 
         <div class="form-group">
-          <select id="select-members" name="members" [(ngModel)]="selectedMembers" class="field-base select-field">
+          <select 
+            id="select-members" 
+            name="members" 
+            [(ngModel)]="selectedMembers" 
+            class="field-base select-field">
             <option value="" disabled hidden>Участники</option>
             <option value="2">2 человека</option>
             <option value="4">4 человека</option>
@@ -77,8 +100,10 @@
           <span class="field-hint">выберите из списка</span>
         </div>
 
-        <button id="btn-search-submit" class="btn-search" 
-                [disabled]="!selectedLocation || !selectedDate || !selectedMembers">
+        <button 
+          id="btn-search-submit" 
+          class="btn-search" 
+          [disabled]="!selectedLocation || !selectedDate || !selectedMembers">
           Найти программу
         </button>
       </div>
@@ -142,4 +167,85 @@
       </div>
     </div>
   </section>
+
+  <section id="destinations" class="destinations-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="sub-title-yellow">по версии отдыхающих</span>
+        <h2 class="section-main-title text-dark">Популярные направления</h2>
+      </div>
+
+      <div class="destinations-grid">
+        @for (item of destinations; track item.id) {
+          <div class="destination-card" [style.background-image]="'url(/image/' + item.image + ')'">
+            <div class="card-rating">
+              <img class="star-icon" src="/star-rating.svg" alt="Рейтинг">
+              {{ item.rating | number:'1.1-1' }}
+            </div>
+            <div class="card-footer-blur">
+              <div class="card-info">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.subtitle }}</p>
+              </div>
+              <div class="card-price">{{ item.price }}</div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="text-center btn-wrapper">
+        <button class="btn-dark-teal" (click)="showRatingAlert()">Рейтинг направлений</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" class="blog-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="sub-title-yellow">делимся впечатлениями</span>
+        <h2 class="section-main-title text-dark">Блог о путешествиях</h2>
+      </div>
+
+      <div class="blog-grid">
+        @for (article of blogArticles; track article.id) {
+          <div class="blog-card" (click)="openArticle(article.title)">
+            <div 
+              class="blog-card-img" 
+              [style.background-image]="'url(/image/' + article.image + ')'">
+            </div>
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">{{ article.title }}</h3>
+              <p class="blog-card-desc">{{ article.description }}</p>
+              <div class="blog-card-footer">
+                <span class="blog-date">{{ article.date }}</span>
+                <span class="blog-link">читать статью</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="text-center btn-wrapper">
+        <button class="btn-dark-teal">Другие материалы</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="messages-container">
+    @for (messageItem of messages; track messageItem.id) {
+      <ng-container 
+        [ngTemplateOutlet]="messageTemplate" 
+        [ngTemplateOutletContext]="{ msgContext: messageItem }">
+      </ng-container>
+    }
+  </div>
+
+  <ng-template #messageTemplate let-messageData="msgContext">
+    <div class="toast-message" [ngClass]="'toast-' + messageData.type">
+      <div class="toast-content">
+        <span class="toast-text">{{ messageData.text }}</span>
+        <button class="toast-close-btn" (click)="handleCloseMessage(messageData.id)">×</button>
+      </div>
+    </div>
+  </ng-template>
 }
