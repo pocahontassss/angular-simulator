@@ -1,3 +1,8 @@
+@if (isLoading) {
+<div class="loader-overlay">
+  <div class="spinner"></div>
+</div>
+}
 <header>
   <h1 style="display: flex; justify-content: center; font-family: sans-serif;">{{ companyName }}</h1>
   <nav>
@@ -10,25 +15,77 @@
       <li><a href="#">Контакты</a></li>
     </ul>
   </nav>
+  <input [(ngModel)]="liveText" placeholder="печатай сюда">
+  <span>{{ liveText }}</span>
   <button>Консультация</button>
+  <button (click)="showTask4 = !showTask4">{{ showTask4 ? 'Показать счётчик' : 'Показать таймер' }}</button>
+  @if (showTask4) {
+  <p>{{ currentDate }}</p>
+  } @else {
+  <button (click)="count = count + 1">+</button>
+  <button (click)="count = count -1" [disabled]="count === 0">-</button>
+  <span>{{ count }}</span>
+  }
 </header>
-<section>
+<section class="hero">
   <h2>Насладись прогулкой в горах с командой единомышленников</h2>
   <div>
-    <select>
+    <select [(ngModel)]="location">
       <option>Локация для тура</option>
       <option>Эльбрус</option>
     </select>
     <small>выберите из списка</small>
 
-    <input type="date">
+    <input type="date" [(ngModel)]="date">
     <small>укажите дату</small>
 
-    <select>
+    <select [(ngModel)]="participants">
       <option>Участники</option>
     </select>
     <small>выберите из списка</small>
 
-    <button>Найти программу</button>
+    <button [disabled]="!location || !date || !participants">Найти программу</button>
+
+  </div>
+</section>
+<section class="about">
+  <div class="photos">
+    <img src="mountains-clouds.png" alt="горный пейзаж в облках">
+    <img class="front" src="house-forest.png" alt="дервянный домик в лесу">
+  </div>
+  <div>
+    <span class="subtitle">О нашем походе</span>
+    <h2>Исследуйте все горные массивы мира вместе с намии</h2>
+    <p>
+      Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард
+      МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в
+      Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.
+    </p>
+    <a class="btn">программа тура</a>
+  </div>
+</section>
+
+<section class="programs">
+  <div>
+    <span class="subtitle">наше предложение</span>
+    <h2>Лучшие программы для тебя</h2>
+    <p>Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард
+      МакКлинток, профессор латыни из колледжа.</p>
+    @for (item of items; track item.id) {
+    <div class="card">
+      <img src="{{ item.icon }}" alt="{{ item.title }}">
+      <div>
+        <h3>{{item.title}}</h3>
+        <p>{{item.text}}</p>
+      </div>
+    </div>
+    }
+    <a class="btn">Стоимость программ</a>
+  </div>
+  <div class="gallery">
+    <img src="program-1.png" alt="кофейная чашка на фоне водоема">
+    <img src="program-2.png" alt="человек на фоне каньона">
+    <img src="program-3.png" alt="человек за снегоходом на фоне снежных гор">
+    <img src="program-4.png" alt="горная долина с рыжими минеральными потоками">
   </div>
 </section>
