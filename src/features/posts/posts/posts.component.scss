@@ -1,0 +1,41 @@
+:host {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+tr {
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+p-table {
+  .p-table-wrapper {
+    .p-datatable-table {
+      td,
+      th {
+        padding: 12px 14px;
+      }
+    }
+  }
+}
+
+p-contextmenu {
+  min-width: 180px;
+}
+
+p-dialog {
+  .p-dialog-header {
+    font-weight: 600;
+  }
+
+  .p-dialog-content {
+    padding: 16px;
+  }
+}

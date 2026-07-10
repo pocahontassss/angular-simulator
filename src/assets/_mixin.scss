@@ -1,0 +1,34 @@
+@mixin title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin footer-subtitle {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@mixin footer-list {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--primary-color);
+}
+
+@mixin text-18 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+}
+
+@mixin white-bold-14 {
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0%;
+}

@@ -1,0 +1,42 @@
+:host {
+  display: block;
+}
+
+.loader-overlay.loader-lock {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  overflow: hidden !important;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all !important;
+  user-select: none !important;
+  touch-action: none !important;
+  cursor: wait !important;
+}
+
+.loader-spinner {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-spinner img {
+  width: 64px;
+  height: 64px;
+  display: block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

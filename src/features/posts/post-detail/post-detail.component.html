@@ -1,0 +1,31 @@
+@if (post) {
+  <article class="post-detail">
+    <header class="post-header">
+      <h2>{{ post.title }}</h2>
+      <div class="post-info">
+        <span>ID: {{ post.id }}</span>
+        <span class="views">{{ post.views }}</span>
+      </div>
+    </header>
+    <section class="post-body">
+      <p>{{ post.body }}</p>
+    </section>
+    <section class="post-meta">
+      <div class="tags">
+        <span class="tag-label">Теги:</span>
+        @for (tag of post.tags; track $index) {
+          <span class="tag">{{ tag }}</span>
+        }
+      </div>
+      <div class="author-info">
+        <span class="author-label">Автор:</span>
+        <span>{{ post.author }}</span>
+      </div>
+    </section>
+  </article>
+} @else {
+  <div class="error">
+    <p>Пост не найден или произошла ошибка при загрузке.</p>
+    <button routerLink="['/posts', post.id]" class="btn btn-secondary">Вернуться к списку</button>
+  </div>
+}

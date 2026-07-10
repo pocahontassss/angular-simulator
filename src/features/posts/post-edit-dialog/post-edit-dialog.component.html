@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-field">
+    <label>Title:</label>
+    <input pInputText formControlName="title" />
+  </div>
+  <div class="form-field">
+    <label>Tags:</label>
+    <input pInputText formControlName="tags" />
+  </div>
+  <div class="form-field">
+    <label>Views:</label>
+    <input pInputText formControlName="views" type="number" />
+  </div>
+  <div class="form-actions">
+    <button id="save-btn" pButton type="submit" label="Сохранить" [disabled]="loaderService.isLoading$ | async"></button>
+    <button id="close-btn" pButton type="button" label="Закрыть" (click)="close()" [disabled]="loaderService.isLoading$ | async"></button>
+  </div>
+</form>

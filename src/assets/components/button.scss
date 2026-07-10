@@ -1,0 +1,80 @@
+.btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 4px;
+  padding: 12px 24px;
+  color: var(--primary-color);
+  background-color: var(--tertiary-color);
+}
+
+.btn_input {
+  width: 213px;
+  height: 52px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 4px;
+  padding: 16px 36px;
+  color: var(--tertiary-color);
+
+  &:not(:disabled) {
+    background-color: white;
+    color: var(--tertiary-color);
+  }
+}
+
+.hike__btn {
+  width: 200px;
+  height: 62px;
+  padding: 16px 36px;
+  @extend .btn;
+}
+
+.offers__btn {
+  width: 236px;
+  height: 52px;
+  padding: 16px 36px;
+  @extend .btn;
+}
+
+.btn-minus {
+  font-size: 24px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.btn-plus {
+  @extend .btn-minus;
+}
+
+.btn-tour {
+  @extend .btn;
+  width: 244px;
+  height: 52px;
+  padding: 16px 36px;
+  font-style: SemiBold;
+}
+
+.btn-travel {
+  @extend .btn;
+  width: 220px;
+  height: 52px;
+  padding: 16px 36px;
+  font-style: SemiBold;
+}
+
+.impression-btn {
+  @extend .btn;
+  padding: 16px 36px;
+}
+
+.footer__btn {
+  @extend .btn;
+  letter-spacing: 1.2%;
+}

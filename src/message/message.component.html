@@ -1,0 +1,16 @@
+<ng-template #messages let-toast="toast">
+  <div class="message" [attr.data-id]="toast.id">
+    <img class="icon-message" src="/images/service/icon-message.svg">
+    <h4>{{ toast.type }}</h4>
+    <p>{{ toast.text }}</p>
+    <img (click)="toastService.closeMessage(toast.id)" class="close-button" src="/images/service/icon-close.svg">
+  </div>
+</ng-template>
+<div class="message-container">
+  @for (toast of toastService.toasts$ | async; track $index) {
+    <ng-container 
+      [ngTemplateOutlet]="messages" 
+      [ngTemplateOutletContext]="{ toast: toast }">
+    </ng-container>
+  }
+</div>

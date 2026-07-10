@@ -1,0 +1,197 @@
+<section class="header">
+  <div class="container">
+    <div class="header__main">
+      <h1 class="header__title">Насладись прогулкой в горах с&nbsp;командой единомышленников</h1>
+      <div class="header__form">
+        <form class="form" #searchForm="ngForm" (ngSubmit)="onSearchSubmit(searchForm)">
+          <div class="field">
+            <div class="field-input">
+              @if (!selectedLocation) {
+                <span>Локация для тура</span>
+              } @else {
+                  <span>{{ selectedLocation }}</span>
+                }
+              <select id="tour-location-select" class="field-control__location" name="location" [(ngModel)]="selectedLocation">
+                <option value="" disabled>Локация для тура</option>
+                @for (location of locations; track location.id) {
+                  <option [value]="location.id">{{ location.name }}</option>
+                  }
+              </select>
+            </div>
+            <span>выберите из списка</span>
+          </div>
+          <div class="field">
+            <div class="field-input">
+              @if (!selectedDate) {
+                <span>Дата похода</span>
+              } @else {
+                  <span>{{ selectedDate }}</span>
+                }
+              <input id="tour-date-input" class="field-control__date" type="date" [(ngModel)]="selectedDate" name="date">
+            </div>
+            <span>укажите диапазон</span>
+          </div>
+          <div class="field">
+            <div class="field-input">
+              @if (!selectedCount) {
+                <span>Участники</span>
+              } @else {
+                  <span>{{ selectedCount }}</span>
+                }
+              <select id="tour-participants-select" class="field-control__participants" name="participants" [(ngModel)]="selectedCount">
+                <option value="" disabled>Участники</option>
+                @for (participant of participants; track participant.id) {
+                  <option [value]="participant.value">{{ participant.value }}</option>
+                }
+              </select>
+            </div>
+            <span>минимум 4 человека</span>
+          </div>
+          <button id="tour-search-btn" class="btn_input" type="submit" [disabled]="!selectedLocation || !selectedCount || !selectedDate">Найти программу</button>
+        </form>
+      </div>
+      <div class="live-input-container">
+        <input type="text" class="live-input" [(ngModel)]="liveText" placeholder="Живой инпут" name="liveInput">
+        <span class="live-output">{{ liveText }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="hike">
+  <div class="hike__wrapper">
+    <div class="container">
+      <div class="hike__content">
+        <div class="hike__gallery">
+          <img class="hike__img hike__img--bottom" src="./images/hike-rocks.png" alt="Скалы">
+          <img class="hike__img hike__img--top" src="./images/hike-foothills.png" alt="Предгорья">
+        </div>
+        <div class="hike__info">
+          <div class="hike__info-wrap">
+            <div class="hike__title-block">
+              <span class="subtitle">О нашем походе</span>
+              <h2 class="title">Исследуйте все горные массивы мира вместе с нами</h2>
+            </div>
+            <p class="hike__text">
+                Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+                тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney,
+                штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"
+                и занялся его поисками в классической латинской литературе.
+            </p>
+            <button (click)="toastService.showWarning('Программа не доступна!')" class="hike__btn">Программа тура</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="offers">
+  <div class="container">
+    <div class="offers__wrapper">
+      <div class="offers__content">
+        <div class="offers__info">
+          <div class="offers__title-block">
+            <span class="subtitle">наше предложение</span>
+            <h2 class="title">Лучшие программы для тебя</h2>
+          </div>
+          <p class="offers__text">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+          @for (offer of offers; track offer.id) {
+            <div class="offers__item">
+              <fa-icon [icon]="offer.icon"></fa-icon>
+              <div class="offers__card">
+                <h3>{{ offer.title }}</h3>
+                <p>{{ offer.description }}</p>
+              </div>  
+            </div>
+          }
+          <button (click)="toastService.showInfo('Стоимость отправлена!')" id="programs-pricing-btn" class="offers__btn">Стоимость программ</button>
+        </div>
+        <div class="offers__gallery">
+          @for (slide of gallerySlides; track slide.id) {
+            <img [src]="'./images/' + slide.icon + '.png'" [alt]="slide.title">
+          }
+        </div> 
+      </div>
+    </div>
+  </div>
+</section>
+<section class="popular-directions">
+  <div class="container">
+    <div class="popular-wrap">
+      <div class="popular__title-block">
+        <span class="subtitle">по версии отдыхающих</span>
+        <h2 class="title">Популярные направления</h2>
+      </div>
+      <div class="tour-cards">
+        @for (tour of tours; track tour.id) {
+          <div class="tour-card">
+            <img [src]="'./images/' + tour.icon + '.png'" [alt]="tour.title">
+            <div class="tour-card__rating">
+              <div class="tour-card__rating-group">
+                <div class="tour-card__rating-icon">
+                  <img src="./images/icon-rating .svg" alt="">
+                </div>
+                <span>{{ tour.rating }}</span>
+              </div>
+            </div>
+            <div class="tour-card__content">
+              <div class="tour-card__text-block">
+                <h3 class="title-tour">{{ tour.title }}</h3>
+                <span>{{ tour.subtitle }}</span>
+              </div>
+              <div class="tour-card__price-block">
+                <span>{{ tour.price }}</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="btn__tour-container">
+        <button (click)="toastService.showSuccess('Направление забронировано!')" class="btn-tour">Рейтинг направлений</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="travel">
+  <div class="container">
+    <div class="travel-blog__wrap">
+      <div class="travel-blog__title-block">
+        <span class="subtitle">делимся впечатлениями</span>
+        <h2 class="title">Блог о путешествиях</h2>
+      </div>
+      <div class="travel-blogs">
+        @for (travel of travels; track travel.id) {
+          <div class="travel-blog" [ngClass]="{'travel-blog--hover': travel.id === 2}">
+            <img [src]="'./images/' + travel.icon + '.png'" [alt]="travel.title">
+            <div class="travel-blog-card__content">
+              <h3 class="title-travel">{{ travel.title }}</h3>
+              <p class="travel-blog-card__text">{{ travel.text }}</p>
+              <div class="travel-blog-card__footer">
+                <span class="card__date">{{ travel.date }}</span>
+                <a [href]="travel.href" class="card__link">{{ travel.linkText }}</a>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="btn__travel-container">
+        <button (click)="toastService.showError('Материалы недоступны')" class="btn-travel">Другие материалы</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="impression">
+  <div class="container">
+    <div class="impression__wrapper">
+      <div class="impression__title-block">
+        <span class="subtitle">фото-отчет</span>
+        <h2 class="title">Делимся впечатлениями</h2>
+      </div>
+      <div class="impression__gallery">
+        @for (slide of impressionSlides; track slide.id) {
+          <img [src]="'./images/impression/' + slide.icon + '.png'" [alt]="slide.title">
+        }
+      </div>
+      <button class="impression-btn">Наш pinterest</button>
+    </div>
+  </div>
+</section>

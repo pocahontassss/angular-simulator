@@ -1,0 +1,64 @@
+<div class="user-card" animatedGradient>
+  <h2 class="user-card__title">{{ user.name }}</h2>
+  <p class="user-card__username color-yellow">{{ user.username }}</p>
+  <h3 class="user-card__subtitle">Контакты</h3>
+  <div class="user-card__section">
+    <div class="user-card__row">
+      <p class="user-card__label">Эл. почта:</p>
+      <span class="user-card__value color-yellow">{{ user.email }}</span>
+    </div>
+    <div class="user-card__row">
+      <p class="user-card__label">Телефон:</p>
+      <span class="user-card__value">{{ user.phone | phone: phoneFormat.INTERNATIONAL }}</span>
+    </div>
+    <div class="user-card__row">
+      <p class="user-card__label">Веб-сайт:</p>
+      <span class="user-card__value color-yellow">{{ user.website || 'неизвестно' }}</span>
+    </div>
+  </div>
+  <h3 class="user-card__subtitle">Адрес проживания</h3>
+  <div class="user-card__section">
+    <div class="user-card__row">
+      <p class="user-card__label">Город:</p>
+      <span class="user-card__value">{{ user.address.city }}</span>
+    </div>
+    <div class="user-card__row">
+      <p class="user-card__label">Улица:</p>
+      <span class="user-card__value">{{ user.address.street }}</span>
+    </div>
+    <div class="user-card__row">
+      <p class="user-card__label">Офис:</p>
+      <span class="user-card__value">{{ user.address.suite || 'неизвестно' }}</span>
+    </div>
+    <div class="user-card__row">
+      <p class="user-card__label">Индекс:</p>
+      <span class="user-card__value">{{ user.address.zipcode }}</span>
+    </div>
+    <div class="user-card__row user-card__row--coords">
+      <p class="user-card__label">Координаты:</p>
+      <div class="user-card__coords">
+        <span class="user-card__coord">{{ user.address.geo.lng }}</span>
+      </div>
+    </div>
+  </div>
+  <h3 class="user-card__subtitle">Место работы</h3>
+  <div class="user-card__section">
+    <div class="user-card__row">
+      <p class="user-card__label">Компания:</p>
+      <span class="user-card__value">{{ user.company.name }}</span>
+    </div>
+    <div class="user-card__row mb26">
+      <p class="user-card__label">Миссия:</p>
+      <span class="user-card__value text-italic">{{ user.company.catchPhrase || 'неизвестно'}}</span>
+    </div>
+    <div class="user-card__row">
+      <p class="user-card__label">Специализация:</p>
+      <span class="user-card__value">{{ user.company.bs || 'неизвестно' }}</span>
+    </div>
+  </div>
+  <div class="user-card__delete">
+  <button BoldOnHover (click)="onDeleteUser()" class="delete-btn">
+    Удалить пользователя
+  </button>
+</div>
+</div>

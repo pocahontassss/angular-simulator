@@ -1,0 +1,47 @@
+<div class="post-create">
+  <h1>Создать пост</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+      <label for="title">Title:</label>
+      <input id="title" pInputText formControlName="title" placeholder="Введите название поста"/>
+    </div>
+    <div class="form-field">
+      <label for="content">Content:</label>
+      <textarea id="content" formControlName="content" rows="5" placeholder="Введите содержание поста"></textarea>
+    </div>
+    <div class="form-field">
+      <label for="tags">Tags (через запятую):</label>
+      <input 
+        id="tags"
+        pInputText 
+        formControlName="tags" 
+        placeholder="angular, typescript, primeNG"
+      />
+    </div>
+    <div class="form-field">
+      <label for="author">Author:</label>
+      <input 
+        id="author"
+        pInputText 
+        formControlName="author" 
+        placeholder="Введите имя автора"
+      />
+    </div>
+    <div class="form-actions">
+      <button 
+        pButton 
+        type="submit" 
+        label="Создать" 
+        [disabled]="form.invalid"
+        class="btn-primary"
+      ></button>
+      <button 
+        pButton 
+        type="button" 
+        label="Назад" 
+        routerLink="/posts" 
+        class="btn-secondary"
+      ></button>
+    </div>
+  </form>
+</div>

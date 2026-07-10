@@ -1,0 +1,63 @@
+<header class="header">
+  <p-toggleswitch
+    id="toggle-mode"
+    class="switch-mode"
+    [ngModel]="themeService.isDarkMode$ | async"
+    (onChange)="toggleMode($event)"
+  >
+  </p-toggleswitch>
+  <div class="switch-themes">
+    <p-selectbutton
+      id="switch-theme"
+      [options]="themeService.themeOptions"
+      [ngModel]="themeService.theme$ | async"
+      (onChange)="toggleTheme($event.value)"
+      optionLabel="label"
+      optionValue="value"
+      aria-labelledby="basic"
+    />
+  </div>
+  <div class="container">
+    <div class="header__wrapper">
+      <div class="header__logo">
+        <img src="/images/rumtibet-logo.svg" alt="Логотип компаний Румтибет">
+        <span class="company-name">{{ companyName | uppercase }}</span>
+      </div>
+      <div class="header__top">
+        <nav class="header__nav" role="navigation" aria-label="Главное меню">
+        @for (navItem of navItems; track navItem.id) {
+          <a 
+            [routerLink]="navItem.link"
+            [id]="navItem.id"
+            class="header__link"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: navItem.id === 'main-page' }">
+            {{ navItem.title }}</a>
+        }
+        </nav>
+        <div class="header-auth">
+          @if (user$ | async; as user) {
+            <span class="user-name">{{ user.firstName }} {{ user.lastName }}</span>
+            <button type="button" (click)="logout()">Выйти</button>
+          }
+        </div>
+        <div class="header__actions">
+          <button id="consultation-btn" class="btn btn--primary">Консультация</button>
+        </div>
+      </div>
+    </div>
+    <div class="timer__clicker">
+      <button id="show-date-btn" class="btn btn--primary" (click)="setWidget('dateTime')">Показать дату</button>
+      @if (currentWidget === 'dateTime') {
+        <span class="timer">{{ formattedDateTime }}</span>
+      } @else {
+          <div class="clicker-container">
+            <button class="btn-plus" (click)="incrementCounter()">+</button>
+            <span class="current-account">{{ counter }}</span>
+            <button class="btn-minus" (click)="decrementCounter()" [disabled]="counter <= 0">-</button>
+          </div>
+        }
+      <button id="show-clicker-btn" class="btn btn--primary" (click)="setWidget('counter')">Показать кликер</button>
+    </div>
+  </div>
+</header>

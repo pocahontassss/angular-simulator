@@ -1,0 +1,74 @@
+@use '../assets/_mixin.scss' as *;
+@use '../assets/styles.scss' as *;
+
+.header__wrapper {
+  padding-top: 16px;
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  gap: 212px;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8.79px;
+}
+
+.company-name {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 6.5px;
+}
+
+.header__top {
+  width: 831px;
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 14px 0;
+}
+
+.header__nav {
+  display: flex;
+  gap: 24px;
+}
+
+.header__link {
+  color: inherit;
+  font-weight: 600;
+  font-size: 18px;
+
+  &.active-link {
+    color: #ffffff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  }
+}
+
+.header__actions {
+  padding: 12px 24px;
+}
+
+.timer__clicker {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 44px;
+  width: 100%;
+  gap: 25px;
+  margin-top: 5px;
+  padding-right: 24px;
+}
+
+.current-account {
+  padding: 10px;
+}
+

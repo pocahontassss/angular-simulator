@@ -1,0 +1,58 @@
+@use './fonts';
+@use './normalize';
+@use './components/button.scss';
+@use './components/titles.scss';
+
+* {
+  font-family: "Nunito Sans";
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #FDFDFD;
+  --secondary-color: #18121E;
+  --tertiary-color: #1A3E3E;
+  --quaternary-color:#F2BE22;
+}
+
+.my-app-dark {
+  --surface-ground: #121212;
+  --surface-section: #1e1e1e;
+  --surface-card: #2d2d2d;
+  --text-color: #e0e0e0;
+  --primary-color: #6366f1;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+body.loader-lock {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+}
+
+@keyframes gradientMove {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.fw4 {
+  font-weight: 400;
+}
+
+.fs18 {
+  font-size: 18px;
+}
+
+.fs26 {
+  font-size: 26px;
+}
+
+.mb26 {
+  margin-bottom: 26px;
+}

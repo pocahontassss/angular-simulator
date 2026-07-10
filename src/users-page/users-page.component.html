@@ -1,0 +1,20 @@
+<section class="section-user-page">
+  <div class="user-page">
+    <h1 class="user-page__title">Страница пользователей</h1>
+    <p class="user-page__count">{{ (usersCount$ | async) ?? 0 | plural: 'пользователь':'пользователя':'пользователей' }}</p>
+    <app-create-user (createUser)="onCreateUser($event)"></app-create-user>
+    <app-users-filter (filterChange)="onFilterChange($event)"></app-users-filter>
+    <div class="user-cards">
+      @for (user of filteredUsers$ | async; track user.id) {
+        <app-user-card 
+          [user]="user"
+          (deleteUser)="onDeleteUser($event)">
+        </app-user-card>
+      } @empty {
+        <div class="message-not-users">
+          <p class="text">Нет пользователей для отображения</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
