@@ -1,4 +1,6 @@
+import { Traning } from './training';
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  title = 'angular-simulator';
 
+  myTraining = new Traning();
 }
