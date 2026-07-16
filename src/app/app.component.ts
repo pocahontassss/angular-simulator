@@ -1,9 +1,11 @@
-import { Component, ɵresetIncrementalHydrationEnabledWarnedForTests } from '@angular/core';
+import { Component, input, ɵresetIncrementalHydrationEnabledWarnedForTests, OnInit} from '@angular/core';
 import { user } from './training';
 import { Colors } from '../enum/Color';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { timestamp } from 'rxjs';
 import { Collection } from './collections';
+import { FormsModule } from '@angular/forms';
+import { HtmlParser } from '@angular/compiler';
 
 
 interface User {
@@ -13,7 +15,7 @@ interface User {
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -39,6 +41,14 @@ export class AppComponent {
     this.saveSunsetTime();
     this.quantityVisitToSite();
     this.initCollections();
+
+    // таймер в шапе 16 дз, 4 задание
+    this.updateClock();
+
+    setInterval(() => {
+      this.updateClock();
+    }, 1000);
+  
   }
 
   saveSunsetTime(): void {
@@ -80,11 +90,84 @@ export class AppComponent {
   console.log(usersCollection.getAll())
   }
 
+  featuresList = [
+    {
+      icon: "/images/guide-icon.svg ",
+      title: "Опытный гид ",
+      description: "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации. "
+    },
+    {
+      icon: "/images/security-icon.svg ",
+      title: "Безопасный поход ",
+      description: "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации. "
+    },
+    {
+      icon: "/images/price-icon.svg ",
+      title: "Лояльные цены ",
+      description: "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации. "
+    }
+  ];
+
+  location: string = '';
+  date: string = '';
+  participants: string = '';
+
+
+  currentTime: string = '';
+
   
+  // таймер в шапке 
+
+  updateClock() {
+    const now = new Date();
+
+    this.currentTime = now.toLocaleString();
+  }
 
 
+  counter: number = 0;
+
+  increment() {
+    this.counter++;
+  }
+
+  decrement() {
+    if (this.counter > 0) {
+      this.counter--
+    }
+  }
+  
+  // 6 задание 16 дз
+
+  showTimer: boolean = true;
+
+  toggleWidget() {
+    this.showTimer = !this.showTimer;
+  }
+
+  // 7 задание 16 дз 
+
+  liveText: string = "";
+
+  updateText(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.liveText = inputElement.value;
+  }
+
+  // 8 задание загрузка страницы 
+
+  isLoading: boolean = true;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+  }
 
 };
+
+
+
 
 
 console.log(user);

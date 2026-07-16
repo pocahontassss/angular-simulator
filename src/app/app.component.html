@@ -1,21 +1,43 @@
+
+@if (isLoading) {
+<div class="loading-container">
+  <img class="spinner-image" src="/images/loading-svg.svg" alt="Loading...">
+</div>
+} @else {
 <header class="container-header">
   <div class="header-navigator">
   <div class="header-icon">
     <img src="/images/logo-main.svg" alt="">    
   </div>
-  <div class="header-2">
-    <p>Главная</p>
-    <p>Про гида</p>
-    <p>Программа тура</p>
-    <p>Стоимость</p>
-    <p>Блог</p>
-    <p>Контакты</p>
-  </div>
+    <nav class="header-2">
+      <a href="#">Главная</a>
+      <a href="#">Про гида</a>
+      <a href="#">Программа тура</a>
+      <a href="#">Стоимость</a>
+      <a href="#">Блог</a>
+      <a href="#">Контакты</a>
+    </nav>
   <div class="consultation-header">
     <button class="consultation-btn">Консультация</button>
   </div>
+  <div class="timer-widgets">
+    <button class="toggle-btn" (click)="toggleWidget()">
+      {{ showTimer ? "Показать счетчик" : "Показать таймер" }}
+    </button>
+    @if (showTimer) {
+      <div class="timer">
+        {{ currentTime }}
+      </div>
+    } @else {
+      <div class="counter-block">
+        <button (click)="decrement()" [disabled]="counter === 0"> - </button>
+        <span> {{counter}} </span>
+        <button (click)="increment()"> + </button>
+      </div>
+    }
+    </div>
   </div>
-</header>
+</header>}
 <section class="banner">
   <div class="text-banner">
     <h4>Насладись прогулкой в горах <br>с командой единомышленников</h4>
@@ -23,32 +45,95 @@
 
   <div class="program-selector">
     <div class="selector-field">
-      <div class="field-main">
-        <span>Локация для тура</span>
-        <img src="/images/selector-icon.svg" alt="">
-      </div>
+      <select class="custom-input" [(ngModel)]="location">
+        <option value="" disabled selected>Локации для тура</option>
+        <option value="Алтай">Алтай</option>
+        <option value="Камчатка">Камчатка</option>
+        <option value="Урал">Урал</option>
+      </select>
       <span>выберите из списка</span>
     </div>
 
     <div class="selector-field">
-      <div class="field-main">
-        <span>Дата похода</span>
-        <img src="/images/calendar-icon.svg" alt="">
-      </div>
+      <input type="date" class="custom-input" [(ngModel)]="date" placeholder="Дата похода">
       <span>укажите дату</span>
     </div>
 
     <div class="selector-field">
-      <div class="field-main">
-        <span>Участники</span>
-        <img src="/images/selector-icon.svg" alt="">
-      </div>
+      <select class="custom-input" [(ngModel)]="participants">
+        <option value="" disabled selected>Участники</option>
+        <option value="4-10">4-10</option>
+        <option value="11-20">11-20</option>
+        
+      </select>
+      
       <span>выберите из списка</span>
     </div>
 
-    <button class="search-btn">
+    <button class="search-btn" [disabled]="!location || !date || !participants">
       Найти программу
     </button>
+
+    <div class="live-input-block">
+      <input 
+      type="text"
+      class="live-input"
+      placeholder="живой инпут"
+      (input)= "updateText($event)"
+      >
+
+      <span class="live-output">
+        {{ liveText ? liveText : "Введенный текст" }}
+      </span>
+    </div>
+    
+
   </div>
 </section>
- {{companyName}}
+
+
+
+<section class="tour-section">
+  <div class="tour-image">
+    <img class="img-back" src="/images/img-back.png" alt="img-back">
+    <img class="img-front" src="/images/img-front.png" alt="img-front">
+    <span class="play-btn">►</span>
+  </div>
+
+  <div class="tour-info">
+    <span class="tour-info__textspan">о нашем походе</span>
+    <h2 class="tour-info__texth">Исследуйте все горные массивы мира вместе с нами</h2>
+    <p class="tour-info__textp">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
+    <a class="tour-info__texta" href="#">Программа тура</a>
+  </div>
+</section>
+
+
+<section class="feature-section">
+  <div class="features-container">
+    <span class="feature-offer">наше продложение</span>
+    <h3 class="feature-title">Лучшие программы для тебя</h3>
+    <p class="feature-description">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+
+    @for (feature of featuresList; track feature.title) {
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="{{ feature.icon }}" alt="">
+        </div>
+        <div class="features-info">
+          <h4 class="feature-info-title"> {{ feature.title }}</h4>
+          <p class="feature-info-description">{{ feature.description }}</p>
+        </div>
+      </div>
+    }
+
+    <button class="price-toure">Стоимость программ</button>
+  </div>
+
+  <div class="feature-images">
+    <img src="/images/feature-img-1.png" alt="1" class="gallery-img img-1">
+    <img src="/images/feature-img-2.png" alt="2" class="gallery-img img-2">
+    <img src="/images/feature-img-3.png" alt="3" class="gallery-img img-3">
+    <img src="/images/feature-img-4.png" alt="4" class="gallery-img img-4">
+  </div>
+</section>
