@@ -1,48 +1,14 @@
 <section class="user-page">
   <h1 class="user-page__title">Список Пользователей</h1>
   <div class="user-page__grid">
-    @for (user of (user$ | async); track user.id) {
-      <div class="user-card">
-        <header class="user-card__header">
-          <h2 class="user-card__name">{{ user.name }}</h2>
-          <p class="user-card__username">{{ `@${user.username}`.toLowerCase() }}</p>
-        </header>
-        
-        <main class="user-card__content">
-          <h3 class="user-card__section-title">Контакты</h3>
-          <div class="user-card__section">
-            <p class="user-card__field">Эл. почта: <span>{{ user.email }}</span></p>
-            <p class="user-card__field">Телефон: <span>{{ user.phone }}</span></p>
-            <p class="user-card__field">Веб-сайт: <span>{{ user.website }}</span></p>
-          </div>
-          
-          <div class="user-card__section">
-            <h3 class="user-card__section-title">Адрес Проживания</h3>
-            <p class="user-card__field">Город: <span>{{ user.address.city }}</span></p>
-            <p class="user-card__field">Улица: <span>{{ user.address.street }}</span></p>
-            <p class="user-card__field">Офис: <span>{{ user.address.suite }}</span></p>
-            <p class="user-card__field">Индекс: <span>{{ user.address.zipcode }}</span></p>
-            <div class="user-card__field">
-              Координаты:
-              <div class="user-card__field--coordinates">
-                <span class="user-card__badge">{{ user.address.geo.lat }}</span>
-                <span class="user-card__badge">{{user.address.geo.lng}}</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="user-card__section">
-            <h3 class="user-card__section-title">Место работы</h3>
-            <p class="user-card__field">Компания: <span>{{ user.company.name }}</span> </p>
-            <p class="user-card__field--mission">Миссия: <span>{{ `«${user.company.catchPhrase}»` }}</span> </p>
-            <p class="user-card__field">Специализация: <span>{{ user.company.bs }}</span> </p>
-          </div>
-        </main>
-      </div>
+    @for (user of (filteredUsers$ | async); track user.id) {
+      <app-user-card [user]="user" (deleteUser)="onDeleteUser($event)"></app-user-card>
     } @empty {
       <div class="not-found-users">
         Нет пользователей для отображения
       </div>
     }
+    <app-user-create (createUser)="onCreateUser($event)"></app-user-create>
+    <app-user-filter (filterChange)="onFilterChange($event)"></app-user-filter>
   </div>
 </section>

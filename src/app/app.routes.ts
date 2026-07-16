@@ -6,5 +6,5 @@ import { UsersPage } from './users-page/users-page';
 export const routes: Routes = [
   {path: '', component: HomePage},
   {path: 'users', component: UsersPage},
-  {path: '**', component: NotFoundPage}
+  {path: '**', component: NotFoundPage},
 ];

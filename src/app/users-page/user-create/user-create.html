@@ -1,0 +1,107 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <label for="user-name">Name</label>
+  <input
+  id="user-name"
+  type="text"
+  formControlName="name"
+  >
+  
+  <label for="user-username">Username</label>
+  <input
+  id="user-username"
+  type="text"
+  formControlName="username"
+  >
+  
+  <label for="user-email">Email</label>
+  <input
+  id="user-email"
+  type="email"
+  formControlName="email"
+  >
+  
+  <label for="user-phone">Phone</label>
+  <input
+  id="user-phone"
+  type="tel"
+  formControlName="phone"
+  >
+  
+  <label for="user-website">Website</label>
+  <input
+  id="user-website"
+  type="text"
+  formControlName="website"
+  >
+  
+  <div formGroupName="address">
+    <label for="user-city">City</label>
+    <input
+    id="user-city"
+    type="text"
+    formControlName="city"
+    >
+    
+    <label for="user-street">Street</label>
+    <input
+    id="user-street"
+    type="text"
+    formControlName="street"
+    >
+    
+    <label for="user-suite">Suite</label>
+    <input
+    id="user-suite"
+    type="text"
+    formControlName="suite"
+    >
+    
+    <label for="user-zipcode">Zipcode</label>
+    <input
+    id="user-zipcode"
+    type="text"
+    formControlName="zipcode"
+    >
+    
+    <div formGroupName="geo">
+      <label for="user-lat">Lat</label>
+      <input
+      id="user-lat"
+      type="text"
+      formControlName="lat"
+      >
+      
+      <label for="user-lng">Lng</label>
+      <input
+      id="user-lng"
+      type="text"
+      formControlName="lng"
+      >
+    </div>
+  </div>
+  
+  <div formGroupName="company">
+    <label for="user-company-name">Company Name</label>
+    <input
+    id="user-company-name"
+    type="text"
+    formControlName="name"
+    >
+    
+    <label for="user-catchPhrase">Catch phrase</label>
+    <input
+    id="user-catchPhrase"
+    type="text"
+    formControlName="catchPhrase"
+    >
+    
+    <label for="user-bs">Bs</label>
+    <input
+    id="user-bs"
+    type="text"
+    formControlName="bs"
+    >
+  </div>
+  
+  <button id="user-create-submit" type="submit">Создать пользователя</button>
+</form> 
