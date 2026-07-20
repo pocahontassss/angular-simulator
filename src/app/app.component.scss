@@ -468,8 +468,19 @@ flex-grow: 0;
   height: 510px;
   left: 1040px;
   top: 120px;
+  transition: transform 0.3s ease;
 }
 
+.gallery-img {
+  border-radius: 10px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05) translateY(-5px) rotate(2deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
 // 8 loading 
 
 
