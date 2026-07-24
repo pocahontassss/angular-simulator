@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+@use './fonts';
+@use './normalize';
+
+:root {
+  --prime-color: #fff;
+  --minor-color: #000;
+  --additional-color: #F2BE22;
+}
+
+* {
+  font-family: 'Nunito Sans';
+}
+
+.conteiner {
+  width: 100%;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.p-r {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-32 {
+  font-size: 32px;
+}
+
+.fd-c {
+  flex-direction: column;
+}
+
+.pop-out-windows {
+  min-width: 270px;
+  min-height: 52px;
+  background-color: color-mix(in srgb, var(--prime-color));
+  color: var(--prime-color);
+  border: 1px solid #fff;
+  border-radius: 8px;
+
+  option {
+    background-color: #2c3e50;
+  }
+}
+.mt-12 {
+  margin-top: 12px;
+}
+
+.ml-8 {
+  margin-left: 8px;
+}
+
+.gap {
+  gap: 8px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.btn {
+  width: 213px;
+  height: 52px;
+  background-color: rgba(26, 62, 62, 1);
+  color: var(--prime-color);
+  border-radius: 4px;
+}
+
+.description {
+  flex-wrap: wrap;
+  min-height: 66px;
+  width: 580px;
+}
+
+.size-photo {
+  width: 250px;
+  height: 250px;
+}
+
+.titel {
+  font-weight: 800;
+  margin-top: 8px;
+  margin-bottom: 0%;
+};
+
+button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  border-color: #aaaaaa;
+}
+
+.centering {
+  justify-content: center;
+  align-items: center;
+}

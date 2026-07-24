@@ -1,1 +1,193 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+@if (isLoading) {
+<div class="loader-container">
+  <img class="loading" src="/images/icon/loading.svg" alt="">
+</div>
+} @else {
+<header class="header flex conteiner">
+  <div class="header-wrapper flex">
+    <div class="company-wrapper ">
+      <div class="img-company">
+        <img src="/images/icon/company-icon.svg" alt="иконка компании" >
+      </div>
+      <div class="name-company fs-16">
+        <span >{{companyName}}</span>
+      </div>
+    </div>
+    <nav class="header-menu flex fs-18">
+      <ul class="menu-list c-p flex">
+        <li class="menu-item"><a href="#" class="menu-link">Главная</a></li>
+        <li class="menu-item"><a href="#" class="menu-link">Про гида</a></li>
+        <li class="menu-item"><a href="#" class="menu-link">Программа тура</a></li>
+        <li class="menu-item"><a href="#" class="menu-link">Стоимость</a></li>
+        <li class="menu-item"><a href="#" class="menu-link">Блог</a></li>
+        <li class="menu-item"><a href="#" class="menu-link">Контакты</a></li>
+      </ul>
+    </nav>
+    <button id="header__button" class="header-button cursor">Консультация</button>
+    <div class="timer flex">
+      @if (changingValue) {
+        <div class="value-time flex fs-18" style="margin-right: 10px;">{{valueTimeDate}}</div>
+      } @else {
+          <div class="clicker flex fs-18" >
+            <button [disabled]="numberClicks === 0" (click)="subtraction()" class="subtraction">-</button>
+            <span >{{numberClicks}}</span>
+            <button (click)="addition()" class="addition">+</button>
+          </div>
+        }
+      <button (click)="switchingTasks()" [ngClass]="changingValue ? 'show-clicker' : 'show-date' ">{{changingValue ? 'покажи кликер' : 'покажи дату'}}</button>
+    </div>
+  </div>
+  <div class="liveText">
+    <input type="text" id="live-input" [(ngModel)]="writtenText" class="fs-18" style="background-color: rgb(113, 52, 171);">
+    <p class="fs-16">Тут ваш написанный текст: "{{writtenText}}"</p>
+  </div>
+</header>
+<section class="conteiner">
+  <div>
+    <img src="/images/bg/mountains.svg" alt="горы" class="bg-mountains">
+    <p class="hero-text">насладитесь прогулкой в горах <br>с командой единомышленников</p>
+    <div class="registration-block flex">
+      <form class="registration-form flex fs-16" >
+        <div class="location-wrapper flex fd-c gap">
+          <div class="select-wrapper">
+            <select [(ngModel)]="locationTour" name="location" id="location" class="location pop-out-windows pl-10 cursor" required>
+              <option value="" class="c-p" disabled selected hidden>Локация для тура</option>
+              <option value="arshan">Пик любви</option>
+              <option value="irkutsk">Гора Витязь</option>
+            </select>
+          </div>
+          <span class="location-wrapper__hint fc-14">выберите из списка</span>
+        </div>
+        <div class="flex fd-c">
+          <input [(ngModel)]="dataTrip" type="date" name="hike-date" id="hike-date" class="cursor" required>
+          <span class="date-hint c-p flex fs-14 mt-12 ml-8">укажите дату</span>
+        </div>
+        <div class="number-people-wrapper">
+          <div class="select-wrapper">
+            <select [(ngModel)]="numberParticipants" name="number" id="number" class="number-people pop-out-windows pl-10 cursor" required>
+              <option value="" disabled selected hidden>Участники</option>
+              <option value="1-3">1-3</option>
+              <option value="3-4">3-4</option>
+            </select>
+          </div>
+          <span class="number-people-wrapper__hint flex fs-14 mt-12 ml-8">выберите из списка</span>
+        </div>
+        <button type="submit" id="search-btn" class="btn cursor" [disabled]="!numberParticipants || !dataTrip || !locationTour">Найти программу</button>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="conteiner">
+  <div class="description-hike-wrapper flex" style="height: 985px;">
+    <div class="description-hike flex">
+      <div class="description-hike-images">
+        <img src="/images/photo/photo-ice-mountains.svg" alt="Заснеженые горы" class="mountains flex" style="width: 350px; height: 400px;">
+        <img src="/images/photo/photo-hause-in-forest.svg" alt="Дом в лесу" class="forest" style="width: 350px; height: 400px;">
+        <img src="/images/icon/play.svg" alt="пуск" class="play" style="width: 50px; height: 50px;">
+      </div>
+      <div class="description-hike-text ">
+        <span class="fs-24" style="color: var(--additional-color);">о нашем походе</span>
+        <h2 class="description-hike-text__tiile fs-32">Исследуйте все горные массивы мира вместе с нами</h2>
+        <p class="description-hike-text__infommation fs-18" >Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
+        <button type="submit cursor" id="program-btn" class="btn cursor" style="bottom: 0%; position: absolute;" (click)="tourProgramBtnClick()" >Программа тура</button>
+      </div>
+    </div>
+  </div>
+  <div class="offers-section flex">
+    <div class="offers-section__info flex">
+      <div class=" description ">
+        <span class="fs-24" style="color: var(--additional-color);">наше предложение</span>
+        <h2 class="titel fs-32" >Лучшие программы для тебя</h2>
+      </div>
+      <p>Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+      @for (hikecard of hikecards; track hikecard.id) {
+        <div class="hike-card__wrapper flex">
+          <img src="{{hikecard.image}}" alt="" style="height: 100%;">
+          <div>
+            {{hikecard.name}}
+            {{hikecard.description}}
+          </div>
+        </div>
+      }
+       <button type="submit cursor" id="price-program-btn" class="btn cursor" style="bottom: 0%; position: absolute;" (click)="outCostBtnClick()">Стоимость программ</button>
+    </div>
+    <div class="offers-section__img flex">
+      <img src="/images/photo/hand-glass.svg" alt="" class="size-photo">
+      <img src="/images/photo/man-in-career.svg" alt="" class="size-photo">
+      <img src="/images/photo/man-on-snowmobile.svg" alt="" class="size-photo">
+      <img src="/images/photo/creek.svg" alt="" class="size-photo">
+    </div>
+  </div>
+</section>
+
+<section class="conteiner flex centering fd-c p-r">
+  <div class="centering description flex" style="margin-top: 80px;">
+    <span class="fs-24" style="color: var(--additional-color);">по версии отдыхающих</span>
+    <h2 class="titel fs-32" >Популярные направления</h2>
+  </div>
+  <div class="description-card-wrapper flex">
+    @for (destinationsCard of destinationsCards; track destinationsCard.id) {
+      <div class="description-directions-wrapper cursor">
+        <img src="{{destinationsCard.backgroundImage}}" alt="" style="width: 100%; height: 100%;">
+        <img src="{{destinationsCard.estimationImage}}" alt="" style="position: absolute; right: 0%; top: 50px;">
+        <div class="description-directions flex">
+          <div style="margin-left: 32px; min-width: 195px;">
+            <h3 class="fs-24" style="margin: 0%; font-weight: 600;">{{destinationsCard.titel}}</h3>
+            <span class="description-directions-text fs-14">{{destinationsCard.description}}</span>
+          </div>
+          <div class="description-price flex">
+            <span>{{destinationsCard.price}} &dollar;</span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  <button type="submit cursor" id="price-program-btn" class=" btn cursor" style="margin-top: 50px; margin-bottom: 95px;" (click)="destinationRatingBtnClick()">Рейтинг направлений</button> 
+</section>
+
+<section class="journeys-wrapper conteiner flex centering fd-c p-r">
+  <div class="centering description flex" style="margin-top: 85px;">
+    <span class="fs-24" style="color: var(--additional-color);">делимся впечатлениями</span>
+    <h2 class="titel fs-32" >Блог о путешествиях</h2>
+  </div>
+  <div class="impression-cards flex">
+@for (impressionCard of impressionCards; track impressionCard.id) {
+  <div class="deskription-impressions-wrapper flex">
+    <img src="{{impressionCard.image}}" alt="" style="width: 230px; height: 280px;">
+    <div class="deskription-impressions-wrapper__text flex">
+      <h2 class="deskription-impressions-wrapper__titel fs-24">{{impressionCard.titel}}</h2>
+      <p class="fs-14" style="margin-top: 0%; font-weight: 400;">{{impressionCard.description}}</p>
+      <div class="link-wrapper flex fs-14">
+        <span class="link-wrapper__date">01/04/2023</span>
+        <a href="#" style="text-decoration: none; color: rgba(26, 62, 62, 1); ">читать статью</a>
+      </div>
+    </div>
+  </div>
+}
+  </div>
+<button type="submit cursor" id="price-program-btn" class=" btn cursor" style="margin-top: 50px; margin-bottom: 95px;" (click)="materialsBtnClick()">Другие материалы</button> 
+</section>
+<div class="messages-container">
+  @for (message of messageService.applyMessages; track message.id) {
+    <ng-container [ngTemplateOutlet]="messageTemplate" [ngTemplateOutletContext]="{$implicit: message}"></ng-container>
+  }
+</div>
+}
+
+<ng-template #messageTemplate let-msg>
+ <div class="message-template-wrapper flex">
+    <img src="/images/icon/envelope.svg" alt="Иконка конверт" style="margin-left: 15px;">
+    <div class="message-template-wrapper__text">
+      <span class="fs-16" style="font-weight: 700;">{{msg.type}}</span>
+      <p class="fs-14" style="font-weight: 400;">{{msg.text}}</p>
+    </div>
+    <button button class="close-circle-btn" (click)="messageService.closeMessage(msg.id)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5" stroke-dasharray="60 100" transform="rotate(-90 12 12)"/>
+        <path d="M8 8L16 16M16 8L8 16" stroke="white" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+</ng-template>
+
+
