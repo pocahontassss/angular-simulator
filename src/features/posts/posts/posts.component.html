@@ -1,0 +1,50 @@
+@if (isLoading$ | async) {
+  <p-table [value]="(posts$ | async) || []" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+      <tr>
+        <th>Title</th>
+        <th>Tags</th>
+        <th>Views</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-skeleton>
+      <tr>
+        <td><p-skeleton width="100%" height="1.5em" /></td>
+        <td><p-skeleton width="100%" height="1.5em" /></td>
+        <td><p-skeleton width="100%" height="1.5em" /></td>
+      </tr>
+    </ng-template>
+  </p-table>
+} @else {
+  <p-contextMenu #cm [model]="menuItems" />
+  <p-table [value]="(posts$ | async) || []">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Title</th>
+        <th>Tags</th>
+        <th>Views</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-post>
+      <tr
+        (dblclick)="onRowDblClick(post)"
+        (contextmenu)="selectedPost = post; $event.preventDefault(); cm.show($event)"
+      >
+        <td>{{ post.title }}</td>
+        <td>{{ post.tags.join(', ') }}</td>
+        <td>{{ post.views }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+}
+
+<button (click)="redirectToCreatePost()" pButton type="button" label="Создать пост"></button>
+
+<p-paginator
+  [first]="(currentPage - 1) * pageSize"
+  [rows]="pageSize"
+  [totalRecords]="totalPosts"
+  (onPageChange)="onPageChange($event)"
+  [rowsPerPageOptions]="[10, 20, 30]"
+  style="padding-bottom: 100px"
+/>

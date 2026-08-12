@@ -1,0 +1,79 @@
+<section id="contacts" class="footer pos-rel">
+  <div class="company-container footer-grid">
+    <div class="footer-col">
+      <h3>Компания "{{ companyName }}"</h3>
+      <p>
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.
+      </p>
+
+      <div class="contacts">
+        <a id="info" href="mailto:info@domain.com">info@domain.com</a>
+        <a id="tel" href="tel:+71234567890">+7 (123) 456-78-90</a>
+      </div>
+
+      <div class="social cur-p">
+        @for (item of messengers; track item) {
+          <a [id]="item">
+            <fa-icon [icon]="item" />
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Наши услуги</h3>
+      <ul>
+        @for (item of routes; track item) {
+          <li>
+            <a id="service"> <fa-icon [icon]="faAngleRight" />{{ item }} </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Важно для путешествий</h3>
+      <ul>
+        @for (item of travelEssentials; track item) {
+          <li>
+            <a id="essential"> <fa-icon [icon]="faAngleRight" />{{ item }} </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-company-container mt-85 flex-s-b">
+    <div class="footer-company flex-s-b fs-14">
+      <p>{{ companyIP }}</p>
+      <a id="policy" class="policy cur-p">Политика обработки персональных данных</a>
+    </div>
+  </div>
+
+  <section id="subscribe" class="subscribe pos-abs">
+    <div class="subscribe__content">
+      <span class="subscribe__label">актуально</span>
+      <h2 class="subscribe__title">
+        Получайте полезные<br />
+        рассылки о путешествиях
+      </h2>
+    </div>
+
+    <form id="form" class="subscribe__form">
+      <label class="subscribe__label__text" for="email"> Введите e-mail адрес </label>
+
+      <div class="subscribe__controls">
+        <input type="email" id="email" placeholder="name@domain.com" required />
+        <button id="submit" type="submit">Подписаться на новости</button>
+      </div>
+
+      <p class="subscribe__policy">
+        подписываясь на новости, вы автоматически соглашаетесь с
+        <a id="personal-data">условиями обработки персональных данных</a>
+        и
+        <a id="rules-advertising-mailings">правилами рекламных рассылок</a>
+      </p>
+    </form>
+  </section>
+</section>

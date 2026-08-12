@@ -1,0 +1,27 @@
+@if (post) {
+  <div>
+    <button
+      pButton
+      type="button"
+      label="Назад к списку"
+      severity="secondary"
+      (click)="goBack()"
+    ></button>
+
+    <div class="card">
+      <h1 class="title">{{ post.title }}</h1>
+
+      <p class="text"><strong>Теги:</strong> {{ post.tags.join(', ') }}</p>
+      <p class="text"><strong>Просмотры:</strong> {{ post.views }}</p>
+
+      <div class="text-body">
+        {{ post.body }}
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="flex-col-cen">
+    <h3>Пост не найден</h3>
+    <button pButton type="button" label="Вернуться к списку" (click)="goBack()"></button>
+  </div>
+}

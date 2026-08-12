@@ -1,0 +1,38 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()" style="max-width: 500px">
+  <h2>Создание нового поста</h2>
+
+  <div>
+    <label for="title">Заголовок</label>
+    <input id="title" formControlName="title" pInputText placeholder="Введите заголовок" />
+    @if (postForm.controls['title'].invalid && postForm.controls['title'].touched) {
+      <div class="text">Заголовок обязателен.</div>
+    }
+  </div>
+
+  <div class="mb-3">
+    <label for="tags">Теги</label>
+    <input
+      id="tags"
+      formControlName="tags"
+      pInputText
+      placeholder="Например: angular, typescript, web"
+    />
+    @if (postForm.controls['tags'].invalid && postForm.controls['tags'].touched) {
+      <div class="text">Теги обязательны.</div>
+    }
+    <small class="text">Введите теги через запятую.</small>
+  </div>
+
+  <div>
+    <label for="views">Просмотры</label>
+    <input type="number" id="views" formControlName="views" pInputNumber placeholder="0" />
+    @if (postForm.controls['views'].invalid && postForm.controls['views'].touched) {
+      <div class="text">Просмотры должны быть числом >= 0.</div>
+    }
+  </div>
+
+  <div class="flex gap-2">
+    <button type="button" pButton label="Отмена" severity="secondary" (click)="onCancel()"></button>
+    <button type="submit" pButton label="Создать пост" [disabled]="postForm.invalid"></button>
+  </div>
+</form>

@@ -1,0 +1,49 @@
+<form [formGroup]="editForm" (ngSubmit)="onSave()">
+  <div class="flex flex-column" style="max-width: 400px">
+    <div class="flex flex-column">
+      <label for="title">Заголовок:</label>
+      <input
+        pInputText
+        id="title"
+        formControlName="title"
+        placeholder="Введите заголовок сообщения"
+      />
+      @if (editForm.get('title')?.invalid && editForm.get('title')?.touched) {
+        <small class="text-red-500">Обязательно укажите заголовок (минимум 3 символа).</small>
+      }
+    </div>
+
+    <div class="flex flex-column">
+      <label for="tags">Теги (разделенные запятыми):</label>
+      <textarea
+        pInputTextarea
+        id="tags"
+        formControlName="tags"
+        rows="3"
+        placeholder="e.g. angular, typescript, web"
+      ></textarea>
+    </div>
+
+    <div class="flex flex-column">
+      <label for="views">Просмотры:</label>
+      <input type="number" pInputNumber id="views" formControlName="views" placeholder="0" />
+    </div>
+
+    <div class="flex flex-column">
+      <button
+        pButton
+        type="button"
+        label="Выход"
+        severity="secondary"
+        (click)="onCancel()"
+      ></button>
+      <button
+        pButton
+        type="submit"
+        label="Сохранить"
+        severity="primary"
+        [disabled]="editForm.invalid"
+      ></button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,302 @@
+@if (isLoading) {
+  <div id="loader-overlay" class="loading-overlay flex-s-b">
+    <fa-icon class="rotate" [icon]="faSpinner" />
+    <span class="spinner"
+      >Иконка загрузки, которую мы должны отобразить. Добавить анимацию прокрутки</span
+    >
+  </div>
+} @else {
+  <header id="main-header" class="header">
+    <div class="container">
+      <div class="content flex-s-b">
+        @if (isDateView) {
+          <span class="timer">
+            {{ currentDateAndTime | date: DATE_FORMAT }}
+          </span>
+        } @else {
+          <div class="clicker flex-s-b">
+            <button
+              id="btn-counter-decrement"
+              class="switcher cur-p"
+              (click)="decrementCount()"
+              [disabled]="count <= 0"
+            >
+              -
+            </button>
+            <span>{{ count }}</span>
+            <button id="btn-counter-increment" class="switcher cur-p" (click)="incrementCount()">
+              +
+            </button>
+          </div>
+        }
+
+        <button
+          id="btn-toggle-date-counter"
+          class="consultation fs-16 br-8"
+          (click)="toggleBlock()"
+        >
+          {{ isDateView ? 'Показать кликер' : 'Показать дату' }}
+        </button>
+      </div>
+
+      <div class="header-text">
+        <span>насладись прогулкой в горах</span>
+        <span>с командой единомышленников</span>
+      </div>
+      <div class="menu br-8">
+        <div class="menu-item flex-s-b gap-24">
+          <div class="menu-field">
+            <div class="flex-s-b menu-title br-8 fs-16 pos-rel" (click)="openSelect(locationInput)">
+              <select
+                id="select-tour-location"
+                class="select select-location-person"
+                #locationInput
+                [(ngModel)]="form.location"
+              >
+                <option value="" disabled selected>Локация для тура</option>
+                <option value="altai">Алтай</option>
+                <option value="caucasus">Кавказ</option>
+                <option value="baikal">Байкал</option>
+              </select>
+              <fa-icon class="pr-16" [icon]="faAnglesDown" />
+            </div>
+            <span class="menu-subtitle fs-14">выберите из списка</span>
+          </div>
+          <div class="menu-field">
+            <div class="flex-s-b menu-title pos-rel br-8 fs-16" (click)="openDatePicker(dateInput)">
+              <input
+                #dateInput
+                id="input-tour-date"
+                class="select pos-rel"
+                type="date"
+                [(ngModel)]="form.date"
+                placeholder="Дата похода"
+              />
+              <label class="date-label cur-p pos-abs">
+                <fa-icon class="date-icon pr-16 cur-p" [icon]="faCalendarDays" />
+              </label>
+            </div>
+            <span class="menu-subtitle fs-14">укажите диапазон</span>
+          </div>
+          <div class="menu-field">
+            <div class="flex-s-b menu-title br-8 fs-16" (click)="openSelect(personImput)">
+              <select
+                id="select-tour-persons"
+                class="select select-location-person"
+                #personImput
+                [(ngModel)]="form.persons"
+              >
+                <option value="" disabled selected>выберите из списка</option>
+                <option value="1">1 человек</option>
+                <option value="2">2 человека</option>
+                <option value="3">3 человека</option>
+                <option value="4+">4+ человека</option>
+              </select>
+              <fa-icon class="pr-16" [icon]="faAnglesDown" />
+            </div>
+            <span class="menu-subtitle fs-14">выберите из списка</span>
+          </div>
+          <button
+            id="btn-search-tour"
+            [disabled]="!isFormValid()"
+            class="button size-270-52 border fs-16 align-items br-8"
+          >
+            {{ isFormValid() ? 'Найти программу' : 'Заполните все поля' }}
+          </button>
+        </div>
+      </div>
+      <div class="flex-s-b">
+        <input
+          id="input-live-text"
+          type="text"
+          placeholder="Введите текст..."
+          [(ngModel)]="liveInputValue"
+        />
+        <span class="result">{{ liveInputValue }}</span>
+      </div>
+
+      <div class="about flex-s-b">
+        <div class="about-images pos-rel">
+          <img class="index-0" src="/images/mountains.png" alt="Горы" width="350" height="400" />
+          <div>
+            <img
+              class="index-1 pos-abs images-house"
+              src="/images/house-in-mountains.png"
+              alt="Горы"
+              width="350px"
+              height="400px"
+            />
+            <button id="btn-video-play">
+              <fa-icon class="index-2 pos-abs svg-play" size="2x" [icon]="faCirclePlay" />
+            </button>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2 class="section-label color-yellow fs-24">о нашем походе</h2>
+          <h1 class="section-title color-black fs-32">
+            Исследуйте все горные массивы мира вместе с нами
+          </h1>
+          <p class="section-text color-black fs-18 lh-150">
+            Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+            тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
+            Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur" и занялся его
+            поисками в классической латинской литературе.
+          </p>
+          <button
+            id="btn-tour-program"
+            class="bt-consultation fs-16 br-8 cur-p"
+            aria-label="Заказать консультацию"
+            (click)="messageService.showInfo()"
+          >
+            Программа тура
+          </button>
+        </div>
+      </div>
+
+      <section id="about-guide" class="offer-section">
+        <div class="container">
+          <div class="container-second-block flex-s-b">
+            <div class="container-offer">
+              <h2 class="subtitle color-yellow fs-24">наше предложение</h2>
+              <h1 class="subtitle-title color-black fs-32">Лучшие программы для тебя</h1>
+              <p class="desc color-black fs-18 margin-top-30 lh-150">
+                Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более
+                двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+              </p>
+              <div class="features mt-40">
+                @for (service of services; track service.id) {
+                  <div class="feature-item margin-top-20">
+                    <fa-icon [ngClass]="'icon-color-' + service.id" [icon]="service.icon" />
+                    <div class="feature-text">
+                      <h3>{{ service.title }}</h3>
+                      <p>{{ service.description }}</p>
+                    </div>
+                  </div>
+                }
+              </div>
+              <button
+                id="btn-tour-pricing"
+                class="bt-consultation fs-16 br-8 mt-40 cur-p"
+                aria-label="Заказать консультацию"
+                (click)="messageService.showWarn()"
+              >
+                Стоимость программ
+              </button>
+            </div>
+            <div class="images-grid">
+              <img src="images/cup-coffee.png" alt="Кружка с кофе" class="image radius-top-left" />
+              <img
+                src="images/man-on-mountain.png"
+                alt="Человек на горе"
+                class="image radius-top-right"
+              />
+              <img
+                src="images/man-on-snowmobile.png"
+                alt="Человек на снегоходе"
+                class="image radius-top-right"
+              />
+              <img src="images/river.png" alt="Река" class="image radius-top-left" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tour-program" class="popular-section flex-col-cen mt-85">
+        <div class="flex-col-cen">
+          <h2 class="subtitle color-yellow fs-24">по версии отдыхающих</h2>
+          <h1 class="subtitle-title color-black fs-32">Популярные направления</h1>
+        </div>
+        <div class="container-price mt-40">
+          @for (destination of popularDestination; track destination.id) {
+            <div class="card">
+              <img
+                [src]="'/images/' + destination.image + '.png'"
+                alt="{{"
+                destination.image
+                }}
+                width="380"
+                height="500"
+              />
+              <div class="rating">
+                <fa-icon style="color: goldenrod" [icon]="faStar" />
+                {{ destination.tourEvaluation | number: '1.1-1' }}
+              </div>
+              <div class="card-info flex-s-b pos-abs">
+                <div>
+                  <h2 class="fs-24">{{ destination.nameTour }}</h2>
+                  <p class="fs-14">{{ destination.tourDescription }}</p>
+                </div>
+                <div class="price fs-20">
+                  <span>{{ destination.tourPrice }} &#36;</span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        <button
+          id="btn-tour-rating"
+          class="bt-consultation fs-16 br-8 mt-40 cur-p"
+          (click)="messageService.showError()"
+        >
+          Рейтинг направлений
+        </button>
+      </section>
+
+      <section id="pricing" class="blog-tour flex-col-cen">
+        <div class="flex-col-cen mt-85">
+          <h2 class="subtitle color-yellow fs-24">делимся впечатлениями</h2>
+          <h1 class="subtitle-title color-black fs-32">Блог о путешествиях</h1>
+        </div>
+        <div class="blog-container">
+          @for (item of travelBlog; track item.id) {
+            <div class="blog-card">
+              <div class="blog-image">
+                <img [src]="'/images/' + item.imege + '.png'" [alt]="item.title" />
+              </div>
+
+              <div class="blog-info">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.content }}</p>
+
+                <div class="blog-bottom">
+                  <span class="blog-date fs-14">01/04/2023</span>
+                  <a [id]="'blog-' + item.id" class="read-more cur-p">читать статью</a>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        <button
+          id="btn-other-materials"
+          class="bt-consultation fs-16 br-8 mt-40 cur-p"
+          (click)="messageService.showSuccess()"
+        >
+          Другие материалы
+        </button>
+      </section>
+
+      <section id="blog" class="travel-blog flex-col-cen">
+        <div class="flex-col-cen mt-85">
+          <h2 class="subtitle color-yellow fs-24">фото-отчет</h2>
+          <h1 class="subtitle-title color-black fs-32">Делимся впечатлениями</h1>
+        </div>
+
+        <div class="travel">
+          @for (item of photoReport; track item.id) {
+            <div class="travel-grid-img" [ngClass]="'item-' + item.id">
+              <img [src]="'/images/' + item.img + '.png'" [alt]="item.img" />
+            </div>
+          }
+        </div>
+
+        <button
+          id="btn-pinterest"
+          class="bt-consultation fs-16 br-8 mt-40 cur-p"
+          (click)="messageService.showSuccess()"
+        >
+          Наш pinterest
+        </button>
+      </section>
+    </div>
+  </header>
+}

@@ -1,0 +1,66 @@
+<div class="header-conteiner">
+  <div class="header-menu flex-s-b">
+    <div class="header-menu-logo flex-column">
+      <img src="/images/logo.svg" alt="logo" width="137px" height="48px" />
+      <span class="logo-name">{{ companyName }}</span>
+    </div>
+
+    <p-toggleswitch
+      id="toggle-theme"
+      [ngModel]="themeService.darkMode$ | async"
+      (onChange)="changeTheme($event.checked)"
+      [dt]="themeService.customStyle"
+    >
+      <ng-template #handle let-checked="checked">
+        <fa-icon class="icon" [icon]="checked ? faMoon : faSun"></fa-icon>
+      </ng-template>
+    </p-toggleswitch>
+
+    <div class="card flex justify-center">
+      <p-selectbutton
+        id="select-theme"
+        [options]="themeService.themeOptions"
+        [ngModel]="themeService.theme$ | async"
+        (onChange)="changeSelectTheme($event.value)"
+        optionLabel="name"
+        optionValue="value"
+        [allowEmpty]="false"
+      />
+    </div>
+
+    <div class="flex-center">
+      <nav class="nav flex-s-b fs-18">
+        @for (item of navItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: item.path === '' }"
+          >
+            {{ item.label }}
+          </a>
+        }
+      </nav>
+
+      @if (authService.isLoggedIn()) {
+        <span class="timer">
+          {{ authDate$ | async | date: DATE_FORMAT }}
+        </span>
+        <button
+          id="btn-exit-header"
+          class="consultation fs-16 br-8"
+          aria-label="выйти из системы"
+          (click)="logout()"
+        >
+          выйти из системы
+        </button>
+      }
+      <button
+        id="btn-consultation-header"
+        class="consultation fs-16 br-8"
+        aria-label="Заказать консультацию"
+      >
+        Консультация
+      </button>
+    </div>
+  </div>
+</div>

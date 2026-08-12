@@ -1,0 +1,30 @@
+<section class="users-page">
+  <div class="form-section">
+    <app-create-user (userCreated)="onCreateUser($event)"></app-create-user>
+  </div>
+
+  <div class="controls">
+    <button
+      id="refresh-btn"
+      class="refresh-btn"
+      (click)="refreshUsers()"
+      title="Загрузить данные с сервера"
+    >
+      <fa-icon class="icon" [icon]="faArrowsRotate" />
+    </button>
+  </div>
+  <span>{{
+    (filteredUsers$ | async)?.length ?? 0
+      | customPlural: 'пользователь' : 'пользователя' : 'пользователей'
+  }}</span>
+  <app-users-filter (usersFiltered)="onFilterUser($event)"> </app-users-filter>
+  <div class="cards-section">
+    @for (user of filteredUsers$ | async; track user.id) {
+      <app-user-card [user]="user" (userDeleted)="onDeleteUser($event)"></app-user-card>
+    } @empty {
+      <div class="empty-state">
+        <p>📭 Нет пользователей для отображения</p>
+      </div>
+    }
+  </div>
+</section>

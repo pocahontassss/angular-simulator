@@ -1,0 +1,28 @@
+<div class="card">
+  <h2 class="name">{{ user.name | uppercase }}</h2>
+  <p class="username">@{{ user.username | uppercase }}</p>
+
+  <div class="section">
+    <h3>Контакты</h3>
+    <p><span>Почта:</span>{{ user.email }}</p>
+    <p><span>Телефон:</span>{{ user.phone | phoneNumbers: modePhone }}</p>
+    <p><span>Сайт:</span>{{ user.website }}</p>
+  </div>
+
+  <div class="section">
+    <h3>Адрес</h3>
+    <p><span>Город:</span>{{ user.address.city }}</p>
+    <p><span>Улица:</span>{{ user.address.street }}</p>
+    <p><span>Офис:</span>{{ user.address.suite }}</p>
+    <p><span>Индекс:</span>{{ user.address.zipcode }}</p>
+    <p><span>Координаты:</span>{{ user.address.geo.lat }}, {{ user.address.geo.lng }}</p>
+  </div>
+
+  <div class="section">
+    <h3>Компания</h3>
+    <p><span>Название:</span>{{ user.company.name }}</p>
+    <p><span>Миссия:</span>{{ user.company.catchPhrase }}</p>
+    <p><span>Сфера:</span>{{ user.company.bs }}</p>
+  </div>
+  <button id="delete-user" type="button" (click)="onDeleteClick()">Удалить польователя</button>
+</div>

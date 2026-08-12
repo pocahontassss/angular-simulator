@@ -1,0 +1,20 @@
+<div id="toast-container" class="toast-container">
+  @for (message of messages$ | async; track message) {
+    <ng-container *ngTemplateOutlet="toastTemplate; context: { $implicit: message }">
+    </ng-container>
+  }
+</div>
+
+<ng-template #toastTemplate let-message>
+  <div id="toast-message" class="toast" [ngClass]="message.type">
+    <fa-icon [icon]="faEnvelope" />
+    <div class="toast-content">
+      <strong>{{ message.type }}</strong>
+      <div>{{ message.text }}</div>
+    </div>
+
+    <button id="close-btn" class="close-btn" (click)="closeMessage(message)">
+      <fa-icon class="pr-16" [icon]="faCircleXmark" />
+    </button>
+  </div>
+</ng-template>

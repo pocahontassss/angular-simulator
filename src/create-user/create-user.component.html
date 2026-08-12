@@ -1,0 +1,204 @@
+<form class="create-user-form" [formGroup]="form">
+  <fieldset class="form-section">
+    <legend class="form-section__legend">Основная информация</legend>
+
+    <div class="form-field">
+      <label class="form-field__label" for="name">Имя</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="name"
+        type="text"
+        formControlName="name"
+        class="form-field__input"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-field__label" for="user-name">Имя пользователя</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="user-name"
+        type="text"
+        formControlName="username"
+        class="form-field__input"
+      />
+    </div>
+  </fieldset>
+
+  <fieldset class="form-section">
+    <legend class="form-section__legend">Контакты</legend>
+
+    <div class="form-field">
+      <label class="form-field__label" for="email">Почта</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="email"
+        type="text"
+        formControlName="email"
+        class="form-field__input"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-field__label" for="phone">Телефон</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="phone"
+        type="text"
+        formControlName="phone"
+        class="form-field__input"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-field__label" for="website">Сайт</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="website"
+        type="text"
+        formControlName="website"
+        value="Неизвестно"
+        class="form-field__input"
+      />
+    </div>
+  </fieldset>
+
+  <fieldset class="form-section" formGroupName="address">
+    <legend class="form-section__legend">Адрес</legend>
+
+    <div class="form-field">
+      <label class="form-field__label" for="address-city">Город</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="address-city"
+        type="text"
+        formControlName="city"
+        class="form-field__input"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-field__label" for="address-street">Улица</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="address-street"
+        type="text"
+        formControlName="street"
+        class="form-field__input"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-field__label" for="address-suite">Офис</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="address-suite"
+        type="text"
+        formControlName="suite"
+        value="Неизвестно"
+        class="form-field__input"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-field__label" for="address-zipcode">Индекс</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="address-zipcode"
+        type="text"
+        formControlName="zipcode"
+        class="form-field__input"
+      />
+    </div>
+
+    <fieldset class="form-section form-section--inner" formGroupName="geo">
+      <legend class="form-section__legend">Координаты</legend>
+
+      <div class="form-field">
+        <label class="form-field__label" for="geo-lat">Широта</label>
+        <input
+          hoverBorder
+          [gradientConfiguration]="hoverConfig"
+          id="geo-lat"
+          type="text"
+          formControlName="lat"
+          class="form-field__input"
+        />
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="geo-lng">Долгота</label>
+        <input
+          hoverBorder
+          [gradientConfiguration]="hoverConfig"
+          id="geo-lng"
+          type="text"
+          formControlName="lng"
+          class="form-field__input"
+        />
+      </div>
+    </fieldset>
+  </fieldset>
+
+  <fieldset class="form-section" formGroupName="company">
+    <legend class="form-section__legend">Компания</legend>
+
+    <div class="form-field">
+      <label class="form-field__label" for="company-name">Название компании</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="company-name"
+        type="text"
+        formControlName="name"
+        class="form-field__input"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-field__label" for="company-catchPhrase">Слоган</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="company-catchPhrase"
+        type="text"
+        formControlName="catchPhrase"
+        value="Неизвестно"
+        class="form-field__input"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-field__label" for="company-bs">BS</label>
+      <input
+        hoverBorder
+        [gradientConfiguration]="hoverConfig"
+        id="company-bs"
+        type="text"
+        formControlName="bs"
+        value="Неизвестно"
+        class="form-field__input"
+      />
+    </div>
+  </fieldset>
+</form>
+
+<button
+  hover
+  id="create-user-submit"
+  type="button"
+  (click)="onSubmit()"
+  class="form-submit"
+  [disabled]="form.invalid"
+>
+  Создать пользователя
+</button>

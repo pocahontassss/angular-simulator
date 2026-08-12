@@ -1,0 +1,169 @@
+@use './fonts';
+@use './normalize';
+
+@import 'primeicons/primeicons.css';
+
+* {
+  font-family: 'Nunito Sans', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #FDFDFD;
+  --black-color: #18121E;
+  --yellow-color: #F2BE22;
+  --white-color: #FFFFFF;
+  --footer-header-color: #F3F5F4;
+  --bt-color: #1A3E3E;
+  --container-width: 1200px;
+}
+
+.dark {
+  --primary-color: #28123f;
+  --black-color: #ecd2d2;
+  --yellow-color: #705913af;
+  --white-color: #481d74;
+  --footer-header-color: #13c7c7;
+  --bt-color: #b8c0bc;
+}
+
+.color-yellow {
+  color:var(--yellow-color);
+}
+
+.color-black {
+  color: var(--black-color);
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-s-b {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-col-cen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-32 {
+  font-size: 32px;
+}
+
+.br-8 {
+  border-radius: 8px;
+}
+
+.pr-16 {
+  padding-right: 16px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.mt-85 {
+  margin-top: 85px;
+}
+
+.mb-95 {
+  margin-bottom: 95px;
+}
+
+.index-0 {
+  z-index: 0;
+}
+
+.index-1 {
+  z-index: 1;
+}
+
+.index-2 {
+  z-index: 2;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.pos-abs {
+  position: absolute;
+}
+
+.lh-150 {
+  line-height: 150%;
+}
+
+.cur-p {
+  cursor: pointer;
+}
+
+html, body {
+  height: 100%;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
