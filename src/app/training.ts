@@ -1,11 +1,8 @@
-
 function calcTotal(a: number, b: number): number {
   return (a + b)
 };
-console.log(calcTotal(2, 5));
 
 let uploadStatus: 'loading' | 'success' | 'error';
-
 let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
 
 interface User {
