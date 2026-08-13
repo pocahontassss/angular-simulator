@@ -2,16 +2,16 @@ function calcTotal(a: number, b: number): number {
   return (a + b)
 };
 
-let uploadStatus: 'loading' | 'success' | 'error';
-let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
+let uploadStatus: 'loading' | 'success' | 'error' = 'loading';
+let textFormat: 'uppercase' | 'lowercase' | 'capitalize' = 'lowercase';
 
-interface User {
+interface IUser {
   name: string;
   age: number;
   country?: string;
 };
 
-interface Vlad extends User {
+interface IVlad extends IUser {
   gender: string;
 };
 
@@ -32,7 +32,7 @@ function removeChar(str: string, char: string): string {
   return str.replaceAll(char, '')
 };
 
-const users: User[] = [
+const users: IUser[] = [
   {name: 'ivan', age: 25, country: 'Russia'},
   {name: 'Anna', age: 17, country: 'Russia'},
   {name: 'Petr', age: 32, },
