@@ -4,3 +4,4 @@ export enum Color {
   BLUE = "Синий",
   PINK = "Розовый"
 }
+

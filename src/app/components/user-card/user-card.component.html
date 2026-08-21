@@ -1,0 +1,70 @@
+<div class="user-card">
+  <div class="user-header">
+    <h1>{{ user.name }}</h1>
+    <h3 class="username">{{ user.username }}</h3>
+      </div>
+      <div class="contacts">
+        <h2>Контакты</h2>
+        <ul>
+          <li>
+            <span class="label">Эл. почта:</span>
+            <a class="user-link fw-bold" href="mailto:{{ user.email }}">{{ user.email }}</a>
+          </li>
+          <li>
+            <span class="label">Телефон:</span>
+            <a class="user-phone fw-bold" href="tel:{{ user.phone }}">{{ user.phone }}</a>
+          </li>
+          <li>
+            <span class="label">Веб-сайт:</span>
+            <a class="user-link fw-bold" href="https://{{ user.website  }}">{{ user.website || "Неизвестно" }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="address-section">
+        <h2>Адрес проживания</h2>
+        <ul>
+          <li>
+            <span class="label">Город:</span>
+            <span class="value fw-bold">{{ user.address.city }}</span>
+          </li>
+          <li>
+            <span class="label">Улица:</span>
+            <span class="value fw-bold">{{ user.address.street }}</span>
+          </li>
+          <li>
+            <span class="label">Офис:</span>
+            <span class="value fw-bold">{{ user.address.suite || "Неизвестно" }}</span>
+          </li>
+          <li>
+            <span class="label">Индекс:</span>
+            <span class="value fw-bold">{{ user.address.zipcode }}</span>
+          </li>
+          <li>
+            <span class="label">Координаты:</span>
+            <div class="geo-container">
+            <span class="geo-address fw-bold">{{ user.address.geo.lat }}</span>
+            <span class="geo-address fw-bold">{{ user.address.geo.lng }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="work-section">
+        <h2>Место работы</h2>
+        <ul>
+          <li>
+            <span class="label">Компания:</span>
+            <span class="value fw-bold">{{ user.company.name }}</span>
+          </li>
+          <li>
+            <span class="label">Миссия:</span>
+            <span class="value mission-user">{{ user.company.catchPhrase || "Неизвестно" }}</span>
+          </li>
+          <li>
+            <span class="label" >Специализация:</span>
+            <span class="value fw-bold">{{ user.company.bs || "Неизвестно" }}</span>
+          </li>
+        </ul>
+      </div>
+      <button [id]="'user-btn-' + user.id" class="user-btn" (click)="onDeleteClick()">Удалить</button>
+    </div>
+

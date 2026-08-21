@@ -1,0 +1,32 @@
+.main-text-user {
+  display: flex;
+  justify-content: center;
+}
+
+#create-user-form {
+  display: grid;
+  margin: 0 auto;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#submit-btn {
+  background-color: blue;
+  color: #ffffff;
+  border: none;
+  padding: 12px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(blue, 0.2);
+  margin-top: 20px;
+  justify-self: center
+}
+
+#submit-btn:hover {
+  outline: 2px solid rgb(7, 241, 229);
+}
+
+label {
+  padding-right: 10px;
+}

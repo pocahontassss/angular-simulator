@@ -13,4 +13,8 @@ export class MessageComponent {
 
   messageService: MessageService = inject(MessageService);
 
+  generateId():void {
+    
+  }
+
 }

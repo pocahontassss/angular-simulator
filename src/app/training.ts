@@ -51,3 +51,4 @@ function sum(a: number, b: number): number {
 function removeSymbol(text: string, symbol: string): string {
   return text.replaceAll(symbol, "");
 }
+
