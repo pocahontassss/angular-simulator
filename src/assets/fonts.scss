@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Next Art';
+  src: url('./fonts/next-art/NextArt-Bold.otf.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  /* Имя файла стало простым, убраны обратные слэши и запятые */
+  src: url('./fonts/Nunito-sans/NunitoSans-Regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  /* Имя файла стало простым, путь начинается с точки */
+  src: url('./fonts/Nunito-sans/NunitoSans-Italic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
