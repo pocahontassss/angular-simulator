@@ -1,1 +1,66 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+  <!-- Верхняя линия: Логотип, Меню и Кнопка консультации -->
+  <div class="header__wrapper">
+    <a href="#" class="header__logo">
+      <img src="/images/logo_icon.svg" alt="РумТибет" class="header__logo-img">
+      <span class="header__logo-text">{{ companyName }}</span> 
+    </a>
+    
+    <nav class="header__menu menu">
+      <ul class="menu__list">
+        <li class="menu__item"><a href="#" class="menu__link menu__link--active">Главная</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">Про гида</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">Программа тура</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">Стоимость</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">Блог</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">Контакты</a></li>
+      </ul>
+    </nav>
+    
+    <a href="#" class="header__cta consultation-btn">Консультация</a>
+  </div>
+
+  <!-- Нижняя часть: Заголовок и Форма поиска туров -->
+  <div class="header__container">
+    <h1 class="header__title">
+      Насладись прогулкой в горах<br>с командой единомышленников
+    </h1>
+
+    <form class="search-form">
+      <!-- Поле 1: Локация -->
+      <div class="search-form__group">
+        <div class="search-form__input-wrapper search-form__input-wrapper--arrow">
+          <select class="search-form__select" required>
+            <option value="" disabled selected hidden>Локация для тура</option>
+            <option value="tibet">Тибет</option>
+            <option value="nepal">Непал</option>
+          </select>
+        </div>
+        <span class="search-form__caption">выберите из списка</span>
+      </div>
+
+      <!-- Поле 2: Дата -->
+      <div class="search-form__group">
+        <div class="search-form__input-wrapper search-form__input-wrapper--calendar">
+          <input type="text" class="search-form__input" placeholder="Дата похода" required>
+        </div>
+        <span class="search-form__caption">укажите диапазон</span>
+      </div>
+
+      <!-- Поле 3: Участники -->
+      <div class="search-form__group">
+        <div class="search-form__input-wrapper search-form__input-wrapper--arrow">
+          <select class="search-form__select" required>
+            <option value="" disabled selected hidden>Участники</option>
+            <option value="4">4 человека</option>
+            <option value="5">5+ человек</option>
+          </select>
+        </div>
+        <span class="search-form__caption">минимум 4 человека</span>
+      </div>
+
+      <!-- Кнопка -->
+      <button type="submit" class="search-form__btn">Найти программу</button>
+    </form>
+  </div>
+</header>
