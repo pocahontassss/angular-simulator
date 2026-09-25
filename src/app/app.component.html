@@ -1,1 +1,10 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+@if (isLoading) {
+<div class="loader-container">
+  <img class="loading" src="/images/loading.png" alt="">
+</div>
+} @else {
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<app-message></app-message>
+}

@@ -1,0 +1,12 @@
+@use './fonts';
+@use './normalize';
+
+* {
+  font-family: 'Nunito Sans';
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #FDFDFD;
+  --secondary-color: #18121E;
+}

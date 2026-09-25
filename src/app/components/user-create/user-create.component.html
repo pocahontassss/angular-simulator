@@ -1,0 +1,79 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="input-wrapper">
+    <label for="user-name">Имя</label>
+    <input id="user-name" type="text" formControlName="name">
+  </div>
+
+  <div class="input-wrapper">
+    <label for="user-username">Username</label>
+    <input id="user-username" type="text" formControlName="username">
+  </div>
+
+  <div class="input-wrapper">
+    <label for="user-email">Email</label>
+    <input id="user-email" type="email" formControlName="email">
+  </div>
+
+  <div class="input-wrapper">
+    <label for="user-phone">Номер</label>
+    <input id="user-phone" type="text" formControlName="phone">
+  </div>
+
+  <div class="input-wrapper">
+    <label for="user-website">Website</label>
+    <input id="user-website" type="text" formControlName="website">
+  </div>
+
+  <div formGroupName="address">
+    <div class="input-wrapper">
+      <label for="user-address-city">Город</label>
+      <input id="user-address-city" type="text" formControlName="city">
+    </div>
+
+    <div class="input-wrapper">
+      <label for="user-address-street">Улица</label>
+      <input id="user-address-street" type="text" formControlName="street">
+    </div>
+
+    <div class="input-wrapper">
+      <label for="user-address-suite">Офис</label>
+      <input id="user-address-suite" type="text" formControlName="suite">
+    </div>
+
+    <div class="input-wrapper">
+      <label for="user-address-zipcode">zipcode</label>
+      <input id="user-address-zipcode" type="text" formControlName="zipcode">
+    </div>
+
+    <div formGroupName="geo">
+      <div class="input-wrapper">
+        <label for="user-geo-lat">Широта</label>
+        <input id="user-geo-lat" type="text" formControlName="lat">
+      </div>
+
+      <div class="input-wrapper">
+        <label for="user-geo-lng">Долгота</label>
+        <input id="user-geo-lng" type="text" formControlName="lng">
+      </div>
+    </div>
+  </div>
+
+  <div formGroupName="company">
+    <div class="input-wrapper">
+      <label for="user-company-name">Компания</label>
+      <input id="user-company-name" type="text" formControlName="name">
+    </div>
+
+    <div class="input-wrapper">
+      <label for="user-company-catchphrase">Миссия</label>
+      <input id="user-company-catchphrase" type="text" formControlName="catchPhrase">
+    </div>
+
+    <div class="input-wrapper">
+      <label for="user-company-bs">Специализация</label>
+      <input id="user-company-bs" type="text" formControlName="bs">
+    </div>
+  </div>
+
+  <button type="submit" id="user-create-submit">Создать пользователя</button>
+</form>
