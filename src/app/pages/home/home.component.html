@@ -1,0 +1,191 @@
+<section class="find-program">
+  <div class="banner"> </div>
+  <div class="title">
+    <h1 class="find-pr__title-name">
+      Насладись прогулкой в горах
+      <br> с командой единомышленников
+    </h1>
+  </div>
+
+  <div class="data-container">
+    <form class="fill-data">
+      <div class="input-wrapper">
+        <select [(ngModel)]="tourLocation" class="location" id="location" name="location" required>
+          <option value="" disabled selected hidden>Локация для тура</option>
+          <option value="almaty">Алматы (БАО, Чарынский каньон)</option>
+          <option value="borovoe">Боровое (Бурабай)</option>
+          <option value="altay">Алтай (Катон-Карагай)</option>
+          <option value="baikal">Байкал</option>
+          <option value="kamchatka">Камчатка</option>
+          <option value="caucasus">Кавказ (Эльбрус)</option>
+        </select>
+        <label class="describe-action" for="location">выберите из списка</label>
+      </div>
+
+      <div class="input-wrapper">
+        <input [(ngModel)]="tourDate" name="calendar" class="calendar" type="date" id="calendar"
+          placeholder="Дата похода" required>
+        <label class="describe-action" for="calendar">укажите дату</label>
+      </div>
+
+      <div class="input-wrapper">
+        <select [(ngModel)]="tourParticipants" class="participants" id="participants" name="participants" required>
+          <option value="" disabled selected hidden>Участники</option>
+          <option value="1">1 участник</option>
+          <option value="2">2 участника</option>
+          <option value="3">3-4 участника</option>
+          <option value="5">5-10 участников</option>
+          <option value="group">Большая группа (10+)</option>
+        </select>
+        <label class="describe-action" for="participants">выберите из списка</label>
+      </div>
+
+      <button [disabled]="!tourLocation || !tourDate || !tourParticipants" class="search-pr-button">Найти
+        программу</button>
+    </form>
+  </div>
+  <div class="live">
+    <input class="live-input" [(ngModel)]="inputValue">
+    <p class="live-text">Живой текст из переменной: {{ inputValue }}</p>
+  </div>
+</section>
+
+<section class="hike-info">
+  <div class="hike-pictures">
+    <img class="mountain-view-2" src="/images/mountain-view-2.png" alt="">
+    <img class="mountain-view-3" src="/images/mountain-view-3.png" alt="">
+  </div>
+  <div class="hike-title">
+    <span class="hike-subtitle">о нашем походе</span>
+    <h2 class="hike-title-name">
+      Исследуйте все горные массивы мира вместе с нами
+    </h2>
+    <p class="hike-description">
+      Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард
+      МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem
+      Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.
+    </p>
+    <button class="tour-pr-button" (click)="onProgramTourClick()">Программа тура</button>
+  </div>
+</section>
+
+<section class="hike-offer">
+  <div class="hike-offer__container">
+    <div class="offer-title">
+      <span class="offer-subtitle">наше предложение</span>
+      <h3 class="offer-title-name">Лучшие программы для тебя</h3>
+      <p class="offer-description">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард
+        МакКлинток, профессор латыни из колледжа.
+      </p>
+      <div class="offer-info">
+        @for (service of services; track service.id) {
+        <div class="offer-info__item" [class.active-service]="service.id === selectedServiceId"
+          (click)="selectService(service.id)">
+          <div class="offer-info__pictures">
+            <img class="service-picture" [src]="service.image" alt="">
+          </div>
+          <div class="offer-info__subtitle">
+            <h4>{{ service.title }}</h4>
+            <p class="offer-info__description">{{ service.description }}</p>
+          </div>
+        </div>
+        }
+      </div>
+      <button class="program-price-button" (click)="onProgramPriceClick()">Стоимость программ</button>
+    </div>
+    <div class="offer-pictures">
+      <img class="mountain-view-4" src="/images/mountain-view-4.png" alt="">
+      <img class="mountain-view-5" src="/images/mountain-view-5.png" alt="">
+      <img class="mountain-view-6" src="/images/mountain-view-6.png" alt="">
+      <img class="mountain-view-7" src="/images/mountain-view-7.png" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="popular-destinations">
+  <div class="destinations-title">
+    <span class="destination-subtitle">по версии отдыхающих</span>
+    <h5 class="destination-title-name">Популярные направления</h5>
+  </div>
+  <div class="destinations-images">
+    <img class="rating-images" src="/images/lake.png" alt="">
+    <img class="rating-images" src="/images/night.png" alt="">
+    <img class="rating-images" src="/images/stretching.png" alt="">
+  </div>
+  <button class="rating-button" (click)="onRatingButtonClick()">Рейтинг направлений</button>
+</section>
+
+<section class="travel-blog">
+  <div class="travel-blog-title">
+    <span class="travel-blog-subtitle">делимся впечатлениями</span>
+    <h6 class="travel-blog-title-name">Блог о путешествиях</h6>
+  </div>
+  <div class="travel-blog-container">
+    <div class="travel-blog-card">
+      <img class="travel-blog-image" src="/images/italy.png" alt="">
+      <div class="travel-blog-content">
+        <h6 class="travel-blog-title-card">Красивая Италия, какая она в реальности?</h6>
+        <p class="travel-blog-subtitle-card">Для современного мира базовый вектор развития предполагает независимые
+          способы реализации соответствующих условий активизации.</p>
+        <div class="article-footer">
+          <span class="article-date">01/04/2023</span>
+          <a class="article-link" href="">читать статью</a>
+        </div>
+      </div>
+    </div>
+    <div class="travel-blog-card">
+      <img class="travel-blog-image" src="/images/plane.png" alt="">
+      <div class="travel-blog-content">
+        <h6 class="travel-blog-title-card">Красивая Италия, какая она в реальности?</h6>
+        <p class="travel-blog-subtitle-card">Для современного мира базовый вектор развития предполагает независимые
+          способы реализации соответствующих условий активизации.</p>
+        <div class="article-footer">
+          <span class="article-date">01/04/2023</span>
+          <a class="article-link" href="">читать статью</a>
+        </div>
+      </div>
+    </div>
+    <div class="travel-blog-card">
+      <img class="travel-blog-image" src="/images/journey-alone.png" alt="">
+      <div class="travel-blog-content">
+        <h6 class="travel-blog-title-card">Красивая Италия, какая она в реальности?</h6>
+        <p class="travel-blog-subtitle-card">Для современного мира базовый вектор развития предполагает независимые
+          способы реализации соответствующих условий активизации.</p>
+        <div class="article-footer">
+          <span class="article-date">01/04/2023</span>
+          <a class="article-link" href="">читать статью</a>
+        </div>
+      </div>
+    </div>
+    <div class="travel-blog-card">
+      <img class="travel-blog-image" src="/images/building.png" alt="">
+      <div class="travel-blog-content">
+        <h6 class="travel-blog-title-card">Красивая Италия, какая она в реальности?</h6>
+        <p class="travel-blog-subtitle-card">Для современного мира базовый вектор развития предполагает независимые
+          способы реализации соответствующих условий активизации.</p>
+        <div class="article-footer">
+          <span class="article-date">01/04/2023</span>
+          <a class="article-link" href="">читать статью</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="other-stuff-button" (click)="onOtherStuffClick()">Другие материалы</button>
+</section>
+
+<section class="share-impressions">
+  <div class="share-impressions-title">
+    <span class="share-impressions-subtitle">фото-отчет</span>
+    <h6 class="share-impressions-title-name">Делимся впечатлениями</h6>
+  </div>
+  <div class="share-impressions-pictures">
+    <img src="/images/pinterest-1.png" alt="">
+    <img src="/images/pinterest-2.png" alt="">
+    <img src="/images/pinterest-3.png" alt="">
+    <img src="/images/pinterest-5.png" alt="">
+    <img src="/images/pinterest-4.png" alt="">
+    <img src="/images/pinterest-6.png" alt="">
+  </div>
+  <button class="pinterest-button">Наш pinterest</button>
+</section>

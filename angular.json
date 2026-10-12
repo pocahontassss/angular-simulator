@@ -8,15 +8,39 @@
   "projects": {
     "angular-simulator": {
       "projectType": "application",
-      "schematics": { 
-        "@schematics/angular:component": { "type": "component", "style": "scss", "skipTests": true },
-        "@schematics/angular:directive": { "type": "directive", "skipTests": true },
-        "@schematics/angular:service": { "type": "service", "skipTests": true },
-        "@schematics/angular:guard": { "typeSeparator": ".", "skipTests": true },
-        "@schematics/angular:interceptor": { "typeSeparator": ".", "skipTests": true },
-        "@schematics/angular:pipe": { "typeSeparator": ".", "skipTests": true },
-        "@schematics/angular:resolver": { "typeSeparator": ".", "skipTests": true },
-        "@schematics/angular:module": { "typeSeparator": "." }
+      "schematics": {
+        "@schematics/angular:component": {
+          "type": "component",
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "type": "directive",
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "type": "service",
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "typeSeparator": ".",
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "typeSeparator": "."
+        }
       },
       "root": "",
       "sourceRoot": "src",
@@ -35,7 +59,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/styles.scss"
             ],
             "polyfills": [
               "zone.js"

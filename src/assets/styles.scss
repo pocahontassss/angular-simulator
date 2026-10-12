@@ -1,0 +1,31 @@
+@use './fonts';
+@use './normalize';
+
+* {
+  font-family: 'Nunito Sans';
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #FDFDFD;
+  --secondary-color: #18121E;
+}
+
+.gradient-border-active {
+  border: var(--gb-thickness, 2px) solid transparent !important;
+  background:
+    linear-gradient(var(--card-bg, #fff), var(--card-bg, #fff)) padding-box,
+    linear-gradient(90deg, var(--gb-colors)) border-box !important;
+  background-size: 100% 100%, 300% 300%;
+  animation: gradient-border-move 3s ease infinite alternate;
+}
+
+@keyframes gradient-border-move {
+  from {
+    background-position: 0 0, 0% 50%;
+  }
+
+  to {
+    background-position: 0 0, 100% 50%;
+  }
+}
