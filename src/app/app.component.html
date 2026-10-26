@@ -1,1 +1,257 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+@if (isLoading) {
+  <div class="loader" role="status" aria-label="Загрузка страницы">
+    <img class="loader__image" src="/images/loader.png" alt="">
+  </div>
+} @else {
+  <header class="header">
+    <div class="header__inner container">
+      <a class="header__logo" id="company-home-link" href="/">
+        <img class="header__logo-image" src="/images/logo-icon.svg" alt="">
+        <span class="header__logo-name">{{ companyName }}</span>
+      </a>
+
+      <nav class="header__nav" aria-label="Основная навигация">
+        <a id="nav-home-link" href="#">Главная</a>
+        <a id="nav-guide-link" href="#">Про гида</a>
+        <a id="nav-program-link" href="#">Программа тура</a>
+        <a id="nav-price-link" href="#">Стоимость</a>
+        <a id="nav-blog-link" href="#">Блог</a>
+        <a id="nav-contacts-link" href="#">Контакты</a>
+      </nav>
+
+      <button class="header__button" id="consultation-button" type="button">Консультация</button>
+    </div>
+
+    <div class="header__widget container">
+      @if (showClock) {
+        <p class="header__time" id="current-time">{{ currentTime }}</p>
+      } @else {
+        <div class="header__counter">
+          <button class="header__counter-button" id="increase-counter-button" type="button" aria-label="Увеличить счётчик" (click)="clickCount = clickCount + 1">
+            +
+          </button>
+
+          <span class="header__counter-value">{{ clickCount }}</span>
+
+          <button class="header__counter-button" id="decrease-counter-button" type="button" aria-label="Уменьшить счётчик" [disabled]="clickCount === 0" (click)="clickCount = clickCount - 1">
+            −
+          </button>
+        </div>
+      }
+
+      <button class="header__button header__toggle-button" id="toggle-widget-button" type="button" (click)="showClock = !showClock">
+        {{ showClock ? 'Показать кликер' : 'Показать дату' }}
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero__title">Насладись прогулкой в горах<br>с командой единомышленников</h1>
+        <form class="tour-search" id="tour-search-form">
+          <div class="tour-search__field">
+            <select class="tour-search__control" id="tour-location" name="location" aria-label="Локация для тура" [(ngModel)]="selectedLocation" required>
+              <option value="">Локация для тура</option>
+              <option value="Алтай">Алтай</option>
+              <option value="Кавказ">Кавказ</option>
+              <option value="Карелия">Карелия</option>
+            </select>
+
+            <span class="tour-search__hint">{{ selectedLocation || 'выберите из списка' }}</span>
+          </div>
+
+          <div class="tour-search__field">
+            <div class="tour-search__date">
+              <input class="tour-search__control tour-search__date-input" id="tour-date" name="date" type="date" [(ngModel)]="selectedDate" required>
+              <label class="tour-search__date-label" for="tour-date">Дата похода</label>
+            </div>
+
+            <span class="tour-search__hint">{{ selectedDate || 'укажите дату' }}</span>
+          </div>
+
+          <div class="tour-search__field">
+            <select class="tour-search__control" id="tour-participants" name="participants" aria-label="Участники" [(ngModel)]="selectedParticipants" required>
+              <option value="">Участники</option>
+              <option value="4">4 человека</option>
+              <option value="5">5 человек</option>
+              <option value="6">6 человек</option>
+            </select>
+            <span class="tour-search__hint">{{ selectedParticipants || 'минимум 4 человека' }}</span>
+          </div>
+
+          <button class="tour-search__button" id="find-program-button" type="button" [disabled]="!selectedLocation || !selectedDate || !selectedParticipants">
+            Найти программу
+          </button>
+        </form>
+        <div class="live-input">
+          <div class="live-input__field">
+            <input class="live-input__control" id="live-text-input" type="text" placeholder="Живой инпут" aria-label="Введите текст" [(ngModel)]="liveText">
+            <span class="live-input__arrow" aria-hidden="true">
+              <img src="/images/live-arrow-icon.svg" alt="">
+            </span>
+          </div>
+
+          <p class="live-input__value">{{ liveText }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about__inner container">
+        <div class="about__images">
+          <img class="about__image about__image--back" src="/images/about-mountain.png" alt="Горная вершина в облаках">
+
+          <div class="about__preview">
+            <img class="about__image" src="/images/about-cabin.png" alt="Домик среди гор и леса">
+
+            <span class="about__play" aria-hidden="true">
+              <img src="/images/play-icon.svg" alt="">
+            </span>
+          </div>
+        </div>
+
+        <div class="about__content">
+          <div class="about__heading">
+            <p class="about__subtitle">о нашем походе</p>
+
+            <h2 class="about__title">Исследуйте все горные массивы мира вместе с нами</h2>
+          </div>
+
+          <p class="about__description">
+            Его корни уходят в один фрагмент классической латыни
+            45 года н.э., то есть более двух тысячелетий назад.
+            Ричард МакКлинток, профессор латыни из колледжа
+            Hampden-Sydney, штат Вирджиния, взял одно из самых
+            странных слов в Lorem Ipsum, "consectetur"и занялся
+            его поисками в классической латинской литературе.
+          </p>
+
+          <a class="about__button" id="about-program-link" href="#tour-search-form" (click)="messageService.addMessage('Форма выбора тура открыта.', messageType.SUCCESS)">Программа тура</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer">
+      <div class="offer__inner container">
+        <div class="offer__content">
+          <div class="offer__heading">
+            <p class="offer__subtitle">наше предложение</p>
+
+            <h2 class="offer__title">Лучшие программы для тебя</h2>
+          </div>
+
+          <p class="offer__description">
+            Его корни уходят в один фрагмент классической латыни
+            45 года н.э., то есть более двух тысячелетий назад.
+            Ричард МакКлинток, профессор латыни из колледжа.
+          </p>
+
+          <ul class="offer__advantages">
+            @for (advantage of advantages; track advantage.id) {
+              <li class="offer__advantage" id="advantage-{{ advantage.id }}">
+                <span class="offer__icon offer__icon--{{ advantage.icon }}">
+                  <img [src]="'/images/' + advantage.icon + '-icon.svg'" alt="">
+                </span>
+
+                <div class="offer__advantage-content">
+                  <h3 class="offer__advantage-title">{{ advantage.title }}</h3>
+
+                  <p class="offer__advantage-description">{{ advantage.description }}</p>
+                </div>
+              </li>
+            }
+          </ul>
+
+          <a class="offer__button" id="offer-price-link" href="#tour-search-form">Стоимость программ</a>
+        </div>
+
+        <div class="offer__images">
+          @for (image of offerImages; track image) {
+            <img class="offer__image" [src]="'/images/' + image + '.png'" alt="">
+          }
+        </div>
+      </div>
+    </section>
+    <section class="destinations">
+      <div class="container">
+        <div class="destinations__heading">
+          <p class="destinations__subtitle">по версии отдыхающих</p>
+          <h2 class="destinations__title">Популярные направления</h2>
+        </div>
+
+        <div class="destinations__cards">
+          @for (destination of destinations; track destination.id) {
+            <article class="destinations__card">
+              <img class="destinations__image" [src]="'/images/' + destination.image + '.png'" [alt]="destination.title">
+              <div class="destinations__rating">
+                <img src="/images/star-icon.svg" alt="">
+                <span>{{ destination.rating.toFixed(1) }}</span>
+              </div>
+
+              <div class="destinations__details">
+                <div class="destinations__description">
+                  <h3 class="destinations__name">{{ destination.title }}</h3>
+                  <p class="destinations__caption">{{ destination.subtitle }}</p>
+                </div>
+
+                <span class="destinations__price">{{ destination.price }} $</span>
+              </div>
+            </article>
+          }
+        </div>
+
+        <button class="destinations__button" id="destinations-rating-button" type="button" (click)="messageService.addMessage('Рейтинг направлений пока недоступен.', messageType.WARN)">Рейтинг направлений</button>
+      </div>
+    </section>
+    <section class="blog">
+      <div class="container">
+        <div class="blog__heading">
+          <p class="blog__subtitle">делимся впечатлениями</p>
+          <h2 class="blog__title">Блог о путешествиях</h2>
+        </div>
+
+        <div class="blog__cards">
+          @for (article of articles; track article.id) {
+            <article class="blog__card">
+              <img class="blog__image" [class.blog__image--flight]="article.image === 'blog-flight'" [src]="'/images/' + article.image + '.png'" [alt]="article.title">
+              <div class="blog__content">
+                <h3 class="blog__name">{{ article.title }}</h3>
+
+                <p class="blog__description">{{ article.description }}</p>
+
+                <div class="blog__meta">
+                  <span class="blog__date">{{ article.date }}</span>
+
+                  <button class="blog__read-button" id="read-article-{{ article.id }}" type="button" (click)="messageService.addMessage('Статья пока недоступна: ' + article.title, messageType.ERROR)">читать статью</button>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+
+        <button class="blog__button" id="blog-materials-button" type="button" (click)="messageService.addMessage('Другие материалы пока недоступны.', messageType.INFO)">Другие материалы</button>
+      </div>
+    </section>
+  </main>
+}
+<div class="messages">
+  @for (message of messageService.allMessages; track message.id) {
+    <ng-container
+      [ngTemplateOutlet]="messageTemplate"
+      [ngTemplateOutletContext]="{ message: message }"
+    >
+    </ng-container>
+  }
+</div>
+<ng-template #messageTemplate let-message="message">
+  <article class="message" role="status">
+    <img class="message__icon" src="/images/message-icon.svg" alt="">
+    <div class="message__content">
+      <h3 class="message__title">{{ message.type }}</h3>
+      <p class="message__text">{{ message.text }}</p>
+    </div>
+
+    <button class="message__close" id="close-message-{{ message.id }}" type="button" aria-label="Закрыть сообщение" (click)="messageService.closeMessage(message.id)"><img src="/images/message-close-icon.svg" alt=""></button>
+  </article>
+</ng-template>
