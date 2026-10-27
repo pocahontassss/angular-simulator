@@ -1,1 +1,135 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+@if (isLoading) {
+  <div class="loader">
+    <img src="/images/spinner.svg" alt="спинер" class="spinner">
+  </div>
+} @else {
+  <section class="hero-section">
+  <header class="main-menu">
+    <div>
+      <a href="" class="logo">
+        <img src="images/logo.svg" alt="logo">
+        <span class="logo-text">{{ companyName }}</span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a id="nav-home-link" href="#">Главное</a>
+      </li>
+      <li>
+        <a id="nav-guide-link" href="#">Про гида</a>
+      </li>
+      <li>
+        <a id="nav-tour-itinerary" href="#">Программа тура</a>
+      </li>
+      <li>
+        <a id="nav-price" href="#">Стоимость</a>
+      </li>
+      <li>
+        <a id="nav-price" href="#">Блог</a>
+      </li>
+      <li>
+        <a id="nav-price" href="#">Контакты</a>
+      </li>
+    </ul>
+     <button id="consultation-btn" class="btn-consult">Консультация</button>
+   <div class="header-right">
+      <div class="header-info">
+        @if (showTimer) {
+          <div class="header-date">
+      {{ currentDate | date:'dd.MM.yyyy.HH.mm.ss' }}
+    </div>
+        } @else {
+          <div class="header-counter">
+      <button id="increment-count-btn" (click)="increment()">+</button>
+      <span>{{ count }}</span>
+      <button id="decrement-count-btn" (click)="decrement()">-</button>
+    </div>
+        }
+        <button id="toggle-view-button" class="header-toggle" (click)="toggleView ()">{{showTimer ? 'показать счетчик' : 'показать таймер'}}</button>
+      </div>
+    </div>
+  </header>
+  <div class="header-live-input">
+      <input type="text" [(ngModel)] = "inputText" placeholder="Введите текст">
+      <span>{{ inputText }}</span>
+    </div>
+  <div class="hero-content">
+    <h1>НАСЛАДИСЬ ПРОГУЛКОЙ В ГОРАХ <br> С КОМАНДОЙ ЕДИНОМЫШЛЕННИКОВ</h1>
+    <div class="search-wrapper">
+      <div class="search-form">
+        <div class="input-group">
+        <label class="sub-text" for="location">выберите из списка</label>
+        <select id="location" [(ngModel)]="selectedLocation" class="input-field select-field">
+          <option value="" disabled selected hidden>Локация тура</option>
+          <option value="Кавказ">Кавказ</option>
+          <option value="Алтай">Алтай</option>
+          <option value="Камчатка">Камчатка</option>
+        </select>
+      </div>
+       <div class="input-group">
+        <label class="sub-text" for="date">укажите дату</label>
+        <input type="date" id="date" placeholder="Дата похода" [(ngModel)]="selectedDate" class="input-field date-field">
+       </div>
+       <div class="input-group">
+        <label class="sub-text" for="participants">выберите из списка</label>
+        <select id="participants" [(ngModel)]="selectedParticipants" class="input-field select-field">
+          <option value="" disabled selected hidden>Участники</option>
+          <option value="1">1 человек</option>
+          <option value="2-3">2-3 человека</option>
+          <option value="4+">Большая группа (4+)</option>
+        </select>
+       </div>
+       <button class="btn-search" [disabled]="!selectedLocation || !selectedDate || !selectedParticipants">Найти программу</button>
+        </div>
+      </div>
+      </div>
+</section>
+<section>
+  <div class="story-card">
+    <div class="duo-image">
+      <img class="mountains" src="/images/mountains-img.jpg" alt="Горы">
+      <img class="chalet" src="/images/chalet-img.jpg" alt="Шале, домик в горах">
+      <img class="preview" src="/images/preview-img.svg" alt="плеер">
+    </div>
+    <div class="info">
+      <h2 class="title">о нашем походе</h2>
+      <h1 class="tagline">Исследуйте все горные массивы мира вместе с нами</h1>
+      <p class="text">Его корни уходят в один фрагмент классической латыни 45 года <br> н.э.,
+        то есть более двух тысячелетий назад. Ричард МакКлинток, <br>
+        профессор латыни из колледжа Hampden-Sydney,
+        штат <br> Вирджиния, взял одно из самых странных слов в Lorem Ipsum,<br>
+        "consectetur"и занялся его поисками в классической латинской <br> литературе.
+      </p>
+      <button id="tour-program-btn" class="tour-btn">Программа тура</button>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="box">
+      <h2 class="title2">наше предложение</h2>
+      <h1 class="top-programs">Лучшие программы для тебя</h1>
+      <p class="text-block">Его корни уходят в один фрагмент классической латыни 45 года <br>н.э.,
+        то есть более двух тысячелетий назад. Ричард МакКлинток, <br> профессор латыни из колледжа.
+      <div class="card-container">
+        @for (card of cards; track card.title) {
+        <div class="card">
+          <img [src]="card.image" [alt]="card.title" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">{{ card.title }}</h3>
+          <p class="card-description">{{ card.description }}</p>
+          </div>
+        </div>
+        }
+      </div>
+      <button id="program-cost-btn" class="btn-primary">Стоимость программ</button>
+    </div>
+    <div class="adventures-grid">
+      <img src="/images/canyon-oasis.jpg" alt="Оазис в каньоне">
+      <img src="/images/man-in-canyon.jpg" alt="Мужина в коньоне">
+      <img src="/images/snowy-mauntain-view.jpg" alt="Заснеженый горный вид">
+      <img src="/images/mountain-valley.jpg" alt="Горная долина">
+    </div>
+  </div>
+</section> 
+}
