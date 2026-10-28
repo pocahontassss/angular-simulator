@@ -2,13 +2,6 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
 
-## Объяснения учебного проекта
-
-- [Homework №16: отдельные отчёты по пунктам 2–8](reports/homework-16/README.md).
-
-- [Шапка и первый экран](README-UI.md).
-- [Блоки «О нашем походе» и «Лучшие программы для тебя»: код и теория](REPORT-ETAP-6.md).
-
 ## Development server
 
 To start a local development server, run:
