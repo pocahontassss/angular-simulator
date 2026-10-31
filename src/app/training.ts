@@ -10,7 +10,7 @@ export interface IAdmin extends IUser {
   permissions: string[];
 }
 
-// Типы и переменные
+
 export type UploadStatus = 'loading' | 'success' | 'error';
 export type TextFormat = 'uppercase' | 'lowercase' | 'capitalize';
 
@@ -24,9 +24,9 @@ const admin: IAdmin = {
   email: 'galim@example.com',
   role: 'administrator',
   permissions: ['edit', 'delete'],
-};
+}; 
 
-// Функции
+
 export function sum(firstNumber: number, secondNumber: number): number {
   const result: number = firstNumber + secondNumber;
   return result;
@@ -48,7 +48,7 @@ export function removeCharacter(text: string, character: string): string {
   return text.replaceAll(character, '');
 }
 
-// Массив и фильтрация
+
 export const users: IUser[] = [
   { id: 1, name: 'Галим', age: 27, email: 'galim@example.com' },
   { id: 2, name: 'Асия', age: 19 },
