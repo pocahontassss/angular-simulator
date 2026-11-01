@@ -24,10 +24,10 @@ export class AppComponent {
     { type: MessageType.Success, message:'Успешно!', id: 1 },
     { type: MessageType.Info, message:'Инфо', id: 2 },
     { type: MessageType.Warn, message: 'Предупреждение', id: 3 },
-    {type: MessageType.Error, message: 'Ошибка', id: 4 },
+    { type: MessageType.Error, message: 'Ошибка', id: 4 },
   ];
 
-  messageType = MessageType;
+  MessageType: typeof MessageType = MessageType;
   selectedLocation: string = '';
   selectedDate: string = '';
   selectedDestinationId: number | null = null;

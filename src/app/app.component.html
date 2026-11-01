@@ -140,11 +140,7 @@
 
         <button
           class="form-button"
-          id="button-find-program"
-          2.
-          •
-          (click)="toastService.addMessage('Доступные туры успешно найдены!', messageType.Success)"
-        >
+          id="button-find-program" (click)="toastService.addMessage('Доступные туры успешно найдены!', messageType.Success)">
           Найти программу
         </button>
       </div>
@@ -178,11 +174,7 @@
       в классической латинской литературе.
     </p>
     <button
-      id="banner-button"
-      (click)="
-        toastService.addMessage('Программа тура успешно скачана в PDF!', messageType.Success)
-      "
-    >
+      id="banner-button" (click)="toastService.addMessage('Программа тура успешно скачана в PDF!', messageType.Success)">
       Программа тура
     </button>
   </div>
@@ -265,11 +257,8 @@
 
     <div class="rating">
       <button
-        id="rating-directions-btn"
-        class="rating directions"
-        1.
-        (click)="
-          toastService.addMessage('Ошибка сервера. Не удалось обновить рейтинг.', messageType.Error)
+        id="rating-directions-btn" class="rating directions" 
+        (click)=" toastService.addMessage('Ошибка сервера. Не удалось обновить рейтинг.', messageType.Error)
         ">Рейтинг направлений</button>
     </div>
   </div>
@@ -325,3 +314,4 @@
     </div>
   </ng-template>
 </div>
+
