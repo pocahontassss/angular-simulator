@@ -50,9 +50,9 @@ export function removeCharacter(text: string, character: string): string {
 
 
 export const users: IUser[] = [
-  { id: 1, name: 'Галим', age: 27, email: 'galim@example.com' },
-  { id: 2, name: 'Асия', age: 19 },
-  { id: 3, name: 'София', age: 32, email: 'sofia@example.com' },
+  { id: 1, name: 'Егор', age: 27, email: 'Egor@gmail.com' },
+  { id: 2, name: 'Настя', age: 19 },
+  { id: 3, name: 'Данил', age: 32, email: 'Danil@example.com' },
 ];
 
 export const filteredUsers: IUser[] = users.filter((user) => user.age >= 21);
