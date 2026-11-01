@@ -19,9 +19,9 @@ export let textFormat: TextFormat = 'capitalize';
 
 const admin: IAdmin = {
   id: 1,
-  name: 'Галим',
-  age: 27,
-  email: 'galim@example.com',
+  name: 'Егор',
+  age: 22,
+  email: 'Egor@gmail.com',
   role: 'administrator',
   permissions: ['edit', 'delete'],
 }; 
