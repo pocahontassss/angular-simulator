@@ -27,7 +27,7 @@ export class AppComponent {
     { type: MessageType.Error, message: 'Ошибка', id: 4 },
   ];
 
-  MessageType: typeof MessageType = MessageType;
+  messageType: typeof MessageType = MessageType;
   selectedLocation: string = '';
   selectedDate: string = '';
   selectedDestinationId: number | null = null;

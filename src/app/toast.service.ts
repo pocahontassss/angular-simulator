@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import {MessageType, ToastMessage} from './app.component';
+import { IMessage } from '../interfaces/IMessage';
+import { MessageType } from '../enums/MessageType';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class ToastService {
 
-  get toastMessages(): ToastMessage[] {
+  get toastMessages(): IMessage[] {
     return this.messages;
   }
 
-  private messages: ToastMessage[] = [
+  private messages: IMessage[] = [
     { id: 1, message: 'Успешно!', type: MessageType.Success },
     { id: 2, message: 'Ошибка!', type: MessageType.Error },
     { id: 3, message: 'Предупреждение!', type: MessageType.Warn },
