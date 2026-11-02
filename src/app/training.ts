@@ -55,6 +55,7 @@ function censorText(text: string, targetChar: string) {
 
 const text = censorText("Goodbye world", "o");
 
+// №10
 const users: IUser[] = [
   {
     firstName: "Islam",
