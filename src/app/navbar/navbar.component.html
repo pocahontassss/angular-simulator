@@ -1,0 +1,46 @@
+<header class="navbar">
+  <nav class="navbar__inner" aria-label="Главная навигация">
+    <a class="navbar__logo" href="#">
+      <img class="navbar__logo-icon" src="/icons/logo.svg" alt="" width="137" height="48" />
+      <span class="navbar__logo-text">{{ companyName }}</span>
+    </a>
+
+    <ul class="navbar__links">
+      <li><a href="#">Главная</a></li>
+      <li><a href="#about">Про гида</a></li>
+      <li><a href="#programs">Программа тура</a></li>
+      <li><a href="#programs">Стоимость</a></li>
+      <li><a href="#">Блог</a></li>
+      <li><a href="#">Контакты</a></li>
+    </ul>
+
+    <a class="navbar__button" href="#">Консультация</a>
+  </nav>
+
+  <div class="navbar__widgets">
+    <div class="navbar__widget">
+      @if (isTimerVisible) {
+        <p class="navbar__date">{{ currentDate }}</p>
+      } @else {
+        <div class="navbar__counter" aria-label="Счётчик кликов">
+          <button type="button" (click)="increaseCount()" aria-label="Увеличить счётчик">
+            +
+          </button>
+          <output aria-live="polite">{{ clickCount }}</output>
+          <button
+            type="button"
+            (click)="decreaseCount()"
+            [disabled]="clickCount === 0"
+            aria-label="Уменьшить счётчик"
+          >
+            −
+          </button>
+        </div>
+      }
+    </div>
+
+    <button class="navbar__toggle" type="button" (click)="toggleWidget()">
+      {{ isTimerVisible ? 'Показать кликер' : 'Показать дату' }}
+    </button>
+  </div>
+</header>

@@ -1,1 +1,26 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+@if (isLoading) {
+  <div class="page-loader" role="status" aria-label="Загрузка страницы">
+    <svg
+      class="page-loader__spinner"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M3 11a9 9 0 0 1 15.36-6.36L21 7" />
+      <path d="M21 3v4h-4" />
+      <path d="M21 13a9 9 0 0 1-15.36 6.36L3 17" />
+      <path d="M3 21v-4h4" />
+    </svg>
+    <span>Загрузка...</span>
+  </div>
+} @else {
+  <app-navbar />
+  <app-hero />
+  <app-about-hike />
+  <app-programs />
+  <router-outlet />
+}

@@ -1,0 +1,33 @@
+<section class="programs" id="programs">
+  <div class="programs__inner">
+    <div class="programs__content">
+      <p class="programs__eyebrow">наше предложение</p>
+      <h2 class="programs__title">Лучшие программы для тебя</h2>
+      <p class="programs__description">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+      </p>
+
+      <ul class="programs__advantages">
+        @for (advantage of advantages; track advantage.id) {
+          <li class="programs__advantage">
+            <img [src]="advantage.icon" alt="" width="50" height="50" />
+            <div>
+              <h3>{{ advantage.title }}</h3>
+              <p>{{ advantage.description }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+
+      <a class="programs__button" href="#programs">Стоимость программ</a>
+    </div>
+
+    <div class="programs__photos">
+      <img src="/images/program-tea.png" alt="Чашка чая на фоне бирюзового горного озера" width="250" height="250" />
+      <img src="/images/program-hiker.png" alt="Путешественник с рюкзаком в горах" width="250" height="250" />
+      <img src="/images/program-snow.png" alt="Отдых на вершине среди заснеженных гор" width="250" height="250" />
+      <img src="/images/program-valley.png" alt="Река и цветная горная долина" width="250" height="250" />
+    </div>
+  </div>
+</section>

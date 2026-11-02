@@ -1,0 +1,29 @@
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 16px;
+  background: #fdfdfd;
+  color: #1a3e3e;
+}
+
+.page-loader__spinner {
+  width: 56px;
+  height: 56px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader__spinner {
+    animation: none;
+  }
+}

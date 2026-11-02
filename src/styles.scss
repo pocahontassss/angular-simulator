@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/fonts/nunito-sans-400.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/fonts/nunito-sans-600.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/fonts/nunito-sans-700.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/fonts/nunito-sans-800.ttf') format('truetype');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Next Art';
+  src: url('/fonts/next-art-bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+  color: #18121e;
+}
