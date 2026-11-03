@@ -1,1 +1,13 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<h1 style="display: flex; justify-content: center; font-family: sans-serif">NGX SIMULATOR</h1>
+<h1>Моя первая функция</h1>
+<p>Результат: {{ myResult }}</p>
+
+<h3>Проверка formatText</h3>
+<p>Верхний регистр: {{ testUpper }}</p>
+<p>Заглавная буква: {{ testCapitalize }}</p>
+
+<h3>Результаты фильтрации:</h3>
+<p>Юзеров с ID > 10: {{ myFilteredUsers.length }} (должно быть 2)</p>
+<p>Юзеров с почтой: {{ myUsersWithEmails.length }} (должно быть 2)</p>
+<p>Юзеров на "М": {{ myUsersStartingWithM.length }} (должно быть 1)</p>
+<pre>{{ myFilteredUsers | json }}</pre>
