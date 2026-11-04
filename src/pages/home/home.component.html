@@ -1,0 +1,243 @@
+<main class="main">
+  <section class="hero">
+    <img
+      class="background-nature"
+      src="/pictures/background-nature.png"
+      alt="background-nature"
+      width="1920"
+      height="985"
+    />
+    <div class="container hero-container">
+      <h1 class="search-title fs-50">
+        Насладись прогулкой в&nbsp;горах с&nbsp;командой единомышленников
+      </h1>
+      <div class="search-container">
+        <ul class="search-wrapper">
+          <li class="search-wrapper-li">
+            <select class="search-wrapper-li-select" [(ngModel)]="tour.location">
+              <option value="" selected hidden disabled>Локация для тура</option>
+              <option class="option" value="tashkent">Tashkent</option>
+              <option class="option" value="bukhara">Bukhara</option>
+            </select>
+            <span>выберите из списка</span>
+          </li>
+          <li class="search-wrapper-li">
+            <div class="search-wrapper-li-container" (click)="openDatePicker(dateInput)">
+              <input
+                #dateInput
+                class="search-date"
+                type="date"
+                required
+                [(ngModel)]="tour.date"
+                placeholder=""
+              />
+              <span class="custom-placeholder">Дата похода</span>
+              <img class="calendar" src="/pictures/calendar.png" alt="calendar" />
+            </div>
+            <span>укажите дату</span>
+          </li>
+          <li class="search-wrapper-li">
+            <select class="search-wrapper-li-select" [(ngModel)]="tour.participants">
+              <option value="" selected hidden disabled>Участники</option>
+              <option class="option" value="one">1 человек</option>
+              <option class="option" value="two">2 человек</option>
+            </select>
+            <span>выберите из списка</span>
+          </li>
+          <li>
+            <button class="btn btn--primary search-button" [disabled]="isSearchDisabled">
+              Найти программу
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="live-text">
+        <input placeholder="live input" type="text" [(ngModel)]="liveInput" />
+
+        @if (liveInput) {
+          <span>{{ liveInput }}</span>
+        }
+      </div>
+    </div>
+  </section>
+  <section class="about">
+    <div class="container about__container">
+      <div class="about__container-left">
+        <ul class="about__images-list">
+          @for (item of aboutBlockImages; track $index) {
+            <li
+              class="about__images-item"
+              [style.z-index]="activeImageIndex === $index ? 10 : 1"
+              (click)="activeImageIndex = $index"
+            >
+              <img
+                class="about__image"
+                [src]="item.src"
+                [alt]="item.alt"
+                width="350"
+                height="400"
+              />
+              <div class="pause-icon-block">
+                <img
+                  class="pause-icon"
+                  src="/pictures/pause-icon.svg"
+                  alt="pause-icon"
+                  width="14"
+                  height="15"
+                />
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="about__container-right">
+        <span class="about__us">о нашем походе</span>
+        <span class="about__slogan">Исследуйте все горные массивы мира вместе с нами</span>
+        <p class="about__text fs-18">
+          Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+          тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
+          Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его
+          поисками в классической латинской литературе.
+        </p>
+        <button
+          class="btn btn--primary"
+          (click)="messegesService.showWarn('Программа, к сожалению, недоступна.')"
+        >
+          Программа тура
+        </button>
+      </div>
+    </div>
+  </section>
+  <section class="best-programs">
+    <div class="container best-programs__container">
+      <div class="best-programs__left">
+        <span class="best-programs__span">наше предложение</span>
+        <span class="best-programs__slogan">Лучшие программы для тебя</span>
+        <p class="best-programs__text fs-18">
+          Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+          тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+        </p>
+        <ul class="best-programs__list">
+          @for (item of bestProgramsList; track item.id) {
+            <li class="best-programs__item">
+              <div class="best-programs__item-icon" [style.background-color]="item.backgroundColor">
+                <img [src]="item.src" [alt]="item.alt" width="36" height="36" />
+              </div>
+              <div class="best-programs__wrap">
+                <p class="best-programs__wrap-title fs-18">{{ item.title }}</p>
+                <P class="best-programs__wrap-description">{{ item.description }}</P>
+              </div>
+            </li>
+          }
+        </ul>
+        <button
+          class="btn btn--primary"
+          (click)="messegesService.showInfo('Стоимость отправлена на почту')"
+        >
+          Стоимость программ
+        </button>
+      </div>
+      <ul class="best-programs__images-list">
+        @for (item of bestProgramsImages; track item.id) {
+          <li class="best-programs__images-item">
+            <img [src]="item.src" [alt]="item.alt" width="250" height="250" />
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+  <section class="popular-tourisms">
+    <div class="container popular-tourisms__container">
+      <span class="popular-tourisms__span">по версии отдыхающих</span>
+      <h2 class="popular-tourisms__title">Популярные направления</h2>
+      <ul class="popular-tourisms__list">
+        @for (item of popularTourisms; track item.id) {
+          <li class="popular-tourisms__item">
+            <img
+              class="popular-tourisms__item-image"
+              [src]="item.image"
+              [alt]="item.alt"
+              width="380"
+              height="500"
+            />
+            <div class="popular-tourisms__item-wrap">
+              <div class="popular-tourisms__item-left">
+                <h3 class="popular-tourisms__item-title">{{ item.title }}</h3>
+                <span class="popular-tourisms__item-text">{{ item.text }}</span>
+              </div>
+              <span class="popular-tourisms__item-price fs-20">{{ item.price }} $</span>
+            </div>
+            <div class="popular-tourisms__item-rating">
+              <img src="/pictures/rating-icon.svg" alt="rating-icon" width="17" height="16" />
+              <span class="popular-tourisms__item-rating-value">{{ item.rating.toFixed(1) }}</span>
+            </div>
+          </li>
+        }
+      </ul>
+      <button
+        class="btn btn--primary popular-tourisms__btn"
+        (click)="messegesService.showSuccess('Направления получены')"
+      >
+        Рейтинг направлений
+      </button>
+    </div>
+  </section>
+  <section class="blog">
+    <div class="container">
+      <span class="blog__span">делимся впечатлениями</span>
+      <h2 class="blog__title">Блог о путешествиях</h2>
+      <ul class="blog__list">
+        @for (item of blog; track item.id) {
+          <li class="blog__item">
+            <img
+              class="blog__item-image"
+              [src]="item.image"
+              [alt]="item.alt"
+              width="230"
+              height="280"
+            />
+            <div class="blog__item-right">
+              <h3 class="blog__item-title">
+                {{ item.title }}
+              </h3>
+              <p class="blog__item-text">{{ item.text }}</p>
+              <div class="blog__item-bottom">
+                <span class="blog__item-date">{{ item.date }}</span>
+                <a class="blog__item-detail-link" href="#">читать статью</a>
+              </div>
+            </div>
+          </li>
+        }
+      </ul>
+      <button
+        class="btn btn--primary blog__btn"
+        (click)="messegesService.showError('Материалы недоступны')"
+      >
+        Другие материалы
+      </button>
+    </div>
+  </section>
+
+  <section class="share-impressions">
+    <div class="container">
+      <span class="share-impressions__span">фото-отчет</span>
+      <h2 class="share-impressions__title">Делимся впечатлениями</h2>
+      <ul class="share-impressions__images-list">
+        @for (item of shareImpressions; track item.id) {
+          <li class="share-impressions__images-item">
+            <img class="share-impressions__image" [src]="item.src" [alt]="item.alt" height="250" />
+          </li>
+        }
+      </ul>
+
+      <button
+        class="btn btn--primary share-impressions__btn"
+        (click)="messegesService.showInfo('Информация отправлена на почту')"
+      >
+        Наш pinterest
+      </button>
+    </div>
+  </section>
+</main>

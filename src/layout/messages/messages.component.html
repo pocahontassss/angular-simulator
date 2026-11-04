@@ -1,0 +1,27 @@
+@if (messages$ | async; as messages) {
+  @if (messages.length !== 0) {
+    <ul class="toasts-list">
+      @for (message of messages; track message.id) {
+        <li class="toasts-list__item">
+          <ng-container
+            [ngTemplateOutlet]="messageTemplate"
+            [ngTemplateOutletContext]="{ $implicit: message }"
+          ></ng-container>
+        </li>
+      }
+    </ul>
+  }
+}
+
+<ng-template #messageTemplate let-message>
+  <div class="toast" [class.toast--closing]="message.isClosing">
+    <img src="pictures/sms-icon.svg" alt="sms-icon" width="40" height="40" />
+    <div class="toast__wrap">
+      <span class="toast__status fs-16">{{ message.status }}</span>
+      <span class="toast__message">{{ message.text }}</span>
+    </div>
+    <button class="toast__close-btn" (click)="messagesService.closeMessage(message.id)">
+      <img src="pictures/close-icon.svg" alt="close-icon" width="20" height="20" />
+    </button>
+  </div>
+</ng-template>

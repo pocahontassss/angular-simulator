@@ -1,0 +1,21 @@
+<section class="users">
+  <div class="users__container">
+    <h2 class="users__title">Список Пользователей</h2>
+    <app-users-filter (searchChange)="onSearchChange($event)" />
+    @if ((users$ | async)?.length !== 0) {
+      <button class="btn btn--danger" (click)="deleteAllUsers()">Delete all users</button>
+    }
+    <ul class="users__list">
+      @for (user of filteredUsers$ | async; track user.id) {
+        <li class="users__list-item">
+          <app-user-card-component [user]="user" (clickedById)="deleteUser($event)" />
+        </li>
+      } @empty {
+        <li class="users__empty">
+          <p>Нет пользователей для отображения</p>
+        </li>
+      }
+    </ul>
+    <app-user-create (createUser)="addUser($event)" />
+  </div>
+</section>

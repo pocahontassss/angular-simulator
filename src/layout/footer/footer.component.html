@@ -1,0 +1,87 @@
+<footer class="footer">
+  <div class="container footer__part">
+    <div class="footer__part-left">
+      <span class="footer__part-left-span fs-18">актуально</span>
+      <p class="footer__part-left-slogan">Получайте полезные рассылки о путешествиях</p>
+    </div>
+
+    <form class="footer__part-right-form" action="#" (submit)="onSubmit($event)">
+      <label class="fs-16" for="email">Введите e-mail адрес</label>
+      <input type="text" id="email" placeholder="name@domain.com" />
+      <button class="btn btn--primary" type="submit">Подписаться на новости</button>
+      <p class="footer__part-right-agreement">
+        подписываясь на новости, вы автоматически соглашаетесь с
+        <a class="footer__part-right-link" href="#">условиями обработки персональных данных</a> и
+        <a class="footer__part-right-link" href="#">правилами рекламных рассылок</a>
+      </p>
+    </form>
+  </div>
+
+  <div class="footer__top">
+    <div class="container footer__top-container">
+      <div class="footer__top-left">
+        <h3 class="footer__top-left-title fs-20 footer-title">Компания «РумТибет»</h3>
+        <p class="footer__top-left-info">
+          Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+          тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.
+        </p>
+        <div class="footer__top-left-wrap">
+          <a class="footer__top-left-link" href="mailto:info@domain.com">info@domain.com</a>
+          <a class="footer__top-left-link" href="tel:+71234567890">+7 (123) 456-78-90</a>
+        </div>
+        <ul class="footer__top-social-medias">
+          @for (item of socialMedias; track item.id) {
+            <li class="footer__top-social-item">
+              <a class="footer__top-social-link" href="#" aria-label="Social media">
+                <img [src]="item.src" [alt]="item.alt" />
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="footer__top-center">
+        <h3 class="footer__top-center-title fs-20 footer-title">Наши услуги</h3>
+        <ul class="footer__top-center-list">
+          @for (item of footerCenterBtns; track $index) {
+            <li class="footer__top-center-item">
+              <button class="footer__top-center-btn">
+                <img src="/pictures/arrow-right-icon.svg" alt="Arrow right icon" />
+                <span class="footer__top-center-btn-text">{{ item }}</span>
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="footer__top-right">
+        <h3 class="footer__top-right-title footer__top-center-title fs-20 footer-title">
+          Важно для путешествий
+        </h3>
+        <ul class="footer__top-right-list footer__top-center-list">
+          @for (item of footerRightBtns; track $index) {
+            <li class="footer__top-right-item footer__top-center-item">
+              <button class="footer__top-right-btn footer__top-center-btn">
+                <img
+                  src="/pictures/arrow-right-icon.svg"
+                  alt="Arrow right icon"
+                  width="10"
+                  height="14"
+                />
+                <span class="footer__top-right-btn-text footer__top-center-btn-text">{{
+                  item
+                }}</span>
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-container">
+      <p class="footer__bottom-left">ИП Константинопольский К.К., 2023</p>
+      <a class="footer__bottom-link" href="#">Политика обработки персональных данных</a>
+    </div>
+  </div>
+</footer>

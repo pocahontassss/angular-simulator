@@ -1,0 +1,40 @@
+.users {
+  padding: 236px 0 187px;
+  background-color: #f3f5f4;
+
+  &__container {
+    width: 1460px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 30px;
+    color: #1d3939;
+    text-align: center;
+  }
+
+  &__list {
+    margin: 80px 0 20px;
+    display: flex;
+    gap: 50px 70px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &-item {
+      width: calc(100% / 3 - 140px / 3);
+    }
+  }
+
+  &__empty {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 30px;
+    color: #ffffff;
+    padding: 35px;
+    background-color: #b15757;
+    border-radius: 20px;
+  }
+}
+
