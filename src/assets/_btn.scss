@@ -8,7 +8,7 @@
 }
 
 .btn--primary {
-  background-color: #1A3E3E;
+  background-color: #1a3e3e;
   padding: 16px 36px;
   color: var(--white-color);
 }
@@ -16,5 +16,13 @@
 .btn--secondary {
   background-color: var(--white-color);
   padding: 12px 25px;
-  color: #1A3E3E;
+  color: #1a3e3e;
+}
+
+.btn--danger {
+  background-color: rgb(185, 88, 88);
+  padding: 12px 25px;
+  color: var(--white-color);
+  display: block;
+  margin: 0 auto;
 }
