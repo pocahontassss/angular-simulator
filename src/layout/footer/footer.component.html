@@ -7,12 +7,17 @@
 
     <form class="footer__part-right-form" action="#" (submit)="onSubmit($event)">
       <label class="fs-16" for="email">Введите e-mail адрес</label>
-      <input type="text" id="email" placeholder="name@domain.com" />
+      <input type="text" id="email" placeholder="name@domain.com" id="user-input-email" />
       <button class="btn btn--primary" type="submit">Подписаться на новости</button>
       <p class="footer__part-right-agreement">
         подписываясь на новости, вы автоматически соглашаетесь с
-        <a class="footer__part-right-link" href="#">условиями обработки персональных данных</a> и
-        <a class="footer__part-right-link" href="#">правилами рекламных рассылок</a>
+        <a class="footer__part-right-link" href="#" id="handle-data-link"
+          >условиями обработки персональных данных</a
+        >
+        и
+        <a class="footer__part-right-link" href="#" id="handle-ads-link"
+          >правилами рекламных рассылок</a
+        >
       </p>
     </form>
   </div>
@@ -26,13 +31,22 @@
           тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.
         </p>
         <div class="footer__top-left-wrap">
-          <a class="footer__top-left-link" href="mailto:info@domain.com">info@domain.com</a>
-          <a class="footer__top-left-link" href="tel:+71234567890">+7 (123) 456-78-90</a>
+          <a class="footer__top-left-link" href="mailto:info@domain.com" id="company-email"
+            >info@domain.com</a
+          >
+          <a class="footer__top-left-link" href="tel:+71234567890" id="company-phone-number"
+            >+7 (123) 456-78-90</a
+          >
         </div>
         <ul class="footer__top-social-medias">
           @for (item of socialMedias; track item.id) {
             <li class="footer__top-social-item">
-              <a class="footer__top-social-link" href="#" aria-label="Social media">
+              <a
+                class="footer__top-social-link"
+                href="#"
+                aria-label="Social media"
+                [id]="'social-media-' + item.id"
+              >
                 <img [src]="item.src" [alt]="item.alt" />
               </a>
             </li>
@@ -45,7 +59,7 @@
         <ul class="footer__top-center-list">
           @for (item of footerCenterBtns; track $index) {
             <li class="footer__top-center-item">
-              <button class="footer__top-center-btn">
+              <button class="footer__top-center-btn" [id]="'center-link-' + ($index + 1)">
                 <img src="/pictures/arrow-right-icon.svg" alt="Arrow right icon" />
                 <span class="footer__top-center-btn-text">{{ item }}</span>
               </button>
@@ -61,7 +75,10 @@
         <ul class="footer__top-right-list footer__top-center-list">
           @for (item of footerRightBtns; track $index) {
             <li class="footer__top-right-item footer__top-center-item">
-              <button class="footer__top-right-btn footer__top-center-btn">
+              <button
+                class="footer__top-right-btn footer__top-center-btn"
+                [id]="'top-link-' + ($index + 1)"
+              >
                 <img
                   src="/pictures/arrow-right-icon.svg"
                   alt="Arrow right icon"
@@ -81,7 +98,9 @@
   <div class="footer__bottom">
     <div class="container footer__bottom-container">
       <p class="footer__bottom-left">ИП Константинопольский К.К., 2023</p>
-      <a class="footer__bottom-link" href="#">Политика обработки персональных данных</a>
+      <a class="footer__bottom-link" href="#" id="politic-data-link"
+        >Политика обработки персональных данных</a
+      >
     </div>
   </div>
 </footer>

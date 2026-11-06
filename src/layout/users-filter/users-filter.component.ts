@@ -25,7 +25,7 @@ export class UsersFilterComponent implements OnInit {
         debounceTime(200),
         distinctUntilChanged(),
         tap((value) => this.searchChange.emit(value)),
-        takeUntilDestroyed(this.destroyRef)
+        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
   }

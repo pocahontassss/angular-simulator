@@ -14,6 +14,7 @@
                 routerLinkActive="nav-item-link--active"
                 [routerLink]="item.href"
                 [routerLinkActiveOptions]="{ exact: true }"
+                [id]="'nav-link-' + item.id"
                 >{{ item.linkName }}</a
               >
             </li>
@@ -22,13 +23,20 @@
       </nav>
 
       <div class="interactive-wrapper">
-        <button class="btn btn--secondary">Консультация</button>
+        <button class="btn btn--secondary" id="consultion-button">Консультация</button>
         @if (interactive === 'counter') {
           <div class="interactive">
             <div>
-              <button class="interactive-btn" (click)="count = count + 1">+</button>
+              <button class="interactive-btn" (click)="count = count + 1" id="increment-button">
+                +
+              </button>
               <div>{{ count }}</div>
-              <button class="interactive-btn" (click)="count = count - 1" [disabled]="count === 0">
+              <button
+                class="interactive-btn"
+                (click)="count = count - 1"
+                id="decrement-button"
+                [disabled]="count === 0"
+              >
                 -
               </button>
             </div>
@@ -38,7 +46,9 @@
         @if (interactive === 'date') {
           <div class="interactive">
             <div class="interactive-date">{{ currentDate | date: 'dd.MM.yyyy H:mm:ss' }}</div>
-            <button class="interactive-toggle-btn" (click)="showCounter()">Показать кликер</button>
+            <button class="interactive-toggle-btn" (click)="showCounter()" id="show-clicker-button">
+              Показать кликер
+            </button>
           </div>
         }
       </div>

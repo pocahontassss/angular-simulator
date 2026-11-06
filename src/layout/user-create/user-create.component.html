@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" (ngSubmit)="submit()" class="user-form">
+<form [formGroup]="userForm" (ngSubmit)="submit()" class="user-form" id="user-create-form">
   <h2>Создание пользователя</h2>
 
   <!-- Основная информация -->
@@ -132,5 +132,5 @@
     }
   </fieldset>
 
-  <button type="submit">Create user</button>
+  <button type="submit" id="create-user-submit">Create user</button>
 </form>

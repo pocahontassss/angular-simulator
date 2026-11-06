@@ -18,5 +18,4 @@ export class LoaderComponent {
       document.body.style.overflow = isLoading ? 'hidden' : 'auto';
     });
   }
-  
 }

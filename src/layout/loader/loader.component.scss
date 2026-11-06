@@ -1,24 +1,24 @@
-  .loading {
-    position: fixed;
-    background-color: rgb(255, 255, 255, 0.8);
-    inset: 0;
-    z-index: 999;
+.loading {
+  position: fixed;
+  background-color: rgb(255, 255, 255, 0.8);
+  inset: 0;
+  z-index: 999;
 
-    img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: spin 0.5s linear infinite;
-      z-index: 1000;
-    }
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 0.5s linear infinite;
+    z-index: 1000;
   }
+}
 
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(-360deg);
-    }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(-360deg);
+  }
+}

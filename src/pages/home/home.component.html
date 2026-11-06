@@ -14,7 +14,11 @@
       <div class="search-container">
         <ul class="search-wrapper">
           <li class="search-wrapper-li">
-            <select class="search-wrapper-li-select" [(ngModel)]="tour.location">
+            <select
+              class="search-wrapper-li-select"
+              [(ngModel)]="tour.location"
+              id="select-location"
+            >
               <option value="" selected hidden disabled>Локация для тура</option>
               <option class="option" value="tashkent">Tashkent</option>
               <option class="option" value="bukhara">Bukhara</option>
@@ -30,6 +34,7 @@
                 required
                 [(ngModel)]="tour.date"
                 placeholder=""
+                id="select-date"
               />
               <span class="custom-placeholder">Дата похода</span>
               <img class="calendar" src="/pictures/calendar.png" alt="calendar" />
@@ -37,7 +42,11 @@
             <span>укажите дату</span>
           </li>
           <li class="search-wrapper-li">
-            <select class="search-wrapper-li-select" [(ngModel)]="tour.participants">
+            <select
+              class="search-wrapper-li-select"
+              [(ngModel)]="tour.participants"
+              id="select-participants"
+            >
               <option value="" selected hidden disabled>Участники</option>
               <option class="option" value="one">1 человек</option>
               <option class="option" value="two">2 человек</option>
@@ -45,7 +54,11 @@
             <span>выберите из списка</span>
           </li>
           <li>
-            <button class="btn btn--primary search-button" [disabled]="isSearchDisabled">
+            <button
+              class="btn btn--primary search-button"
+              [disabled]="isSearchDisabled"
+              id="find-program-button"
+            >
               Найти программу
             </button>
           </li>
@@ -53,7 +66,7 @@
       </div>
 
       <div class="live-text">
-        <input placeholder="live input" type="text" [(ngModel)]="liveInput" />
+        <input placeholder="live input" type="text" [(ngModel)]="liveInput" id="live-input" />
 
         @if (liveInput) {
           <span>{{ liveInput }}</span>
@@ -104,6 +117,7 @@
         <button
           class="btn btn--primary"
           (click)="messegesService.showWarn('Программа, к сожалению, недоступна.')"
+          id="program-tour-button"
         >
           Программа тура
         </button>
@@ -135,6 +149,7 @@
         <button
           class="btn btn--primary"
           (click)="messegesService.showInfo('Стоимость отправлена на почту')"
+          id="price-program-button"
         >
           Стоимость программ
         </button>
@@ -179,6 +194,7 @@
       <button
         class="btn btn--primary popular-tourisms__btn"
         (click)="messegesService.showSuccess('Направления получены')"
+        id="rate-button"
       >
         Рейтинг направлений
       </button>
@@ -214,6 +230,7 @@
       <button
         class="btn btn--primary blog__btn"
         (click)="messegesService.showError('Материалы недоступны')"
+        id="other-materials-button"
       >
         Другие материалы
       </button>
@@ -235,6 +252,7 @@
       <button
         class="btn btn--primary share-impressions__btn"
         (click)="messegesService.showInfo('Информация отправлена на почту')"
+        id="share-impression-button"
       >
         Наш pinterest
       </button>

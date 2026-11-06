@@ -1,9 +1,11 @@
 <section class="users">
   <div class="users__container">
     <h2 class="users__title">Список Пользователей</h2>
-    <app-users-filter (searchChange)="onSearchChange($event)" />
     @if ((users$ | async)?.length !== 0) {
-      <button class="btn btn--danger" (click)="deleteAllUsers()">Delete all users</button>
+      <app-users-filter (searchChange)="onSearchChange($event)" />
+      <button class="btn btn--danger" (click)="deleteAllUsers()" id="delete-all-button">
+        Delete all users
+      </button>
     }
     <ul class="users__list">
       @for (user of filteredUsers$ | async; track user.id) {
