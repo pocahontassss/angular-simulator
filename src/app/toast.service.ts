@@ -19,7 +19,7 @@ export class ToastService {
   ];
 
   addMessage(message: string, type: MessageType): void {
-    const id = Date.now();
+    const id: number = Date.now();
 
     this.messages.unshift({ id, message: message, type });
 
@@ -29,7 +29,7 @@ export class ToastService {
   }
 
   closeMessage(id: number): void {
-    this.messages = this.messages.filter(m => m.id !== id);
+    this.messages = this.messages.filter((m: IMessage) => m.id !== id);
   }
 
 };
