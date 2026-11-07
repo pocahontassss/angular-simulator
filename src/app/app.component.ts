@@ -1,9 +1,9 @@
 import './training';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Color } from '../enums/Color';
 import { Collection } from './collection';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 import { ToastService } from './toast.service';
 import { ITour } from '../interfaces/ITour';
 import { IDestination } from '../interfaces/IDestination';
@@ -19,6 +19,8 @@ import { MessageType } from '../enums/MessageType';
 })
 
 export class AppComponent {
+  
+  toastService: ToastService = inject(ToastService)
 
   messages: IMessage[] = [
     { type: MessageType.Success, message:'Успешно!', id: 1 },
@@ -129,7 +131,7 @@ export class AppComponent {
   stringCollection: Collection<string> = new Collection<string>();
   numberCollection: Collection<number> = new Collection<number>();
 
-  constructor(public toastService: ToastService) {
+  constructor() {
     this.saveLastVisitDate();
     this.trackVisitsCount();
     setInterval(() => { this.currentDate = new Date().toLocaleString() }, 1000);
@@ -152,7 +154,7 @@ export class AppComponent {
     if (!savedCount) {
       localStorage.setItem('visitsCount', '1');
     } else {
-      const currentCount = parseInt(savedCount ?? '0') + 1;
+      const currentCount: number = parseInt(savedCount ?? '0') + 1;
       localStorage.setItem('visitsCount', currentCount.toString());
     }
   }
