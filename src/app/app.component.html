@@ -1,1 +1,58 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+    <div class="super-header">
+        <div class="container super-header-container">
+            <div class="company-menu">
+                <div class="company-logo">
+                    <img src="/images/logo-icon.png" alt="logotype" class="logo-icon">
+                </div>
+
+                <div class="company-nav">
+                    <nav class="nav-wrapper fs-18 semi-bold white-text">
+                        <a href="">Главная</a>
+                        <a href="">Про гида</a>
+                        <a href="">Программа тура</a>
+                        <a href="">Стоимость</a>
+                        <a href="">Блог</a>
+                        <a href="">Контакты</a>
+                    </nav>
+                </div>
+                <button class="redirect-to-consultation-btn primary-button">Консультация</button>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="main-info">
+    <div class="banner"></div>
+    <div class="title-wrapper">
+        <div class="title">Насладись прогулкой в горах с командой единомышленников</div>
+    </div>
+    <div class="blur">
+        <div class="search-form">
+            <div class="filter-field">
+                <select name="choose-location-tour" class="filter-select white-text bold fs-16">
+                    <option value="">Локация для тура</option>
+                </select>
+                <label for="choose-location-tour" class="white-text fs-14 tour-prompt">выберите из списка</label>
+            </div>
+            <div class="filter-field">
+                <select name="tour-date" class="filter-select select-date white-text bold fs-16">
+                    <!-- Первый вариант — пустой или со значением по умолчанию, который служит текстом -->
+                    <option value="" disabled selected hidden>Дата похода</option>
+                    <option value="2026-06-01">1 июня 2026</option>
+                    <option value="2026-06-15">15 июня 2026</option>
+                </select>
+                <label for="tour-date" class="white-text fs-14 tour-prompt">укажите дату</label>
+            </div>
+            <div class="filter-field">
+                <select name="participants" class="filter-select white-text bold fs-16">
+                    <option value="">Участники</option>
+                </select>
+                <label for="participants" class="white-text fs-14 tour-prompt">выберите из списка</label>
+            </div>
+            <button class="big-button find-program-btn white-text fs-16 bold">
+                Найти программу
+            </button>
+        </div>
+    </div>
+</section>
+
