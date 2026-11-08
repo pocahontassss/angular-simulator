@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import '../../app/training';
-import { Color } from '../../enums/color';
 import '../../app/collection';
 import { CommonModule } from '@angular/common';
 import {
@@ -21,9 +20,9 @@ import { MessagesService } from '../../services/messages/messages.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  messegesService: MessagesService = inject(MessagesService);
 
   companyName: string = 'румтибет';
+  messegesService: MessagesService = inject(MessagesService);
 
   tour = {
     location: '',

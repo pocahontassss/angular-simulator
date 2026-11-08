@@ -1,12 +1,7 @@
 <main class="main">
   <section class="hero">
-    <img
-      class="background-nature"
-      src="/pictures/background-nature.png"
-      alt="background-nature"
-      width="1920"
-      height="985"
-    />
+    <img class="background-nature" src="/pictures/background-nature.png" alt="background-nature" width="1920"
+      height="985" />
     <div class="container hero-container">
       <h1 class="search-title fs-50">
         Насладись прогулкой в&nbsp;горах с&nbsp;командой единомышленников
@@ -14,12 +9,8 @@
       <div class="search-container">
         <ul class="search-wrapper">
           <li class="search-wrapper-li">
-            <select
-              class="search-wrapper-li-select"
-              [(ngModel)]="tour.location"
-              id="select-location"
-            >
-              <option value="" selected hidden disabled>Локация для тура</option>
+            <select class="search-wrapper-li-select" [(ngModel)]="tour.location" id="select-location">
+              <option value selected hidden disabled>Локация для тура</option>
               <option class="option" value="tashkent">Tashkent</option>
               <option class="option" value="bukhara">Bukhara</option>
             </select>
@@ -27,38 +18,23 @@
           </li>
           <li class="search-wrapper-li">
             <div class="search-wrapper-li-container" (click)="openDatePicker(dateInput)">
-              <input
-                #dateInput
-                class="search-date"
-                type="date"
-                required
-                [(ngModel)]="tour.date"
-                placeholder=""
-                id="select-date"
-              />
+              <input #dateInput class="search-date" type="date" required [(ngModel)]="tour.date" placeholder
+                id="select-date" />
               <span class="custom-placeholder">Дата похода</span>
               <img class="calendar" src="/pictures/calendar.png" alt="calendar" />
             </div>
             <span>укажите дату</span>
           </li>
           <li class="search-wrapper-li">
-            <select
-              class="search-wrapper-li-select"
-              [(ngModel)]="tour.participants"
-              id="select-participants"
-            >
-              <option value="" selected hidden disabled>Участники</option>
+            <select class="search-wrapper-li-select" [(ngModel)]="tour.participants" id="select-participants">
+              <option value selected hidden disabled>Участники</option>
               <option class="option" value="one">1 человек</option>
               <option class="option" value="two">2 человек</option>
             </select>
             <span>выберите из списка</span>
           </li>
           <li>
-            <button
-              class="btn btn--primary search-button"
-              [disabled]="isSearchDisabled"
-              id="find-program-button"
-            >
+            <button class="btn btn--primary search-button" [disabled]="isSearchDisabled" id="find-program-button">
               Найти программу
             </button>
           </li>
@@ -69,7 +45,7 @@
         <input placeholder="live input" type="text" [(ngModel)]="liveInput" id="live-input" />
 
         @if (liveInput) {
-          <span>{{ liveInput }}</span>
+         <span>{{ liveInput }}</span>
         }
       </div>
     </div>
@@ -79,26 +55,11 @@
       <div class="about__container-left">
         <ul class="about__images-list">
           @for (item of aboutBlockImages; track $index) {
-            <li
-              class="about__images-item"
-              [style.z-index]="activeImageIndex === $index ? 10 : 1"
-              (click)="activeImageIndex = $index"
-            >
-              <img
-                class="about__image"
-                [src]="item.src"
-                [alt]="item.alt"
-                width="350"
-                height="400"
-              />
+            <li class="about__images-item" [style.z-index]="activeImageIndex === $index ? 10 : 1"
+              (click)="activeImageIndex = $index">
+              <img class="about__image" [src]="item.src" [alt]="item.alt" width="350" height="400" />
               <div class="pause-icon-block">
-                <img
-                  class="pause-icon"
-                  src="/pictures/pause-icon.svg"
-                  alt="pause-icon"
-                  width="14"
-                  height="15"
-                />
+                <img class="pause-icon" src="/pictures/pause-icon.svg" alt="pause-icon" width="14" height="15" />
               </div>
             </li>
           }
@@ -109,16 +70,10 @@
         <span class="about__us">о нашем походе</span>
         <span class="about__slogan">Исследуйте все горные массивы мира вместе с нами</span>
         <p class="about__text fs-18">
-          Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
-          тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
-          Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его
-          поисками в классической латинской литературе.
+          Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.
         </p>
-        <button
-          class="btn btn--primary"
-          (click)="messegesService.showWarn('Программа, к сожалению, недоступна.')"
-          id="program-tour-button"
-        >
+        <button class="btn btn--primary" (click)="messegesService.showWarn('Программа, к сожалению, недоступна.')"
+          id="program-tour-button">
           Программа тура
         </button>
       </div>
@@ -141,16 +96,13 @@
               </div>
               <div class="best-programs__wrap">
                 <p class="best-programs__wrap-title fs-18">{{ item.title }}</p>
-                <P class="best-programs__wrap-description">{{ item.description }}</P>
+                <p class="best-programs__wrap-description">{{ item.description }}</p>
               </div>
             </li>
           }
         </ul>
-        <button
-          class="btn btn--primary"
-          (click)="messegesService.showInfo('Стоимость отправлена на почту')"
-          id="price-program-button"
-        >
+        <button class="btn btn--primary" (click)="messegesService.showInfo('Стоимость отправлена на почту')"
+          id="price-program-button">
           Стоимость программ
         </button>
       </div>
@@ -170,13 +122,7 @@
       <ul class="popular-tourisms__list">
         @for (item of popularTourisms; track item.id) {
           <li class="popular-tourisms__item">
-            <img
-              class="popular-tourisms__item-image"
-              [src]="item.image"
-              [alt]="item.alt"
-              width="380"
-              height="500"
-            />
+            <img class="popular-tourisms__item-image" [src]="item.image" [alt]="item.alt" width="380" height="500" />
             <div class="popular-tourisms__item-wrap">
               <div class="popular-tourisms__item-left">
                 <h3 class="popular-tourisms__item-title">{{ item.title }}</h3>
@@ -191,11 +137,8 @@
           </li>
         }
       </ul>
-      <button
-        class="btn btn--primary popular-tourisms__btn"
-        (click)="messegesService.showSuccess('Направления получены')"
-        id="rate-button"
-      >
+      <button class="btn btn--primary popular-tourisms__btn"
+        (click)="messegesService.showSuccess('Направления получены')" id="rate-button">
         Рейтинг направлений
       </button>
     </div>
@@ -207,13 +150,7 @@
       <ul class="blog__list">
         @for (item of blog; track item.id) {
           <li class="blog__item">
-            <img
-              class="blog__item-image"
-              [src]="item.image"
-              [alt]="item.alt"
-              width="230"
-              height="280"
-            />
+            <img class="blog__item-image" [src]="item.image" [alt]="item.alt" width="230" height="280" />
             <div class="blog__item-right">
               <h3 class="blog__item-title">
                 {{ item.title }}
@@ -227,11 +164,8 @@
           </li>
         }
       </ul>
-      <button
-        class="btn btn--primary blog__btn"
-        (click)="messegesService.showError('Материалы недоступны')"
-        id="other-materials-button"
-      >
+      <button class="btn btn--primary blog__btn" (click)="messegesService.showError('Материалы недоступны')"
+        id="other-materials-button">
         Другие материалы
       </button>
     </div>
@@ -249,11 +183,8 @@
         }
       </ul>
 
-      <button
-        class="btn btn--primary share-impressions__btn"
-        (click)="messegesService.showInfo('Информация отправлена на почту')"
-        id="share-impression-button"
-      >
+      <button class="btn btn--primary share-impressions__btn"
+        (click)="messegesService.showInfo('Информация отправлена на почту')" id="share-impression-button">
         Наш pinterest
       </button>
     </div>

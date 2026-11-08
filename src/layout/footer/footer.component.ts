@@ -9,6 +9,7 @@ import { ISocialMedias } from '../../interfaces/interfaces';
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
+
   socialMedias: ISocialMedias[] = [
     {
       id: 1,
@@ -51,4 +52,5 @@ export class FooterComponent {
   onSubmit(event: Event) {
     event.preventDefault();
   }
+  
 }

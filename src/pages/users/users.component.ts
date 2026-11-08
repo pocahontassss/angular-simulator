@@ -14,12 +14,10 @@ import { UserCardComponent } from '../../layout/user-card/user-card.component';
   styleUrl: './users.component.scss',
 })
 export class UsersComponent {
+
   userService: UserService = inject(UserService);
-
   users$: Observable<IUser[]> = this.userService.getUsers();
-
   private searchSubject = new BehaviorSubject<string>('');
-
   filteredUsers$ = combineLatest([this.users$, this.searchSubject]).pipe(
     map(([users, search]) =>
       users.filter((user: IUser) => user.name.trim().toLowerCase().includes(search)),
@@ -45,4 +43,5 @@ export class UsersComponent {
   deleteAllUsers(): void {
     this.userService.deleteAllUsers();
   }
+  
 }

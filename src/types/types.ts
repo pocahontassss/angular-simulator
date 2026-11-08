@@ -5,4 +5,5 @@ export type FormControls<T> = {
   [K in keyof T]: T[K] extends object ? FormGroup<FormControls<T[K]>> : FormControl<T[K]>;
 };
 
-export type UserFormValue = Omit<IUser, 'id'>;
+// Всё таки пришлось этот тип вернуть после удаления
+export type CreateUserType = Omit<IUser, 'id'>

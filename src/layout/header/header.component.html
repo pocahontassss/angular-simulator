@@ -9,14 +9,8 @@
         <ul class="nav-list fs-18">
           @for (item of headerLinks; track item.id) {
             <li class="nav-item">
-              <a
-                class="nav-item-link"
-                routerLinkActive="nav-item-link--active"
-                [routerLink]="item.href"
-                [routerLinkActiveOptions]="{ exact: true }"
-                [id]="'nav-link-' + item.id"
-                >{{ item.linkName }}</a
-              >
+              <a class="nav-item-link" routerLinkActive="nav-item-link--active" [routerLink]="item.href"
+                [routerLinkActiveOptions]="{ exact: true }" [id]="'nav-link-' + item.id">{{ item.linkName }}</a>
             </li>
           }
         </ul>
@@ -31,12 +25,7 @@
                 +
               </button>
               <div>{{ count }}</div>
-              <button
-                class="interactive-btn"
-                (click)="count = count - 1"
-                id="decrement-button"
-                [disabled]="count === 0"
-              >
+              <button class="interactive-btn" (click)="count = count - 1" id="decrement-button" [disabled]="count === 0">
                 -
               </button>
             </div>

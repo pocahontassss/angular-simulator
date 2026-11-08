@@ -9,7 +9,8 @@ import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
   styleUrl: './messages.component.scss',
 })
 export class MessagesComponent {
+  
   messagesService: MessagesService = inject(MessagesService);
-
   messages$ = this.messagesService.activeMessages$;
+
 }

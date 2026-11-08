@@ -10,6 +10,7 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
   providedIn: 'root',
 })
 export class UserService {
+
   loaderService: LoaderService = inject(LoaderService);
 
   userApiService: UserApiService = inject(UserApiService);
@@ -28,7 +29,7 @@ export class UserService {
     return this.usersSubject.asObservable();
   }
 
-  loadUsers() {
+  loadUsers(): Observable<IUser[]> {
     const users: IUser[] | null = this.localStorageService.getItem('users');
 
     if (users) {
@@ -75,4 +76,5 @@ export class UserService {
     this.setUsers([]);
     this.localStorageService.removeItemByKey('users');
   }
+
 }

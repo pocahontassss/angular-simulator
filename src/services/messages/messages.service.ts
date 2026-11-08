@@ -7,9 +7,9 @@ import { BehaviorSubject, from, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MessagesService {
-  private _activeMessagesSub: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
 
-  readonly activeMessages$: Observable<IMessage[]> = this._activeMessagesSub.asObservable();
+  private _activeMessagesSub: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
+  activeMessages$: Observable<IMessage[]> = this._activeMessagesSub.asObservable();
 
   private addMessage(messageObj: Omit<IMessage, 'id'>): void {
     const generatedId = Date.now();
@@ -50,4 +50,5 @@ export class MessagesService {
   showInfo(message: string): void {
     this.addMessage({ status: messageStatus.INFO, text: message });
   }
+
 }

@@ -10,6 +10,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+
   companyName: string = 'румтибет';
 
   headerLinks: IHeaderLinks[] = [
@@ -44,4 +45,5 @@ export class HeaderComponent {
     clearInterval(this.dateTimerId);
     this.interactive = 'counter';
   }
+  
 }

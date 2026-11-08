@@ -8,18 +8,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
-  },
   "private": true,
   "packageManager": "npm@11.6.2",
   "dependencies": {
@@ -35,7 +23,7 @@
   },
   "devDependencies": {
     "@angular/build": "^21.0.5",
-    "@angular/cli": "^21.0.5",
+    "@angular/cli": "^17.3.17",
     "@angular/compiler-cli": "^21.0.0",
     "jsdom": "^27.1.0",
     "typescript": "~5.9.2",

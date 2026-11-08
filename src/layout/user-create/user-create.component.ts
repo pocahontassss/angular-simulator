@@ -1,9 +1,15 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormControls } from '../../types/types';
-
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
+import { FormControls, CreateUserType } from '../../types/types';
 import { IUser } from '../../interfaces/interfaces';
-import { UserFormValue } from '../../types/types';
 
 @Component({
   selector: 'app-user-create',
@@ -13,21 +19,22 @@ import { UserFormValue } from '../../types/types';
   styleUrl: './user-create.component.scss',
 })
 export class UserCreateComponent {
-  private fb = inject(FormBuilder).nonNullable;
 
   @Output() createUser: EventEmitter<IUser> = new EventEmitter<IUser>();
-
-  userForm = this.fb.group<FormControls<UserFormValue>>({
+  private fb: NonNullableFormBuilder = inject(FormBuilder).nonNullable;
+  userForm: FormGroup<FormControls<CreateUserType>> = this.fb.group<FormControls<CreateUserType>>({
     name: this.fb.control('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(100),
+      this.noWhitespaceValidator,
     ]),
 
     username: this.fb.control('', [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(30),
+      this.noWhitespaceValidator,
     ]),
 
     email: this.fb.control('', [Validators.required, Validators.email, Validators.maxLength(100)]),
@@ -59,45 +66,19 @@ export class UserCreateComponent {
     }),
   });
 
+  noWhitespaceValidator(control: AbstractControl): ValidationErrors | null {
+    return (control.value || '').trim().length === 0 ? { whitespace: true } : null
+  }
+
   submit(): void {
     if (this.userForm.invalid) {
       this.userForm.markAllAsTouched();
       return;
     }
 
-    const formValue = this.userForm.getRawValue();
-
-    const user: IUser = {
-      id: Date.now(),
-
-      name: formValue.name.trim(),
-      username: formValue.username.trim(),
-      email: formValue.email.trim(),
-
-      phone: formValue.phone!.trim(),
-      website: formValue.website?.trim() || 'Неизвестно',
-
-      address: {
-        street: formValue.address.street!.trim(),
-        suite: formValue.address.suite?.trim() || 'Неизвестно',
-        city: formValue.address.city!.trim(),
-        zipcode: formValue.address.zipcode!.trim(),
-
-        geo: {
-          lat: formValue.address.geo.lat!.trim(),
-          lng: formValue.address.geo.lng!.trim(),
-        },
-      },
-
-      company: {
-        name: formValue.company.name!.trim(),
-        catchPhrase: formValue.company.catchPhrase?.trim() || 'Неизвестно',
-        bs: formValue.company.bs?.trim() || 'Неизвестно',
-      },
-    };
-
-    this.createUser.emit(user);
-
+    const newUser: IUser = { ...this.userForm.getRawValue(), id: Date.now() };
+    this.createUser.emit(newUser);
     this.userForm.reset();
   }
+
 }

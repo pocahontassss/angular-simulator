@@ -10,6 +10,9 @@
     @if (userForm.controls.name.touched && userForm.controls.name.invalid) {
       <small>Имя обязательно: от 2 до 100 символов</small>
     }
+    <!--     @if(userForm.hasError('whitespace')) {
+      <div>remove empty spaces</div>
+    } -->
 
     <label for="user-username">Username *</label>
     <input id="user-username" type="text" formControlName="username" />

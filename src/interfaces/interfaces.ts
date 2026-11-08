@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+
 export interface IAboutBlockImage {
   src: string;
   alt: string;
@@ -80,4 +82,8 @@ export interface IUser {
     catchPhrase: string;
     bs: string;
   };
+}
+
+export interface ISearchForm {
+  searchByName: FormControl<string>;
 }

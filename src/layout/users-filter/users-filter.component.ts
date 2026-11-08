@@ -1,7 +1,13 @@
 import { Component, DestroyRef, EventEmitter, inject, OnInit, Output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ISearchForm } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-users-filter',
@@ -10,13 +16,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './users-filter.component.scss',
 })
 export class UsersFilterComponent implements OnInit {
-  searchBuilder: FormBuilder = inject(FormBuilder);
-  private destroyRef: DestroyRef = inject(DestroyRef);
-  @Output() searchChange: EventEmitter<string> = new EventEmitter<string>();
 
-  searchControl = this.searchBuilder.group({
-    searchByName: [''],
+  @Output() searchChange: EventEmitter<string> = new EventEmitter<string>();
+  searchBuilder: NonNullableFormBuilder = inject(FormBuilder).nonNullable;
+  searchControl: FormGroup<ISearchForm> = this.searchBuilder.group<ISearchForm>({
+    searchByName: this.searchBuilder.control(''),
   });
+  private destroyRef: DestroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.searchControl.controls.searchByName.valueChanges
@@ -29,4 +35,5 @@ export class UsersFilterComponent implements OnInit {
       )
       .subscribe();
   }
+
 }
