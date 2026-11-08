@@ -1,1 +1,90 @@
-<p>users-page works!</p>
+<ng-template #userTemplate let-userlocalvar="user">
+  <div class="users__card card">
+
+    <div class="card__header">
+      <h2 class="card__name">{{userlocalvar.name}}</h2>
+      <span class="card__user-name">{{userlocalvar.username}}</span>
+    </div>
+
+    <div class="card__content">
+      <div class="card__contact">
+        <h3 class="card__contact-title title">Контакты</h3>
+        <div class="card__contact-body">
+          <dl class="card__contact-email">
+            <dt>Эл. почта:</dt>
+            <dd>{{userlocalvar.email}}</dd>
+          </dl>
+          <dl class="card__contact-phone">
+            <dt>Телефон:</dt>
+            <dd>{{userlocalvar.phone}}</dd>
+          </dl>
+          <dl class="card__contact-site">
+            <dt>Веб-сайт:</dt>
+            <dd>{{userlocalvar.website}}</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="card__address">
+        <h3 class="card__address-title title">Адрес Проживания</h3>
+        <div class="card__address-body">
+          <dl class="card__address-city">
+            <dt>Город:</dt>
+            <dd>{{userlocalvar.address.city}}</dd>
+          </dl>
+          <dl class="card__address-street">
+            <dt>Улица:</dt>
+            <dd>{{userlocalvar.address.street}}</dd>
+          </dl>
+          <dl class="card__address-office">
+            <dt>Офис:</dt>
+            <dd>{{userlocalvar.address.suite}}</dd>
+          </dl>
+          <dl class="card__address-zipcode">
+            <dt>Индекс:</dt>
+            <dd>{{userlocalvar.address.zipcode}}</dd>
+          </dl>
+          <dl class="card__address-geo">
+            <dt>Координаты:</dt>
+            <dd>
+              <span>{{userlocalvar.address.geo.lat}}</span>
+              <span>{{userlocalvar.address.geo.lng}}</span>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="card__workplace">
+        <h3 class="card__workplace-title title">Место работы</h3>
+        <div class="card__workplace-body">
+          <dl class="card__workplace-email">
+            <dt>Компания:</dt>
+            <dd>{{userlocalvar.company.name}}</dd>
+          </dl>
+          <dl class="card__workplace-phone">
+            <dt>Миссия:</dt>
+            <dd>{{userlocalvar.company.catchPhrase}}</dd>
+          </dl>
+          <dl class="card__workplace-bs">
+            <dt>Специализация:</dt>
+            <dd>{{userlocalvar.company.bs}}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ng-template>
+
+<section class="users">
+  <div class="users__container">
+    <h1 class="users__title">Список Пользователей</h1>
+    <div class="users__cards">
+      @for(_user of (user.getUsers() | async); track _user.id) {
+      <ng-container [ngTemplateOutlet]="userTemplate" [ngTemplateOutletContext]="{user: _user}"></ng-container>
+      } @empty {
+      <div class="users__empty">Нет пользователей для отображения</div>
+      }
+    </div>
+  </div>
+</section>

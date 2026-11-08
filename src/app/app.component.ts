@@ -7,10 +7,12 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { MessageComponent } from '../message/message.component';
+import { LoaderComponent } from '../loader/loader.component';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, FooterComponent, RouterOutlet, MessageComponent],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet, MessageComponent, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -18,12 +20,17 @@ export class AppComponent {
 
   storage: LocalStorageService = inject(LocalStorageService);
 
+  loader: LoaderService = inject(LoaderService);
+
+
+
   isLoaded: boolean = false;
 
   constructor() {
     this.saveLastVisit();
     this.saveVisitCount();
     this.loading();
+    this.loader.hideLoader();
   }
 
   checkColor(color: Colors): boolean {

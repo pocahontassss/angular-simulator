@@ -10,7 +10,7 @@
 </ng-template>
 
 <div class="messages">
-  @for(_message of message.messages; track _message.id) {
+  @for(_message of (message.messages$ | async); track _message.id) {
   <ng-container [ngTemplateOutlet]="messageTemplate" [ngTemplateOutletContext]="{ $implicit: _message }"></ng-container>
   }
 </div>

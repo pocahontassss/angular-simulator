@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { IMessage } from './interfaces/IMessage';
 import { Message } from './enums/Message';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageService {
 
-  private _messages: IMessage[] = [];
-
-  get messages(): IMessage[] {
-    return this._messages;
-  }
+  private _messageSubject$: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
+  messages$ = this._messageSubject$.asObservable();
 
   showSuccess() {
     this.addMessage(Message.success, 'Данные успешно сохранены!');
@@ -29,8 +27,15 @@ export class MessageService {
     this.addMessage(Message.info, 'У вас есть новые уведомления.');
   }
 
+  showHttpError() {
+    this.addMessage(Message.info, 'Ошибка загрузки данных с сервера');
+  }
+
   closeMessage(id: number): void {
-    this._messages = this._messages.filter(message => message.id !== id);
+    // this._messages = this._messages.filter(message => message.id !== id);
+    this._messageSubject$.next(
+      this._messageSubject$.value.filter(message => message.id !== id)
+    );
   }
 
   private addMessage(type: Message, text: string): void {
@@ -44,7 +49,7 @@ export class MessageService {
       isVisible: false
     };
 
-    this._messages.unshift(message);
+    this._messageSubject$.next([...this._messageSubject$.value, message]);
 
     setTimeout(() => {
       message.isVisible = true;

@@ -1,8 +1,278 @@
-p {
-  height: 600px;
+dt {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.6px;
+  color: rgba(102, 124, 124, 1);
+}
+
+dd {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19.6px;
+  color: rgba(29, 57, 57, 1);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: green;
-  font-size: 72px;
+  gap: 4px;
+
+  span {
+    background-color: rgba(244, 247, 245, 1);
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid rgba(226, 232, 240, 1);
+    border-radius: 3px;
+  }
+}
+
+.users {
+  background-color: rgba(243, 245, 244, 1);
+  min-height: calc(100vh - 80px);
+  padding-bottom: 200px;
+  padding-top: 80px;
+
+  &__empty {
+    font-family: 'Nunito-sans';
+    padding: 25px;
+    background-color: rgba(177, 87, 87, 1);
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 29.9px;
+    color: rgba(255, 255, 255, 1);
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  &__title {
+    font-family: 'Nunito-sans';
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 29.9px;
+    margin: 0 0 80px 0;
+    text-align: center;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 70px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 1460px;
+    margin: 0 auto;
+  }
+}
+
+
+.card {
+  font-family: 'Nunito-sans';
+  color: rgba(29, 57, 57, 1);
+  max-width: 440px;
+  background-color: #fff;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+  border-top: 4px solid rgba(212, 163, 115, 1);
+  border-radius: 5px;
+
+  .title {
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 13.8px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+
+  &__header {
+    padding: 35px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__name {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 29.9px;
+  }
+
+  &__user-name {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17.25px;
+    color: rgba(212, 163, 115, 1);
+
+  }
+
+  &__content {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19.6px;
+    padding: 0 30px 50px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 25px;
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12.8px;
+  }
+
+  &__contact-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &::after {
+      content: '';
+      display: block;
+      flex-grow: 1;
+      height: 2px;
+      background-color: rgba(226, 232, 240, 1);
+    }
+  }
+
+  &__contact-body {
+    display: flex;
+    flex-direction: column;
+    gap: 9.6px;
+  }
+
+  &__contact-email {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    :nth-child(2) {
+      color: rgba(212, 163, 115, 1);
+    }
+  }
+
+  &__contact-phone {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__contact-site {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    :nth-child(2) {
+      color: rgba(212, 163, 115, 1);
+    }
+  }
+
+  &__address {
+    display: flex;
+    flex-direction: column;
+    gap: 12.8px;
+  }
+
+  &__address-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &::after {
+      content: '';
+      display: block;
+      flex-grow: 1;
+      height: 2px;
+      background-color: rgba(226, 232, 240, 1);
+    }
+  }
+
+  &__address-body {
+    display: flex;
+    flex-direction: column;
+    gap: 9.6px;
+  }
+
+  &__address-city {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__address-street {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__address-office {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__address-zipcode {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__address-geo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__workplace {
+    display: flex;
+    flex-direction: column;
+    gap: 12.8px;
+  }
+
+  &__workplace-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &::after {
+      content: '';
+      display: block;
+      flex-grow: 1;
+      height: 2px;
+      background-color: rgba(226, 232, 240, 1);
+    }
+  }
+
+  &__workplace-body {
+    display: flex;
+    flex-direction: column;
+    gap: 9.6px;
+  }
+
+  &__workplace-email {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__workplace-phone {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    dd {
+      font-weight: 700;
+      font-style: Italic;
+      font-size: 13px;
+      line-height: 18.2px;
+      color: rgba(102, 124, 124, 1)
+    }
+  }
+
+  &__workplace-bs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
