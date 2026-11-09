@@ -21,7 +21,13 @@
         <a href="#" id="nav-link-contacts">Контакты</a>
       </nav>
 
-      <button class="button-cap" id="button-consultation">Консультация</button>
+      <button
+        class="button-cap"
+        id="button-consultation"
+        (click)="toastService.addMessage('Форма консультации загружается...', messageType.Info)"
+      >
+        Консультация
+      </button>
 
       <div class="cotainer-date">
         <div class="date-botton-row">
@@ -132,7 +138,11 @@
           <img class="item-icon" src="images/arrow_icon.svg" alt="Выбор" />
         </div>
 
-        <button class="form-button" id="button-find-program">Найти программу</button>
+        <button
+          class="form-button"
+          id="button-find-program" (click)="toastService.addMessage('Доступные туры успешно найдены!', messageType.Success)">
+          Найти программу
+        </button>
       </div>
 
       <div id="live-wrapper-container" class="live-text-container">
@@ -163,7 +173,10 @@
       Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками
       в классической латинской литературе.
     </p>
-    <button id="banner-button">Программа тура</button>
+    <button
+      id="banner-button" (click)="toastService.addMessage('Программа тура успешно скачана в PDF!', messageType.Success)">
+      Программа тура
+    </button>
   </div>
 </section>
 
@@ -179,12 +192,14 @@
 
       @for (tour of tours; track tour.id) {
         <div class="tour-card" id="tour-card-{{ tour.id }}">
-          <img [src]="'images/' + tour.iconUrl + '_icon.svg'" />
+          <img [src]="'images/' + tour.icon + '_icon.svg'" />
           <h3>{{ tour.title }}</h3>
           <p>{{ tour.description }}</p>
         </div>
       }
-      <button id="tour-btn">Стоимость программ</button>
+      <button id="tour-btn" (click)="toastService.addMessage('Внимание! Цены указаны со скидкой до конца недели.', messageType.Warn)">
+        Стоимость программ
+      </button>
     </div>
 
     <div class="tours-images">
@@ -193,5 +208,109 @@
       <img class="tours-img" src="images/snowmobile.png" alt="Снегоход" />
       <img class="tours-img" src="images/mountain_range.png" alt="Горный хребет" />
     </div>
+
+  </div>
+
+</section>
+
+<section id="popular-directions">
+  <div class="popular-directions-container">
+    <div class="popular-directions-text">
+      <span class="subtitle">по версии отдыхающих</span>
+      <h1 class="popular-directions-title">Популярные направления</h1>
+    </div>
+    @for (destination of destinations; track destination.id) {
+      <div
+        class="direction-card"
+        [class.active]="selectedDestinationId === destination.id"
+        (click)="
+          selectedDestinationId = selectedDestinationId === destination.id ? null : destination.id">
+        <div class="rating-badge">
+          <span class="star-icon">★</span>
+          <span class="rating-value">{{ destination.rating | number: '1.1-1' }}</span>
+        </div>
+
+        <img class="directions-img" [src]="'images/' + destination.image + '.png'" />
+
+        <div class="card-base-text">
+          <div class="card-text-left">
+            <h3>{{ destination.title }}</h3>
+            <p class="card-subtitle">по версии отдыхающих</p>
+          </div>
+          <span class="card-price">{{ destination.price }} $</span>
+        </div>
+
+        <div class="hover-info">
+          <div class="hover-top-line">
+            <div class="hover-header">
+              <h3>{{ destination.title }}</h3>
+              <p class="card-subtitle">по версии отдыхающих</p>
+            </div>
+            <span class="card-price-hover">{{ destination.price }} $</span>
+          </div>
+
+          <p class="card-desc">{{ destination.description }}</p>
+          <button class="program-btn">Программа тура</button>
+        </div>
+      </div>
+    }
+
+    <div class="rating">
+      <button
+        id="rating-directions-btn" class="rating directions" 
+        (click)=" toastService.addMessage('Ошибка сервера. Не удалось обновить рейтинг.', messageType.Error)
+        ">Рейтинг направлений</button>
+    </div>
   </div>
 </section>
+
+<section id="travel-blog">
+  <div class="travel-blog-container">
+    <div class="travel-blog-text">
+      <span class="subtitle">делимся впечатлениями</span>
+      <h3 class="travel-blog-title">Блог о путешествиях</h3>
+    </div>
+    <ul class="article-list">
+      @for (article of articles; track article.id) {
+        <li class="article-item" id="article-{{ article.id }}">
+          <img
+            class="blog-img"
+            [src]="'images/' + article.image + '.jpg'"
+            alt="Изображение статьи"
+          />
+
+          <div class="article-content">
+            <h3 class="article-title">{{ article.title }}</h3>
+            <p class="article-text">{{ article.description }}</p>
+            <div class="article-footer">
+              <span class="article-date">{{ article.date }}</span>
+              <a href="#" class="article-link">читать статью</a>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+    <div class="travel-blog-btn">
+      <button
+        class="other-materials"
+        id="other-materials-btn"
+        (click)="toastService.addMessage('Товар успешно добавлен в корзину!', messageType.Success)">
+        Купить Другие материалы
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="toast-container">
+  @for (message of toastService.toastMessages; track message.id) {
+    <ng-container *ngTemplateOutlet="toastRef; context: { $implicit: message }"></ng-container>
+  }
+
+  <ng-template #toastRef let-toast>
+    <div class="toast" [class]="'toast-' + toast.type.toLowerCase()">
+      {{ toast.message }}
+      <button class="toast-close" (click)="toastService.closeMessage(toast.id)">&times;</button>
+    </div>
+  </ng-template>
+</div>
+
