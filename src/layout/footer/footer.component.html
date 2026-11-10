@@ -7,10 +7,10 @@
       </p>
     </div>
 
-    <form class="footer__part-right-form" action="#" (submit)="onSubmit($event)">
+    <form class="footer__part-right-form" action="#" (submit)="onSubmit($event)" id="subscribe-submit-form">
       <label class="fs-16" for="email">Введите e-mail адрес</label>
       <input type="text" id="email" placeholder="name@domain.com" id="user-input-email" />
-      <button class="btn btn--primary" type="submit">
+      <button class="btn btn--primary" type="submit" id="subscribe-submit-button">
         Подписаться на новости
       </button>
       <p class="footer__part-right-agreement">
@@ -41,7 +41,7 @@
           @for (item of socialMedias; track item.id) {
             <li class="footer__top-social-item">
               <a class="footer__top-social-link" href="#" aria-label="Social media" [id]="'social-media-' + item.id">
-                <img [src]="item.src" [alt]="item.alt" />
+                <img [src]="'/pictures/' + item.src + '.svg'" [alt]="item.alt" />
               </a>
             </li>
           }

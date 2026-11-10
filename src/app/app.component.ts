@@ -49,4 +49,5 @@ export class AppComponent {
     const numberOfVisitsBefore = Number(this.LocalStorageService.getItem('NumberOfVisits')) || 0;
     this.LocalStorageService.setItem('NumberOfVisits', String(numberOfVisitsBefore + 1));
   }
+  
 }

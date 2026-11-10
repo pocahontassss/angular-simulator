@@ -27,8 +27,8 @@ export class UsersFilterComponent implements OnInit {
   ngOnInit(): void {
     this.searchControl.controls.searchByName.valueChanges
       .pipe(
-        map((value) => (value ?? '').trim().toLowerCase()),
         debounceTime(200),
+        map((value) => (value ?? '').trim().toLowerCase()),
         distinctUntilChanged(),
         tap((value) => this.searchChange.emit(value)),
         takeUntilDestroyed(this.destroyRef),

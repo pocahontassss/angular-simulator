@@ -36,11 +36,11 @@ export class HomeComponent {
 
   aboutBlockImages: IAboutBlockImage[] = [
     {
-      src: '/pictures/about-mountain.jpg',
+      src: 'about-mountain',
       alt: 'mountain',
     },
     {
-      src: '/pictures/about-forest.jpg',
+      src: 'about-forest',
       alt: 'forest',
     },
   ];
@@ -48,7 +48,7 @@ export class HomeComponent {
   bestProgramsList: IBestProgramsItem[] = [
     {
       id: 1,
-      src: '/pictures/guide-icon.svg',
+      src: 'guide-icon',
       alt: 'guide',
       backgroundColor: '#E5EEEB',
       title: 'Опытный гид',
@@ -57,7 +57,7 @@ export class HomeComponent {
     },
     {
       id: 2,
-      src: '/pictures/security-icon.svg',
+      src: 'security-icon',
       alt: 'security',
       backgroundColor: '#E3E6EE',
       title: 'Безопасный поход',
@@ -66,7 +66,7 @@ export class HomeComponent {
     },
     {
       id: 3,
-      src: '/pictures/price-icon.svg',
+      src: 'price-icon',
       alt: 'price',
       backgroundColor: '#F3F1E1',
       title: 'Лояльные цены',
@@ -78,22 +78,22 @@ export class HomeComponent {
   bestProgramsImages: IBestProgramsImage[] = [
     {
       id: 1,
-      src: '/pictures/waterAndGrass.jpg',
+      src: 'waterAndGrass',
       alt: 'Water and grass',
     },
     {
       id: 2,
-      src: '/pictures/personOnMountain.jpg',
+      src: 'personOnMountain',
       alt: 'Person on mountain',
     },
     {
       id: 3,
-      src: '/pictures/personOnSled.jpg',
+      src: 'personOnSled',
       alt: 'Person on sled',
     },
     {
       id: 4,
-      src: '/pictures/grassAroundMountain.jpg',
+      src: 'grassAroundMountain',
       alt: 'Grass around mountain',
     },
   ];
@@ -105,7 +105,7 @@ export class HomeComponent {
       text: 'романтическое приключение',
       price: 480,
       rating: 4.9,
-      image: '/pictures/lakeAroundMountains.jpg',
+      image: 'lakeAroundMountains',
       alt: 'Lake around mountains',
     },
     {
@@ -114,7 +114,7 @@ export class HomeComponent {
       text: 'в компании друзей',
       price: 500,
       rating: 4.5,
-      image: '/pictures/nightOnMountains.jpg',
+      image: 'nightOnMountains',
       alt: 'Night on mountains',
     },
     {
@@ -123,7 +123,7 @@ export class HomeComponent {
       text: 'для тех, кто забоится о себе',
       price: 230,
       rating: 5.0,
-      image: '/pictures/stretchingOnMountains.jpg',
+      image: 'stretchingOnMountains',
       alt: 'Stretching on mountains',
     },
   ];
@@ -134,7 +134,7 @@ export class HomeComponent {
       title: 'Красивая Италия, какая она в реальности?',
       text: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
       date: '01/04/2023',
-      image: '/pictures/beautiful_Italy.jpg',
+      image: 'beautiful_Italy',
       alt: 'Beautiful Italy',
     },
     {
@@ -142,7 +142,7 @@ export class HomeComponent {
       title: 'Долой сомнения! Весь мир открыт для вас!',
       text: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ... независимые способы реализации соответствующих...',
       date: '01/04/2023',
-      image: '/pictures/airplane.jpg',
+      image: 'airplane',
       alt: 'Airplane',
     },
     {
@@ -150,7 +150,7 @@ export class HomeComponent {
       title: 'Как подготовиться к путешествию в одиночку? ',
       text: 'Для современного мира базовый вектор развития предполагает.',
       date: '01/04/2023',
-      image: '/pictures/aloneTravel.jpg',
+      image: 'aloneTravel',
       alt: 'Travel alone',
     },
     {
@@ -158,7 +158,7 @@ export class HomeComponent {
       title: 'Индия ... летим?',
       text: 'Для современного мира базовый.',
       date: '01/04/2023',
-      image: '/pictures/Taj_Mahal.jpg',
+      image: 'Taj_Mahal',
       alt: 'Taj Mahal',
     },
   ];
@@ -166,32 +166,32 @@ export class HomeComponent {
   shareImpressions: IShareImpressions[] = [
     {
       id: 1,
-      src: '/pictures/parachutes.jpg',
+      src: 'parachutes',
       alt: 'Parachutes',
     },
     {
       id: 2,
-      src: '/pictures/camera.jpg',
+      src: 'camera',
       alt: 'camera',
     },
     {
       id: 3,
-      src: '/pictures/sail.jpg',
+      src: 'sail',
       alt: 'sail',
     },
     {
       id: 4,
-      src: '/pictures/boats.jpg',
+      src: 'boats',
       alt: 'boats',
     },
     {
       id: 5,
-      src: '/pictures/womanOnMountain.jpg',
+      src: 'womanOnMountain',
       alt: 'Woman on a mountain',
     },
     {
       id: 6,
-      src: '/pictures/nootebookForNotes.jpg',
+      src: 'nootebookForNotes',
       alt: 'Nootebook for notes',
     },
   ];
@@ -204,4 +204,5 @@ export class HomeComponent {
     input.focus();
     input.showPicker();
   }
+  
 }
