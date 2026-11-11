@@ -18,7 +18,7 @@ export class ToastService {
     return this.messages;
   }
 
-  addMessage(message: string, type: MessageType): void {
+  private addMessage(message: string, type: MessageType): void {
     const id: number = Date.now();
 
     this.messages.unshift({ id, message: message, type });
@@ -27,6 +27,23 @@ export class ToastService {
       this.closeMessage(id);
     }, 5000);
   }
+
+  showSuccess(message: string): void {
+    this.addMessage(message, MessageType.Success);
+  }
+
+  showError(message: string): void {
+    this.addMessage(message, MessageType.Error);
+  }
+
+  showWarn(message: string): void {
+    this.addMessage(message, MessageType.Warn);
+  }
+
+  showInfo(message: string): void {
+    this.addMessage(message, MessageType.Info);
+  }
+
 
   closeMessage(id: number): void {
     this.messages = this.messages.filter((m: IMessage) => m.id !== id);
