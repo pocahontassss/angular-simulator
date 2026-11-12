@@ -9,7 +9,7 @@ import { IDestination } from '../interfaces/IDestination';
 import { IArticle } from '../interfaces/IArticle';
 import { IMessage } from '../interfaces/IMessage';
 import { MessageType } from '../enums/MessageType';
-import { IImpressionImage } from '../interfaces/IImpressionImage';
+
 
 
 @Component({
@@ -128,36 +128,13 @@ export class HomePageComponent {
     },
   ];
 
-  impressionImages: IImpressionImage[] = [
-    {
-      id: 1,
-      image: 'photographer'
-    },
-
-    {
-      id: 2,
-      image: 'travel-map'
-    },
-
-    {
-      id: 3,
-      image: 'hotel-by-sea'
-    },
-
-    {
-      id: 4,
-      image: 'sea-coast'
-    },
-
-    {
-      id: 5,
-      image: 'canyon-view'
-    },
-
-    {
-      id: 6,
-      image: 'travel-diary'
-    }
+  impressionImages: string[] = [
+  'photographer',
+  'travel-map',
+  'hotel-by-sea',
+  'sea-coast',
+  'canyon-view',
+  'travel-diary'
   ];
 
 

@@ -10,7 +10,6 @@ import { IDestination } from '../interfaces/IDestination';
 import { IArticle } from '../interfaces/IArticle';
 import { IMessage } from '../interfaces/IMessage';
 import { MessageType } from '../enums/MessageType';
-import { IImpressionImage } from '../interfaces/IImpressionImage';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component'
 import { RouterOutlet } from '@angular/router';

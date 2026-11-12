@@ -6,7 +6,7 @@
   <ng-template #toastRef let-toast>
     <div class="toast" [class]="'toast-' + toast.type.toLowerCase()">
       {{ toast.message }}
-      <button class="toast-close" (click)="toastService.closeMessage(toast.id)">&times;</button>
+      <button id="close-toast-btn-{{ toast.id }}" class="toast-close" (click)="toastService.closeMessage(toast.id)">&times;</button>
     </div>
   </ng-template>
 </div>

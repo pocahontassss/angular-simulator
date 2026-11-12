@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ToastService } from '../app/toast.service';
 import { MessageType } from '../enums/MessageType';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { INavItem } from '../interfaces/INavItem';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,7 @@ toastService: ToastService = inject(ToastService);
   clickerCount: number = 0;
   messageType: typeof MessageType = MessageType;
 
-  navItems = [
+  navItems: INavItem[] = [
     { title: 'Главная', link: '' },
     { title: 'Пользователи', link: 'users' }
   ];

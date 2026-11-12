@@ -8,14 +8,19 @@
           <div class="form-text">
             <span class="item-title">Локация для тура</span>
             <span class="item-value">
-              @if (selectedLocation === '') {
-                выберите из списка
-              } @else if (selectedLocation === 'waterfall') {
-                Водопад
-              } @else if (selectedLocation === 'spring') {
-                Источник
-              } @else if (selectedLocation === 'lake') {
-                Озеро
+              @switch  (selectedLocation) {
+                @case ('') {
+                  выберите из списка
+                }  
+                @case ('waterfall') {
+                  Водопад
+                }
+                @case ('spring') {
+                  Источник
+                }
+                @case ('lake') {
+                  Озеро
+                }
               }
             </span>
           </div>
@@ -75,8 +80,7 @@
           id="live-input-field"
           [(ngModel)]="liveInput"
           name="liveInputField"
-          placeholder="Живой инпут"
-        />
+          placeholder="Живой инпут"/>
         <span class="input-arrow">&gt;</span>
         <div id="live-result">Введённый текст {{ liveInput }}</div>
       </div>
@@ -124,12 +128,12 @@
           <p>{{ tour.description }}</p>
         </div>
       }
-      <button 
+    <button 
       class="tour-button"
       id="tour-btn" 
       (click)="toastService.showWarn('Внимание! Цены указаны со скидкой до конца недели.')">
       Стоимость программ
-      </button>
+    </button>
     </div>
 
     <div class="tours-images">
@@ -190,7 +194,8 @@
         id="rating-directions-btn" 
         class="rating directions" 
         (click)="toastService.showError('Ошибка сервера. Не удалось обновить рейтинг.')">
-        Рейтинг направлений</button>
+        Рейтинг направлений
+      </button>
     </div>
   </div>
 </section>
@@ -239,9 +244,9 @@
       <h1 class="title-impressions">Делимся впечатлениями</h1>
     </div>
     <div class="photos-impressions">
-      @for (item of impressionImages; track item.id) {
+      @for (item of impressionImages; track item) {
         <div>
-          <img class="impressions-img" [src]="'images/' + item.image + '.png'" alt="Фото">
+          <img class="impressions-img" [src]="'images/' + item + '.png'" alt="Фото">
         </div>
       }
     </div> 
