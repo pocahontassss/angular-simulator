@@ -1,0 +1,10 @@
+<div class="messages-container">
+  @for (messageItem of messages; track messageItem.id) {
+    <div class="toast-message" [ngClass]="'toast-' + messageItem.type">
+      <div class="toast-content">
+        <span class="toast-text">{{ messageItem.text }}</span>
+        <button class="toast-close-btn" (click)="close(messageItem.id)">×</button>
+      </div>
+    </div>
+  }
+</div>

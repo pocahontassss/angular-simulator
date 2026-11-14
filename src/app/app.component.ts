@@ -4,26 +4,33 @@ import { FormsModule } from '@angular/forms';
 import { IProgramCard } from './IProgramCard';
 import { IDestinationCard } from './IDestinationCard';
 import { IBlogArticl } from './IBlogArticl';
-import { MessageService } from '../assets/services/MessageService';
-import { LocalStorageService } from '../assets/services/LocalStorageService';
-import { IMessage } from '../assets/services/IMessage';
-import { MessageType } from '../enums/MessageType.enum';
+import { IGalleryItem } from './IGalleryItem';
+import { MessageComponent } from './components/message/message.component';
 
 export type WidgetMode = 'date' | 'counter';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
+  imports: [CommonModule, FormsModule, MessageComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  private messageService: MessageService = inject(MessageService);
-  private localStorageService: LocalStorageService = inject(LocalStorageService);
+  private getStoredItem<T>(key: string): T | null {
+    const value = window.localStorage.getItem(key);
+    if (value === null) return null;
+
+    try {
+      return JSON.parse(value) as T;
+    } catch {
+      return value as T;
+    }
+  }
+
+  private setStoredItem<T>(key: string, value: T): void {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }
 
   isLoading: boolean = false;
   companyName: string = 'ГОРНЫЙ СЛЕД';
@@ -34,97 +41,43 @@ export class AppComponent implements OnInit {
   selectedLocation: string = '';
   selectedDate: string = '';
   selectedMembers: string = '';
-
-  get messages(): IMessage[] {
-    return this.messageService.activeMessages as IMessage[];
-  }
+  emailInput: string = '';
 
   programCards: IProgramCard[] = [
-    {
-      id: 1,
-      title: 'Опытный гид',
-      image: 'expert-guide',
-      description: 'Гид с опытом.'
-    },
-    {
-      id: 2,
-      title: 'Безопасность',
-      image: 'safe-hiking',
-      description: 'Безопасная цена.'
-    },
-    {
-      id: 3,
-      title: 'Комфорт',
-      image: 'loyal-prices',
-      description: 'Лояльная цена.'
-    }
+    { id: 1, title: 'Опытный гид', image: 'expert-guide', description: 'Гид с опытом.' },
+    { id: 2, title: 'Безопасность', image: 'safe-hiking', description: 'Безопасная цена.' },
+    { id: 3, title: 'Комфорт', image: 'loyal-prices', description: 'Лояльная цена.' }
   ];
 
   destinations: IDestinationCard[] = [
-    {
-      id: 1,
-      title: 'Озеро возле гор',
-      subtitle: 'романтическое приключение',
-      price: '480 $',
-      rating: 4.9,
-      image: 'lake-dest'
-    },
-    {
-      id: 2,
-      title: 'Ночь в горах',
-      subtitle: 'в компании друзей',
-      price: '500 $',
-      rating: 4.5,
-      image: 'sky-star'
-    },
-    {
-      id: 3,
-      title: 'Растяжка в горах',
-      subtitle: 'для тех, кто заботится о себе',
-      price: '230 $',
-      rating: 5.0,
-      image: 'yoga-lady'
-    }
+    { id: 1, title: 'Озеро возле гор', subtitle: 'романтическое приключение', price: '480 $', rating: 4.9, image: 'lake-dest' },
+    { id: 2, title: 'Ночь в горах', subtitle: 'в компании друзей', price: '500 $', rating: 4.5, image: 'sky-star' },
+    { id: 3, title: 'Растяжка в горах', subtitle: 'для тех, кто заботится о себе', price: '230 $', rating: 5.0, image: 'yoga-lady' }
   ];
 
   blogArticles: IBlogArticl[] = [
-    {
-      id: 1,
-      title: 'Красивая Италия, какая она в реальности?',
-      description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      date: '01/04/2023',
-      image: 'big-canyon'
-    },
-    {
-      id: 2,
-      title: 'Долой сомнения! Весь мир открыт для вас!',
-      description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации... независимые способы реализации соответствующих...',
-      date: '01/04/2023',
-      image: 'fly-cloud'
-    },
-    {
-      id: 3,
-      title: 'Как подготовиться к путешествию в одиночку?',
-      description: 'Для современного мира базовый вектор развития предполагает.',
-      date: '01/04/2023',
-      image: 'spanish-favels'
-    },
-    {
-      id: 4,
-      title: 'Индия ... летим?',
-      description: 'Для современного мира базовый.',
-      date: '01/04/2023',
-      image: 'taj-mahal'
-    }
+    { id: 1, title: 'Красивая Италия, какая она в реальности?', description: 'Для современного мира базовый вектор развития...', date: '01/04/2023', image: 'big-canyon' },
+    { id: 2, title: 'Долой сомнения! Весь мир открыт для вас!', description: 'Для современного мира базовый вектор...', date: '01/04/2023', image: 'fly-cloud' },
+    { id: 3, title: 'Как подготовиться к путешествию в одиночку?', description: 'Для современного мира базовый вектор...', date: '01/04/2023', image: 'spanish-favels' },
+    { id: 4, title: 'Индия ... летим?', description: 'Для современного мира базовый.', date: '01/04/2023', image: 'taj-mahal' }
+  ];
+
+  galleryItems: IGalleryItem[] = [
+    { id: 1, image: 'ballons-sky.jpg', alt: 'Воздушные шары над горами' },
+    { id: 2, image: 'journey-maps.png', alt: 'Карта, камера и блокнот' },
+    { id: 3, image: 'sail-town.png', alt: 'Отель Бурдж-эль-Араб у моря' },
+    { id: 4, image: 'coast-blue.png', alt: 'Пляж с бирюзовой водой и лодками сверху' },
+    { id: 5, image: 'Landscape_2.jpg', alt: 'Каньон Подкова с путешественником' },
+    { id: 6, image: 'diary-pen.png', alt: 'Блокнот, очки и винтажный фотоаппарат' }
   ];
 
   ngOnInit(): void {
-    this.selectedLocation = this.localStorageService.getItem<string>('selectedLocation') ?? '';
-    this.selectedDate = this.localStorageService.getItem<string>('selectedDate') ?? '';
-    this.selectedMembers = this.localStorageService.getItem<string>('selectedMembers') ?? '';
-    this.count = this.localStorageService.getItem<number>('count') ?? 0;
+    this.selectedLocation = this.getStoredItem<string>('selectedLocation') ?? '';
+    this.selectedDate = this.getStoredItem<string>('selectedDate') ?? '';
+    this.selectedMembers = this.getStoredItem<string>('selectedMembers') ?? '';
+    this.count = this.getStoredItem<number>('count') ?? 0;
 
-    const savedMode: WidgetMode | null = this.localStorageService.getItem<WidgetMode>('currentMode');
+    const savedMode: WidgetMode | null = this.getStoredItem<WidgetMode>('currentMode');
     if (savedMode) {
       this.currentMode = savedMode;
     }
@@ -132,36 +85,39 @@ export class AppComponent implements OnInit {
 
   toggleWidgetMode(): void {
     this.currentMode = this.currentMode === 'date' ? 'counter' : 'date';
-    this.localStorageService.setItem('currentMode', this.currentMode);
+    this.setStoredItem('currentMode', this.currentMode);
   }
 
   increment(): void {
     this.count++;
-    this.localStorageService.setItem('count', this.count);
+    this.setStoredItem('count', this.count);
   }
 
   decrement(): void {
     if (this.count > 0) {
       this.count--;
-      this.localStorageService.setItem('count', this.count);
+      this.setStoredItem('count', this.count);
     }
   }
 
   saveFormState(): void {
-    this.localStorageService.setItem('selectedLocation', this.selectedLocation);
-    this.localStorageService.setItem('selectedDate', this.selectedDate);
-    this.localStorageService.setItem('selectedMembers', this.selectedMembers);
+    this.setStoredItem('selectedLocation', this.selectedLocation);
+    this.setStoredItem('selectedDate', this.selectedDate);
+    this.setStoredItem('selectedMembers', this.selectedMembers);
   }
 
   showRatingAlert(): void {
-    this.messageService.addMessage('Рейтинг успешно обновлен!', MessageType.SUCCESS);
+    window.alert('Рейтинг успешно обновлен!');
   }
 
   openArticle(title: string): void {
-    console.log(`Открытие статьи: ${title}`);
+    window.alert(`Открытие статьи: "${title}"`);
   }
 
-  handleCloseMessage(id: number): void {
-    this.messageService.closeMessage(id);
+  subscribeNewsletter(): void {
+    if (this.emailInput) {
+      window.alert('Вы успешно подписались на рассылку!');
+      this.emailInput = '';
+    }
   }
 }

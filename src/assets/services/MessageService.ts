@@ -13,7 +13,7 @@ export class MessageService {
     return this.messages;
   }
 
-  addMessage(text: string, type: MessageType = MessageType.Info): void {
+  private addMessage(text: string, type: MessageType = MessageType.INFO): void {
     const newMessage: Message = {
       id: this.nextId++,
       text,
@@ -24,6 +24,22 @@ export class MessageService {
     setTimeout(() => {
       this.closeMessage(newMessage.id);
     }, 5000);
+  }
+
+  showSuccess(text: string): void {
+    this.addMessage(text, MessageType.SUCCESS);
+  }
+
+  showError(text: string): void {
+    this.addMessage(text, MessageType.ERROR);
+  }
+
+  showWarn(text: string): void {
+    this.addMessage(text, MessageType.WARNING);
+  }
+
+  showInfo(text: string): void {
+    this.addMessage(text, MessageType.INFO);
   }
 
   closeMessage(id: number): void {
