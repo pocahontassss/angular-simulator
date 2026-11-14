@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit {
   openArticle(title: string): void {
     this.messageService.showInfo(`Открытие статьи: "${title}"`);
   }
-
+  
   subscribeNewsletter(): void {
     if (this.emailInput) {
       this.messageService.showSuccess('Вы успешно подписались на рассылку!');
