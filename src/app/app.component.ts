@@ -14,10 +14,11 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component'
 import { RouterOutlet } from '@angular/router';
 import { MessageComponent } from '../message/message.component';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, FooterComponent, RouterOutlet, MessageComponent],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet, MessageComponent, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
