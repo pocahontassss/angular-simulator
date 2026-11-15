@@ -1,0 +1,84 @@
+<div class="card">
+  <h3 class="card__user-name">{{ user.name }}</h3>
+  <span class="card__user-username">@{{ user.username }}</span>
+  <div class="card__data">
+    <div class="card__data-top">
+      <strong>Контакты</strong>
+      <div class="card__data-top-line"></div>
+    </div>
+    <div class="card__data-bottom">
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Эл. почта:</span>
+        <span class="card__data-value card__data-value--another">{{ user.email }}</span>
+      </div>
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Телефон:</span>
+        <span class="card__data-value">+{{ user.phone.split(' ')[0].split('-').join('') }}</span>
+      </div>
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Веб-сайт:</span>
+        <span class="card__data-value card__data-value--another">{{ user.website }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="card__data">
+    <div class="card__data-top">
+      <strong>Адрес Проживания</strong>
+      <div class="card__data-top-line"></div>
+    </div>
+    <div class="card__data-bottom">
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Город:</span>
+        <span class="card__data-value">{{ user.address.city }}</span>
+      </div>
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Улица:</span>
+        <span class="card__data-value">+{{ user.address.street }}</span>
+      </div>
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Офис:</span>
+        <span class="card__data-value">{{ user.address.suite }}</span>
+      </div>
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Индекс:</span>
+        <span class="card__data-value">{{ user.address.zipcode }}</span>
+      </div>
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Координаты:</span>
+        <div class="card__data-coordinates">
+          <span class="card__data-value">{{ user.address.geo.lat }}</span>
+          <span class="card__data-value">{{ user.address.geo.lng }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card__data">
+    <div class="card__data-top">
+      <strong>Место работы</strong>
+      <div class="card__data-top-line"></div>
+    </div>
+    <div class="card__data-bottom">
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Эл. почта:</span>
+        <span class="card__data-value">{{ user.email }}</span>
+      </div>
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Компания:</span>
+        <span class="card__data-value">{{ user.company.name }}</span>
+      </div>
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Миссия:</span>
+        <span class="card__data-value card__data-value--italic"
+          >«{{ user.company.catchPhrase }}»</span
+        >
+      </div>
+      <div class="card__data-bottom-wrap">
+        <span class="card__span">Специализация:</span>
+        <span class="card__data-value">{{ user.company.bs }}</span>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn--danger" (click)="delete(user.id)" id="delete-user-button">
+    Delete user
+  </button>
+</div>

@@ -1,0 +1,46 @@
+<header class="header">
+  <div class="container">
+    <div class="header-container">
+      <div class="img-container">
+        <img class="img-header" src="/pictures/two-mountains.png" alt="two-mountains" />
+        <h3 class="title-header">{{ companyName }}</h3>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list fs-18">
+          @for (item of headerLinks; track item.id) {
+            <li class="nav-item">
+              <a class="nav-item-link" routerLinkActive="nav-item-link--active" [routerLink]="item.href"
+                [routerLinkActiveOptions]="{ exact: true }" [id]="'nav-link-' + item.id">{{ item.linkName }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <div class="interactive-wrapper">
+        <button class="btn btn--secondary" id="consultion-button">Консультация</button>
+        @if (interactive === 'counter') {
+          <div class="interactive">
+            <div>
+              <button class="interactive-btn" (click)="count = count + 1" id="increment-button">
+                +
+              </button>
+              <div>{{ count }}</div>
+              <button class="interactive-btn" (click)="count = count - 1" id="decrement-button" [disabled]="count === 0">
+                -
+              </button>
+            </div>
+            <button class="interactive-toggle-btn" (click)="showDate()" id="show-date-button">Показать дату</button>
+          </div>
+        }
+        @if (interactive === 'date') {
+          <div class="interactive">
+            <div class="interactive-date">{{ currentDate | date: 'dd.MM.yyyy H:mm:ss' }}</div>
+            <button class="interactive-toggle-btn" (click)="showCounter()" id="show-clicker-button">
+              Показать кликер
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</header>

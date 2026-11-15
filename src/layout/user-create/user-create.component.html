@@ -1,0 +1,136 @@
+<form [formGroup]="userForm" (ngSubmit)="submit()" class="user-form" id="user-create-form">
+  <h2>Создание пользователя</h2>
+
+  <!-- Основная информация -->
+  <fieldset>
+    <legend>Основная информация</legend>
+
+    <label for="user-name">Name *</label>
+    <input id="user-name" type="text" formControlName="name" />
+    @if (userForm.controls.name.touched && userForm.controls.name.invalid) {
+      <small>Имя обязательно: от 2 до 100 символов</small>
+    }
+
+    <label for="user-username">Username *</label>
+    <input id="user-username" type="text" formControlName="username" />
+    @if (userForm.controls.username.touched && userForm.controls.username.invalid) {
+      <small>Username обязателен: от 3 до 30 символов</small>
+    }
+
+    <label for="user-email">Email *</label>
+    <input id="user-email" type="email" formControlName="email" />
+    @if (userForm.controls.email.touched && userForm.controls.email.invalid) {
+      <small>Введите корректный Email (до 100 символов)</small>
+    }
+
+    <label for="user-phone">Phone *</label>
+    <input id="user-phone" type="text" formControlName="phone" />
+    @if (userForm.controls.phone.touched && userForm.controls.phone.invalid) {
+      <small>Телефон обязателен: от 10 до 25 символов</small>
+    }
+
+    <label for="user-website">Website</label>
+    <input id="user-website" type="text" formControlName="website" />
+    @if (userForm.controls.website.touched && userForm.controls.website.invalid) {
+      <small>Website не должен превышать 100 символов</small>
+    }
+  </fieldset>
+
+  <!-- Адрес -->
+  <fieldset formGroupName="address">
+    <legend>Address</legend>
+
+    <label for="user-street">Street *</label>
+    <input id="user-street" type="text" formControlName="street" />
+    @if (
+      userForm.controls.address.controls.street.touched &&
+      userForm.controls.address.controls.street.invalid
+    ) {
+      <small>Street обязателен (до 100 символов)</small>
+    }
+
+    <label for="user-suite">Suite</label>
+    <input id="user-suite" type="text" formControlName="suite" />
+    @if (
+      userForm.controls.address.controls.suite.touched &&
+      userForm.controls.address.controls.suite.invalid
+    ) {
+      <small>Suite не должен превышать 50 символов</small>
+    }
+
+    <label for="user-city">City *</label>
+    <input id="user-city" type="text" formControlName="city" />
+    @if (
+      userForm.controls.address.controls.city.touched &&
+      userForm.controls.address.controls.city.invalid
+    ) {
+      <small>City обязателен (до 50 символов)</small>
+    }
+
+    <label for="user-zipcode">Zipcode *</label>
+    <input id="user-zipcode" type="text" formControlName="zipcode" />
+    @if (
+      userForm.controls.address.controls.zipcode.touched &&
+      userForm.controls.address.controls.zipcode.invalid
+    ) {
+      <small>Zipcode обязателен: от 5 до 10 символов</small>
+    }
+
+    <!-- Геолокация -->
+    <div formGroupName="geo">
+      <h3>Geo</h3>
+
+      <label for="user-lat">Latitude *</label>
+      <input id="user-lat" type="text" formControlName="lat" />
+      @if (
+        userForm.controls.address.controls.geo.controls.lat.touched &&
+        userForm.controls.address.controls.geo.controls.lat.invalid
+      ) {
+        <small>Latitude обязателен</small>
+        <br />
+      }
+
+      <label for="user-lng">Longitude *</label>
+      <input id="user-lng" type="text" formControlName="lng" />
+      @if (
+        userForm.controls.address.controls.geo.controls.lng.touched &&
+        userForm.controls.address.controls.geo.controls.lng.invalid
+      ) {
+        <small>Longitude обязателен</small>
+      }
+    </div>
+  </fieldset>
+
+  <!-- Компания -->
+  <fieldset formGroupName="company">
+    <legend>Company</legend>
+
+    <label for="user-company-name">Company name *</label>
+    <input id="user-company-name" type="text" formControlName="name" />
+    @if (
+      userForm.controls.company.controls.name.touched &&
+      userForm.controls.company.controls.name.invalid
+    ) {
+      <small>Название компании обязательно (до 50 символов)</small>
+    }
+
+    <label for="user-catchphrase">Catch phrase</label>
+    <input id="user-catchphrase" type="text" formControlName="catchPhrase" />
+    @if (
+      userForm.controls.company.controls.catchPhrase.touched &&
+      userForm.controls.company.controls.catchPhrase.invalid
+    ) {
+      <small>Catch phrase не должен превышать 200 символов</small>
+    }
+
+    <label for="user-bs">Business description</label>
+    <input id="user-bs" type="text" formControlName="bs" />
+    @if (
+      userForm.controls.company.controls.bs.touched && userForm.controls.company.controls.bs.invalid
+    ) {
+      <small>Business description не должен превышать 100 символов</small>
+    }
+  </fieldset>
+
+  <button type="submit" id="create-user-submit">Create user</button>
+</form>
