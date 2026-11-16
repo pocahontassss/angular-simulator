@@ -8,9 +8,7 @@ export class LoaderService {
 
   private isLoadingSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  get isLoading(): Observable<boolean> {
-    return this.isLoadingSubject.asObservable();
-  }
+  isLoading$: Observable<boolean> = this.isLoadingSubject.asObservable();
 
   showLoader(): void {
     this.isLoadingSubject.next(true);

@@ -13,6 +13,6 @@ import { LoaderService } from '../loader.service';
 export class LoaderComponent {
 
   private loaderService: LoaderService = inject(LoaderService);
-  isLoading$: Observable<boolean> = this.loaderService.isLoading;
+  isLoading$: Observable<boolean> = this.loaderService.isLoading$;
 
 }
