@@ -9,7 +9,7 @@ import {
   users,
   adults,
 } from './training';
-import type { UploadStatus, TextFormat, IUser, Iuser } from './training';
+import type { UploadStatus, TextFormat, IUser, IUserInfo } from './training';
 
 console.log(calc(67, 67));
 console.log(uploadStatus);

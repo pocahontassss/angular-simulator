@@ -10,11 +10,11 @@ export interface IUser {
   age: number;
   email?: string;
 }
-export interface Iuser extends IUser {
+export interface IUserInfo extends IUser {
   city: string;
   country: string;
 }
-export const user: Iuser = {
+export const user: IUserInfo = {
   name: 'Sofiya',
   age: 25,
   city: 'New York',
@@ -23,10 +23,9 @@ export const user: Iuser = {
 export function formatText(text: string, format: TextFormat): string {
   if (format === 'uppercase') {
     return text.toUpperCase();
-  } else {
-    {
-      return text.toLowerCase();
-    }
+  }
+  if (format === 'capitalize') {
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
   }
 }
 export function removeSymbol(text: string, symbol: string): string {
