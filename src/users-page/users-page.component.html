@@ -1,1 +1,17 @@
-<p>users-page works!</p>
+<section class="users-page">
+  <h1 class="users-title">Пользователи</h1>
+
+  <div class="users-grid">
+    @for (user of (users$ | async) ?? []; track user.id) {
+      <article class="user-card">
+        <h2 class="user-name">{{ user.name }}</h2>
+        <p class="user-info"><strong>Username:</strong> {{ user.username }}</p>
+        <p class="user-info"><strong>Email:</strong> {{ user.email }}</p>
+        <p class="user-info"><strong>Телефон:</strong> {{ user.phone }}</p>
+        <p class="user-info"><strong>Город:</strong> {{ user.address.city }}</p>
+        <p class="user-info"><strong>Компания:</strong> {{ user.company.name }}</p>
+      </article>
+    }
+  </div>
+</section>
+

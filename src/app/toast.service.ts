@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { IMessage } from '../interfaces/IMessage';
 import { MessageType } from '../enums/MessageType';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastService {
 
-  private messages: IMessage[] = [
+  private messagesSubject: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([
     { id: 1, message: 'Успешно!', type: MessageType.Success },
     { id: 2, message: 'Ошибка!', type: MessageType.Error },
     { id: 3, message: 'Предупреждение!', type: MessageType.Warn },
     { id: 4, message: 'Инфо!', type: MessageType.Info },
-  ];
+  ]);
 
-  get toastMessages(): IMessage[] {
-    return this.messages;
+  get toastMessages(): Observable<IMessage[]> {
+    return this.messagesSubject.asObservable();
   }
 
   private addMessage(message: string, type: MessageType): void {
     const id: number = Date.now();
+    const currentMessages: IMessage[] = this.messagesSubject.value;
 
-    this.messages.unshift({ id, message: message, type });
+    this.messagesSubject.next([{ id, message: message, type }, ...currentMessages]);
 
     setTimeout(() => {
       this.closeMessage(id);
@@ -46,7 +48,10 @@ export class ToastService {
 
 
   closeMessage(id: number): void {
-    this.messages = this.messages.filter((m: IMessage) => m.id !== id);
+    const filteredMessages: IMessage[] = this.messagesSubject.value.filter(
+      (m: IMessage) => m.id !== id
+    );
+    this.messagesSubject.next(filteredMessages);
   }
 
 }
