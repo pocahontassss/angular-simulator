@@ -1,0 +1,21 @@
+<app-hero />
+<app-about-hike />
+<app-programs />
+<app-destinations (showMessage)="messageService.showInfo($event)" />
+<app-travel-blog (showMessage)="messageService.showInfo($event)" />
+
+<section class="gallery" aria-labelledby="gallery-title">
+  <p class="gallery__eyebrow">фото-отчёт</p>
+  <h2 id="gallery-title">Делимся впечатлениями</h2>
+  <div class="gallery__photos">
+    @for (photo of photos; track photo.name) {
+      <img
+        [src]="'/images/gallery-' + photo.name + '.png'"
+        [alt]="photo.alt"
+        [class.gallery__photo--wide]="photo.wide"
+        loading="lazy"
+      />
+    }
+  </div>
+  <a class="site-button" href="https://www.pinterest.com/search/pins/?q=РумТибет">Наш pinterest</a>
+</section>
