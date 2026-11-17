@@ -47,3 +47,34 @@ body {
 body {
   color: #18121e;
 }
+
+app-root:has(app-home-page) > app-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 3;
+  --header-background: rgba(37, 47, 55, 0.72);
+}
+
+.content-page {
+  max-width: 1228px;
+  min-height: 320px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.site-button {
+  display: inline-block;
+  padding: 14px 24px;
+  border: 1px solid #1a3e3e;
+  border-radius: 4px;
+  background: #1a3e3e;
+  color: #fdfdfd;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.site-button:hover {
+  background: #285858;
+}

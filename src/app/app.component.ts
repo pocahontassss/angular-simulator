@@ -1,16 +1,16 @@
 import './training';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { StorageService } from './services/storage.service';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HeroComponent } from './hero/hero.component';
-import { AboutHikeComponent } from './about-hike/about-hike.component';
-import { ProgramsComponent } from './programs/programs.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MessageComponent } from './message/message.component';
 import { Color } from '../enums/Color';
 import { Collection } from '../collection';
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, RouterOutlet, HeroComponent, AboutHikeComponent, ProgramsComponent],
+  imports: [HeaderComponent, FooterComponent, MessageComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private loadingTimeoutId: number | undefined;
 
-  constructor() {
+  constructor(private readonly storage: StorageService) {
     this.saveLastVisitDate();
     this.saveVisitCount();
   }
@@ -42,12 +42,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private saveLastVisitDate(): void {
-    localStorage.setItem('lastVisitDate', new Date().toISOString());
+    this.storage.setItem('lastVisitDate', new Date().toISOString());
   }
 
   private saveVisitCount(): void {
-    const savedCount = Number(localStorage.getItem('visitCount') ?? '0');
-    localStorage.setItem('visitCount', String(savedCount + 1));
+    const savedCount = Number(this.storage.getItem<number>('visitCount') ?? 0);
+    this.storage.setItem('visitCount', (Number.isFinite(savedCount) ? savedCount : 0) + 1);
   }
 }
 

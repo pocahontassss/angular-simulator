@@ -1,11 +1,24 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IsActiveMatchOptions, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  selector: 'app-header',
+  imports: [RouterLink, RouterLinkActive],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
+  protected readonly links = [
+    { label: 'Главная', path: '/' },
+    { label: 'Пользователи', path: '/users' },
+  ];
+  protected readonly activeLinkOptions: IsActiveMatchOptions = {
+    paths: 'exact',
+    queryParams: 'ignored',
+    matrixParams: 'ignored',
+    fragment: 'ignored',
+  };
+
   protected readonly companyName = 'РУМТИБЕТ';
   protected currentDate = new Date().toLocaleString('ru-RU');
   protected clickCount = 0;

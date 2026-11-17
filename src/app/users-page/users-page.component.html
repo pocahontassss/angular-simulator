@@ -1,0 +1,17 @@
+<section class="content-page">
+  <h1>Пользователи</h1>
+  <ul>
+    @for (user of users; track user.id) {
+      <li>{{ user.name }}</li>
+    }
+  </ul>
+  <section class="message-demo" aria-labelledby="message-demo-title">
+    <h2 id="message-demo-title">Уведомления</h2>
+    <div class="message-demo__buttons">
+      <button class="site-button" type="button" (click)="messageService.showSuccess('Действие выполнено успешно')">Успех</button>
+      <button class="site-button" type="button" (click)="messageService.showInfo('Открыт список пользователей')">Информация</button>
+      <button class="site-button" type="button" (click)="messageService.showWarn('Обратите внимание')">Предупреждение</button>
+      <button class="site-button" type="button" (click)="messageService.showError('Произошла ошибка')">Ошибка</button>
+    </div>
+  </section>
+</section>

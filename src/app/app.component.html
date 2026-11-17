@@ -17,10 +17,11 @@
     </svg>
     <span>Загрузка...</span>
   </div>
-} @else {
-  <app-navbar />
-  <app-hero />
-  <app-about-hike />
-  <app-programs />
-  <router-outlet />
 }
+
+<app-header />
+<main>
+  <router-outlet />
+</main>
+<app-footer />
+<app-message />

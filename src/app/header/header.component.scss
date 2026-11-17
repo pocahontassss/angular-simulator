@@ -1,10 +1,5 @@
 .navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  width: 100%;
-  background: rgba(37, 47, 55, 0.72);
+  background: var(--header-background, #25373b);
 }
 
 .navbar__inner {
@@ -59,7 +54,8 @@
   white-space: nowrap;
 }
 
-.navbar__links a:hover {
+.navbar__links a:hover,
+.navbar__links a.navbar__link--active {
   color: #f2be22;
 }
 

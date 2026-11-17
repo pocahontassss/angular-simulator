@@ -1,0 +1,13 @@
+<div class="messages" aria-live="polite" aria-relevant="additions">
+  @for (message of messageService.messages; track message.id) {
+    <div class="message" [class]="'message--' + message.type">
+      <span class="message__text">{{ message.text }}</span>
+      <button
+        class="message__close"
+        type="button"
+        aria-label="Закрыть уведомление"
+        (click)="messageService.closeMessage(message.id)"
+      >×</button>
+    </div>
+  }
+</div>
