@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { IFooterLink } from '../app/interfaces/IFooterLink';
 import { IImportantLink } from '../app/interfaces/IImportantLink';
+import { faSkype, faTelegram, faVk, faPinterest } from '@fortawesome/free-brands-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [FontAwesomeModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
+
 export class FooterComponent {
 
   footerLinks: IFooterLink[] = [
@@ -66,6 +70,6 @@ export class FooterComponent {
     },
   ];
 
-  companyMedia: string[] = ['telegram', 'vk', 'pinterest', 'scape'];
+  companyMedia: IconDefinition[] = [faTelegram, faVk, faPinterest, faSkype];
 
 }

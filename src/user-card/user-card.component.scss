@@ -1,9 +1,9 @@
 .user-card {
-  background: #fff;
+  background: var(--surface-bg);
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-top: 3px solid #d97706;
+  border-top: 3px solid var(--orang-color);
 }
 
 .user-name {
@@ -29,7 +29,7 @@
   font-weight: 800;
   line-height: 14px;
   vertical-align: middle;
-  color: #1d3939;
+  color: var(--green-color);
   letter-spacing: 1.2px;
   text-transform: uppercase;
   padding-bottom: 5px;
@@ -64,8 +64,8 @@
 }
 
 .users-empty {
-  background: #dc2626;
-  color: #fff;
+  background: var(--orang-color);
+  color: var(--white-color);
   padding: 15px 20px;
   border-radius: 8px;
   max-width: fit-content;
@@ -97,7 +97,7 @@
   line-height: 17px;
   vertical-align: middle;
   color: #1d3939;
-  background-color: #e2e8f0;
+  background-color: var(--surface-bg);
   border-radius: 3px;
   display: inline-flex;
   margin-left: 4px;

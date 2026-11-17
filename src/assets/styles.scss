@@ -5,6 +5,11 @@
   font-family: 'Nunito-Sans';
 }
 
+body {
+  background: var(--page-bg);
+  color: var(--page-text);
+}
+
 .container {
   display: block;
   width: 1320px;
@@ -12,4 +17,25 @@
 
 .no-scroll {
   overflow: hidden;
+}
+
+:root {
+  --text-color: #18121e;
+  --white-color: #fdfdfd;
+  --secondary-color: #f2be22;
+  --page-bg: var(--white-color);
+  --page-text: var(--text-color);
+  --green-color: #1c403f;
+  --fons-color: #f2f5f4;
+  --obsidian-color: #18121e80;
+  --gree-color: rgba(255, 255, 255, 0.2);
+  --orang-color: #d97706;
+  --dark-surface-color: #2a2133;
+  --surface-bg: var(--fons-color);
+}
+
+[data-color-mode='dark'] {
+  --page-bg: var(--text-color);
+  --page-text: var(--white-color);
+  --surface-bg: var(--dark-surface-color);
 }

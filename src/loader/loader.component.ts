@@ -9,6 +9,7 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './loader.component.html',
   styleUrl: './loader.component.scss',
 })
+
 export class LoaderComponent {
 
   private loaderService: LoaderService = inject(LoaderService);

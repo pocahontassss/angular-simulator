@@ -4,7 +4,7 @@
   gap: 16px 24px;
   padding: 24px;
   margin-bottom: 24px;
-  background: #ffffff;
+  background: var(--surface-bg);
   border: 1px solid #e0e0e0;
   border-radius: 12px;
 }
@@ -28,7 +28,7 @@
 
   &:focus {
     outline: none;
-    border-color: #e8833a;
+    border-color: var(--orang-color);
   }
 }
 
@@ -50,14 +50,14 @@
   justify-self: start;
   padding: 10px 24px;
   font-size: 14px;
-  color: #ffffff;
-  background: #e8833a;
+  color: var(--white-color);
+  background: var(--orang-color);
   border: none;
   border-radius: 6px;
   cursor: pointer;
 
   &:disabled {
-    background: #cccccc;
+    background: var(--gree-color);
     cursor: not-allowed;
   }
 }

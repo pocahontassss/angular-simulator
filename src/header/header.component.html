@@ -15,6 +15,31 @@
   <button id="toggle-view-btn" (click)="showClock = !showClock">
     {{ showClock ? 'Показать кликер' : 'Показать дату' }}
   </button>
+  <div class="theme-mode">
+    @if (themeState$ | async; as state) {
+      <div class="toggle-icon">
+        @if (state.colorMode === colorModes.DARK) {
+          <fa-icon [icon]="moonIcon" class="moon-icon" />
+        } @else {
+          <fa-icon [icon]="sunIcon" class="sun-icon" />
+        }
+        <p-toggleswitch
+          [ngModel]="state.colorMode === colorModes.DARK"
+          class="color-mode-toggle"
+          id="color-mode-toggle"
+          (onChange)="onToggleColorMode()"
+        />
+        <p-selectbutton
+          class="theme-select-button"
+          id="theme-select-button"
+          [options]="themeOptions"
+          [ngModel]="state.theme"
+          [allowEmpty]="false"
+          (onChange)="onChangeTheme($event)"
+        />
+      </div>
+    }
+  </div>
 
   <div class="super-header">
     <div class="container">

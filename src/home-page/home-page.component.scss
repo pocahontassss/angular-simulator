@@ -50,7 +50,7 @@
   width: 1180px;
   height: 161px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--gree-color);
   backdrop-filter: blur(6px);
   padding: 16px;
   display: flex;
@@ -97,7 +97,7 @@
   .arrow,
   .calendar-icon {
     color: var(--white-color);
-    font-size: 14px;
+    font-size: 18px;
     pointer-events: none;
   }
 
@@ -123,14 +123,14 @@
   font-weight: 700;
   border-radius: 4px;
   color: var(--white-color);
-  background-color: #1a3e3e;
+  background-color: var(--green-color);
   cursor: pointer;
   transition:
     background-color 0.2s ease,
     opacity 0.2s ease;
 
   &:disabled {
-    background-color: #6b6b6b;
+    background-color: var(--gree-color);
     opacity: 0.6;
     cursor: not-allowed;
   }
@@ -139,7 +139,7 @@
 .description {
   font-size: 14px;
   font-weight: 400;
-  color: #fdfdfd;
+  color: var(--white-color);
   margin: 0;
   padding-top: 8px;
   padding-left: 8px;
@@ -198,13 +198,14 @@
   z-index: -1;
 }
 
-.play_icon {
-  width: 50px;
-  height: 50px;
+.play-icon {
+  font-size: 50px;
+  color: var(--white-color);
   position: absolute;
   top: 301px;
   left: 280px;
   z-index: 3;
+  cursor: pointer;
 }
 
 .historical-info {
@@ -219,7 +220,7 @@
   font-size: 24px;
   line-height: 20px;
   font-weight: 400;
-  color: #f2be22;
+  color: var(--secondary-color);
   margin: 0;
 }
 
@@ -227,7 +228,7 @@
   font-size: 32px;
   line-height: 120%;
   font-weight: 800;
-  color: #18121e;
+  color: var(--page-text);
   margin-top: 8px;
   margin-bottom: 40px;
 }
@@ -236,7 +237,7 @@
   font-size: 18px;
   line-height: 150%;
   font-weight: 400;
-  color: #18121e;
+  color: var(--page-text);
   margin: 0;
 }
 
@@ -244,11 +245,11 @@
   width: 200px;
   height: 52px;
   border-radius: 4px;
-  background-color: #1a3e3e;
+  background-color: var(--green-color);
   font-size: 16px;
   line-height: 20px;
   font-weight: 600;
-  color: #fdfdfd;
+  color: var(--white-color);
   cursor: pointer;
   margin-top: 40px;
 }
@@ -256,7 +257,7 @@
 .programs {
   width: 100%;
   min-height: 771px;
-  background-color: #f3f5f4;
+  background-color: var(--surface-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -310,9 +311,7 @@
 }
 
 .program-icon {
-  width: 50px;
-  height: 50px;
-  flex-shrink: 0;
+  font-size: 30px;
 }
 
 .program-title {
@@ -326,7 +325,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #6b6b6b;
+  color: var(--page-text);
   margin: 0;
   margin-top: 4px;
 }
@@ -374,7 +373,7 @@
   align-items: center;
   gap: 16px;
   padding: 20px 40px;
-  background-color: #f3f5f4;
+  background-color: var(--surface-bg);
 
   input {
     width: 260px;
@@ -388,14 +387,14 @@
     transition: border-color 0.2s ease;
 
     &:focus {
-      border-color: #1a3e3e;
+      border-color: var(--green-color);
     }
   }
 
   p {
     margin: 0;
     font-size: 15px;
-    color: #18121e;
+    color: var(--page-text);
   }
 }
 
@@ -405,7 +404,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f3f5f4;
+  background-color: var(--surface-bg);
 }
 
 .loading-icon {
@@ -477,7 +476,7 @@
   width: 100%;
   height: 1036px;
   box-sizing: border-box;
-  background-color: #f3f5f4;
+  background-color: var(--surface-bg);
 }
 
 .blog_travel_container {
@@ -529,7 +528,7 @@
   flex-direction: row;
   width: 580px;
   height: 312px;
-  background-color: #fdfdfd;
+  background-color: var(--surface-bg);
   border-radius: 12px;
   overflow: hidden;
   align-items: stretch;
@@ -564,7 +563,7 @@
   font-weight: 700;
   line-height: 32px;
   margin: 0;
-  color: #18121e;
+  color: var(--page-text);
   margin-bottom: 24px;
   cursor: pointer;
 }
@@ -578,7 +577,7 @@
   font-weight: 400;
   line-height: 20px;
   margin: 0;
-  color: #18121e;
+  color: var(--page-text);
 }
 
 .blog_photo_date {
@@ -591,7 +590,7 @@
 
 .blog_date {
   font-size: 14px;
-  color: #f2be22;
+  color: var(--secondary-color);
   font-weight: 700;
   line-height: 20px;
 }
@@ -600,13 +599,13 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 20px;
-  color: #1a3e3e;
+  color: var(--green-color);
   text-decoration: none;
   cursor: pointer;
 }
 
 .message-btn {
-  background-color: #6b6b6b;
+  background-color: var(--gree-color);
   display: flex;
   justify-content: center;
   align-items: center;

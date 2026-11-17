@@ -41,12 +41,11 @@
       <a class="company_mail" id="company-mail" href="mailto:example@mail.com">info@domain.com</a>
       <a class="company_phone" id="company-phone" href="tel:+71234567890">+7 (123) 456-78-90</a>
       <div class="company_media">
-        @for (src of companyMedia; track $index) {
-          <img
+        @for (icon of companyMedia; track $index) {
+          <fa-icon
             class="company_media_icon"
             [attr.id]="'company-media-icon-' + $index"
-            [src]="'./images/' + src + '_icon.svg'"
-            alt="Соцсети"
+            [icon]="icon"
           />
         }
       </div>

@@ -5,8 +5,8 @@
 }
 
 .footer {
-  background-color: #1c403f;
-  color: white;
+  background-color: var(--green-color);
+  color: var(--white-color);
 }
 
 .footer_container {
@@ -30,8 +30,8 @@
   align-items: center;
   justify-self: center;
   position: relative;
-  background-color: white;
-  color: black;
+  background-color: var(--surface-bg);
+  color: var(--page-text);
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -49,7 +49,7 @@
 .mailings_subtitl {
   line-height: 20px;
   font-weight: 400;
-  color: #f2be22;
+  color: var(--secondary-color);
   margin: 0;
   font-size: 18px;
   margin-bottom: 8px;
@@ -58,7 +58,7 @@
 .mailings_title {
   line-height: 120%;
   font-weight: 800;
-  color: #18121e;
+  color: var(--page-text);
   margin-top: 8px;
   margin-bottom: 40px;
   font-size: 26px;
@@ -79,7 +79,7 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
-  color: #18121e;
+  color: var(--page-text);
 }
 
 .subscribe-form {
@@ -96,7 +96,7 @@
   font-weight: 300;
   line-height: 20px;
   padding: 0 16px;
-  background-color: #f2f5f4;
+  background-color: var(--surface-bg);
   border: none;
   border-radius: 4px;
 }
@@ -109,8 +109,8 @@
   font-weight: 600;
   line-height: 20px;
   padding: 0 24px;
-  color: white;
-  background-color: #1c403f;
+  color: var(--white-color);
+  background-color: var(--green-color);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -121,7 +121,7 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
-  color: #1f1727;
+  color: var(--obsidian-color);
   cursor: pointer;
 }
 
@@ -136,11 +136,11 @@
   font-weight: 700;
   line-height: 24px;
   margin-bottom: 17px;
-  color: #f3f5f4;
+  color: var(--surface-bg);
 }
 
 .company_description {
-  color: #ffffff;
+  color: var(--white-color);
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -149,7 +149,7 @@
 
 .company_mail,
 .company_phone {
-  color: #ffffff;
+  color: var(--white-color);
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
@@ -163,8 +163,8 @@
 }
 
 .company_media_icon {
-  width: 32px;
-  height: 32px;
+  font-size: 22px;
+  cursor: pointer;
 }
 
 .services_list,
@@ -177,7 +177,7 @@
 .important_item,
 .important_link,
 .services_link {
-  color: #fdfdfd;
+  color: var(--white-color);
   font-size: 14px;
   line-height: 18px;
   font-weight: 400;
@@ -186,5 +186,5 @@
 }
 
 .services_link:visited {
-  color: #fdfdfd;
+  color: var(--white-color);
 }

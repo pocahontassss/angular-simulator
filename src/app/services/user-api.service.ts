@@ -7,6 +7,7 @@ import { IUser } from '../interfaces/IUser';
 @Injectable({
   providedIn: 'root',
 })
+
 export class UserApiService {
 
   private http: HttpClient = inject(HttpClient);
@@ -15,4 +16,5 @@ export class UserApiService {
   getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>(this.url);
   }
+
 }

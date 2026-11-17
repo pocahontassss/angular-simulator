@@ -9,13 +9,13 @@
 
 <ng-template #toastTemplate let-message>
   <div class="toast" [ngClass]="'toast--' + message.type.toLowerCase()">
-    <img src="./images/mail-icon.svg" alt="" />
+    <fa-icon [icon]="mailIcon" class="mail-icon" />
     <div class="toast-content">
       <h2>{{ message.type }}</h2>
       <p>{{ message.text }}</p>
     </div>
     <button [attr.id]="'message-' + message.id" (click)="messageService.closeMessage(message.id)">
-      <img src="./images/delete-icon.svg" alt="Удалить" />
+      <fa-icon [icon]="deleteIcon" class="delete-icon" />
     </button>
   </div>
 </ng-template>

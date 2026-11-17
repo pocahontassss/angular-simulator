@@ -3,13 +3,18 @@ import { IProgram } from '../app/interfaces/IProgram';
 import { IBlog } from '../app/interfaces/IBlog';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from '../app/services/message.service';
+import { faCalendar, faCirclePlay } from '@fortawesome/free-regular-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faShieldHalved, faTag, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule],
+  imports: [FormsModule, FontAwesomeModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
+
 export class HomePageComponent {
 
   messageService: MessageService = inject(MessageService);
@@ -26,21 +31,21 @@ export class HomePageComponent {
   programs: IProgram[] = [
     {
       id: 1,
-      icon: 'people',
+      icon: faPeopleGroup,
       title: 'Опытный гид',
       description:
         'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
     },
     {
       id: 2,
-      icon: 'shield',
+      icon: faShieldHalved,
       title: 'Безопасный поход',
       description:
         'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации',
     },
     {
       id: 3,
-      icon: 'tag',
+      icon: faTag,
       title: 'Лояльные цены',
       description:
         'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации',
@@ -87,6 +92,9 @@ export class HomePageComponent {
   offerImages: string[] = ['coffee', 'men', 'moto', 'valley'];
   priceCard: string[] = ['lake', 'starry_sky', 'stone'];
   pinterestFoto: string[] = ['balloons', 'map', 'hotel', 'beach', 'canyon', 'camera'];
+
+  calendarIcon: IconDefinition = faCalendar;
+  playIcon: IconDefinition = faCirclePlay;
 
   isFormInvalid(): boolean {
     return (

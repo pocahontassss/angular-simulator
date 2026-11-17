@@ -17,16 +17,14 @@
   gap: 12px;
   min-height: 70px;
   padding: 10px 16px;
-  background-color: #0f172ad9;
-  border: 1px solid #ffffff;
+  background-color: var(--obsidian-color);
+  border: 1px solid var(--white-color);
   border-radius: 10px;
-  color: #fff;
+  color: var(--white-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 
-  img {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
+  .mail-icon {
+    font-size: 30px;
   }
 
   h2 {
@@ -34,14 +32,14 @@
     font-weight: 700;
     margin: 0;
     line-height: 20px;
-    color: #e8e9eb;
+    color: var(--page-text);
   }
 
   p {
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    color: #e8e9eb;
+    color: var(--page-text);
     margin: 2px 0 0;
   }
 
@@ -55,10 +53,10 @@
     border: none;
     cursor: pointer;
     padding: 0;
+  }
 
-    img {
-      width: 20px;
-      height: 20px;
-    }
+  .delete-icon {
+    font-size: 20px;
+    color: var(--white-color);
   }
 }

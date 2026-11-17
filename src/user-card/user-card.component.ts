@@ -7,6 +7,7 @@ import { IUser } from '../app/interfaces/IUser';
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
 })
+
 export class UserCardComponent {
 
   @Input({ required: true }) user!: IUser;

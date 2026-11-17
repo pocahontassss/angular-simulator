@@ -1,6 +1,8 @@
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
 export interface IProgram {
   id: number;
-  icon: string;
+  icon: IconDefinition;
   title: string;
   description: string;
 }

@@ -26,7 +26,7 @@
         <div class="frame frame-clickable" id="trip-date-frame" (click)="openDatePicker(tripDate)">
           <label for="trip-date">Дата похода</label>
           <span class="calendar-icon">
-            <img src="./images/calendar_icon.svg" alt="Календарь" width="18" height="18" />
+            <fa-icon [icon]="calendarIcon" />
           </span>
           <input
             type="date"
@@ -73,7 +73,7 @@
       <div class="hike-overview">
         <img class="mountains_pik_icon" src="./images/mountains_pik.png" alt="pik" />
         <img class="house_icon" src="./images/house.png" alt="house" />
-        <img class="play_icon" src="./images/play_icon.svg" alt="play" />
+        <fa-icon [icon]="playIcon" class="play-icon"/>
       </div>
       <div class="historical-info">
         <span class="about-hike">о нашем походе</span>
@@ -110,11 +110,7 @@
         <div class="program-grid">
           @for (program of programs; track program.id) {
             <div class="program-card">
-              <img
-                class="program-icon"
-                [src]="'./images/' + program.icon + '_icon.svg'"
-                [alt]="program.title"
-              />
+              <fa-icon class="program-icon" [icon]="program.icon"> </fa-icon>
               <div class="program-box">
                 <h2 class="program-title">{{ program.title }}</h2>
                 <p class="program-description">{{ program.description }}</p>

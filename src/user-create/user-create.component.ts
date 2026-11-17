@@ -22,6 +22,7 @@ type UserFormControls = ControlsOf<UserFormValue>;
   templateUrl: './user-create.component.html',
   styleUrl: './user-create.component.scss',
 })
+
 export class UserCreateComponent {
 
   private formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
