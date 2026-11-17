@@ -1,0 +1,26 @@
+<section class="destinations" id="destinations" aria-labelledby="destinations-title">
+  <div class="destinations__inner">
+    <p class="destinations__eyebrow">по версии отдыхающих</p>
+    <h2 id="destinations-title">Популярные направления</h2>
+    <div class="destinations__cards">
+      @for (destination of destinations; track destination.id) {
+        <article class="destination">
+          <img class="destination__image" [src]="destination.image" [alt]="destination.title" width="380" height="500" loading="lazy" />
+          <span class="destination__rating" [attr.aria-label]="'Оценка ' + destination.rating + ' из 5'">
+            <span aria-hidden="true">★</span> {{ destination.rating }}
+          </span>
+          <div class="destination__details">
+            <div>
+              <h3>{{ destination.title }}</h3>
+              <p>{{ destination.description }}</p>
+            </div>
+            <span class="destination__price">{{ destination.price }} $</span>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+  <div class="destinations__footer">
+    <button type="button" (click)="showMessage.emit('Рейтинг направлений: Озеро возле гор — 4.9, Ночь в горах — 4.5, Растяжка в горах — 5.0')">Рейтинг направлений</button>
+  </div>
+</section>

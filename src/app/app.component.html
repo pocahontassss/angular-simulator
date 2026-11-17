@@ -22,5 +22,29 @@
   <app-hero />
   <app-about-hike />
   <app-programs />
+  <app-destinations (showMessage)="messageService.addMessage($event, messageType.Info)" />
+  <app-travel-blog (showMessage)="messageService.addMessage($event, messageType.Info)" />
+  <section class="message-demo" aria-labelledby="message-demo-title">
+    <h2 id="message-demo-title">Уведомления</h2>
+    <div class="message-demo__buttons">
+      <button type="button" (click)="messageService.addMessage('Действие выполнено успешно', messageType.Success)">Успех</button>
+      <button type="button" (click)="messageService.addMessage('Новая информация', messageType.Info)">Информация</button>
+      <button type="button" (click)="messageService.addMessage('Обратите внимание', messageType.Warning)">Предупреждение</button>
+      <button type="button" (click)="messageService.addMessage('Произошла ошибка', messageType.Error)">Ошибка</button>
+    </div>
+  </section>
   <router-outlet />
 }
+
+<div class="messages" aria-live="polite" aria-relevant="additions">
+  @for (message of messageService.messages; track message.id) {
+    <ng-container [ngTemplateOutlet]="messageTemplate" [ngTemplateOutletContext]="{ $implicit: message }" />
+  }
+</div>
+
+<ng-template #messageTemplate let-message>
+  <div class="message" [class]="'message message--' + message.type">
+    <span class="message__text">{{ message.text }}</span>
+    <button class="message__close" type="button" aria-label="Закрыть уведомление" (click)="messageService.closeMessage(message.id)">×</button>
+  </div>
+</ng-template>

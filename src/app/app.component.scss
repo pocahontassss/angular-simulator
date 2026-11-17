@@ -27,3 +27,53 @@
     animation: none;
   }
 }
+
+.message-demo {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  color: #1a3e3e;
+}
+.message-demo h2 { margin: 0 0 20px; }
+.message-demo__buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.message-demo__buttons button {
+  padding: 12px 20px;
+  border: 1px solid #1a3e3e;
+  border-radius: 4px;
+  background: #1a3e3e;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+.message-demo__buttons button:hover { background: #285858; }
+.messages {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 200;
+  display: grid;
+  gap: 10px;
+  width: min(360px, calc(100vw - 40px));
+  pointer-events: none;
+}
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 18px;
+  border-left: 4px solid;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 4px 18px #0002;
+  pointer-events: auto;
+  animation: message-enter 180ms ease-out;
+}
+.message--success { border-color: #328659; }
+.message--info { border-color: #3180ad; }
+.message--warning { border-color: #d99b23; }
+.message--error { border-color: #c94c4c; }
+.message__text { flex: 1; }
+.message__close { border: 0; padding: 0 2px; background: transparent; color: inherit; font-size: 24px; line-height: 1; cursor: pointer; }
+@keyframes message-enter { from { opacity: 0; transform: translateX(16px); } }
+@media (prefers-reduced-motion: reduce) { .message { animation: none; } }

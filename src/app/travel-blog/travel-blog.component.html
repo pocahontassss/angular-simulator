@@ -1,0 +1,24 @@
+<section class="blog" id="blog" aria-labelledby="blog-title">
+  <div class="blog__inner">
+    <p class="blog__eyebrow">делимся впечатлениями</p>
+    <h2 id="blog-title">Блог о путешествиях</h2>
+    <div class="blog__cards">
+      @for (article of articles; track article.id) {
+        <article class="article">
+          <img [src]="article.image" [alt]="article.title" width="230" height="280" loading="lazy" />
+          <div class="article__content">
+            <h3><button class="article__title" type="button" (click)="showMessage.emit('Вы выбрали статью: ' + article.title)">{{ article.title }}</button></h3>
+            <p>{{ article.description }}</p>
+            <div class="article__footer">
+              <time datetime="2023-04-01">01/04/2023</time>
+              <button class="article__read" type="button" (click)="showMessage.emit('Вы выбрали статью: ' + article.title)">читать статью</button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+  <div class="blog__footer">
+    <button class="blog__button" type="button" (click)="showMessage.emit('Сейчас показаны все материалы блога')">Другие материалы</button>
+  </div>
+</section>
