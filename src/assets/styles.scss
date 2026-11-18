@@ -1,0 +1,20 @@
+@use './fonts';
+@use './normalize';
+* {
+  font-family: 'Nunito Sans';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: block;
+  width: 1180px;
+}
+
+:root {
+  --primary-color: #18121e;
+  --white-color: #fdfdfd;
+  --active-color: #1a3e3e;
+  --input-button-color: rgba(253, 253, 253, 1);
+}
