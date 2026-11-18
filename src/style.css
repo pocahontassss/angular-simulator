@@ -66,6 +66,7 @@
     } 
     
     .hero { 
+      
       position: relative; 
       min-height: 50vh; 
       background-image: url('img/fon.jpg'); 
