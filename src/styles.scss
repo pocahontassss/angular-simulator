@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+app-header,
+app-hero {
+  display: block;
+  width: 100%;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/NunitoSans.ttf') format('truetype');
+  font-weight: 200 1000;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}

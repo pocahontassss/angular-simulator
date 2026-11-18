@@ -1,0 +1,45 @@
+<section class="hero">
+  <app-header></app-header>
+
+  <div class="hero__bottom">
+    <div class="container">
+      <h1 class="hero__title">
+        Насладись прогулкой в горах <br />
+        с командой единомышленников
+      </h1>
+
+      <form class="search-form">
+        <div class="search-form__item">
+          <select class="search-form__field search-form__field--select">
+            <option value="">Локация для тура</option>
+            <option value="uk">Великобритания</option>
+            <option value="ru">Россия</option>
+          </select>
+          <span class="search-form__hint">Выберите из списка</span>
+        </div>
+
+        <div class="search-form__item">
+          <input
+            type="text"
+            class="search-form__field search-form__field--date"
+            placeholder="Дата похода"
+          />
+          <span class="search-form__hint">Укажите дату</span>
+        </div>
+
+        <div class="search-form__item">
+          <select class="search-form__field search-form__field--select">
+            <option>Участники</option>
+            <option>4 человека</option>
+            <option>5 человека</option>
+            <option>6 человека</option>
+          </select>
+
+          <span class="search-form__hint">Выберите из списка</span>
+        </div>
+
+        <button type="submit" class="search-form__btn">Найти программу</button>
+      </form>
+    </div>
+  </div>
+</section>
