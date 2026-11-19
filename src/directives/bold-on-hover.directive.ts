@@ -6,6 +6,7 @@ const DEFAULT_FONT_WEIGHT: string = '';
 @Directive({
   selector: '[appBoldOnHover]',
 })
+
 export class BoldOnHoverDirective {
 
   @HostBinding('style.font-weight')
