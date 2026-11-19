@@ -35,7 +35,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/styles.scss"
             ],
             "polyfills": [
               "zone.js"
@@ -51,8 +51,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "10kB",
+                  "maximumError": "12kB"
                 }
               ],
               "outputHashing": "all"
@@ -67,6 +67,10 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "host": "0.0.0.0",
+            "open": true
+          },
           "configurations": {
             "production": {
               "buildTarget": "angular-simulator:build:production"

@@ -1,0 +1,66 @@
+<header class="header">
+  @if (showClock) {
+    <span class="current_time">{{ currentTime }}</span>
+  } @else {
+    <button id="increment-count-btn" (click)="clickCount = clickCount + 1">+</button>
+    <span class="click_count">{{ clickCount }}</span>
+    <button
+      id="decrement-count-btn"
+      (click)="clickCount = clickCount - 1"
+      [disabled]="clickCount === 0"
+    >
+      -
+    </button>
+  }
+  <button id="toggle-view-btn" (click)="showClock = !showClock">
+    {{ showClock ? 'Показать кликер' : 'Показать дату' }}
+  </button>
+  <div class="theme-mode">
+    @if (themeState$ | async; as state) {
+      <div class="toggle-icon">
+        @if (state.colorMode === colorModes.DARK) {
+          <fa-icon [icon]="moonIcon" class="moon-icon" />
+        } @else {
+          <fa-icon [icon]="sunIcon" class="sun-icon" />
+        }
+        <p-toggleswitch
+          [ngModel]="state.colorMode === colorModes.DARK"
+          class="color-mode-toggle"
+          id="color-mode-toggle"
+          (onChange)="onToggleColorMode()"
+        />
+        <p-selectbutton
+          class="theme-select-button"
+          id="theme-select-button"
+          [options]="themeOptions"
+          [ngModel]="state.theme"
+          [allowEmpty]="false"
+          (onChange)="onChangeTheme($event)"
+        />
+      </div>
+    }
+  </div>
+
+  <div class="super-header">
+    <div class="container">
+      <div class="logo-wrapper">
+        <img src="./images/logo_icon.svg" alt="Румтибет" />
+      </div>
+      <div class="nav-wrapper">
+        <nav class="navy-wrapper">
+          @for (navLink of navLinks; track navLink.id) {
+            <a
+              [routerLink]="navLink.link"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [id]="'nav-link-' + navLink.id"
+            >
+              {{ navLink.name }}
+            </a>
+          }
+        </nav>
+      </div>
+      <button class="consultation-button" id="consultation-btn">Консультация</button>
+    </div>
+  </div>
+</header>

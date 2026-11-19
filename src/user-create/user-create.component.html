@@ -1,0 +1,130 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="user-create-form">
+  <div class="user-create-field">
+    <label for="user-create-name" class="user-create-label">Имя</label>
+    <input type="text" formControlName="name" class="user-create-input" id="user-create-name" />
+  </div>
+  <div class="user-create-field">
+    <label for="user-create-username" class="user-create-label">Никнейм</label>
+    <input
+      type="text"
+      formControlName="username"
+      class="user-create-input"
+      id="user-create-username"
+    />
+  </div>
+  <div class="user-create-field">
+    <label for="user-create-email" class="user-create-label">Почта</label>
+    <input type="email" formControlName="email" class="user-create-input" id="user-create-email" />
+  </div>
+  <div class="user-create-field">
+    <label for="user-create-phone" class="user-create-label">Телефон</label>
+    <input type="tel" formControlName="phone" class="user-create-input" id="user-create-phone" />
+  </div>
+  <div class="user-create-field">
+    <label for="user-create-website" class="user-create-label">Сайт</label>
+    <input
+      type="url"
+      formControlName="website"
+      class="user-create-input"
+      id="user-create-website"
+    />
+  </div>
+
+  <div formGroupName="address" class="user-create-group">
+    <h4 class="user-create-group-title">Адрес</h4>
+    <div class="user-create-field">
+      <label for="user-create-address-street" class="user-create-label">Улица</label>
+      <input
+        type="text"
+        formControlName="street"
+        class="user-create-input"
+        id="user-create-address-street"
+      />
+    </div>
+    <div class="user-create-field">
+      <label for="user-create-address-suite" class="user-create-label">Офис</label>
+      <input
+        type="text"
+        formControlName="suite"
+        class="user-create-input"
+        id="user-create-address-suite"
+      />
+    </div>
+    <div class="user-create-field">
+      <label for="user-create-address-city" class="user-create-label">Город</label>
+      <input
+        type="text"
+        formControlName="city"
+        class="user-create-input"
+        id="user-create-address-city"
+      />
+    </div>
+    <div class="user-create-field">
+      <label for="user-create-address-zipcode" class="user-create-label">Индекс</label>
+      <input
+        type="text"
+        formControlName="zipcode"
+        class="user-create-input"
+        id="user-create-address-zipcode"
+      />
+    </div>
+    <div formGroupName="geo" class="user-create-group">
+      <div class="user-create-field">
+        <label for="user-create-address-geo-lat" class="user-create-label">Широта</label>
+        <input
+          type="text"
+          formControlName="lat"
+          class="user-create-input"
+          id="user-create-address-geo-lat"
+        />
+      </div>
+      <div class="user-create-field">
+        <label for="user-create-address-geo-lng" class="user-create-label">Долгота</label>
+        <input
+          type="text"
+          formControlName="lng"
+          class="user-create-input"
+          id="user-create-address-geo-lng"
+        />
+      </div>
+    </div>
+  </div>
+  <div formGroupName="company" class="user-create-group">
+    <h4 class="user-create-group-title">Компания</h4>
+    <div class="user-create-field">
+      <label for="user-create-company-name" class="user-create-label">Название</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="user-create-input"
+        id="user-create-company-name"
+      />
+    </div>
+    <div class="user-create-field">
+      <label for="user-create-company-catch-phrase" class="user-create-label">Миссия</label>
+      <input
+        type="text"
+        formControlName="catchPhrase"
+        class="user-create-input"
+        id="user-create-company-catch-phrase"
+      />
+    </div>
+    <div class="user-create-field">
+      <label for="user-create-company-bs" class="user-create-label">Специализация</label>
+      <input
+        type="text"
+        formControlName="bs"
+        class="user-create-input"
+        id="user-create-company-bs"
+      />
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="user-create-button"
+    id="user-create-button"
+    [disabled]="userForm.invalid"
+  >
+    Создать пользователя
+  </button>
+</form>

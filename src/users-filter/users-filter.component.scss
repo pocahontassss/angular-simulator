@@ -1,0 +1,24 @@
+.users-filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 360px;
+  margin-bottom: 24px;
+}
+
+.users-filter-label {
+  font-size: 14px;
+  color: #555555;
+}
+
+.users-filter-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--orang-color);
+  }
+}

@@ -1,0 +1,25 @@
+.users-page {
+  min-height: 100vh;
+  padding: 40px;
+  padding-top: 180px;
+  padding-bottom: 150px;
+  background-color: var(--surface-bg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.users-title {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 30px;
+  margin-bottom: 40px;
+  vertical-align: middle;
+  color: var(--green-color);
+}
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}

@@ -1,0 +1,86 @@
+<section class="footer">
+  <div class="footer_container">
+    <div class="footer_mailings_container">
+      <div class="mailings_title_container">
+        <p class="mailings_subtitl">актуально</p>
+        <h2 class="mailings_title">
+          Получайте полезные <br />
+          рассылки о путешествиях
+        </h2>
+      </div>
+      <div class="subscription_container">
+        <label for="email" class="subscribe-label">Введите e-mail адрес</label>
+        <form class="subscribe-form">
+          <input
+            type="email"
+            id="email"
+            class="subscribe-input"
+            placeholder="name@domain.com"
+            required
+          />
+          <button class="subscription_btn" id="subscription-btn">Подписаться на новости</button>
+        </form>
+        <p class="subscribe_agreement">
+          подписываясь на новости, вы автоматически соглашаетесь с
+          <a href="#" id="subscribe-conditions">
+            условиями <br />
+            обработки персональных данных</a
+          >
+          и <a href="#" id="subscribe-rules"> правилами рекламных рассылок</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="company_container">
+      <h2 class="company_title">Компания «РумТибет»</h2>
+      <p class="company_description">
+        Его корни уходят в один фрагмент классической латыни 45 года <br />
+        н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, <br />
+        профессор латыни из колледжа Hampden-Sydney.
+      </p>
+      <a class="company_mail" id="company-mail" href="mailto:example@mail.com">info@domain.com</a>
+      <a class="company_phone" id="company-phone" href="tel:+71234567890">+7 (123) 456-78-90</a>
+      <div class="company_media">
+        @for (icon of companyMedia; track $index) {
+          <fa-icon
+            class="company_media_icon"
+            [attr.id]="'company-media-icon-' + $index"
+            [icon]="icon"
+          />
+        }
+      </div>
+    </div>
+    <div class="services_container">
+      <h2 class="services_title">Наши услуги</h2>
+      <ul class="services_list">
+        @for (footerLink of footerLinks; track footerLink.id) {
+          <li class="services_item">
+            <a
+              class="services_link"
+              [id]="'services-link-' + footerLink.id"
+              [href]="footerLink.link"
+            >
+              {{ footerLink.text }}</a
+            >
+          </li>
+        }
+      </ul>
+    </div>
+    <div class="important_container">
+      <h2 class="important_title">Важно для путешествий</h2>
+      <ul class="important_list">
+        @for (importantLink of importantLinks; track importantLink.id) {
+          <li class="important_item">
+            <a
+              class="important_link"
+              [id]="'important-link-' + importantLink.id"
+              [href]="importantLink.link"
+            >
+              {{ importantLink.text }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

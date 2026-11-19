@@ -1,0 +1,66 @@
+<div class="user-card">
+  <h3 class="user-name">{{ user.name }}</h3>
+  <p class="user-username">@{{ user.username }}</p>
+
+  <h4 class="user-section-title">КОНТАКТЫ</h4>
+  <p class="user-row">
+    <span class="user-label">Эл. почта:</span>
+    <span class="user-value-colorOrang">{{ user.email }}</span>
+  </p>
+  <p class="user-row">
+    <span class="user-label">Телефон:</span>
+    <span class="user-value">{{ user.phone }}</span>
+  </p>
+  <p class="user-row">
+    <span class="user-label">Веб-сайт:</span>
+    <span class="user-value-colorOrang">{{ user.website || 'Неизвестно' }}</span>
+  </p>
+
+  <h4 class="user-section-title">АДРЕС ПРОЖИВАНИЯ</h4>
+  <p class="user-row">
+    <span class="user-label">Город:</span>
+    <span class="user-value">{{ user.address.city }}</span>
+  </p>
+  <p class="user-row">
+    <span class="user-label">Улица:</span>
+    <span class="user-value">{{ user.address.street }}</span>
+  </p>
+  <p class="user-row">
+    <span class="user-label">Офис:</span>
+    <span class="user-value">{{ user.address.suite || 'Неизвестно' }}</span>
+  </p>
+  <p class="user-row">
+    <span class="user-label">Индекс:</span>
+    <span class="user-value">{{ user.address.zipcode }}</span>
+  </p>
+  <p class="user-row">
+    <span class="user-label">Координаты:</span>
+    <span class="user-value">
+      <span class="user-geo">{{ user.address.geo.lat }}</span>
+      <span class="user-geo">{{ user.address.geo.lng }}</span>
+    </span>
+  </p>
+
+  <h4 class="user-section-title">МЕСТО РАБОТЫ</h4>
+  <p class="user-row">
+    <span class="user-label">Компания:</span>
+    <span class="user-value">{{ user.company.name }}</span>
+  </p>
+  <p class="user-row">
+    <span class="user-label">Миссия:</span>
+    <span class="user-value-colorGrey">{{ user.company.catchPhrase || 'Неизвестно' }}</span>
+  </p>
+  <p class="user-row">
+    <span class="user-label">Специализация:</span>
+    <span class="user-value">{{ user.company.bs || 'Неизвестно' }}</span>
+  </p>
+
+  <button
+    type="button"
+    (click)="onDelete()"
+    class="delet-card-btn"
+    [id]="'delet-card-btn-' + user.id"
+  >
+    Удалить пользователя
+  </button>
+</div>

@@ -1,0 +1,214 @@
+<section class="main-header">
+  <div class="banner"></div>
+  <div class="slogan">
+    <span>{{ companySlogan }}</span>
+    <span>{{ continuationSlogan }}</span>
+  </div>
+  <div class="bg-surface">
+    <form class="search-widget" id="tour-search-form">
+      <div class="input-group">
+        <div class="frame" id="frame-location">
+          <label>Локация для тура</label>
+          <span class="arrow">▾</span>
+          <select
+            class="hidden-select"
+            id="location-select"
+            [(ngModel)]="selectedLocation"
+            name="location"
+          >
+            <option id="location-option-1">Вариант 1</option>
+            <option id="location-option-2">Вариант 2</option>
+          </select>
+        </div>
+        <p class="description">выберите из списка</p>
+      </div>
+      <div class="input-group">
+        <div class="frame frame-clickable" id="trip-date-frame" (click)="openDatePicker(tripDate)">
+          <label for="trip-date">Дата похода</label>
+          <span class="calendar-icon">
+            <fa-icon [icon]="calendarIcon" />
+          </span>
+          <input
+            type="date"
+            class="hidden-select"
+            id="trip-date"
+            #tripDate
+            [(ngModel)]="selectedDate"
+            name="date"
+            required
+          />
+        </div>
+        <p class="description">укажите дату</p>
+      </div>
+      <div class="input-group">
+        <div class="frame" id="frame-participants">
+          <label>Участники</label>
+          <span class="arrow">▾</span>
+          <select
+            class="hidden-select"
+            id="participants-select"
+            [(ngModel)]="participantsCount"
+            name="participants"
+          >
+            <option id="participants-option-1">Вариант 1</option>
+            <option id="participants-option-2">Вариант 2</option>
+          </select>
+        </div>
+        <p class="description">выберите из списка</p>
+      </div>
+      <button type="submit" class="btn-search" id="search-btn" [disabled]="isFormInvalid()">
+        Найти программу
+      </button>
+    </form>
+  </div>
+  <div class="live-input-demo">
+    <input id="live-input-field" [(ngModel)]="liveInputValue" />
+    <p>{{ liveInputValue }}</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="content">
+    <div class="container-info">
+      <div class="hike-overview">
+        <img class="mountains_pik_icon" src="./images/mountains_pik.png" alt="pik" />
+        <img class="house_icon" src="./images/house.png" alt="house" />
+        <fa-icon [icon]="playIcon" class="play-icon"/>
+      </div>
+      <div class="historical-info">
+        <span class="about-hike">о нашем походе</span>
+        <h3 class="title-slogan">
+          Исследуйте все горные массивы <br />
+          мира вместе с нами
+        </h3>
+        <div class="text-info">
+          Его корни уходят в один фрагмент классической латыни 45 года <br />
+          н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, <br />
+          профессор латыни из колледжа Hampden-Sydney, штат <br />
+          Вирджиния, взял одно из самых странных слов в Lorem Ipsum, <br />
+          "consectetur" и занялся его поисками в классической латинской <br />
+          литературе.
+        </div>
+        <button class="program-btn" id="tour-program-btn">Программа тура</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="programs-section">
+  <div class="programs">
+    <div class="programs__container">
+      <span class="programs__subtitle">наше предложение</span>
+      <h2 class="programs__title">Лучшие программы для тебя</h2>
+      <div class="programs__description">
+        Его корни уходят в один фрагмент классической латыни 45 года <br />
+        н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, <br />
+        профессор латыни из колледжа.
+      </div>
+
+      <div class="programs-list">
+        <div class="program-grid">
+          @for (program of programs; track program.id) {
+            <div class="program-card">
+              <fa-icon class="program-icon" [icon]="program.icon"> </fa-icon>
+              <div class="program-box">
+                <h2 class="program-title">{{ program.title }}</h2>
+                <p class="program-description">{{ program.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+        <button class="programs-btn" id="pricing-btn">Стоимость программы</button>
+      </div>
+    </div>
+    <div class="offer-images">
+      @for (src of offerImages; track $index) {
+        <img
+          class="offer-images__img"
+          [attr.id]="'offer-image-' + $index"
+          [src]="'./images/' + src + '.png'"
+          alt="Галерея программ"
+          [class.hovered]="hoveredImageIndex === $index"
+          (mouseenter)="hoveredImageIndex = $index"
+          (mouseleave)="hoveredImageIndex = null"
+        />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="trips">
+  <div class="price">
+    <div class="title_container">
+      <span class="price_subtitl">по версии отдыхающих</span>
+      <h2 class="price_title">Популярные направления</h2>
+    </div>
+    <div class="price_card">
+      @for (src of priceCard; track $index) {
+        <img class="price_card_images" [src]="'./images/' + src + '.png'" alt="Карточка цен" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="blog_travel">
+  <div class="blog_travel_container">
+    <button class="blog_btn" id="blog-btn">Рейтинг направлений</button>
+    <div class="blog_travel_title">
+      <span class="blog_subtitl">делимся впечатлениями</span>
+      <h2 class="blog_title">Блог о путешествиях</h2>
+    </div>
+    <div class="blog_photo">
+      @for (blog of blogs; track blog.id) {
+        <div class="blog_photo_container">
+          <div class="blog_photo_images">
+            <img class="blog_icon" [src]="'./images/' + blog.icon + '.png'" alt="Путешествия" />
+          </div>
+          <div class="blog_card">
+            <div class="blog_card_title">
+              <h2 class="blog_card_text">{{ blog.title }}</h2>
+              <p class="blog_card_description">{{ blog.description }}</p>
+            </div>
+            <div class="blog_photo_date">
+              <span class="blog_date">{{ blog.date }}</span>
+              <a class="blog_link" [attr.id]="'blog-link-' + blog.id" href="#">{{ blog.button }}</a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="pinterest">
+  <button class="other_materials_btn" id="other-materials">Другие материалы</button>
+  <div class="pinterest_title_container">
+    <p class="pinterest_subtitl">фото-отчет</p>
+    <h2 class="pinterest_title">Делимся впечатлениями</h2>
+  </div>
+  <div class="pinterest_foto">
+    @for (src of pinterestFoto; track $index) {
+      <img
+        class="pinterest_foto__img"
+        [attr.id]="'pinterest_foto-' + $index"
+        [src]="'./images/' + src + '.png'"
+        alt="Фото из pinterest"
+      />
+    }
+  </div>
+  <button class="pinterest_btn" id="pinterest-btn">Наш pinterest</button>
+</section>
+<div class="message_service_btn">
+  <button (click)="messageService.showSuccess('Success')" class="success_btn" id="show-success-btn">
+    Success
+  </button>
+  <button (click)="messageService.showError('Error')" class="error_btn" id="show-error-btn">
+    Error
+  </button>
+  <button (click)="messageService.showWarn('Warn')" class="warning_btn" id="show-warning-btn">
+    Warning
+  </button>
+  <button (click)="messageService.showInfo('Info')" class="info_btn" id="show-info-btn">
+    Info
+  </button>
+</div>
