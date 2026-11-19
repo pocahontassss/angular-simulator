@@ -49,15 +49,15 @@
   grid-column: 1 / -1;
   justify-self: start;
   padding: 10px 24px;
-  font-size: 14px;
-  color: var(--white-color);
+  font-size: 18px;
+  color: var(--text-color);
   background: var(--orang-color);
   border: none;
   border-radius: 6px;
   cursor: pointer;
 
   &:disabled {
-    background: var(--gree-color);
+    background: var(--green-color);
     cursor: not-allowed;
   }
 }

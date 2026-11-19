@@ -39,3 +39,29 @@ body {
   --page-text: var(--white-color);
   --surface-bg: var(--dark-surface-color);
 }
+
+.gradient-border-active {
+  border: var(--gradient-thickness) solid transparent !important;
+  background-image:
+    linear-gradient(var(--surface-bg), var(--surface-bg)),
+    linear-gradient(90deg, var(--gradient-colors)) !important;
+  background-origin: padding-box, border-box !important;
+  background-clip: padding-box, border-box !important;
+  background-size:
+    100% 100%,
+    200% 100% !important;
+  animation: gradient-border-move 3s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-border-move {
+  from {
+    background-position:
+      0 0,
+      0% 0;
+  }
+  to {
+    background-position:
+      0 0,
+      100% 0;
+  }
+}

@@ -7,7 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { IUser } from '../app/interfaces/IUser';
-
+import { BoldOnHoverDirective } from '../directives/bold-on-hover.directive';
+import { GradientBorderDirective } from '../directives/gradient-border.directive';
 type UserFormValue = Omit<IUser, 'id'>;
 
 type ControlsOf<T> = {
@@ -18,7 +19,7 @@ type UserFormControls = ControlsOf<UserFormValue>;
 
 @Component({
   selector: 'app-user-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, BoldOnHoverDirective, GradientBorderDirective],
   templateUrl: './user-create.component.html',
   styleUrl: './user-create.component.scss',
 })

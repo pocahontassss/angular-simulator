@@ -6,14 +6,14 @@ import { IUser } from '../app/interfaces/IUser';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { UserCreateComponent } from '../user-create/user-create.component';
 import { UsersFilterComponent } from '../users-filter/users-filter.component';
+import { PluralPipe } from '../pipe/plural.pipe';
 
 @Component({
   selector: 'app-users-page',
-  imports: [AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent],
+  imports: [AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent, PluralPipe],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
-
 export class UsersPageComponent {
 
   private userService: UserService = inject(UserService);

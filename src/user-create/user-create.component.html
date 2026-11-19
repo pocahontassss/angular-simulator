@@ -1,7 +1,13 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="user-create-form">
   <div class="user-create-field">
     <label for="user-create-name" class="user-create-label">Имя</label>
-    <input type="text" formControlName="name" class="user-create-input" id="user-create-name" />
+    <input
+      type="text"
+      formControlName="name"
+      class="user-create-input"
+      id="user-create-name"
+      appGradientBorder
+    />
   </div>
   <div class="user-create-field">
     <label for="user-create-username" class="user-create-label">Никнейм</label>
@@ -10,15 +16,28 @@
       formControlName="username"
       class="user-create-input"
       id="user-create-username"
+      appGradientBorder
     />
   </div>
   <div class="user-create-field">
     <label for="user-create-email" class="user-create-label">Почта</label>
-    <input type="email" formControlName="email" class="user-create-input" id="user-create-email" />
+    <input
+      type="email"
+      formControlName="email"
+      class="user-create-input"
+      id="user-create-email"
+      appGradientBorder
+    />
   </div>
   <div class="user-create-field">
     <label for="user-create-phone" class="user-create-label">Телефон</label>
-    <input type="tel" formControlName="phone" class="user-create-input" id="user-create-phone" />
+    <input
+      type="tel"
+      formControlName="phone"
+      class="user-create-input"
+      id="user-create-phone"
+      appGradientBorder
+    />
   </div>
   <div class="user-create-field">
     <label for="user-create-website" class="user-create-label">Сайт</label>
@@ -27,6 +46,7 @@
       formControlName="website"
       class="user-create-input"
       id="user-create-website"
+      appGradientBorder
     />
   </div>
 
@@ -39,6 +59,7 @@
         formControlName="street"
         class="user-create-input"
         id="user-create-address-street"
+        appGradientBorder
       />
     </div>
     <div class="user-create-field">
@@ -48,6 +69,7 @@
         formControlName="suite"
         class="user-create-input"
         id="user-create-address-suite"
+        appGradientBorder
       />
     </div>
     <div class="user-create-field">
@@ -57,6 +79,7 @@
         formControlName="city"
         class="user-create-input"
         id="user-create-address-city"
+        appGradientBorder
       />
     </div>
     <div class="user-create-field">
@@ -66,6 +89,7 @@
         formControlName="zipcode"
         class="user-create-input"
         id="user-create-address-zipcode"
+        appGradientBorder
       />
     </div>
     <div formGroupName="geo" class="user-create-group">
@@ -76,6 +100,7 @@
           formControlName="lat"
           class="user-create-input"
           id="user-create-address-geo-lat"
+          appGradientBorder
         />
       </div>
       <div class="user-create-field">
@@ -85,6 +110,7 @@
           formControlName="lng"
           class="user-create-input"
           id="user-create-address-geo-lng"
+          appGradientBorder
         />
       </div>
     </div>
@@ -98,6 +124,7 @@
         formControlName="name"
         class="user-create-input"
         id="user-create-company-name"
+        appGradientBorder
       />
     </div>
     <div class="user-create-field">
@@ -107,6 +134,7 @@
         formControlName="catchPhrase"
         class="user-create-input"
         id="user-create-company-catch-phrase"
+        appGradientBorder
       />
     </div>
     <div class="user-create-field">
@@ -116,6 +144,7 @@
         formControlName="bs"
         class="user-create-input"
         id="user-create-company-bs"
+        appGradientBorder
       />
     </div>
   </div>
@@ -124,6 +153,7 @@
     class="user-create-button"
     id="user-create-button"
     [disabled]="userForm.invalid"
+    appBoldOnHover
   >
     Создать пользователя
   </button>
