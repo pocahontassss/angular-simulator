@@ -1,1 +1,326 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+@if (isLoading) {
+  <div class="loader">
+    <div class="loader__spinner"></div>
+  </div>
+} @else {
+  <header class="header">
+    <div class="header__container">
+
+      <div class="header__logo">
+        <img src="images/mountain-icon.svg" alt="Лого">
+        <span>{{ companyName }}</span>
+      </div>
+
+      <nav class="header__nav">
+        <a href="#" id="nav-home">Главная</a>
+        <a href="#" id="nav-about-guide">Про гида</a>
+        <a href="#" id="nav-tour-program">Программа тура</a>
+        <a href="#" id="nav-price">Стоимость</a>
+        <a href="#" id="nav-blog">Блог</a>
+        <a href="#" id="nav-contacts">Контакты</a>
+      </nav>
+
+      <button 
+        class="header__button" 
+        type="button" 
+        id="consultation-button"
+        (click)="addTestMessage(MessageType.Success, 'Успешно!')">
+        Консультация
+      </button>
+
+      <button 
+        class="header__toggle" 
+        type="button" 
+        id="view-toggle-button"
+        (click)="toggleWidget()">
+        {{ showDate ? 'Показать счётчик' : 'Показать дату' }}
+      </button>
+
+      <div class="header__live-input">
+        <input 
+          type="text" 
+          class="live-input" 
+          placeholder="Живой инпут" 
+          id="live-input"
+          [(ngModel)]="liveInputValue">
+        <span class="live-output">{{ liveInputValue }}</span>
+      </div>
+
+      @if (showDate) {
+        <div class="header__date">
+          {{ currentDate | date:'dd.MM.yyyy HH:mm:ss' }}
+        </div>
+      }
+
+      @if (!showDate) {
+        <div class="header__counter">
+          <button 
+            class="counter-btn" 
+            type="button" 
+            id="counter-increment-button"
+            (click)="increment()">
+            +
+          </button>
+          <span class="counter-value">{{ clickCount }}</span>
+          <button 
+            class="counter-btn" 
+            type="button" 
+            id="counter-decrement-button"
+            (click)="decrement()"
+            [disabled]="clickCount === 0">
+            −
+          </button>
+        </div>
+      }
+
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-container">
+      <h1 class="hero-title">
+        Насладись прогулкой в горах<br>
+        с командой единомышленников
+      </h1>
+
+      <div class="tour-search">
+        <div class="tour-search-field">
+          <label class="visually-hidden" for="location-select">
+            Локация для тура
+          </label>
+          <select id="location-select" [(ngModel)]="selectedLocation">
+            <option value="">Локация для тура</option>
+            <option value="location1">Локация 1</option>
+            <option value="location2">Локация 2</option>
+            <option value="location3">Локация 3</option>
+          </select>
+          <span class="tour-search-hint">
+            выберите из списка
+          </span>
+        </div>
+
+        <div class="tour-search-field">
+          <label class="visually-hidden" for="date-input">
+            Дата похода
+          </label>
+          <input id="date-input" type="date" [(ngModel)]="selectedDate">
+          <span class="tour-search-hint">
+            укажите дату
+          </span>
+        </div>
+
+        <div class="tour-search-field">
+          <label class="visually-hidden" for="participants-select">
+            Участники
+          </label>
+          <select id="participants-select" [(ngModel)]="selectedParticipants">
+            <option value="">Участники</option>
+            <option value="4">4 человека</option>
+            <option value="5">5 человек</option>
+            <option value="6">6 человек</option>
+          </select>
+          <span class="tour-search-hint">
+            выберите из списка
+          </span>
+        </div>
+
+        <button 
+          class="tour-search-button" 
+          type="button" 
+          id="search-program-button"
+          [disabled]="!selectedLocation || !selectedDate || !selectedParticipants"
+          (click)="addTestMessage(MessageType.Info, 'Поиск запущен')">
+          Найти программу
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container features__container">
+
+      <div class="features__content">
+        <p class="features__label">наше предложение</p>
+        <h2 class="features__title">Лучшие программы для тебя</h2>
+        <p class="features__description">
+          Его корни уходят в один фрагмент классической латыни 45 года н.э.,
+          то есть более двух тысячелетий назад.
+        </p>
+
+        <div class="features__list">
+          @for (feature of features; track feature.title) {
+            <div class="feature-card">
+              <img class="feature-card__icon" [src]="'images/' + feature.icon + '.svg'" [alt]="feature.title">
+              <div class="feature-card__text">
+                <h3 class="feature-card__title">{{ feature.title }}</h3>
+                <p class="feature-card__description">{{ feature.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <button class="features__button" 
+          type="button"
+          id="program-price-button"
+          (click)="addTestMessage(MessageType.Warning, 'Внимание')">
+          Стоимость программы
+        </button>
+      </div>
+
+      <div class="features__gallery">
+        <img src="images/lake.png" alt="Озеро" class="features__photo features__photo--1">
+        <img src="images/canyon.png" alt="Каньон" class="features__photo features__photo--2">
+        <img src="images/snowmobile.png" alt="Снегоход" class="features__photo features__photo--3">
+        <img src="images/river.png" alt="Река" class="features__photo features__photo--4">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- === ДЗ №19 Пункт 1: Популярные направления === -->
+  <section class="popular-destinations">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">ПО ВЕРСИИ ОТДЫХАЮЩИХ</p>
+        <h2 class="section-title">Популярные направления</h2>
+      </div>
+
+      <div class="destinations-grid">
+        <div class="destination-card">
+          <div class="destination-card__image-wrapper">
+            <img src="images/mountainlake.png" alt="Озеро возле гор" class="destination-card__image">
+            <div class="destination-card__rating">⭐ 4.9</div>
+            <div class="destination-card__bottom">
+              <span class="destination-card__name">Озеро возле гор</span>
+              <span class="destination-card__price">480 $</span>
+            </div>
+          </div>
+          <div class="destination-card__footer">приключение</div>
+        </div>
+
+        <div class="destination-card">
+          <div class="destination-card__image-wrapper">
+            <img src="images/mountainsatnight.png" alt="Ночь в горах" class="destination-card__image">
+            <div class="destination-card__rating">⭐ 5.0</div>
+            <div class="destination-card__bottom">
+              <span class="destination-card__name">Ночь в горах</span>
+              <span class="destination-card__price">500 $</span>
+            </div>
+          </div>
+          <div class="destination-card__footer">приключение</div>
+        </div>
+
+        <div class="destination-card">
+          <div class="destination-card__image-wrapper">
+            <img src="images/rock.png" alt="Растяжка в горах" class="destination-card__image">
+            <div class="destination-card__rating">⭐ 5.0</div>
+            <div class="destination-card__bottom">
+              <span class="destination-card__name">Растяжка в горах</span>
+              <span class="destination-card__price">230 $</span>
+            </div>
+          </div>
+          <div class="destination-card__footer">приключение</div>
+        </div>
+      </div>
+
+      <div class="section-btn-wrapper">
+        <button class="features__button">Другие направления</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- === ДЗ №19 Пункт 1: Блог о путешествиях === -->
+  <section class="travel-blog">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">ЖИЗНЬ В ПУТЕШЕСТВИЯХ</p>
+        <h2 class="section-title">Блог о путешествиях</h2>
+      </div>
+
+      <div class="blog-grid">
+        <article class="blog-card">
+          <img src="images/italycoast.png" alt="Италия" class="blog-card__image">
+          <div class="blog-card__content">
+            <h3 class="blog-card__title">Красивая Италия, какая она в реальности?</h3>
+            <p class="blog-card__desc">Для современного мира базовый вектор развития предполагает независимой разработки плановых заданий.</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__date">01/04/2021</span>
+              <a href="#" class="blog-card__link">читать статью</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="images/sky.png" alt="Самолет" class="blog-card__image">
+          <div class="blog-card__content">
+            <h3 class="blog-card__title">Долой самолеты! Весь мир открыт для вас!</h3>
+            <p class="blog-card__desc">Для современного мира базовый вектор развития предполагает независимой разработки плановых заданий.</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__date">01/04/2021</span>
+              <a href="#" class="blog-card__link">читать статью</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="images/narrow-street.png" alt="Улица" class="blog-card__image">
+          <div class="blog-card__content">
+            <h3 class="blog-card__title">Как подготовиться к путешествию в одиночку?</h3>
+            <p class="blog-card__desc">Для современного мира базовый вектор развития предполагает независимой разработки плановых заданий.</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__date">01/04/2021</span>
+              <a href="#" class="blog-card__link">читать статью</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="images/mosque.png" alt="Индия" class="blog-card__image">
+          <div class="blog-card__content">
+            <h3 class="blog-card__title">Индия ... летим?</h3>
+            <p class="blog-card__desc">Для современного мира базовый вектор развития предполагает независимой разработки плановых заданий.</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__date">01/04/2021</span>
+              <a href="#" class="blog-card__link">читать статью</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-btn-wrapper">
+        <button class="features__button">Другие материалы</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- === КОНТЕЙНЕР УВЕДОМЛЕНИЙ === -->
+  <div class="messages-container">
+    @for (message of messages; track message.id) {
+      <ng-container *ngTemplateOutlet="messageTpl; context: { $implicit: message }"></ng-container>
+    }
+  </div>
+
+  <!-- === ШАБЛОН УВЕДОМЛЕНИЯ === -->
+  <ng-template #messageTpl let-message>
+    <div class="message" [ngClass]="'message--' + message.type">
+      <div class="message__icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2L22 12L12 22L2 12L12 2Z" />
+          <path d="M12 2V22M2 12H22" />
+        </svg>
+      </div>
+      <div class="message__content">
+        <div class="message__title">{{ message.title }}</div>
+        <div class="message__text">{{ message.text }}</div>
+      </div>
+      <button class="message__close" (click)="closeMessage(message.id)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+      </button>
+    </div>
+  </ng-template>
+
+}

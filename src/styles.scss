@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@use './assets/fonts/fonts';
+@use './assets/normalize';
+
+* {
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+:root {
+	--primary-color: #ffff;
+	--secondary-color: #0b0b0b;
+}
+
+app-root {
+  display: block;
+  width: 100%;
+}
