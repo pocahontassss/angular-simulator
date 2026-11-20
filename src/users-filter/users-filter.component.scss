@@ -1,0 +1,32 @@
+.users-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.users-filter-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.users-filter-input {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: #d97706;
+  }
+}
+

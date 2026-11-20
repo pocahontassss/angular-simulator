@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
-import { LoaderService } from '../loader.service';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-loader',
