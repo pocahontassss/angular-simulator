@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { sum } from './training';
 
 @Component({
   selector: 'app-root',
