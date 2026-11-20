@@ -1,9 +1,13 @@
 import './training';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DatePipe, NgTemplateOutlet, NgClass } from '@angular/common';
+
 import { Color } from '../enums/Color';
+import { MessageType } from '../enums/message-type.enum';
 import { Collection } from './collection';
-import { DatePipe } from '@angular/common';
+import { MessageService } from './message.service';
+import { StorageService } from './storage.service';
 
 interface Feature {
   icon: string;
@@ -13,11 +17,15 @@ interface Feature {
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, DatePipe],
+  imports: [FormsModule, DatePipe, NgTemplateOutlet, NgClass],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  private readonly messageService = inject(MessageService);
+  private readonly storage = inject(StorageService);
+  
+  readonly MessageType = MessageType; // Выровнено пробелами
 
   companyName: string = 'РУМТИБЕТ';
   currentDate: Date = new Date();
@@ -28,6 +36,10 @@ export class AppComponent {
   selectedParticipants: string = '';
   liveInputValue: string = '';
   isLoading: boolean = true;
+
+  get messages() {
+    return this.messageService.messages;
+  }
 
   features: Feature[] = [
     {
@@ -78,12 +90,12 @@ export class AppComponent {
   }
 
   saveLastVisitDate(): void {
-    localStorage.setItem('lastVisitDate', new Date().toISOString());
+    this.storage.set('lastVisitDate', new Date().toISOString());
   }
 
   saveVisitCount(): void {
-    const current = Number(localStorage.getItem('visitCount') || 0);
-    localStorage.setItem('visitCount', String(current + 1));
+    const current = this.storage.get<number>('visitCount') || 0;
+    this.storage.set('visitCount', current + 1);
   }
 
   increment(): void {
@@ -100,4 +112,11 @@ export class AppComponent {
     this.showDate = !this.showDate;
   }
 
+  addTestMessage(type: MessageType, title: string): void {
+    this.messageService.addMessage(title, 'Message Content', type);
+  }
+
+  closeMessage(id: number): void {
+    this.messageService.closeMessage(id);
+  }
 }
