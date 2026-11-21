@@ -1,3 +1,9 @@
+
+type UploadStatus = "loading" | "success" | "error";
+
+type TextFormat = "uppercase" | "lowercase" | "capitalize";
+
+
 interface IUser {
   id: number;
   name: string;
@@ -9,15 +15,17 @@ interface IAdmin extends IUser {
   role: string;
   permissions: string[];
 }
-let uploadStatus: "loading" | "success" | "error";
+let uploadStatus: UploadStatus;
 
-let textFormat: "uppercase" | "lowercase" | "capitalize";
+let textFormat: TextFormat;
+
+
 function sum(a: number, b: number): number {
   return a + b;
 }
 function formatText(
   text: string,
-  format: "uppercase" | "lowercase" | "capitalize"
+  format: TextFormat
 ): string {
   switch (format) {
     case "uppercase":
