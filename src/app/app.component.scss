@@ -72,7 +72,6 @@
   }
 }
 
-/* ===== КНОПКА ПЕРЕКЛЮЧЕНИЯ ===== */
 .header__toggle {
   background: transparent;
   color: #fff;
@@ -89,7 +88,7 @@
   }
 }
 
-/* ===== ДАТА ===== */
+
 .header__date {
   color: #fff;
   font-size: 14px;
@@ -97,7 +96,7 @@
   white-space: nowrap;
 }
 
-/* ===== СЧЁТЧИК ===== */
+
 .header__counter {
   display: flex;
   align-items: center;
@@ -134,7 +133,7 @@
   font-weight: 600;
 }
 
-/* ===== HERO ===== */
+
 .hero {
   background-image: url('/images/mountain-bg.png');
   background-size: cover;
@@ -165,7 +164,6 @@
   text-transform: uppercase;
 }
 
-/* ===== ФОРМА ПОИСКА ===== */
 .tour-search {
   width: 100%;
   max-width: 1180px;
@@ -266,7 +264,6 @@
   }
 }
 
-/* ===== FEATURES ===== */
 .features {
   padding: 80px 0;
   background: #f3f5f4;
@@ -437,9 +434,7 @@
   to { transform: rotate(360deg); }
 }
 
-/* =========================================
-   УВЕДОМЛЕНИЯ (Сообщения) - ДЗ №19
-   ========================================= */
+
 .messages-container {
   position: fixed;
   top: 24px;
@@ -448,15 +443,15 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 460px; /* Широкие карточки как в макете */
-  pointer-events: none; /* Чтобы пустой контейнер не перекрывал клики */
+  width: 460px; 
+  pointer-events: none; 
 }
 
 .message {
-  pointer-events: auto; /* Возвращаем клики для самих карточек */
+  pointer-events: auto; 
   display: flex;
   align-items: center;
-  background-color: #171c26; /* Тёмно-синий фон из макета */
+  background-color: #171c26; 
   border: 1px solid #3b4354;
   border-radius: 10px;
   padding: 20px 24px;
@@ -465,7 +460,6 @@
   animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
-  /* Синяя обводка при наведении, как у первой карточки на макете */
   &:hover {
     border-color: #3b82f6;
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
@@ -473,7 +467,7 @@
 
   &__icon {
     margin-right: 20px;
-    color: #a0aabf; /* Светло-серый цвет иконки */
+    color: #a0aabf; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -495,7 +489,7 @@
 
   &__text {
     font-size: 15px;
-    color: #a0aabf; /* Серый подзаголовок */
+    color: #a0aabf; 
     margin: 0;
     line-height: 1.4;
   }
@@ -518,7 +512,6 @@
   }
 }
 
-/* Анимация выезда справа */
 @keyframes slideInRight {
   from {
     transform: translateX(120%);
@@ -530,9 +523,8 @@
   }
 }
 
-/* =========================================
-   ДЗ №19 Пункт 1: Популярные направления и Блог
-   ========================================= */
+   ДЗ №19  
+  
 .popular-destinations {
   padding: 80px 0;
   background: #f9f9f9;
@@ -569,7 +561,6 @@
   margin-top: 40px;
 }
 
-/* Сетка направлений */
 .destinations-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -641,7 +632,6 @@
   }
 }
 
-/* Сетка блога */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

@@ -177,7 +177,7 @@
     </div>
   </section>
 
-  <!-- === ДЗ №19 Пункт 1: Популярные направления === -->
+  < ДЗ №19 >
   <section class="popular-destinations">
     <div class="container">
       <div class="section-header">
@@ -229,7 +229,6 @@
     </div>
   </section>
 
-  <!-- === ДЗ №19 Пункт 1: Блог о путешествиях === -->
   <section class="travel-blog">
     <div class="container">
       <div class="section-header">
@@ -293,14 +292,12 @@
     </div>
   </section>
 
-  <!-- === КОНТЕЙНЕР УВЕДОМЛЕНИЙ === -->
   <div class="messages-container">
     @for (message of messages; track message.id) {
       <ng-container *ngTemplateOutlet="messageTpl; context: { $implicit: message }"></ng-container>
     }
   </div>
 
-  <!-- === ШАБЛОН УВЕДОМЛЕНИЯ === -->
   <ng-template #messageTpl let-message>
     <div class="message" [ngClass]="'message--' + message.type">
       <div class="message__icon">
