@@ -2,37 +2,37 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 type PhoneMode = 'compact' | 'international' | 'national' | 'masked';
 
-const COUNTRY_CODE_END: number = 2;
-const OPERATOR_CODE_END: number = 5;
-const FIRST_GROUP_END: number = 8;
-const SECOND_GROUP_END: number = 10;
-const PLUS_SIGN: string = '+';
-const SPACE: string = ' ';
-const MASK_SYMBOL: string = '*';
-
 @Pipe({
   name: 'phone',
 })
 export class PhonePipe implements PipeTransform {
 
+  private countryCodeEnd: number = 2;
+  private operatorCodeEnd: number = 5;
+  private firstGroupEnd: number = 8;
+  private secondGroupEnd: number = 10;
+  private plusSign: string = '+';
+  private space: string = ' ';
+  private maskSymbol: string = '*';
+
   transform(value: string, mode: PhoneMode): string {
     const digits: string = value.replace(/\D/g, '');
-    const countryCode: string = digits.slice(0, COUNTRY_CODE_END);
-    const operatorCode: string = digits.slice(COUNTRY_CODE_END, OPERATOR_CODE_END);
-    const firstGroup: string = digits.slice(OPERATOR_CODE_END, FIRST_GROUP_END);
-    const secondGroup: string = digits.slice(FIRST_GROUP_END, SECOND_GROUP_END);
-    const thirdGroup: string = digits.slice(SECOND_GROUP_END);
-    const maskedFirstGroup: string = MASK_SYMBOL.repeat(firstGroup.length);
-    const maskedSecondGroup: string = MASK_SYMBOL.repeat(secondGroup.length);
+    const countryCode: string = digits.slice(0, this.countryCodeEnd);
+    const operatorCode: string = digits.slice(this.countryCodeEnd, this.operatorCodeEnd);
+    const firstGroup: string = digits.slice(this.operatorCodeEnd, this.firstGroupEnd);
+    const secondGroup: string = digits.slice(this.firstGroupEnd, this.secondGroupEnd);
+    const thirdGroup: string = digits.slice(this.secondGroupEnd);
+    const maskedFirstGroup: string = this.maskSymbol.repeat(firstGroup.length);
+    const maskedSecondGroup: string = this.maskSymbol.repeat(secondGroup.length);
     switch (mode) {
       case 'compact':
-        return PLUS_SIGN + digits;
+        return this.plusSign + digits;
       case 'international':
-        return PLUS_SIGN + [countryCode, operatorCode, firstGroup, secondGroup, thirdGroup].join(SPACE);
+        return this.plusSign + [countryCode, operatorCode, firstGroup, secondGroup, thirdGroup].join(this.space);
       case 'national':
-        return [operatorCode, firstGroup, secondGroup, thirdGroup].join(SPACE);
+        return [operatorCode, firstGroup, secondGroup, thirdGroup].join(this.space);
       case 'masked':
-        return PLUS_SIGN + [countryCode, operatorCode, maskedFirstGroup, maskedSecondGroup, thirdGroup].join(SPACE);
+        return this.plusSign + [countryCode, operatorCode, maskedFirstGroup, maskedSecondGroup, thirdGroup].join(this.space);
     }
   }
 

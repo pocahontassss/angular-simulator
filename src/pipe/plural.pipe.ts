@@ -1,32 +1,32 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-const LAST_DIGIT_DIVISOR: number = 10;
-const LAST_TWO_DIGITS_DIVISOR: number = 100;
-const TEENS_MIN: number = 11;
-const TEENS_MAX: number = 14;
-const ONE_DIGIT: number = 1;
-const FEW_MIN_DIGIT: number = 2;
-const FEW_MAX_DIGIT: number = 4;
-
 @Pipe({
   name: 'plural',
 })
 export class PluralPipe implements PipeTransform {
+
+  private lastDigitDivisor: number = 10;
+  private lastTwoDigitsDivisor: number = 100;
+  private teensMin: number = 11;
+  private teensMax: number = 14;
+  private oneDigit: number = 1;
+  private fewMinDigit: number = 2;
+  private fewMaxDigit: number = 4;
 
   transform(value: number | string, one: string, few: string, many: string): string {
     const count: number = Number(value);
     if (Number.isNaN(count)) {
       return many;
     }
-    const lastDigit: number = Math.abs(count) % LAST_DIGIT_DIVISOR;
-    const lastTwoDigits: number = Math.abs(count) % LAST_TWO_DIGITS_DIVISOR;
-    if (lastTwoDigits >= TEENS_MIN && lastTwoDigits <= TEENS_MAX) {
+    const lastDigit: number = Math.abs(count) % this.lastDigitDivisor;
+    const lastTwoDigits: number = Math.abs(count) % this.lastTwoDigitsDivisor;
+    if (lastTwoDigits >= this.teensMin && lastTwoDigits <= this.teensMax) {
       return many;
     }
-    if (lastDigit === ONE_DIGIT) {
+    if (lastDigit === this.oneDigit) {
       return one;
     }
-    if (lastDigit >= FEW_MIN_DIGIT && lastDigit <= FEW_MAX_DIGIT) {
+    if (lastDigit >= this.fewMinDigit && lastDigit <= this.fewMaxDigit) {
       return few;
     }
     return many;

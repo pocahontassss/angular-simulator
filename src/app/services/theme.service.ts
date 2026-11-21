@@ -13,13 +13,13 @@ export interface ThemeState {
   colorMode: ColorMode;
 }
 
-const THEME_STATE_STORAGE_KEY: string = 'theme-state';
-
 @Injectable({
   providedIn: 'root',
 })
 
 export class ThemeService {
+
+  private themeStateStorageKey: string = 'theme-state';
 
   private defaultThemeState: ThemeState = {
     theme: Theme.AURA,
@@ -54,7 +54,7 @@ export class ThemeService {
   private getStoredThemeState(): ThemeState {
     try {
       const storedState: ThemeState | null = this.themeStorage.getItem<ThemeState | null>(
-        THEME_STATE_STORAGE_KEY,
+        this.themeStateStorageKey,
       );
       if (!storedState) {
         return this.defaultThemeState;
@@ -72,7 +72,7 @@ export class ThemeService {
 
   private updateThemeState(newState: ThemeState): void {
     this.themeStateSubject.next(newState);
-    this.themeStorage.setItem<ThemeState>(THEME_STATE_STORAGE_KEY, newState);
+    this.themeStorage.setItem<ThemeState>(this.themeStateStorageKey, newState);
   }
 
   setTheme(theme: Theme): void {
