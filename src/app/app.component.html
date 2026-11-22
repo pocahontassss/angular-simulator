@@ -1,67 +1,204 @@
-<main class="landing-page">
-  <section class="tour-section" aria-labelledby="tour-section__title">
-    <img
-      class="tour-section__image"
-      src="images/BackGroundMountainsImg.jpg"
-      alt="Горный пейзаж"
-    />
-    <div class="tour-section__overlay"></div>
 
-    <header class="header">
-      <div class="container header__content">
-        <a class="logo" href="#top" aria-label="РумТибет — на главную">
-          <img class="logo__mountains" src="images/mountainsImg-icon.svg" alt="Логотип РумТибет" />
-          <span>{{ logoName }}</span>
-        </a>
+@if (isLoading === true) {
+  <div class="loading-indicator">
+    <img src="images/loading-icon.svg" alt="loadingIcon " class="loadingImage">
+    <p>Загрузка...</p>
+  </div> 
+} @else {
+  <main class="landing-page">
+    <section class="tour-section" aria-labelledby="tour-section__title">
+      <img
+        class="tour-section__image"
+        src="images/BackGroundMountainsImg.jpg"
+        alt="Горный пейзаж"
+      />
+      <div class="tour-section__overlay"></div>
 
-        <nav class="navigation" aria-label="Основная навигация">
-          <a id="main-top" href="#top">Главная</a>
-          <a id="guide" href="#guide">Про гида</a>
-          <a id="program" href="#program">Программа тура</a>
-          <a id="price" href="#price">Стоимость</a>
-          <a id="blog" href="#blog">Блог</a>
-          <a id="contacts" href="#contacts">Контакты</a>
-        </nav>
+      <header class="header">
+        <div class="container header__content">
 
-        <button id="consultation-button" class="consultation-button" type="button">Консультация</button>
+          <a class="logo" href="#top" aria-label="РумТибет — на главную">
+            <img class="logo__mountains" src="images/mountainsImg-icon.svg" alt="Логотип РумТибет" />
+            <span>{{ logoName }}</span>
+          </a>
+
+          <nav class="navigation" aria-label="Основная навигация">
+            <a href="#top">Главная</a>
+            <a href="#guide">Про гида</a>
+            <a href="#program">Программа тура</a>
+            <a href="#price">Стоимость</a>
+            <a href="#blog">Блог</a>
+            <a href="#contacts">Контакты</a>
+          </nav>
+
+          <div class="header__tools">
+
+            <div class="header__counter">
+                
+
+              @if (isCounterVisible) {
+                <div class="demo-panel__counter">
+                  <button type="button" (click)="increaseCounter()">+</button>
+                  <span>{{ counter }}</span>
+                  <button
+                    type="button"
+                    [disabled]="counter === 0"
+                    (click)="decreaseCounter()"
+                  >-</button>
+                </div>
+              }
+            </div>
+
+            <div class="header__date">
+              
+
+              @if (isDateVisible) {
+                <span class="current-date">
+                  {{ currentDate | date:'dd.MM.yyyy HH:mm:ss' }}
+                </span>
+              }
+            </div>
+
+            <div class="header__actions">
+              <button class="consultation-button" type="button">
+                Консультация
+              </button>
+
+              <button type="button" (click)="showCounter()">
+                {{ isCounterVisible ? 'Скрыть кликер' : 'Показать кликер' }}
+              </button>
+
+              <button type="button" (click)="showDate()">
+                {{ isDateVisible ? 'Скрыть дату' : 'Показать дату' }}
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </header>
+
+     
+
+      
+
+      <div class="container tour-section__content" id="top">
+        <h1 class="tour-section__title" id="tour-section__title">
+          <span>Насладись прогулкой в горах</span>
+          <span>с командой единомышленников</span>
+        </h1>
+
+        <form class="search-panel" aria-label="Подбор программы тура">
+          <label class="search-field">
+            <select id="location" [(ngModel)]="location" name="location" aria-label="Локация для тура">
+              <option value="" selected disabled>Локация для тура</option>
+              <option value="caucasus">Кавказ</option>
+              <option value="altai">Алтай</option>
+              <option value="karelia">Карелия</option>
+            </select>
+            <span>выберите из списка</span>
+          </label>
+
+          <label class="search-field">
+            <input id="date" [(ngModel)]="date" name="date" type="date" aria-label="Дата похода" />
+            <span>укажите дату</span>
+          </label>
+
+          <label class="search-field">
+            <select id="participants" [(ngModel)]="participants" name="participants" aria-label="Количество участников">
+              <option value="" selected disabled>Участники</option>
+              <option value="1">1 человек</option>
+              <option value="2">2 человека</option>
+              <option value="3">3 человека</option>
+              <option value="4">4+ человека</option>
+            </select>
+            <span>выберите из списка</span>
+          </label>
+
+          <button id="search-panel-button" [disabled] = '!location || !date || !participants' class="search-panel-button" type="button">Найти программу</button>
+
+          
+
+        </form> 
+
+        <div class="live-input">
+          <div class="live-input__field">
+            <input
+              type="text"
+              name="liveText"
+              [ngModel]="userText"
+              (ngModelChange)="userText = $event"
+              placeholder="Живой инпут"
+            >
+            <span class="live-input__arrow">›</span>
+          </div>
+
+          <p>{{ userText || 'Введенный текст' }}</p>
+        </div>
+
+
       </div>
-    </header>
+    </section>
 
-    <div class="container tour-section__content" id="top">
-      <h1 class="tour-section__title" id="tour-section__title">
-        <span>Насладись прогулкой в горах</span>
-        <span>с командой единомышленников</span>
-      </h1>
+    <section class="aboutHike">
+      <div class="imagesMountains">
+        <img class="img-mountainsPhoto" src="images/mountainsPhoto.jpg" alt="mountainsPhoto">
+        <img class="img-house-InMountains" src="images/house-InMountains.jpg" alt="house-InMountains">
+        <img class="img-playButton" src="images/imgPlayButton.svg" alt="playButton">
 
-      <form class="search-panel" aria-label="Подбор программы тура">
-        <label class="search-field">
-          <select id="location" name="location" aria-label="Локация для тура">
-            <option value="" selected disabled>Локация для тура</option>
-            <option value="caucasus">Кавказ</option>
-            <option value="altai">Алтай</option>
-            <option value="karelia">Карелия</option>
-          </select>
-          <span>выберите из списка</span>
-        </label>
+      </div>
 
-        <label class="search-field">
-          <input id="date" name="date" type="date" aria-label="Дата похода" />
-          <span>укажите дату</span>
-        </label>
+      <div class="mountainsInfo">
+        <p class="aboutOurTrip">о нашем походе</p>
+        <h2 class="h2-ExploreWithUs">Исследуйте все горные массивы мира вместе с нами</h2>
+        <pre class="bigText">Его корни уходят в один фрагмент классической латыни 45 года
+н.э., то есть более двух тысячелетий назад. Ричард МакКлинток,
+профессор латыни из колледжа Hampden-Sydney, штат
+Вирджиния, взял одно из самых странных слов в Lorem Ipsum,
+"consectetur"и занялся его поисками в классической латинской
+литературе.</pre>
 
-        <label class="search-field">
-          <select id="participants" name="participants" aria-label="Количество участников">
-            <option value="" selected disabled>Участники</option>
-            <option value="1">1 человек</option>
-            <option value="2">2 человека</option>
-            <option value="3">3 человека</option>
-            <option value="4">4+ человека</option>
-          </select>
-          <span>выберите из списка</span>
-        </label>
 
-        <button id="search-panel-button" class="search-panel-button" type="button">Найти программу</button>
-      </form>
-    </div>
-  </section>
-</main>
+          <button class="tourProgrammButton">Программа тура</button>
+      </div>
+
+    </section>
+
+    <section class="bestProgramsSection">
+      <div class="informationAboutProgram">
+        <p class="textourOffer">наше предложение</p>
+        <h2 class="h2-bestProgramms">Лучшие программы для тебя</h2>
+        <pre class="bigText">Его корни уходят в один фрагмент классической латыни 45 года
+н.э., то есть более двух тысячелетий назад. Ричард МакКлинток,
+профессор латыни из колледжа.</pre>
+
+        @for (feature of features; track feature.title) {
+        <div class="feature">
+          <img
+            [src]="feature.Image"
+            [alt]="feature.title"
+            class="feature-image"
+          >
+
+          <div class="feature-content">
+            <h3 class="h3-forCards">{{ feature.title }}</h3>
+            <p class="textForCards">{{ feature.description }}</p>
+          </div>
+        </div>
+      }
+      <button class="pricesProgrammButton">Стоимость программ</button>
+      </div>
+      
+
+      <div class="imagesOfTours">
+        <img src="images/ImagewaterSources.png" alt="ImagewaterSources" class="ImagewaterSources">
+        <img src="images/ImagePersonOnMountain.png" alt="ImagepersonOnMountain" class="ImagepersonOnMountain">
+        <img src="images/imagePersonInSnow.png" alt="ImagePersonInSnow" class="ImagePersonInSnow">
+        <img src="images/ImageGreenMountains.png" alt="ImageGreenMountains" class="ImageGreenMountains">
+
+      </div>
+
+    </section>
+  </main>
+}
+ 
