@@ -1,0 +1,148 @@
+.about {
+  padding: 100px 24px;
+  background: #fff;
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  align-items: center;
+  gap: 120px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.about__photos {
+  position: relative;
+  height: 526px;
+}
+
+.about__mountain,
+.about__cabin {
+  display: block;
+  width: 350px;
+  height: 400px;
+  border-radius: 24px;
+  object-fit: cover;
+  transition: transform 200ms ease;
+}
+
+.about__mountain:hover,
+.about__video:hover .about__cabin {
+  transform: scale(1.02);
+}
+
+.about__video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.about__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.about__eyebrow {
+  margin: 0 0 8px;
+  color: #f2be22;
+  font-size: 24px;
+  line-height: 20px;
+}
+
+.about__title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.about__text {
+  margin: 40px 0;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.about__button {
+  display: inline-block;
+  vertical-align: top;
+  padding: 16px 36px;
+  box-shadow: inset 0 0 0 1px #1a3e3e;
+  border-radius: 4px;
+  background: #1a3e3e;
+  color: #fdfdfd;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.about__button:hover {
+  background: #fff;
+  color: #1a3e3e;
+}
+
+@media (max-width: 1100px) {
+  .about__inner {
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 800px) {
+  .about {
+    padding: 60px 16px;
+  }
+
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about__photos {
+    width: min(480px, 100%);
+    height: auto;
+    aspect-ratio: 480 / 526;
+    margin: 0 auto;
+  }
+
+  .about__mountain,
+  .about__video {
+    width: 73%;
+  }
+
+  .about__mountain,
+  .about__cabin {
+    height: auto;
+  }
+
+  .about__cabin {
+    width: 100%;
+  }
+
+  .about__eyebrow {
+    font-size: 20px;
+  }
+
+  .about__title {
+    font-size: 26px;
+  }
+
+  .about__text {
+    margin: 24px 0;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__mountain,
+  .about__cabin,
+  .about__button {
+    transition: none;
+  }
+}
