@@ -2,6 +2,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../interfaces/IUser';
 
+type ToFormGroup<T> = FormGroup<{
+  [K in keyof T]: T[K] extends object
+    ? ToFormGroup<T[K]>
+    : FormControl<T[K]>;
+}>;
+
 @Component({
   selector: 'app-user-create',
   standalone: true,
@@ -9,32 +15,12 @@ import { IUser } from '../interfaces/IUser';
   templateUrl: './user-create.component.html',
   styleUrl: './user-create.component.scss'
 })
+
 export class UserCreateComponent {
 
   @Output() createUser: EventEmitter<IUser> = new EventEmitter<IUser>();
 
-  userForm: FormGroup<{
-    name: FormControl<string>;
-    username: FormControl<string>;
-    email: FormControl<string>;
-    phone: FormControl<string>;
-    website: FormControl<string>;
-    address: FormGroup<{
-      city: FormControl<string>;
-      street: FormControl<string>;
-      suite: FormControl<string>;
-      zipcode: FormControl<string>;
-      geo: FormGroup<{
-        lat: FormControl<string>;
-        lng: FormControl<string>;
-      }>;
-    }>;
-    company: FormGroup<{
-      name: FormControl<string>;
-      catchPhrase: FormControl<string>;
-      bs: FormControl<string>;
-    }>;
-  }> = new FormGroup({
+  userForm: ToFormGroup<Omit<IUser, 'id'>> = new FormGroup({
     name: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(2), Validators.maxLength(100)]
