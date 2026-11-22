@@ -10,7 +10,7 @@ import { UsersFilterComponent } from '../users-filter/users-filter.component';
 
 @Component({
   selector: 'app-users-page',
-  imports: [ AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent ],
+  imports: [AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss'
 })
@@ -18,7 +18,7 @@ export class UsersPageComponent implements OnInit {
 
   private userService: UserService = inject(UserService);
   private destroyRef: DestroyRef = inject(DestroyRef);
-  private searchTermSubject = new BehaviorSubject<string>('');
+  private searchTermSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   users$: Observable<IUser[]> = this.userService.getUsers();
 
@@ -60,4 +60,5 @@ export class UsersPageComponent implements OnInit {
   }
 
 }
+
 

@@ -11,67 +11,88 @@ import { IUser } from '../interfaces/IUser';
 })
 export class UserCreateComponent {
 
-  @Output() createUser = new EventEmitter<IUser>();
+  @Output() createUser: EventEmitter<IUser> = new EventEmitter<IUser>();
 
-    userForm = new FormGroup({
-    name: new FormControl('', {
+  userForm: FormGroup<{
+    name: FormControl<string>;
+    username: FormControl<string>;
+    email: FormControl<string>;
+    phone: FormControl<string>;
+    website: FormControl<string>;
+    address: FormGroup<{
+      city: FormControl<string>;
+      street: FormControl<string>;
+      suite: FormControl<string>;
+      zipcode: FormControl<string>;
+      geo: FormGroup<{
+        lat: FormControl<string>;
+        lng: FormControl<string>;
+      }>;
+    }>;
+    company: FormGroup<{
+      name: FormControl<string>;
+      catchPhrase: FormControl<string>;
+      bs: FormControl<string>;
+    }>;
+  }> = new FormGroup({
+    name: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(2), Validators.maxLength(100)]
     }),
-    username: new FormControl('', {
+    username: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(3), Validators.maxLength(30)]
     }),
-    email: new FormControl('', {
+    email: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required, Validators.email, Validators.maxLength(100)]
     }),
-    phone: new FormControl('', {
+    phone: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(10), Validators.maxLength(25)]
     }),
-    website: new FormControl('', {
+    website: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.maxLength(100)]
     }),
     address: new FormGroup({
-      city: new FormControl('', {
+      city: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required, Validators.maxLength(50)]
       }),
-      street: new FormControl('', {
+      street: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required, Validators.maxLength(100)]
       }),
-      suite: new FormControl('', {
+      suite: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.maxLength(50)]
       }),
-      zipcode: new FormControl('', {
+      zipcode: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required, Validators.minLength(5), Validators.maxLength(10)]
       }),
       geo: new FormGroup({
-        lat: new FormControl('', {
+        lat: new FormControl<string>('', {
           nonNullable: true,
           validators: [Validators.required]
         }),
-        lng: new FormControl('', {
+        lng: new FormControl<string>('', {
           nonNullable: true,
           validators: [Validators.required]
         })
       })
     }),
     company: new FormGroup({
-      name: new FormControl('', {
+      name: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required, Validators.maxLength(50)]
       }),
-      catchPhrase: new FormControl('', {
+      catchPhrase: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.maxLength(200)]
       }),
-      bs: new FormControl('', {
+      bs: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.maxLength(100)]
       })

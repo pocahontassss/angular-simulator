@@ -10,14 +10,13 @@ import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
   templateUrl: './users-filter.component.html',
   styleUrl: './users-filter.component.scss'
 })
-
 export class UsersFilterComponent implements OnInit {
 
   private destroyRef: DestroyRef = inject(DestroyRef);
 
-  @Output() filterChange = new EventEmitter<string>();
+  @Output() filterChange: EventEmitter<string> = new EventEmitter<string>();
 
-  searchControl = new FormControl<string>('', { nonNullable: true });
+  searchControl: FormControl<string> = new FormControl<string>('', { nonNullable: true });
 
   ngOnInit(): void {
     this.searchControl.valueChanges
@@ -31,4 +30,5 @@ export class UsersFilterComponent implements OnInit {
   }
 
 }
+
 
