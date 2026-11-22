@@ -1,0 +1,12 @@
+<div class="toast-container">
+  @for (message of toastService.toastMessages; track message.id) {
+    <ng-container *ngTemplateOutlet="toastRef; context: { $implicit: message }"></ng-container>
+  }
+
+  <ng-template #toastRef let-toast>
+    <div class="toast" [class]="'toast-' + toast.type.toLowerCase()">
+      {{ toast.message }}
+      <button id="close-toast-btn-{{ toast.id }}" class="toast-close" (click)="toastService.closeMessage(toast.id)">&times;</button>
+    </div>
+  </ng-template>
+</div>

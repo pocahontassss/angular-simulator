@@ -1,0 +1,72 @@
+<header class="header">
+  <div class="cap-header">
+    <div class="container">
+      @if (isLoading) {
+        <div id="header-loader" class="icon-isLoading">
+          <img src="images/loader_icon.svg" alt="Загрузка" />
+        </div>
+      }
+
+      <div class="icon-cap">
+        <img src="images/logo_icon.svg" alt="РУМТИБЕТ" />
+        <h1>{{ companyTitle }}</h1>
+      </div>
+
+      <nav class="nav-wrappers">
+        @for (item of navItems; track item.link) {
+          <a
+            [routerLink]="item.link"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }">
+            {{ item.title }}
+          </a>
+        }
+      </nav>
+
+      <button
+        class="button-cap"
+        id="button-consultation"
+        (click)="toastService.showInfo('Форма консультации загружается...')">
+        Консультация
+      </button>
+
+      <div class="cotainer-date">
+        <div class="date-botton-row">
+          @if (activeMode === 'date') {
+            <div class="date-value-block">
+              <p class="date-display-text">{{ currentDate }}</p>
+            </div>
+          }
+
+          @if (activeMode === 'clicker') {
+            <div class="clicker-value-block">
+              <button
+                id="clicker-plus-btn"
+                class="clicker-action-btn"
+                (click)="clickerCount = clickerCount + 1">
+                +
+              </button>
+              <span class="clicker-count-text">{{ clickerCount }}</span>
+              <button
+                id="clicker-minus-btn"
+                class="clicker-action-btn"
+                (click)="clickerCount = clickerCount - 1"
+                [disabled]="clickerCount === 0">
+              </button>
+            </div>
+          }
+
+          <button
+            id="mode-toggle-btn"
+            (click)="activeMode = activeMode === 'date' ? 'clicker' : 'date'">
+            @if (activeMode === 'date') {
+              <span>Показать кликер</span>
+            } @else {
+              <span>Показать дату</span>
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

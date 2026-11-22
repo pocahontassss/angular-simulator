@@ -1,0 +1,255 @@
+<section class="hero">
+  <div class="container">
+    <h2 class="hero-title">НАСЛАДИСЬ ПРОГУЛКОЙ В ГОРАХ С КОМАНДОЙ ЕДИНОМЫШЛЕННИКОВ</h2>
+
+    <form class="hero-form" id="form-search-tour">
+      <div class="form-wrapper">
+        <div class="form-item" id="form-item-location">
+          <div class="form-text">
+            <span class="item-title">Локация для тура</span>
+            <span class="item-value">
+              @switch  (selectedLocation) {
+                @case ('') {
+                  выберите из списка
+                }  
+                @case ('waterfall') {
+                  Водопад
+                }
+                @case ('spring') {
+                  Источник
+                }
+                @case ('lake') {
+                  Озеро
+                }
+              }
+            </span>
+          </div>
+          <select name="location" id="select-location" [(ngModel)]="selectedLocation">
+            <option value="waterfall">Водопад</option>
+            <option value="spring">Источник</option>
+            <option value="lake">Озеро</option>
+          </select>
+          <img class="item-icon" src="images/arrow_icon.svg" alt="Выбор" />
+        </div>
+
+        <div class="form-item" id="form-item-date">
+          <label for="input-date" class="form-text">
+            <span class="item-title">Дата похода</span>
+            <span class="item-value">
+              @if (selectedDate === '') {
+                выберите дату
+              } @else {
+                {{ selectedDate }}
+              }
+            </span>
+          </label>
+          <img class="item-icon calendar-icon" src="images/calendar_icon.svg" alt="Календарь" />
+          <input type="date" id="input-date" name="date" [(ngModel)]="selectedDate" />
+        </div>
+
+        <div class="form-item" id="form-item-participants">
+          <label for="input-participants" class="form-text">
+            <span class="item-title">Участники</span>
+            <span class="item-value">
+              @if (selectedParticipants === '') {
+                выберите из списка
+              } @else {
+                {{ selectedParticipants }}
+              }
+            </span>
+          </label>
+          <input
+            type="number"
+            id="input-participants"
+            name="participants"
+            [(ngModel)]="selectedParticipants"
+          />
+          <img class="item-icon" src="images/arrow_icon.svg" alt="Выбор" />
+        </div>
+
+        <button
+          class="form-button"
+          id="button-find-program" 
+          (click)="toastService.showSuccess('Программа тура успешно скачана в PDF!')">
+          Найти программу
+        </button>
+      </div>
+
+      <div id="live-wrapper-container" class="live-text-container">
+        <input
+          id="live-input-field"
+          [(ngModel)]="liveInput"
+          name="liveInputField"
+          placeholder="Живой инпут"/>
+        <span class="input-arrow">&gt;</span>
+        <div id="live-result">Введённый текст {{ liveInput }}</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="banner">
+  <div id="banner-images-wrapper">
+    <img class="banner-img" src="images/mountains_pik.png" alt="Вид на горы и лес" />
+    <img class="banner-img" src="images/house.png" alt="Маленький домик у подножия горы" />
+  </div>
+  <div class="banner-text">
+    <span class="subtitle">о нашем походе</span>
+    <h1 class="banner-title">Исследуйте все горные массивы мира вместе с нами</h1>
+    <p class="banner-description">
+      Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+      тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
+      Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками
+      в классической латинской литературе.
+    </p>
+    <button
+      class="banner-btn"
+      id="banner-button" 
+      (click)="toastService.showSuccess('Программа тура успешно скачана в PDF!')">
+      Программа тура
+    </button>
+  </div>
+</section>
+
+<section id="tours">
+  <div class="tours-container">
+    <div class="tour-container-text">
+      <span class="subtitle">наше предложение</span>
+      <h3 class="tours-title">Лучшие программы для тебя</h3>
+      <p class="tours-description">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+      </p>
+
+      @for (tour of tours; track tour.id) {
+        <div class="tour-card" id="tour-card-{{ tour.id }}">
+          <img [src]="'images/' + tour.icon + '_icon.svg'" />
+          <h3>{{ tour.title }}</h3>
+          <p>{{ tour.description }}</p>
+        </div>
+      }
+    <button 
+      class="tour-button"
+      id="tour-btn" 
+      (click)="toastService.showWarn('Внимание! Цены указаны со скидкой до конца недели.')">
+      Стоимость программ
+    </button>
+    </div>
+
+    <div class="tours-images">
+      <img class="tours-img" src="images/dring.png" alt="Напиток" />
+      <img class="tours-img" src="images/men.png" alt="Мужчина" />
+      <img class="tours-img" src="images/snowmobile.png" alt="Снегоход" />
+      <img class="tours-img" src="images/mountain_range.png" alt="Горный хребет" />
+    </div>
+
+  </div>
+
+</section>
+
+<section id="popular-directions">
+  <div class="popular-directions-container">
+    <div class="popular-directions-text">
+      <span class="subtitle">по версии отдыхающих</span>
+      <h1 class="popular-directions-title">Популярные направления</h1>
+    </div>
+    @for (destination of destinations; track destination.id) {
+      <div
+        class="direction-card"
+        [class.active]="selectedDestinationId === destination.id"
+        (click)="
+          selectedDestinationId = selectedDestinationId === destination.id ? null : destination.id">
+        <div class="rating-badge">
+          <span class="star-icon">★</span>
+          <span class="rating-value">{{ destination.rating | number: '1.1-1' }}</span>
+        </div>
+
+        <img class="directions-img" [src]="'images/' + destination.image + '.png'" />
+
+        <div class="card-base-text">
+          <div class="card-text-left">
+            <h3>{{ destination.title }}</h3>
+            <p class="card-subtitle">по версии отдыхающих</p>
+          </div>
+          <span class="card-price">{{ destination.price }} $</span>
+        </div>
+
+        <div class="hover-info">
+          <div class="hover-top-line">
+            <div class="hover-header">
+              <h3>{{ destination.title }}</h3>
+              <p class="card-subtitle">по версии отдыхающих</p>
+            </div>
+            <span class="card-price-hover">{{ destination.price }} $</span>
+          </div>
+
+          <p class="card-desc">{{ destination.description }}</p>
+          <button class="program-btn">Программа тура</button>
+        </div>
+      </div>
+    }
+
+    <div class="rating">
+      <button
+        id="rating-directions-btn" 
+        class="rating directions" 
+        (click)="toastService.showError('Ошибка сервера. Не удалось обновить рейтинг.')">
+        Рейтинг направлений
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="travel-blog">
+  <div class="travel-blog-container">
+    <div class="travel-blog-text">
+      <span class="subtitle">делимся впечатлениями</span>
+      <h3 class="travel-blog-title">Блог о путешествиях</h3>
+    </div>
+    <ul class="article-list">
+      @for (article of articles; track article.id) {
+        <li class="article-item" id="article-{{ article.id }}">
+          <img
+            class="blog-img"
+            [src]="'images/' + article.image + '.jpg'"
+            alt="Изображение статьи"
+          />
+
+          <div class="article-content">
+            <h3 class="article-title">{{ article.title }}</h3>
+            <p class="article-text">{{ article.description }}</p>
+            <div class="article-footer">
+              <span class="article-date">{{ article.date }}</span>
+              <a href="#" class="article-link">читать статью</a>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+    <div class="travel-blog-btn">
+      <button
+        class="other-materials"
+        id="other-materials-btn"
+        (click)="toastService.showSuccess('Товар успешно добавлен в корзину!')">
+        Купить Другие материалы
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="sharing-impressions">
+  <div class="impressions-container">
+    <div class="text-container">
+      <span class="subtitle">фото-отчет</span>
+      <h1 class="title-impressions">Делимся впечатлениями</h1>
+    </div>
+    <div class="photos-impressions">
+      @for (item of impressionImages; track item) {
+        <div>
+          <img class="impressions-img" [src]="'images/' + item + '.png'" alt="Фото">
+        </div>
+      }
+    </div> 
+    <button id="our-pinterest-btn" class="our-pinterest" >Наш pinterest</button>
+  </div>
+</section>

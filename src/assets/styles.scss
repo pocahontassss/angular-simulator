@@ -1,0 +1,17 @@
+@use './fonts';
+@use './normalize';
+
+* {
+    font-family: 'Nunito-Sans';
+}
+
+.container {
+    display: block;
+    width: 1180px;
+}
+
+:root {
+    --basic-color:  #18121E;
+    --white-color: #FDFDFD;
+    --secondary-color: #F2BE22;
+}
