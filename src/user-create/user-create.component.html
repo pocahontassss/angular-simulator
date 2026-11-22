@@ -1,0 +1,230 @@
+<form
+    class="user-create-form"
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+    id="user-create-form">
+    <h2 class="user-create-title">Создать пользователя</h2>
+    <div class="user-create-section">
+      <h3 class="user-create-subtitle">Основные поля</h3>
+      <div class="user-create-grid">
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-name-input">Имя *</label>
+          <input
+            class="user-create-input"
+            id="user-name-input"
+            type="text"
+            formControlName="name"
+            placeholder="Введите имя"
+          />
+          @if (userForm.controls.name.invalid && userForm.controls.name.touched) {
+            <span class="user-create-error">Обязательно (от 2 до 100 символов)</span>
+          }
+        </div>
+
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-username-input">Логин (Username) *</label>
+          <input
+            class="user-create-input"
+            id="user-username-input"
+            type="text"
+            formControlName="username"
+            placeholder="Введите логин"
+          />
+          @if (userForm.controls.username.invalid && userForm.controls.username.touched) {
+            <span class="user-create-error">Обязательно (от 3 до 30 символов)</span>
+          }
+        </div>
+
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-email-input">Эл. почта *</label>
+          <input
+            class="user-create-input"
+            id="user-email-input"
+            type="email"
+            formControlName="email"
+            placeholder="example@mail.com"
+          />
+          @if (userForm.controls.email.invalid && userForm.controls.email.touched) {
+            <span class="user-create-error">Введите корректный email (до 100 символов)</span>
+          }
+        </div>
+
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-phone-input">Телефон *</label>
+          <input
+            class="user-create-input"
+            id="user-phone-input"
+            type="text"
+            formControlName="phone"
+            placeholder="Введите телефон"
+          />
+          @if (userForm.controls.phone.invalid && userForm.controls.phone.touched) {
+            <span class="user-create-error">Обязательно (от 10 до 25 символов)</span>
+          }
+        </div>
+
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-website-input">Веб-сайт</label>
+          <input
+            class="user-create-input"
+            id="user-website-input"
+            type="text"
+            formControlName="website"
+            placeholder="example.com"
+          />
+          @if (userForm.controls.website.invalid && userForm.controls.website.touched) {
+            <span class="user-create-error">Максимум 100 символов</span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="user-create-section" formGroupName="address">
+      <h3 class="user-create-subtitle">Адрес проживания</h3>
+      <div class="user-create-grid">
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-city-input">Город *</label>
+          <input
+            class="user-create-input"
+            id="user-city-input"
+            type="text"
+            formControlName="city"
+            placeholder="Введите город"
+          />
+          @if (userForm.controls.address.controls.city.invalid && userForm.controls.address.controls.city.touched) {
+            <span class="user-create-error">Обязательно (до 50 символов)</span>
+          }
+        </div>
+
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-street-input">Улица *</label>
+          <input
+            class="user-create-input"
+            id="user-street-input"
+            type="text"
+            formControlName="street"
+            placeholder="Введите улицу"
+          />
+          @if (userForm.controls.address.controls.street.invalid && userForm.controls.address.controls.street.touched) {
+            <span class="user-create-error">Обязательно (до 100 символов)</span>
+          }
+        </div>
+
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-suite-input">Офис / Квартира</label>
+          <input
+            class="user-create-input"
+            id="user-suite-input"
+            type="text"
+            formControlName="suite"
+            placeholder="Введите офис"
+          />
+          @if (userForm.controls.address.controls.suite.invalid && userForm.controls.address.controls.suite.touched) {
+            <span class="user-create-error">Максимум 50 символов</span>
+          }
+        </div>
+
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-zipcode-input">Индекс *</label>
+          <input
+            class="user-create-input"
+            id="user-zipcode-input"
+            type="text"
+            formControlName="zipcode"
+            placeholder="Введите индекс"
+          />
+          @if (userForm.controls.address.controls.zipcode.invalid && userForm.controls.address.controls.zipcode.touched) {
+            <span class="user-create-error">Обязательно (от 5 до 10 символов)</span>
+          }
+        </div>
+
+        <ng-container formGroupName="geo">
+          <div class="user-create-field">
+            <label class="user-create-label" for="user-lat-input">Широта (lat) *</label>
+            <input
+              class="user-create-input"
+              id="user-lat-input"
+              type="text"
+              formControlName="lat"
+              placeholder="-37.3159"
+            />
+            @if (userForm.controls.address.controls.geo.controls.lat.invalid && userForm.controls.address.controls.geo.controls.lat.touched) {
+              <span class="user-create-error">Обязательное поле</span>
+            }
+          </div>
+
+          <div class="user-create-field">
+            <label class="user-create-label" for="user-lng-input">Долгота (lng) *</label>
+            <input
+              class="user-create-input"
+              id="user-lng-input"
+              type="text"
+              formControlName="lng"
+              placeholder="81.1496"
+            />
+            @if (userForm.controls.address.controls.geo.controls.lng.invalid && userForm.controls.address.controls.geo.controls.lng.touched) {
+              <span class="user-create-error">Обязательное поле</span>
+            }
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="user-create-section" formGroupName="company">
+      <h3 class="user-create-subtitle">Место работы</h3>
+      <div class="user-create-grid">
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-company-input">Компания *</label>
+          <input
+            class="user-create-input"
+            id="user-company-input"
+            type="text"
+            formControlName="name"
+            placeholder="Название компании"
+          />
+          @if (userForm.controls.company.controls.name.invalid && userForm.controls.company.controls.name.touched) {
+            <span class="user-create-error">Обязательно (до 50 символов)</span>
+          }
+        </div>
+
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-catchphrase-input">Миссия</label>
+          <input
+            class="user-create-input"
+            id="user-catchphrase-input"
+            type="text"
+            formControlName="catchPhrase"
+            placeholder="Девиз или миссия"
+          />
+          @if (userForm.controls.company.controls.catchPhrase.invalid && userForm.controls.company.controls.catchPhrase.touched) {
+            <span class="user-create-error">Максимум 200 символов</span>
+          }
+        </div>
+
+        <div class="user-create-field">
+          <label class="user-create-label" for="user-bs-input">Специализация</label>
+          <input
+            class="user-create-input"
+            id="user-bs-input"
+            type="text"
+            formControlName="bs"
+            placeholder="Направление работы"
+          />
+          @if (userForm.controls.company.controls.bs.invalid && userForm.controls.company.controls.bs.touched) {
+            <span class="user-create-error">Максимум 100 символов</span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="user-create-submit-btn"
+      id="user-create-submit-btn"
+      [disabled]="userForm.invalid">
+      Добавить пользователя
+    </button>
+    
+  </form>
+
+  

@@ -1,0 +1,103 @@
+.user-create-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-top: 3px solid #d97706;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.user-create-title {
+  margin: 0 0 20px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.user-create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.user-create-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-create-subtitle {
+  margin: 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1f2937;
+}
+
+.user-create-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.user-create-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.user-create-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.user-create-input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: #d97706;
+  }
+
+  &.ng-invalid.ng-touched {
+    border-color: #ef4444;
+  }
+}
+
+.user-create-error {
+  font-size: 12px;
+  color: #ef4444;
+}
+
+.user-create-submit-btn {
+  align-self: flex-start;
+  padding: 12px 24px;
+  background-color: #d97706;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #b45309;
+  }
+
+  &:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+  }
+}
+
