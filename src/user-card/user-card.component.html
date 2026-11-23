@@ -1,5 +1,5 @@
-<div class="user-card">
-  <h3 class="user-name">{{ user.name }}</h3>
+<div class="user-card" appGradientBorder>
+  <h3 class="user-name">{{ user.name | uppercase }}</h3>
   <p class="user-username">@{{ user.username }}</p>
 
   <h4 class="user-section-title">КОНТАКТЫ</h4>
@@ -9,7 +9,7 @@
   </p>
   <p class="user-row">
     <span class="user-label">Телефон:</span>
-    <span class="user-value">{{ user.phone }}</span>
+    <span class="user-value">{{ user.phone | phone: 'international' }}</span>
   </p>
   <p class="user-row">
     <span class="user-label">Веб-сайт:</span>
@@ -58,8 +58,9 @@
   <button
     type="button"
     (click)="onDelete()"
-    class="delet-card-btn"
-    [id]="'delet-card-btn-' + user.id"
+    class="delete-card-btn"
+    [id]="'delete-card-btn-' + user.id"
+    appBoldOnHover
   >
     Удалить пользователя
   </button>

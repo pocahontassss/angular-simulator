@@ -3,6 +3,10 @@
   <app-user-create (createUser)="onCreateUser($event)"></app-user-create>
   <app-users-filter (searchChange)="onSearchChange($event)"></app-users-filter>
   @if (filteredUsers$ | async; as users) {
+    <div class="users-count">
+      Всего: {{ users.length }}
+      {{ users.length | plural: 'пользователь' : 'пользователя' : 'пользователей' }}
+    </div>
     <div class="users-grid">
       @for (user of users; track user.id) {
         <app-user-card [user]="user" (deleteUser)="onDeleteUser($event)"></app-user-card>
