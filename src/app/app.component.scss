@@ -695,3 +695,16 @@
     }
   }
 }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 4px; 
+  }
+
+
+.rating-star {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
