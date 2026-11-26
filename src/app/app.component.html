@@ -194,7 +194,7 @@
             </div>
             <div class="destination-card__bottom">
               <span class="destination-card__name">Озеро возле гор</span>
-              <span class="destination-card__price">480 $</span>
+              <span class="destination-card__price">480 &#36;</span>
             </div>
           </div>
           <div class="destination-card__footer">приключение</div>
@@ -209,7 +209,7 @@
             </div>
             <div class="destination-card__bottom">
               <span class="destination-card__name">Ночь в горах</span>
-              <span class="destination-card__price">500 $</span>
+              <span class="destination-card__price">500 &#36;</span>
             </div>
           </div>
           <div class="destination-card__footer">приключение</div>
@@ -224,7 +224,7 @@
             </div>
             <div class="destination-card__bottom">
               <span class="destination-card__name">Растяжка в горах</span>
-              <span class="destination-card__price">230 $</span>
+              <span class="destination-card__price">230 &#36;</span>
             </div>
           </div>
           <div class="destination-card__footer">приключение</div>
@@ -270,7 +270,7 @@
         </article>
 
         <article class="blog-card">
-          <img src="images/narrow-street.png" alt="Улица" class="blog-card__image">
+          <img src="images/narrowstreet.png" alt="Улица" class="blog-card__image">
           <div class="blog-card__content">
             <h3 class="blog-card__title">Как подготовиться к путешествию в одиночку?</h3>
             <p class="blog-card__desc">Для современного мира базовый вектор развития предполагает независимой разработки плановых заданий.</p>
@@ -309,21 +309,14 @@
   <ng-template #messageTpl let-message>
     <div class="message" [ngClass]="'message--' + message.type">
       <div class="message__icon">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 2L22 12L12 22L2 12L12 2Z" />
-          <path d="M12 2V22M2 12H22" />
-        </svg>
+        <img src="images/star-icon.svg" alt="Иконка" class="message-icon-img"> 
       </div>
       <div class="message__content">
         <div class="message__title">{{ message.title }}</div>
         <div class="message__text">{{ message.text }}</div>
       </div>
       <button class="message__close" [id]="'close-message-' + message.id" (click)="closeMessage(message.id)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="15" y1="9" x2="9" y2="15"></line>
-          <line x1="9" y1="9" x2="15" y2="15"></line>
-        </svg>
+        <img src="images/close-icon.svg" alt="Закрыть" class="message__close-icon">
       </button>
     </div>
   </ng-template>

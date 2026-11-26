@@ -8,6 +8,7 @@ import { MessageType } from '../enums/message-type.enum';
 import { Collection } from './collection';
 import { MessageService } from './message.service';
 import { StorageService } from './storage.service';
+import { Message } from './message.interface'; // <-- ДОБАВИЛИ ИМПОРТ
 
 interface Feature {
   icon: string;
@@ -25,7 +26,7 @@ export class AppComponent {
   private readonly messageService = inject(MessageService);
   private readonly storage = inject(StorageService);
   
-  readonly MessageType = MessageType; // Выровнено пробелами
+  readonly MessageType = MessageType;
 
   companyName: string = 'РУМТИБЕТ';
   currentDate: Date = new Date();
@@ -37,7 +38,8 @@ export class AppComponent {
   liveInputValue: string = '';
   isLoading: boolean = true;
 
-  get messages() {
+  // ВОТ ТУТ ДОБАВИЛИ ТИПИЗАЦИЮ
+  get messages(): ReadonlyArray<Message> {
     return this.messageService.messages;
   }
 

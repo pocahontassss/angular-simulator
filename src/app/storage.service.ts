@@ -8,8 +8,8 @@ export class StorageService {
   public set<T>(key: string, value: T): void {
     try {
       localStorage.setItem(key, JSON.stringify(value));
-    } catch (e) {
-      console.error('Ошибка сохранения в localStorage', e);
+    } catch (error: unknown) {
+      console.error('Ошибка сохранения в localStorage', error);
     }
   }
 
@@ -17,8 +17,8 @@ export class StorageService {
     try {
       const item = localStorage.getItem(key);
       return item ? (JSON.parse(item) as T) : null;
-    } catch (e) {
-      console.error('Ошибка чтения из localStorage', e);
+    } catch (error: unknown) {
+      console.error('Ошибка чтения из localStorage', error);
       return null;
     }
   }
