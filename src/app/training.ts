@@ -1,5 +1,3 @@
- 1. ИНТЕРФЕЙСЫ (Задания 6, 7)
-
 export interface IUser {
   id: number;
   name: string;
@@ -11,11 +9,10 @@ export interface IAdmin extends IUser {
   permissions: string[]; 
 }
 
-let uploadStatus: "loading" | "success" | "error";
-uploadStatus = "loading"; 
-
-let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
-textFormat = 'uppercase';
+type UploadStatus = "loading" | "success" | "error";
+let uploadStatus: UploadStatus = "loading"; 
+type TextFormat = 'uppercase' | 'lowercase' | 'capitalize';
+let textFormat: TextFormat = 'uppercase';
 
 function sum(a: number, b: number): number {
   return a + b;
@@ -23,7 +20,7 @@ function sum(a: number, b: number): number {
 console.log("Сумма 5 и 10:", sum(5, 10));
 
 
-function formatString(str: string, format: 'uppercase' | 'lowercase' | 'capitalize'): string {
+function formatString(str: string, format: TextFormat): string {
   switch (format) {
     case 'uppercase':
       return str.toUpperCase();
@@ -56,4 +53,4 @@ const users: IUser[] = [
 
 const filteredUsers = users.filter((user) => user.age !== undefined && user.age > 23);
 
-console.log("Отфильтрованные пользователи:", filteredUsers)
+console.log("Отфильтрованные пользователи:", filteredUsers);
