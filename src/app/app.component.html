@@ -1,1 +1,60 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<header class="header">
+  <div class="container">
+    <div class="header__logo">
+      <img src="./images/mountin-icon.png" alt="Logo" />
+      <p class="header__company">{{ companyName }}</p>
+    </div>
+
+    <div class="header__nav">
+      <a class="a" href="#">Главная</a>
+      <a class="a" href="#">Про гида</a>
+      <a class="a" href="#">Программа тура</a>
+      <a class="a" href="#">Стоимость</a>
+      <a class="a" href="#">Блог</a>
+      <a class="a" href="#">Контакты</a>
+    </div>
+
+    <div class="header__btns">
+      <button class="header__btn">Консультация</button>
+    </div>
+  </div>
+</header>
+
+<section class="main-info">
+  <div class="banner">
+    <h1 class="main-info-title">Насладись прогулкой в горах с командой единомышленников</h1>
+
+    <div class="conteiner-form">
+      <form class="main-info__form">
+        <div class="main-info__field">
+          <select class="main-info__control" name="city" id="city-select">
+            <option value="">Локация для тура</option>
+            <option value="kavkaz">Северный Кавказ</option>
+            <option value="altai">Горный Алтай</option>
+            <option value="hibini">Хибины</option>
+            <option value="ergaki">Ергаки</option>
+          </select>
+          <label for="city-select" class="main-label">выберите из списка</label>
+        </div>
+
+        <div class="main-info__field">
+          <input class="main-info__control" required data-text="Дата похода" type="date" />
+          <label for="date-select" class="main-label">укажите дату</label>
+        </div>
+
+        <div class="main-info__field">
+          <select class="main-info__control" name="people" id="people-select">
+            <option value="">Участники</option>
+            <option value="4">4 человека</option>
+            <option value="6">6 человек</option>
+            <option value="10">10 человек</option>
+          </select>
+          <label class="main-label" for="people-select">выберите из списка</label>
+        </div>
+
+        <button class="main-btn">Найти программу</button>
+      </form>
+    </div>
+  </div>
+</section>
++

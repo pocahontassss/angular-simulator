@@ -1,0 +1,19 @@
+@use './fonts';
+@use './normalize.scss';
+* {
+    font-family: 'Nunito Sans';
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 1180px;
+    height: 60px;
+}
+
+:root {
+    --primary-color: #18121E;
+    --unverse-color: #FDFDFD;
+    --secondary-color: #F2BE22;
+}
+
